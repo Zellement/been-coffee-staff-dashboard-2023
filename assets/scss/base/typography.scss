@@ -1,0 +1,154 @@
+/**
+ * ----------------------
+ * Config - Typography
+ * ----------------------
+ */
+
+// Web fonts
+$font-dir: "../fonts";
+
+@font-face {
+    font-family: "DM Serif Text";
+    src: url("#{$font-dir}/DMSerifText-Regular.ttf") format("truetype");
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+@font-face {
+    font-family: "DM Serif Text";
+    src: url("#{$font-dir}/DMSerifText-Italic.ttf") format("truetype");
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "DM Sans";
+    src: url("#{$font-dir}/DMSans-Regular.ttf") format("truetype");
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+}
+
+/**
+ * ----------------------
+ * Base - Typography
+ * ----------------------
+ */
+
+/**
+ * Config
+ */
+
+/**
+ * Headings
+ */
+
+.h1 {
+  @apply text-3xl;
+}
+
+.h2 {
+  @apply text-2xl;
+}
+
+.h3 {
+  @apply text-xl;
+}
+
+.h4 {
+  @apply text-lg;
+}
+
+.h5 {
+  @apply text-base;
+}
+
+.h6 {
+  @apply text-sm;
+}
+
+/**
+ * Links
+ */
+// a,
+// button {
+//   @apply text-inherit
+//     text-xs;
+// }
+
+em {
+  @apply font-light italic;
+}
+
+strong {
+  @apply font-bold;
+}
+
+hr {
+  @apply border-t-4;
+}
+
+.content {
+  @for $i from 2 through 6 {
+    h#{$i} {
+      @apply font-bold;
+    }
+  }
+  p strong {
+    @apply font-bold text-sm;
+  }
+  > * + * {
+    @apply mt-6;
+  }
+  ul {
+    @apply mb-6 pl-6 text-sm flex flex-col space-y-2;
+
+    li {
+      @apply ml-6 pl-4 list-disc leading-none;
+    }
+  }
+  p > a {
+    @apply relative text-sm;
+    @screen lg {
+      &:after {
+        content: "";
+        @apply w-full h-px bg-white absolute top-full left-1/2 -translate-x-1/2 transition-all duration-300;
+      }
+      &:hover:after {
+        @apply w-1;
+      }
+    }
+  }
+
+  &--prominent {
+    p,
+    p strong {
+      @apply text-base font-bold;
+    }
+    p + * {
+      @apply mt-6;
+    }
+  }
+
+  &--media-text {
+    p,
+    p strong {
+      @apply text-lg font-bold;
+    }
+    p + * {
+      @apply mt-6;
+    }
+  }
+  &--small {
+    ul {
+      @apply pl-2;
+
+      li {
+        @apply pl-2;
+      }
+    }
+  }
+}
