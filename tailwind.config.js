@@ -19,40 +19,99 @@ module.exports = {
     ],
     theme: {
         fontSize: {
-            '3xs': '1.2rem',
-            '2xs': '1.4rem',
-            xs: '1.6rem',
-            sm: '1.8rem',
-            base: '2rem',
-            lg: '2.2rem',
-            xl: '2.4rem',
-            '2xl': '3rem',
-            '3xl': '3.4rem',
-            '4xl': '4rem',
-            '5xl': '5rem',
-            '6xl': '6rem',
-            '7xl': '7rem',
-            '8xl': '8rem',
-            '9xl': '9rem',
-            '10xl': '10rem'
+            '2xs': [
+                'clamp(0.75rem, 0.75rem + 0vw, 0.75rem);',
+                {
+                    lineHeight: 'calc(100% + 10px)'
+                }
+            ],
+            xs: [
+                'clamp(0.875rem, 0.875rem + 0vw, 0.875rem);',
+                {
+                    lineHeight: 'calc(100% + 10px)'
+                }
+            ],
+            sm: [
+                'clamp(1rem, 1rem + 0vw, 1rem)',
+                {
+                    lineHeight: 'calc(100% + 10px)'
+                }
+            ],
+            base: [
+                'clamp(1.125rem, 1.125rem + 0vw, 1.125rem)',
+                {
+                    lineHeight: 'calc(100% + 10px)'
+                }
+            ],
+            lg: [
+                'clamp(1.25rem, 1.2811rem + -0.1351vw, 1.125rem)',
+                {
+                    lineHeight: 'calc(100% + 10px)'
+                }
+            ],
+            xl: [
+                'clamp(1.4375rem, 1.4375rem + 0vw, 1.4375rem);',
+                {
+                    lineHeight: 'calc(100% + 10px)'
+                }
+            ],
+            '2xl': [
+                'clamp(1.625rem, 1.5939rem + 0.1351vw, 1.75rem)',
+                {
+                    lineHeight: 'calc(100% + 10px)'
+                }
+            ],
+            '3xl': [
+                'clamp(1.8125rem, 1.735rem + 0.3876vw, 2.1875rem)',
+                {
+                    lineHeight: 'calc(100% + 10px)'
+                }
+            ],
+            '4xl': [
+                'clamp(2rem, 1.8135rem + 0.8108vw, 2.75rem)',
+                {
+                    lineHeight: 'calc(100% + 10px)'
+                }
+            ],
+            '5xl': [
+                'clamp(2.25rem, 1.9547rem + 1.2838vw, 3.4375rem)',
+                {
+                    lineHeight: 'calc(100% + 10px)'
+                }
+            ],
+            '6xl': [
+                'clamp(2.5625rem, 2.1274rem + 1.8919vw, 4.3125rem)',
+                {
+                    lineHeight: 'calc(100% + 10px)'
+                }
+            ],
+            '7xl': [
+                'clamp(3.625rem, 2.4439rem + 5.1351vw, 8.375rem)',
+                {
+                    lineHeight: 'calc(100% + 10px)'
+                }
+            ]
         },
         screens: {
-            '2xs': '375px',
-            xs: '480px',
-            sm: '600px',
-            md: '768px',
-            lg: '1024px',
-            xl: '1280px',
-            '2xl': '1400px',
-            '3xl': '1600px',
-            '4xl': '1900px'
+            '3xs': '21em',
+            '2xs': '23em',
+            xs: '25.625em',
+            sm: '30em',
+            'sm-md': '35em',
+            md: '43.125em',
+            lg: '54.875em',
+            xl: '79.6875em',
+            '2xl': '90em',
+            '3xl': '100em',
+            max: '1848px'
         },
         extend: {
             fontFamily: {
                 riverside: ['Riverside', 'Impact', 'sans-serif'],
                 'riverside-outline': ['Riverside Outline', 'Impact', 'sans-serif'],
                 krete: ['Krete', 'Georgia', 'serif'],
-                mono: ['Courier', 'monospace']
+                mono: ['Courier', 'monospace'],
+                sans: ['Roboto', 'sans-serif']
             },
             colors: {
                 butterscotch: {
@@ -95,7 +154,18 @@ module.exports = {
                     900: '#000000'
                 },
                 seashell: {
-                    DEFAULT: '#fff4e8'
+                    DEFAULT: '#FFF4E8',
+                    50: '#FFFFFF',
+                    100: '#FFFFFF',
+                    200: '#FFFFFF',
+                    300: '#FFFFFF',
+                    400: '#FFFFFF',
+                    500: '#FFF4E8',
+                    600: '#FFD9B0',
+                    700: '#FFBE78',
+                    800: '#FFA440',
+                    900: '#FF8908',
+                    950: '#EB7A00'
                 }
             },
             zIndex: {
@@ -108,8 +178,5 @@ module.exports = {
             }
         }
     },
-    plugins: [],
-    corePlugins: {
-        container: false
-    }
+    plugins: []
 }

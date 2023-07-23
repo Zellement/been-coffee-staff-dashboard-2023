@@ -1,5 +1,5 @@
 <template>
-    <header class="fixed top-0 left-0 flex items-center justify-between w-full h-12 p-2 dark:bg-navy-600 bg-butterscotch-600">
+    <header class="fixed top-0 left-0 z-50 flex items-center justify-between w-full h-12 p-2 dark:bg-navy-600 bg-butterscotch-600">
         <site-logo />
 
         <div class="flex flex-row items-center gap-2">

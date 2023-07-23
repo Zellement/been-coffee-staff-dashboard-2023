@@ -1,20 +1,36 @@
 body {
-    @apply text-white min-h-screen font-sans bg-fixed;
+    @apply text-navy dark:text-white min-h-screen text-sm font-sans ;
+    &:before {
+        @apply h-20 content-[''] w-full block;
+    }
 }
 
 html.dark {
     @apply bg-navy;
 }
 
-html.light {
-    @apply bg-butterscotch;
-}
-
 html {
-    @apply bg-butterscotch;
+    @apply bg-seashell;
 }
 
-.slug-content {
-    background: rgb(2,0,36);
-    background: linear-gradient(90deg, rgba(2,0,36,0) 0%, rgba(255,255,255,0) 50%, rgba(255,255,255,1) 50%, rgba(255,255,255,1) 100%);
+
+@layer utilities {
+    .breakout {
+        @apply
+            relative
+            w-screen
+            left-1/2
+            right-1/2
+            ml-[-50vw]
+            mr-[-50vw]
+    ;
+
+        &--reset {
+            @apply
+                w-auto
+                left-auto
+                right-auto
+                mx-0;
+        }
+    }
 }
