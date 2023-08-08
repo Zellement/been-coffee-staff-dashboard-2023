@@ -25,12 +25,16 @@
                                     </span>
                                 </div>
                                 <div class="flex col-span-2 p-1 overflow-hidden bg-white rounded-full">
-                                    <img class="w-auto h-auto m-auto max-h-12" :src="item.supplier.logo.url" />
+                                    <img class="w-auto h-auto my-auto ml-auto dark:m-auto max-h-12" :src="item.supplier.logo.url" />
                                 </div>
                             </div>
-                            <div class="flex flex-col mt-8">
+                            <div class="flex flex-col mt-4">
                                 <h3 class="h4">Details</h3>
                                 <div v-html="item.details" />
+                            </div>
+                            <div v-if="item.notes" class="flex flex-col mt-4">
+                                <h3 class="h4">Notes</h3>
+                                <div v-html="item.notes" />
                             </div>
                         </div>
                     </div>
@@ -55,6 +59,7 @@ const QUERY = `
             name
         }
         details
+        notes
     }
   }
 `

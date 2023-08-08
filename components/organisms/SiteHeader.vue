@@ -13,7 +13,7 @@
                 <Icon name="clarity:sun-solid" />
             </button>
             <span>Welcome, {name}</span>
-            <Icon name="clarity:sign-out-line" class="text-white" />
+            <Icon name="clarity:sign-out-line" class="" />
         </div>
     </header>
 </template>
