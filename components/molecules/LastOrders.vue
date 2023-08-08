@@ -1,5 +1,5 @@
 <template>
-    <div class="relative" v-if="data">
+    <div class="relative">
         <section className="py-8 ">
             <div class="container">
                 <h2 class="h2">Last 30 Orders</h2>
