@@ -19,6 +19,12 @@ module.exports = {
     ],
     theme: {
         fontSize: {
+            '3xs': [
+                'clamp(0.5rem, 0.5rem + 0vw, 0.5rem);',
+                {
+                    lineHeight: 'calc(100% + 10px)'
+                }
+            ],
             '2xs': [
                 'clamp(0.75rem, 0.75rem + 0vw, 0.75rem);',
                 {
@@ -178,5 +184,8 @@ module.exports = {
             }
         }
     },
-    plugins: []
+    plugins: [],
+    corePlugins: {
+        container: false
+    }
 }

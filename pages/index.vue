@@ -1,5 +1,5 @@
 <template>
-    <div class="container relative mt-16 container-padding">
+    <div class="relative">
         <div class="flex flex-col">
             <last-orders />
         </div>

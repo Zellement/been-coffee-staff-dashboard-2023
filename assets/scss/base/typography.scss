@@ -73,7 +73,7 @@ $font-dir: "../fonts";
 }
 
 .h2 {
-  @apply text-2xl font-riverside;
+  @apply text-2xl font-riverside dark:text-butterscotch-500;
 }
 
 .h3 {

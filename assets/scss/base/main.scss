@@ -6,11 +6,15 @@ body {
 }
 
 html.dark {
-    @apply bg-navy;
+    @apply bg-navy ;
 }
 
 html {
     @apply bg-seashell;
+}
+
+.container {
+    @apply px-2 mx-auto;
 }
 
 
