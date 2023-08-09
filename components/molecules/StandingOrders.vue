@@ -2,25 +2,18 @@
     <div class="relative">
         <section class="py-8">
             <div class="container ">
-                <h2 class="h2">Last 30 Orders</h2>
+                <h2 class="h2">Standing Orders</h2>
             </div>
             <div class="px-2 overflow-hidden">
                 <div class="w-full py-8 overflow-x-scroll ">
                     <div class="flex flex-row w-full space-x-4">
-                        <div class="flex relative flex-col w-3/4 p-4 shadow-lg rounded-xl md:w-auto min-w-[300px] sm:w-2/5 bg-seashell-400 dark:bg-navy-400" v-for="item in data.allOrders" :key="item.id">
+                        <div class="flex relative flex-col w-3/4 p-4 shadow-lg rounded-xl md:w-auto min-w-[300px] sm:w-2/5 bg-seashell-400 dark:bg-navy-400" v-for="item in data.allStandingOrders" :key="item.id">
                             <div class="absolute top-0 right-0 uppercase -translate-y-1/2 bg-white text-3xs px-2 dark:text-navy-50 dark:bg-navy-400 text-gray-400 rounded-tl-lg py-0.5">{{  item.supplier.name }}</div>
-                            <div class="grid w-full grid-cols-7">
+                            <div class="grid w-full grid-cols-7 gap-2">
                                 <div class="flex flex-col col-span-5 text-xs">
-                                    <span class="flex flex-row items-center space-x-2 dark:text-butterscotch-500 text-navy-500">
+                                    <span class="flex flex-row items-center my-auto space-x-2 dark:text-butterscotch-500 text-navy-500">
                                         <Icon class="w-5 h-5 p-1 rounded-full bg-butterscotch-500 dark:bg-navy-700 " name="clarity:truck-solid" />
-                                        <span>
-                                            {{ dateConverter(item.expectedDeliveryDate) }}
-                                        </span>
-                                    </span>
-                                    <span class="flex flex-row items-center space-x-2 ">
-                                        <Icon class="w-5 h-5 p-1 rounded-full bg-butterscotch-100 dark:text-butterscotch-500 text-butterscotch-800 dark:bg-navy-300 "  name="clarity:pound-line" />
-                                        <span class="opacity-50">
-                                            {{ dateConverter(item.orderDate) }}
+                                        <span>{{ item.deliverySchedule }}
                                         </span>
                                     </span>
                                 </div>
@@ -47,30 +40,21 @@
 
 <script setup>
 const QUERY = `
-  query {
-    allOrders(orderBy: expectedDeliveryDate_DESC) {
-        id
-        expectedDeliveryDate
-        orderDate
-        standard
-        supplier {
-            logo {
-                url
-            }
-            name
+query {
+    allStandingOrders {
+    id
+    deliverySchedule
+    details
+     supplier {
+        logo {
+            url
         }
-        details
-        notes
+        name
+        }
     }
-  }
+}
 `
 
 const { data } = await useGraphqlQuery({ query: QUERY })
-
-const dateConverter = (value) => {
-    const event = new Date(value)
-    const options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' }
-    return event.toLocaleDateString('en-UK', options)
-}
 
 </script>
