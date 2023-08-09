@@ -1,16 +1,16 @@
 body {
-    @apply text-navy dark:text-white min-h-screen text-sm font-sans ;
+    @apply   min-h-screen text-sm font-sans ;
     &:before {
         @apply h-20 content-[''] w-full block;
     }
 }
 
 html.dark {
-    @apply bg-navy ;
+    @apply bg-navy text-gray-300;
 }
 
 html {
-    @apply bg-seashell;
+    @apply bg-seashell text-gray-700;
 }
 
 .container {

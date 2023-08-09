@@ -69,27 +69,27 @@ $font-dir: "../fonts";
  */
 
 .h1 {
-  @apply text-3xl font-riverside;
+  @apply text-3xl font-riverside text-navy dark:text-butterscotch-500;
 }
 
 .h2 {
-  @apply text-2xl font-riverside dark:text-butterscotch-500;
+  @apply text-2xl font-riverside  text-navy dark:text-butterscotch-500;
 }
 
 .h3 {
-  @apply text-xl font-riverside;
+  @apply text-xl font-riverside text-navy dark:text-butterscotch-500;
 }
 
 .h4 {
-  @apply text-lg font-riverside;
+  @apply text-lg font-riverside text-navy dark:text-butterscotch-500;
 }
 
 .h5 {
-  @apply text-base font-riverside;
+  @apply text-base font-riverside text-navy dark:text-butterscotch-500;
 }
 
 .h6 {
-  @apply text-sm font-riverside;
+  @apply text-sm font-riverside text-navy dark:text-butterscotch-500;
 }
 
 /**
