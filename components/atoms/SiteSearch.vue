@@ -6,7 +6,7 @@
 
 <script setup>
 
-import { useUiStore } from '@/stores/uiStore'
+import { useUiStore } from '@/stores/ui'
 
 const uiStore = useUiStore()
 

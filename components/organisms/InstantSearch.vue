@@ -1,9 +1,22 @@
 <template>
-    <div v-if="uiStore.showSearchResults" class="fixed inset-0 z-10 flex pt-40 bg-red-500">
+    <div v-if="uiStore.showSearchResults" class="fixed inset-0 z-50 flex bg-butterscotch dark:bg-navy-500">
 
-        <div class="flex">
+        <div class="flex flex-row mx-auto">
+            <div class="flex">
+                <input class="my-auto" name="site-search" id="site-search" placeholder="Search..." />
+            </div>
 
-            <input name="site-search" id="site-search" placeholder="Search..." />
+            <div class="flex h-full">
+
+                <ul class="h-full my-auto overflow-y-auto">
+
+                    <li v-for="item in data.allArticles" :key="item.id">
+
+                        {{ item.title }}
+
+                    </li>
+                </ul>
+            </div>
 
         </div>
 
@@ -12,27 +25,18 @@
 
 <script setup>
 
-import { useUiStore } from '@/stores/uiStore'
+import { useUiStore } from '@/stores/ui'
 
 const uiStore = useUiStore()
 
 const QUERY = `
-  query {
-    allOrders(orderBy: expectedDeliveryDate_DESC) {
-        id
-        expectedDeliveryDate
-        orderDate
-        standard
-        supplier {
-            logo {
-                url
-            }
-            name
+    query MyQuery {
+       allArticles {
+            id
+            title
+            slug
         }
-        details
-        notes
     }
-  }
 `
 
 const { data } = await useGraphqlQuery({ query: QUERY })
