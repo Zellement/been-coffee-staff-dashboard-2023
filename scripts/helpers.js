@@ -1,0 +1,5 @@
+export const dateConverter = (value) => {
+    const event = new Date(value)
+    const options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' }
+    return event.toLocaleDateString('en-UK', options)
+}

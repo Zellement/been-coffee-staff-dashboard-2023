@@ -31,7 +31,7 @@
                             <div class="flex flex-col mt-4">
                                 <h3 class="h4">Details</h3>
                                 <template v-if="item.details || item.standard">
-                                    <p class="italic opacity-50" v-if="item.standard">Standard order for this supplier.</p>
+                                    <p class="italic opacity-50" v-if="item.standard">Standard order for this supplier</p>
                                     <div class="content" v-html="item.details" />
                                 </template>
                                 <p class="italic opacity-50" v-else>
@@ -51,6 +51,7 @@
 </template>
 
 <script setup>
+import { dateConverter } from '@/scripts/helpers'
 const QUERY = `
   query {
     allOrders(orderBy: expectedDeliveryDate_DESC) {
@@ -71,11 +72,5 @@ const QUERY = `
 `
 
 const { data } = await useGraphqlQuery({ query: QUERY })
-
-const dateConverter = (value) => {
-    const event = new Date(value)
-    const options = { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' }
-    return event.toLocaleDateString('en-UK', options)
-}
 
 </script>
