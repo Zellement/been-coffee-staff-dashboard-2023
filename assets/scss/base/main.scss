@@ -14,7 +14,7 @@ html {
 }
 
 .container {
-    @apply px-2 mx-auto;
+    @apply px-2 mx-auto md:px-4 xl:px-6;
 }
 
 

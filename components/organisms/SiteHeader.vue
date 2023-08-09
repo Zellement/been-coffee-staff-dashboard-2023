@@ -1,17 +1,13 @@
 <template>
-    <header class="fixed top-0 left-0 z-50 flex items-center justify-between w-full h-12 p-2 dark:bg-navy-600 bg-butterscotch-600">
+    <header class="container fixed top-0 left-0 z-50 flex items-center justify-between w-full h-12 dark:bg-navy-600 bg-butterscotch-600">
         <site-logo />
 
         <div class="flex flex-row items-center gap-2">
 
-            <button aria-label="Enable dark mode" v-if="$colorMode.preference === 'light'" class="flex items-center" @click="$colorMode.preference = 'dark'">
-
-                <Icon name="clarity:moon-solid" />
+            <button :aria-label="colorModeLabel" class="flex items-center" @click="toggleColorMode">
+                <Icon :name="colorModeIcon" />
             </button>
 
-            <button aria-label="Enable light mode" v-else class="flex items-center" @click="$colorMode.preference = 'light'">
-                <Icon name="clarity:sun-solid" />
-            </button>
             <span>Welcome, {name}</span>
             <Icon name="clarity:sign-out-line" class="" />
         </div>
@@ -19,4 +15,21 @@
 </template>
 
 <script setup>
+
+const colorMode = useColorMode()
+
+const colorModeIcon = computed(() => {
+    return colorMode.preference === 'dark' ? 'clarity:sun-solid' : 'clarity:moon-solid'
+})
+
+const colorModeLabel = computed(() => {
+    return colorMode.preference === 'dark' ? 'Enable light mode' : 'Enable dark mode'
+})
+
+const toggleColorMode = () => {
+    if (colorMode.preference === 'light') {
+        colorMode.preference = 'dark'
+    } else (colorMode.preference = 'light')
+}
+
 </script>
