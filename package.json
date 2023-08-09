@@ -37,14 +37,19 @@
         "@contentful/rich-text-html-renderer": "^15.13.1",
         "@contentful/rich-text-types": "^15.13.2",
         "@heroicons/vue": "^2.0.18",
+        "@pinia/nuxt": "^0.4.11",
         "@vueuse/components": "^9.2.0",
         "@vueuse/core": "^9.2.0",
         "contentful": "^9.2.5",
         "contentful-management": "^10.15.1",
         "esbuild": "^0.15.7",
         "ipx": "^0.9.11",
+        "pinia": "^2.1.6",
         "vue-datocms": "^4.0.5",
         "vue3-carousel": "^0.2.0",
         "vue3-lottie": "^2.4.0"
+    },
+    "overrides": {
+        "vue": "latest"
     }
 }

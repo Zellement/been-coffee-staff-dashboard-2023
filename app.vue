@@ -2,6 +2,7 @@
     <NuxtLayout>
         <NuxtPage />
     </NuxtLayout>
+    <instant-search />
 </template>
 <!--
 <style>
