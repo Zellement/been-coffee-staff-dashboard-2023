@@ -17,6 +17,9 @@ html {
     @apply px-2 mx-auto md:px-4 xl:px-6;
 }
 
+.generic-link {
+    @apply border-b border-transparent hover:border-current;
+}
 
 @layer utilities {
     .breakout {
