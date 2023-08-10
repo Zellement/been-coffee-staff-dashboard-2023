@@ -9,9 +9,7 @@ export default defineNuxtConfig({
         }
     },
     image: {
-        datocms: {
-            baseURL: 'https://images.ctfassets.net/'
-        }
+        domains: ['https://www.datocms-assets.com']
     },
     target: 'static',
     devServerHandlers: [],
@@ -34,10 +32,6 @@ export default defineNuxtConfig({
     ],
     build: {
         extractCSS: true
-    },
-    image: {
-        provider: 'contentful',
-        contentful: {}
     },
     app: {
         head: {

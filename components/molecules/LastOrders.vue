@@ -2,12 +2,12 @@
     <div class="relative">
         <section class="py-8">
             <div class="container ">
-                <h2 class="h2">Last 30 Orders</h2>
+                <h2 class="h2">Last {{ orderTotal }} Orders</h2>
             </div>
             <div class="px-2 overflow-hidden">
                 <div class="w-full py-8 overflow-x-scroll ">
                     <div class="flex flex-row w-full space-x-4">
-                        <div class="flex relative flex-col w-3/4 p-4 shadow-lg rounded-xl md:w-auto min-w-[300px] sm:w-2/5 bg-seashell-400 dark:bg-navy-400" v-for="item in data.allOrders" :key="item.id">
+                        <div class="flex relative flex-col w-3/4 p-4 shadow-lg rounded-xl lg:min-w-[400px] min-w-[300px] bg-seashell-400 dark:bg-navy-400" v-for="item in allOrders" :key="item.id">
                             <div class="absolute top-0 right-0 uppercase -translate-y-1/2 bg-white text-3xs px-2 dark:text-navy-50 dark:bg-navy-400 text-gray-400 rounded-tl-lg py-0.5 tracking-wider">{{  item.supplier.name }}</div>
                             <div class="grid w-full grid-cols-7">
                                 <div class="flex flex-col col-span-5 text-xs">
@@ -70,6 +70,12 @@ const QUERY = `
     }
   }
 `
+
+const orderTotal = 15
+
+const allOrders = computed(() => {
+    return data.value.allOrders.slice(0, orderTotal)
+})
 
 const { data } = await useGraphqlQuery({ query: QUERY })
 
