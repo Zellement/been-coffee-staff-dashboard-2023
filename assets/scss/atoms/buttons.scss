@@ -1,0 +1,11 @@
+.button {
+    @apply px-3 py-2 rounded transition-all duration-300;
+}
+
+html.dark .button {
+    @apply bg-white/10 text-white hover:bg-navy-900;
+}
+
+html.light .button {
+    @apply bg-butterscotch-500 text-navy hover:bg-butterscotch-600;
+}
