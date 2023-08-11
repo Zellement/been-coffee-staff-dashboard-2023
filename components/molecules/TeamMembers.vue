@@ -16,11 +16,9 @@
                                 <span class="leading-tight opacity-50 text-3xs">Started on</span>
                                 <span class="leading-tight text-3xs">{{ dateConverter(item.startDate) }}</span>
                             </span>
-                            <div class="flex w-full overflow-hidden bg-red-100 aspect-[4/5]">
-                                <nuxt-picture :src="item?.picture?.url"
-                                              fit="cover"
-                                              width="400" height="500"
-                                              format="webp"
+                            <div class="flex w-full overflow-hidden  aspect-[4/5]">
+                                <img :alt="item.name" :src="`${item?.picture?.url}?w=300`"
+                                     class="object-cover w-full h-full"
                                 />
                             </div>
                         </div>
