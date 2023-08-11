@@ -3,22 +3,38 @@
         <site-logo />
 
         <div class="flex flex-row items-center gap-4">
-
-            <button :aria-label="colorModeLabel" class="flex items-center" @click="toggleColorMode">
+            <button
+                :aria-label="colorModeLabel"
+                class="flex items-center"
+                @click="toggleColorMode"
+            >
                 <Icon :name="colorModeIcon" />
             </button>
 
             <site-search />
 
             <span>Welcome, {name}</span>
-            <Icon name="clarity:sign-out-line" class="" />
+            <button
+                :aria-label="colorModeLabel"
+                class="flex items-center"
+                @click="uiStore.toggleProfileData"
+            >
+                <Icon name="ri:user-line" />
+            </button>
+            <Icon
+                name="clarity:sign-out-line"
+                class=""
+            />
         </div>
     </header>
 </template>
 
 <script setup>
 
+import { useUiStore } from '@/stores/ui'
+
 const colorMode = useColorMode()
+const uiStore = useUiStore()
 
 const colorModeIcon = computed(() => {
     return colorMode.preference === 'dark' ? 'clarity:sun-solid' : 'clarity:moon-solid'

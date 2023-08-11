@@ -3,6 +3,7 @@
         <NuxtPage />
     </NuxtLayout>
     <instant-search />
+    <profile-data />
 </template>
 <!--
 <style>

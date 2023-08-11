@@ -1,36 +1,47 @@
 <template>
-    <div v-if="uiStore.showSearchResults" class="fixed inset-0 z-50 flex bg-butterscotch dark:bg-navy-500">
-
-        <button class="fixed top-2 right-2" @click="uiStore.toggleSearchResults">
-
-            <Icon name="ri:close-circle-line" class="w-8 h-8 transition-all duration-300 hover:rotate-90" />
-
+    <div
+        v-if="uiStore.showSearchResults"
+        class="fixed inset-0 z-50 flex bg-butterscotch dark:bg-navy-500"
+    >
+        <button
+            class="fixed top-2 right-2"
+            @click="uiStore.toggleSearchResults"
+        >
+            <Icon
+                name="ri:close-circle-line"
+                class="w-8 h-8 transition-all duration-300 hover:rotate-90"
+            />
         </button>
 
         <div class="flex flex-col w-full gap-8 mx-auto md:grid md:grid-cols-2">
-
             <div class="flex py-8 md:justify-center">
-                <input v-model="searchInput" class="w-full max-w-[20rem] p-2 my-auto rounded dark:bg-navy-300" name="site-search" id="site-search" placeholder="Search..." />
+                <input
+                    id="site-search"
+                    v-model="searchInput"
+                    class="w-full max-w-[20rem] p-2 my-auto rounded dark:bg-navy-300"
+                    name="site-search"
+                    placeholder="Search..."
+                >
             </div>
 
             <div class="flex h-screen overflow-hidden">
-
                 <ul class="flex flex-col overflow-y-auto md:justify-center ">
-
-                    <li v-for="item in filteredItems" :key="item.id">
-
-                        <nuxt-link @click="uiStore.toggleSearchResults" :to="`/article/${item.slug}`"
-                                   class="inline-flex flex-row items-end self-start generic-link">
+                    <li
+                        v-for="item in filteredItems"
+                        :key="item.id"
+                    >
+                        <nuxt-link
+                            :to="`/article/${item.slug}`"
+                            class="inline-flex flex-row items-end self-start generic-link"
+                            @click="uiStore.toggleSearchResults"
+                        >
                             <span>{{ item.title }}</span>
                             <span class="ml-4 text-2xs opacity-60">{{ dateConverter(item._updatedAt) }}</span>
                         </nuxt-link>
-
                     </li>
                 </ul>
             </div>
-
         </div>
-
     </div>
 </template>
 
