@@ -1,10 +1,21 @@
 <template>
     <div class="container">
         <p>Last updated: {{ dateConverter(data.article._updatedAt) }}</p>
-        <h1 class="h1">{{  data.article.title }}</h1>
-        <h2 class="h2">{{  data.article.subtitle }}</h2>
+        <h1 class="h1">
+            {{ data.article.title }}
+        </h1>
+        <h2 class="h2">
+            {{ data.article.subtitle }}
+        </h2>
 
-        {{data}}
+        <div
+            v-for="content in articleData.articleContent"
+            :key="content.id"
+        >
+            <div v-html="content.text" />
+        </div>
+
+        <!-- {{ articleData }} -->
     </div>
 </template>
 
@@ -18,14 +29,19 @@ const QUERY = `query ArticleQuery ($slug: String!) {
             subtitle
             title
             articleContent {
-            ... on TextBlockRecord {
-                id
-            }
+                ... on TextBlockRecord {
+                    id
+                    text
+                }
             }
         }
     }
 `
 const route = useRoute()
 const { data } = await useGraphqlQuery({ query: QUERY, variables: { slug: route.params.slug } })
+
+const articleData = computed(() => {
+    return data.value.article
+})
 
 </script>
