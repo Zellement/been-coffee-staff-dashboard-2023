@@ -10,16 +10,16 @@
             <nuxt-link
                 :to="campaign.long_archive_url"
                 target="_blank"
-                class="flex flex-row items-center justify-between p-2 button"
+                class="grid items-center justify-between grid-cols-12 p-2 button"
             >
-                <div class="flex flex-row items-center gap-8">
-                    <span class="w-24">{{ dateConverter(campaign.send_time) }}</span>
-                    <span>{{ campaign.settings.title }}</span>
+                <span class="col-span-full opacity-60 lg:col-span-2">{{ dateConverter(campaign.send_time) }}</span>
+                <span class="col-span-10 row-start-2 lg:col-span-8 lg:row-start-1 lg:col-start-3">{{ campaign.settings.title }}</span>
+                <div class="flex col-span-2">
+                    <Icon
+                        name="ic:round-open-in-new"
+                        class="w-4 h-4 ml-auto"
+                    />
                 </div>
-                <Icon
-                    name="ic:round-open-in-new"
-                    class="w-4 h-4"
-                />
             </nuxt-link>
         </li>
     </ul>
