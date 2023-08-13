@@ -1,20 +1,15 @@
 <template>
-    <div class="container flex flex-col items-center space-y-8">
-        <div class="flex flex-col items-center p-8 text-center shadow-xl bg-seashell/10 rounded-xl">
-            <p class="text-xs">
-                Last updated: {{ dateConverter(data.article._updatedAt) }}
-            </p>
-            <h1 class="h1">
-                {{ data.article.title }}
-            </h1>
-            <h2 class="h2 text-tuscany">
-                {{ data.article.subtitle }}
-            </h2>
-        </div>
+    <div class="container flex flex-col items-center mb-16 space-y-8">
+        <content-hero
+            :title="data.article.title"
+            :date="data.article._updatedAt"
+            :subtitle="data.article.subtitle"
+        />
         <template v-if="articleData.articleContent">
             <div
                 v-for="content in articleData.articleContent"
                 :key="content.id"
+                class="w-full overflow-x-auto"
             >
                 <div
                     v-if="content._modelApiKey === 'text_block'"
@@ -58,7 +53,6 @@
 </template>
 
 <script setup>
-import { dateConverter } from '@/scripts/helpers'
 
 const QUERY = `query ArticleQuery ($slug: String!) {
         article(filter: {slug: {eq: $slug}}) {

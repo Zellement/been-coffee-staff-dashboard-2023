@@ -11,7 +11,6 @@
 
 </script>
 
-<!--
 <style>
 .page-enter-active,
 .page-leave-active {
@@ -22,4 +21,4 @@
 .page-leave-to {
     @apply translate-x-full;
 }
-</style> -->
+</style>

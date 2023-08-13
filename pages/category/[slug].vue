@@ -2,17 +2,11 @@
     <div
         class="container flex flex-col items-center space-y-8"
     >
-        <div
+        <content-hero
             v-if="categoryData"
-            class="flex flex-col items-center p-8 text-center shadow-xl bg-seashell/10 rounded-xl"
-        >
-            <h1 class="h1">
-                {{ categoryData.title }}
-            </h1>
-            <h2 class="h2 text-tuscany">
-                {{ categoryData.subtitle }}
-            </h2>
-        </div>
+            :title="categoryData.title"
+            subtitle="Category"
+        />
         <div
             v-if="allArticles"
             class="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4"

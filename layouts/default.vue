@@ -1,9 +1,11 @@
 <template>
-    <site-header />
-    <div class="layout">
-        <main>
-            <slot />
-        </main>
+    <div class="overflow-hidden">
+        <site-header />
+        <div class="layout">
+            <main>
+                <slot />
+            </main>
+        </div>
     </div>
 </template>
 
