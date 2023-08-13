@@ -14,29 +14,60 @@
         </button>
 
         <div class="flex flex-col w-full gap-8 mx-auto md:grid md:grid-cols-2">
-            <div class="flex py-8 md:justify-center">
+            <div class="flex flex-col items-center gap-8 p-8 md:justify-center">
                 <input
                     id="site-search"
                     v-model="searchInput"
-                    class="w-full max-w-[20rem] p-2 my-auto rounded dark:bg-navy-300"
+                    class="w-full max-w-[20rem] p-2 rounded dark:bg-navy-300"
                     name="site-search"
                     placeholder="Search..."
                 >
+                <div
+                    v-if="cats"
+                    class="flex flex-col w-full  max-w-[20rem]"
+                >
+                    <h2 class="mb-2 h4">
+                        Categories
+                    </h2>
+                    <ul
+                        class="flex flex-col overflow-y-auto md:justify-center "
+                    >
+                        <li
+                            v-for="item in cats"
+                            :key="item.id"
+                        >
+                            <nuxt-link
+                                :to="`/category/${item.slug}`"
+                                class="inline-flex flex-row items-end self-start generic-link"
+                                @click="uiStore.toggleSearchResults"
+                            >
+                                <span>{{ item.title }}</span>
+                            </nuxt-link>
+                        </li>
+                    </ul>
+                </div>
             </div>
 
-            <div class="flex h-screen overflow-hidden">
+            <div class="flex flex-col h-screen p-8 overflow-hidden lg:py-16">
+                <div class="flex flex-row justify-between">
+                    <h2 class="mb-2 h4">
+                        Article
+                    </h2>
+                    <span>Last updated</span>
+                </div>
                 <ul class="flex flex-col overflow-y-auto md:justify-center ">
                     <li
                         v-for="item in filteredItems"
                         :key="item.id"
+                        class="flex"
                     >
                         <nuxt-link
                             :to="`/article/${item.slug}`"
-                            class="inline-flex flex-row items-end self-start generic-link"
+                            class="flex flex-row items-center self-start justify-between w-full py-1 shadow-sm"
                             @click="uiStore.toggleSearchResults"
                         >
                             <span>{{ item.title }}</span>
-                            <span class="ml-4 text-2xs opacity-60">{{ dateConverter(item._updatedAt) }}</span>
+                            <span class="text-right whitespace-nowrap text-2xs opacity-60">{{ dateConverter(item._updatedAt) }}</span>
                         </nuxt-link>
                     </li>
                 </ul>
@@ -62,8 +93,17 @@ const QUERY = `
             slug
             _updatedAt
         }
+        allCategories {
+            id
+            title
+            slug
+        }
     }
 `
+
+const cats = computed(() => {
+    return data.value.allCategories
+})
 
 const { data } = await useGraphqlQuery({ query: QUERY })
 
