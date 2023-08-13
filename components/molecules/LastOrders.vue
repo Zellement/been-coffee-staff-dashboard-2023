@@ -1,5 +1,5 @@
 <template>
-    <div class="relative">
+    <div class="relative mt-8">
         <section class="pb-8">
             <div class="container ">
                 <h2 class="h1">
