@@ -6,7 +6,7 @@ export default (options) => {
         key,
         method: 'POST',
         headers: {
-            Authorization: `Bearer ${runtimeConfig.public.datoCmsToken}`
+            Authorization: `Bearer ${runtimeConfig.public.DAT0_CMS_TOKEN}`
         },
         body: {
             query,

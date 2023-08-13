@@ -5,7 +5,9 @@ import eslintVitePlugin from 'vite-plugin-eslint'
 export default defineNuxtConfig({
     runtimeConfig: {
         public: {
-            datoCmsToken: process.env.DATO_CMS_TOKEN
+            DAT0_CMS_TOKEN: process.env.DATO_CMS_TOKEN,
+            MC_CLIENT: process.env.MC_CLIENT,
+            MC_API: process.env.MC_API
         }
     },
     image: {
