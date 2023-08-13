@@ -3,8 +3,8 @@
 </template>
 
 <script setup>
-import mailchimp from '@mailchimp/mailchimp_marketing'
-// const mailchimp = require('@mailchimp/mailchimp_marketing')
+// import mailchimp from '@mailchimp/mailchimp_marketing'
+const mailchimp = require('@mailchimp/mailchimp_marketing')
 
 // import { createRequire } from 'node:module'
 // const require = createRequire(import.meta.url)
