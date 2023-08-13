@@ -37,6 +37,7 @@
         "@contentful/rich-text-html-renderer": "^15.13.1",
         "@contentful/rich-text-types": "^15.13.2",
         "@heroicons/vue": "^2.0.18",
+        "@mailchimp/mailchimp_marketing": "^3.0.80",
         "@pinia/nuxt": "^0.4.11",
         "@vueuse/components": "^9.2.0",
         "@vueuse/core": "^9.2.0",
