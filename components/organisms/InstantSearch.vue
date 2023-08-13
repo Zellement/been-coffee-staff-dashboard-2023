@@ -13,7 +13,7 @@
             />
         </button>
 
-        <div class="flex flex-col w-full gap-8 mx-auto md:grid md:grid-cols-2">
+        <div class="flex flex-col w-full mx-auto mt-8 lg:m-0 md:grid md:grid-cols-2">
             <div class="flex flex-col items-center gap-8 p-8 md:justify-center">
                 <input
                     id="site-search"

@@ -5,25 +5,35 @@
         <div class="flex flex-row items-center gap-4">
             <button
                 :aria-label="colorModeLabel"
-                class="flex items-center"
+                class="flex transition-all duration-300 dark:hover:text-butterscotch-500 hover:text-white"
                 @click="toggleColorMode"
             >
                 <Icon :name="colorModeIcon" />
             </button>
 
+            <nuxt-link
+                to="/mailchimp"
+                class="flex transition-all duration-300 dark:hover:text-butterscotch-500 hover:text-white"
+            >
+                <Icon
+                    name="ic:baseline-newspaper"
+                    class="my-auto"
+                />
+            </nuxt-link>
+
             <site-search />
 
-            <span>Welcome, {name}</span>
+            <span>Hi, {name}</span>
             <button
                 :aria-label="colorModeLabel"
-                class="flex items-center"
+                class="flex transition-all duration-300 dark:hover:text-butterscotch-500 hover:text-white"
                 @click="uiStore.toggleProfileData"
             >
                 <Icon name="ri:user-line" />
             </button>
             <Icon
                 name="clarity:sign-out-line"
-                class=""
+                class="flex transition-all duration-300 dark:hover:text-butterscotch-500 hover:text-white"
             />
         </div>
     </header>

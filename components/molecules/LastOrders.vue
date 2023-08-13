@@ -1,8 +1,8 @@
 <template>
     <div class="relative">
-        <section class="py-8">
+        <section class="pb-8">
             <div class="container ">
-                <h2 class="h2">
+                <h2 class="h1">
                     Last {{ orderTotal }} Orders
                 </h2>
             </div>

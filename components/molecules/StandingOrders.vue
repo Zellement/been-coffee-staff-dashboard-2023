@@ -2,7 +2,7 @@
     <div class="relative">
         <section class="py-8">
             <div class="container ">
-                <h2 class="h2">
+                <h2 class="h1">
                     Standing Orders
                 </h2>
             </div>
