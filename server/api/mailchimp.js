@@ -4,17 +4,16 @@ import mailchimp from '@mailchimp/mailchimp_marketing'
 export default defineEventHandler((event) => {
     // const runtime = useRuntimeConfig()
 
-    console.log('hello')
-
     mailchimp.setConfig({
         apiKey: process.env.MC_KEY,
         server: process.env.MC_CLIENT
     })
 
-    async function callPing () {
-        return await mailchimp.ping.get()
+    async function getAllCampaigns () {
+        return await mailchimp.campaigns.list({ sort_field: 'send_time', sort_dir: 'DESC', count: 100 })
     }
 
-    const data = callPing()
+    const data = getAllCampaigns()
+
     return data
 })
