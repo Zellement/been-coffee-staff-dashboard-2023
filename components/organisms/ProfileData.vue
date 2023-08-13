@@ -1,7 +1,7 @@
 <template>
     <div
-        v-if="uiStore.showProfileData"
-        class="fixed inset-0 z-50 flex bg-tuscany/80 backdrop-blur dark:bg-navy/80"
+        class="fixed inset-0 z-50 flex duration-500 bg-tuscany/80 backdrop-blur dark:bg-navy/80"
+        :class="showPanel"
     >
         <div class="relative p-4 pt-12 m-auto bg-white shadow-xl lg:p-12 dark:bg-navy rounded-xl">
             <button
@@ -36,4 +36,8 @@
 import { useUiStore } from '@/stores/ui'
 
 const uiStore = useUiStore()
+
+const showPanel = computed(() => {
+    return uiStore.showProfileData ? 'opacity-100' : 'opacity-0 pointer-events-none'
+})
 </script>

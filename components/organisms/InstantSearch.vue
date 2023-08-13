@@ -1,7 +1,7 @@
 <template>
     <div
-        v-if="uiStore.showSearchResults"
-        class="fixed inset-0 z-50 flex bg-butterscotch dark:bg-navy-500"
+        :class="showInstantSearch"
+        class="fixed inset-0 z-50 flex transition-all duration-500 bg-butterscotch dark:bg-navy-500"
     >
         <button
             class="fixed top-2 right-2"
@@ -55,7 +55,7 @@
                     </h2>
                     <span>Last updated</span>
                 </div>
-                <ul class="flex flex-col overflow-y-auto md:justify-center ">
+                <ul class="relative z-10 flex flex-col overflow-y-scroll md:justify-center ">
                     <li
                         v-for="item in filteredItems"
                         :key="item.id"
@@ -103,6 +103,10 @@ const QUERY = `
 
 const cats = computed(() => {
     return data.value.allCategories
+})
+
+const showInstantSearch = computed(() => {
+    return uiStore.showSearchResults ? 'opacity-100' : 'opacity-0 pointer-events-none'
 })
 
 const { data } = await useGraphqlQuery({ query: QUERY })

@@ -129,10 +129,13 @@ hr {
   }
 
   ul {
-    @apply mb-6 pl-6 text-sm flex flex-col space-y-2;
+    @apply mb-4 text-sm flex flex-col space-y-2;
 
     li {
-      @apply ml-6 pl-4 list-disc leading-none;
+      @apply ml-6  list-disc leading-tight;
+    }
+    ul {
+        @apply mt-4;
     }
   }
 

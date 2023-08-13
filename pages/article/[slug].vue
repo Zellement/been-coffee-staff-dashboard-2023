@@ -20,7 +20,7 @@
                     v-if="content._modelApiKey === 'image_block'"
                 >
                     <div
-                        :class="content.fullWidth ? 'w-full' : 'max-w-screen-md'"
+                        :class="content.fullWidth ? 'w-full' : 'max-w-screen-md mx-auto'"
                     >
                         <img
                             v-for="image in content.images"
@@ -32,7 +32,7 @@
                 <div
                     v-if="content._modelApiKey === 'download_block'"
                 >
-                    <ul class="flex flex-col space-y-2">
+                    <ul class="flex flex-col max-w-screen-md mx-auto space-y-2">
                         <li
                             v-for="pdf in content.pdfs"
                             :key="pdf.id"
@@ -46,6 +46,23 @@
                             </a>
                         </li>
                     </ul>
+                </div>
+                <div
+                    v-if="content._modelApiKey === 'video_block'"
+                    class="max-w-screen-md mx-auto content"
+                >
+                    <video
+                        :width="content.video.width"
+                        :height="content.video.height"
+                        controls
+                        class="mx-auto"
+                    >
+                        <source
+                            :src="content.video.url"
+                            :type="content.video.video.mimeType"
+                        >
+                        Your browser does not support the video tag.
+                    </video>
                 </div>
             </div>
         </template>
@@ -87,9 +104,14 @@ const QUERY = `query ArticleQuery ($slug: String!) {
                     id
                     _modelApiKey
                     video {
-                        url
                         width
                         height
+                        video {
+                            streamingUrl
+                            thumbnailUrl
+                        }
+                        url
+                        mimeType
                     }
                 }
             }
