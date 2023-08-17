@@ -34,6 +34,7 @@
             <Icon
                 name="clarity:sign-out-line"
                 class="flex transition-all duration-300 dark:hover:text-butterscotch-500 hover:text-white"
+                @click="handleSignOut"
             />
         </div>
     </header>
@@ -42,6 +43,12 @@
 <script setup>
 
 import { useUiStore } from '@/stores/ui'
+
+const { signOut } = useAuth()
+
+async function handleSignOut () {
+    await signOut()
+}
 
 const colorMode = useColorMode()
 const uiStore = useUiStore()
