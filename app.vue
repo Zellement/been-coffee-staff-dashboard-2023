@@ -9,26 +9,10 @@
 
 <script setup>
 const {
-    status,
-    data,
-    lastRefreshedAt,
-    getCsrfToken,
-    getProviders,
-    getSession,
-    signIn,
-    signOut
+    data
 } = useAuth()
 
-console.log(status.value)
 console.log(data.value)
-console.log(lastRefreshedAt.value)
-console.log(getCsrfToken)
-console.log(getProviders)
-console.log(getSession)
-console.log(signIn.value)
-console.log(signOut.value)
-
-console.log(useAuth())
 
 </script>
 
