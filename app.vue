@@ -8,11 +8,20 @@
 </template>
 
 <script setup>
+
+import { useUserStore } from '@/stores/users'
+
 const {
     data
 } = useAuth()
 
-console.log(data.value)
+const userStore = useUserStore()
+
+userStore.setUser(data.value.user.name)
+
+// const userData = userDetails(data.value.user.name)
+
+// userStore.setUserEnvs(userData)
 
 </script>
 

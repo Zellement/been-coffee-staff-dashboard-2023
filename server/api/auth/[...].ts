@@ -9,7 +9,7 @@ export default NuxtAuthHandler({
             clientId: process.env.AUTH_ZERO_CLIENT,
             clientSecret: process.env.AUTH_ZERO_SECRET,
             issuer: process.env.AUTH_ZERO_ISSUER,
-            response_type: 'code',,
+            response_type: 'code',
             audience: 'https://been-coffee.eu.auth0.com/userinfo',
             scope: 'openid profile email offline_access user token id_token access_token'
         })
