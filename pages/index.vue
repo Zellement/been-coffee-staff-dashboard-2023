@@ -7,3 +7,10 @@
         </div>
     </div>
 </template>
+<script setup>
+
+useHead({
+    title: 'Been Staff Dashboard'
+})
+
+</script>

@@ -5,7 +5,7 @@
                 <sign-out />
                 <button
                     v-if="userName"
-                    :aria-label="colorModeLabel"
+                    aria-label="Show profile data"
                     class="flex flex-row items-center gap-1 p-2 transition-all duration-300 dark:hover:text-butterscotch-500 hover:text-white"
                     @click="uiStore.toggleProfileData"
                 >

@@ -63,4 +63,8 @@ const allArticles = computed(() => {
     return data?.value?.category._allReferencingArticles
 })
 
+useHead({
+    title: categoryData.value?.title
+})
+
 </script>

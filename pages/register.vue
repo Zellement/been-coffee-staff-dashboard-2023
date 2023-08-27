@@ -12,4 +12,8 @@ const isDan = computed(() => {
     return profile[0].id === '0b72ea1d-c4fb-42f2-9eaf-b80eba62aa42'
 })
 
+useHead({
+    title: 'Register a new user'
+})
+
 </script>
