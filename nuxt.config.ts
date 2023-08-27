@@ -7,9 +7,10 @@ export default defineNuxtConfig({
         public: {
             DAT0_CMS_TOKEN: process.env.DATO_CMS_TOKEN,
             MC_CLIENT: process.env.MC_CLIENT,
-            MC_API: process.env.MC_API
-        },
-        DAN_TILL_PIN: process.env.DAN_TILL_PIN
+            MC_API: process.env.MC_API,
+            SUPABASE_URL: process.env.SUPABASE_URL,
+            SUPABASE_KEY: process.env.SUPABASE_KEY
+        }
     },
     image: {
         domains: ['https://www.datocms-assets.com']
