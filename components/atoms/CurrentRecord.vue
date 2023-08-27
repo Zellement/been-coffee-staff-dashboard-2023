@@ -5,7 +5,7 @@
         target="_blank"
     >
         <p class="leading-none">
-            Current Record
+            Next Record
         </p>
         <p class="mb-1 text-2xl leading-none font-riverside">
             £2,000

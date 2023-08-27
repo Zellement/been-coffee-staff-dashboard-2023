@@ -46,11 +46,11 @@ export default defineNuxtConfig({
                     content: 'width=device-width, initial-scale=1'
                 }, {
                     name: 'description',
-                    content: 'Zellement'
+                    content: 'Been Coffee Staff Dashboard'
                 },
                 { hid: 'og-type', property: 'og:type', content: 'website' }
             ],
-            link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.png' }]
+            link: [{ rel: 'icon', type: 'image/x-icon', href: '/been-staff-dashboard.png' }]
         },
         pageTransition: { name: 'page', mode: 'out-in' }
     },

@@ -1,11 +1,11 @@
 <template>
     <div
-        class="fixed inset-0 z-50 flex duration-500 bg-tuscany/80 backdrop-blur dark:bg-navy/80"
+        class="fixed inset-0 z-50 flex p-4 duration-500 bg-tuscany/80 backdrop-blur dark:bg-navy/80"
         :class="showPanel"
     >
-        <div class="relative w-full max-w-screen-sm p-4 pt-12 m-auto bg-white shadow-xl lg:p-12 dark:bg-navy-600 rounded-xl">
+        <div class="relative flex flex-col w-full max-w-screen-sm p-4 m-auto bg-white shadow-xl lg:p-12 dark:bg-navy-600 rounded-xl">
             <button
-                class="absolute top-2 right-2"
+                class="absolute top-3 right-3"
                 @click="uiStore.toggleProfileData"
             >
                 <Icon
@@ -13,7 +13,7 @@
                     class="w-8 h-8 transition-all duration-300 hover:rotate-90"
                 />
             </button>
-            <h2 class="mb-8 h1">
+            <h2 class="self mb-8 h1 max-w-[80%]">
                 Hello, {{ userName }}
             </h2>
             <ul class="flex flex-col space-y-8">
