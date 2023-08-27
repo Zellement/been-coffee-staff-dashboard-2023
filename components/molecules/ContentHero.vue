@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col items-start w-full p-4 text-left shadow-xl md:items-center bg-gradient-to-b from-butterscotch-500 to-butterscotch-600 rounded-br-xl rounded-bl-xl dark:from-navy-600 dark:to-navy-700">
+    <div class="flex flex-col items-start w-full p-4 text-left shadow-xl md:items-center bg-gradient-to-b from-butterscotch-500 to-butterscotch-600 rounded-xl dark:from-navy-600 dark:to-navy-700">
         <p
             v-if="date"
             class="text-xs"

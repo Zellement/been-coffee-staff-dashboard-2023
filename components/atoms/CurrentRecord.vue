@@ -1,6 +1,6 @@
 <template>
     <nuxt-link
-        class="fixed flex flex-col items-center p-1 text-white rounded text-2xs bottom-1 right-1 bg-tuscany"
+        class="fixed flex flex-col items-center p-1 text-white rounded text-2xs bottom-12 right-1 bg-tuscany"
         to="https://mailchi.mp/8a76e110c1ef/welcome-to-whats-been-happening-12658666"
         target="_blank"
     >

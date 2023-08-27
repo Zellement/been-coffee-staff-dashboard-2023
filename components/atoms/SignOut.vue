@@ -5,7 +5,7 @@
     >
         <Icon
             name="clarity:sign-out-line"
-            class="flex transition-all duration-300 cursor-pointer dark:hover:text-butterscotch-500 hover:text-white"
+            class="flex w-4 transition-all duration-300 cursor-pointer dark:hover:text-butterscotch-500 hover:text-white"
         />
     </button>
 </template>

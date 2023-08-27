@@ -9,6 +9,7 @@
                 <slot />
             </main>
         </div>
+        <site-footer />
     </div>
     <auth-login v-else />
 </template>
