@@ -23,6 +23,7 @@
 
             <site-search />
             <button
+                v-if="userName"
                 :aria-label="colorModeLabel"
                 class="flex flex-row items-center gap-1 transition-all duration-300 dark:hover:text-butterscotch-500 hover:text-white"
                 @click="uiStore.toggleProfileData"
@@ -46,7 +47,7 @@ import { useUserStore } from '@/stores/user'
 const userStore = useUserStore()
 
 const userName = computed(() => {
-    return userStore.userData.display_name
+    return userStore?.userData?.display_name
 })
 
 const client = useSupabaseClient()
@@ -80,4 +81,7 @@ const toggleColorMode = () => {
     } else (colorMode.preference = 'light')
 }
 
+onMounted(() => {
+    userStore.setUserData()
+})
 </script>

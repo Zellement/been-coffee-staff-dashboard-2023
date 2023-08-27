@@ -62,13 +62,13 @@ const showPanel = computed(() => {
 const userStore = useUserStore()
 
 const userName = computed(() => {
-    return userStore.userData.display_name
+    return userStore.userData?.display_name
 })
 const tillPin = computed(() => {
-    return userStore.userData.till_pin
+    return userStore.userData?.till_pin
 })
 const payslipDir = computed(() => {
-    return userStore.userData.payslip_dir
+    return userStore.userData?.payslip_dir
 })
 
 </script>
