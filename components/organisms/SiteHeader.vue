@@ -22,18 +22,19 @@
             </nuxt-link>
 
             <site-search />
-
-            <span>Hi, {name}</span>
             <button
+                v-if="userName"
                 :aria-label="colorModeLabel"
-                class="flex transition-all duration-300 dark:hover:text-butterscotch-500 hover:text-white"
+                class="flex flex-row items-center gap-1 transition-all duration-300 dark:hover:text-butterscotch-500 hover:text-white"
                 @click="uiStore.toggleProfileData"
             >
                 <Icon name="ri:user-line" />
+                <span>Hi, {{ userName }}</span>
             </button>
             <Icon
                 name="clarity:sign-out-line"
-                class="flex transition-all duration-300 dark:hover:text-butterscotch-500 hover:text-white"
+                class="flex transition-all duration-300 cursor-pointer dark:hover:text-butterscotch-500 hover:text-white"
+                @click="handleSignOut"
             />
         </div>
     </header>
@@ -42,6 +43,26 @@
 <script setup>
 
 import { useUiStore } from '@/stores/ui'
+import { useUserStore } from '@/stores/user'
+const userStore = useUserStore()
+
+const userName = computed(() => {
+    return userStore?.userData?.display_name
+})
+
+const client = useSupabaseClient()
+
+const router = useRouter()
+
+const handleSignOut = async () => {
+    try {
+        const { error } = await client.auth.signOut()
+        if (error) throw error
+        router.push('/')
+    } catch (error) {
+        console.log(error.message)
+    }
+}
 
 const colorMode = useColorMode()
 const uiStore = useUiStore()
@@ -60,4 +81,7 @@ const toggleColorMode = () => {
     } else (colorMode.preference = 'light')
 }
 
+onMounted(() => {
+    userStore.setUserData()
+})
 </script>

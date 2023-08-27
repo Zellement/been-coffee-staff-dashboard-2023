@@ -1,5 +1,8 @@
 <template>
-    <div class="overflow-hidden">
+    <div
+        v-if="user"
+        class="overflow-hidden"
+    >
         <site-header />
         <div class="layout">
             <main>
@@ -7,7 +10,11 @@
             </main>
         </div>
     </div>
+    <auth-login v-else />
 </template>
 
 <script setup>
+
+const user = useSupabaseUser()
+
 </script>

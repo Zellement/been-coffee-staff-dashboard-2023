@@ -1,10 +1,10 @@
 <template>
     <NuxtLayout>
         <NuxtPage />
+        <instant-search />
+        <profile-data />
+        <current-record />
     </NuxtLayout>
-    <instant-search />
-    <profile-data />
-    <current-record />
 </template>
 
 <script setup>
