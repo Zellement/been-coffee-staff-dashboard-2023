@@ -17,7 +17,10 @@
                 Hello, {{ userName }}
             </h2>
             <ul class="flex flex-col space-y-8">
-                <li class="flex flex-row gap-2">
+                <li
+                    v-if="tillPin"
+                    class="flex flex-row gap-2"
+                >
                     <span class="flex flex-row items-center gap-2">
 
                         <Icon
