@@ -2,8 +2,12 @@
     <div
         class="fixed inset-0 z-50 flex p-4 duration-500 bg-tuscany/80 backdrop-blur dark:bg-navy/80"
         :class="showPanel"
+        @click="uiStore.toggleProfileData"
     >
-        <div class="relative flex flex-col w-full max-w-screen-sm p-4 m-auto bg-white shadow-xl lg:p-12 dark:bg-navy-600 rounded-xl">
+        <div
+            class="relative flex flex-col w-full max-w-screen-sm p-4 m-auto bg-white shadow-xl lg:p-12 dark:bg-navy-600 rounded-xl"
+            @click="uiStore.toggleProfileData(true)"
+        >
             <button
                 class="absolute top-3 right-3"
                 @click="uiStore.toggleProfileData"
