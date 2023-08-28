@@ -9,7 +9,7 @@ const { data: profile } = await client
     .select('id')
 
 const isDan = computed(() => {
-    return profile[0].id === '0b72ea1d-c4fb-42f2-9eaf-b80eba62aa42'
+    return profile[0].id === 'b48f44d2-42c9-4d63-944a-0211996868c3'
 })
 
 useHead({
