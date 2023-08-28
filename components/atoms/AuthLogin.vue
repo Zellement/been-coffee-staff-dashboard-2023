@@ -20,7 +20,7 @@
                 v-model="password"
                 class="p-2 dark:bg-navy-700"
                 type="password"
-                placeholder="Your email"
+                placeholder="Your password"
             >
             <input
                 type="submit"
