@@ -9,7 +9,10 @@
                     class="flex flex-row items-center gap-1 p-2 transition-all duration-300 dark:hover:text-butterscotch-500 hover:text-white"
                     @click="uiStore.toggleProfileData"
                 >
-                    <Icon name="ri:user-line" />
+                    <Icon
+                        name="ri:user-line"
+                        class="w-6 h-6"
+                    />
                     <span>Hi, {{ userName }}</span>
                 </button>
             </div>
@@ -22,7 +25,7 @@
                 >
                     <Icon
                         name="ic:baseline-newspaper"
-                        class="my-auto"
+                        class="w-6 h-6 "
                     />
                 </nuxt-link>
 

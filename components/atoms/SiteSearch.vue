@@ -5,7 +5,7 @@
     >
         <Icon
             name="carbon:search"
-            class=""
+            class="w-6 h-6"
         />
     </button>
 </template>
