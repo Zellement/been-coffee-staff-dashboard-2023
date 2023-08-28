@@ -15,13 +15,11 @@
 
 const client = useSupabaseClient()
 
-const router = useRouter()
-
 const handleSignOut = async () => {
     try {
         const { error } = await client.auth.signOut()
         if (error) throw error
-        router.push('/')
+        navigateTo('/login')
     } catch (error) {
         console.log(error.message)
     }

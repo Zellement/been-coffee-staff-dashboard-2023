@@ -16,7 +16,7 @@
             <h2 class="self mb-8 h1 max-w-[80%]">
                 Hello, {{ userName }}
             </h2>
-            <ul class="flex flex-col space-y-8">
+            <ul class="flex flex-col mb-8 space-y-8">
                 <li
                     v-if="tillPin"
                     class="flex flex-row gap-2"
@@ -48,6 +48,7 @@
                     </nuxt-link>
                 </li>
             </ul>
+            <sign-out class="ml-auto" />
         </div>
     </div>
 </template>
