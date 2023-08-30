@@ -17,33 +17,32 @@
                             <div class="absolute top-0 right-0 uppercase -translate-y-1/2 bg-white text-3xs px-2 dark:text-navy-50 dark:bg-navy-400 text-gray-400 rounded-tl-lg py-0.5 tracking-wider">
                                 {{ item.supplier.name }}
                             </div>
-                            <div class="grid w-full grid-cols-7">
-                                <div class="flex flex-col col-span-5 text-xs">
-                                    <span class="flex flex-row items-center space-x-2 dark:text-butterscotch-500 text-navy-500">
+                            <div class="flex flex-col w-full">
+                                <div class="flex h-16 p-1 overflow-hidden bg-white rounded-full">
+                                    <img
+                                        class="w-auto h-auto m-auto max-w-[8rem] dark:m-auto max-h-12"
+                                        :src="item.supplier.logo.url"
+                                    >
+                                </div>
+                                <div class="flex flex-col text-sm">
+                                    <span class="flex flex-row items-center justify-center space-x-2 dark:text-butterscotch-500 text-navy-500">
                                         <Icon
-                                            class="w-5 h-5 p-1 rounded-full bg-butterscotch-500 dark:bg-navy-700 "
+                                            class="w-6 h-6 p-1 rounded-full bg-butterscotch-500 dark:bg-navy-700 "
                                             name="clarity:truck-solid"
                                         />
                                         <span>
                                             {{ dateConverterWithDay(item.expectedDeliveryDate) }}
                                         </span>
                                     </span>
-                                    <span class="flex flex-row items-center space-x-2 ">
-                                        <Icon
-                                            class="w-5 h-5 p-1 rounded-full bg-butterscotch-100 dark:text-butterscotch-500 text-butterscotch-800 dark:bg-navy-300 "
-                                            name="clarity:pound-line"
-                                        />
-                                        <span class="opacity-50">
-                                            {{ dateConverterWithDay(item.orderDate) }}
-                                        </span>
-                                    </span>
                                 </div>
-                                <div class="flex col-span-2 p-1 overflow-hidden bg-white rounded-full">
-                                    <img
-                                        class="w-auto h-auto my-auto ml-auto dark:m-auto max-h-12"
-                                        :src="item.supplier.logo.url"
-                                    >
-                                </div>
+                            </div>
+                            <div
+                                class="mt-4 text-xs italic text-center opacity-50"
+                            >
+                                <p>
+                                    Ordered by {{ getOrderedBy(item) }} on
+                                    {{ dateConverterWithDay(item.orderDate) }}
+                                </p>
                             </div>
                             <div class="flex flex-col mt-4">
                                 <h3 class="h4">
@@ -105,6 +104,9 @@ const QUERY = `
         }
         details
         notes
+        orderedBy {
+            name
+        }
     }
   }
 `
@@ -116,5 +118,9 @@ const allOrders = computed(() => {
 })
 
 const { data } = await useGraphqlQuery({ query: QUERY })
+
+const getOrderedBy = (item) => {
+    return item.orderedBy?.name ?? 'Sarah'
+}
 
 </script>
