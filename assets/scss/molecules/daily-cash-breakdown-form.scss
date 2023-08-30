@@ -1,0 +1,22 @@
+.daily-cash-breakdown-form {
+    input {
+        @apply p-1 bg-seashell-400 dark:bg-navy-300;
+    }
+
+    label {
+        @apply cursor-pointer;
+    }
+
+    &__img-wrapper {
+        @apply border-2 border-transparent pointer-events-none transition-colors duration-300;
+    }
+
+    input[type="radio"] {
+
+        &:checked {
+            & + .daily-cash-breakdown-form__img-wrapper {
+                @apply  border-navy-500 dark:border-tuscany-500;
+            }
+        }
+    }
+}

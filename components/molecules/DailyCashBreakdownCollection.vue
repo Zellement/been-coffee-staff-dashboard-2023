@@ -1,9 +1,9 @@
 <template>
     <div>
-        <div class="sticky top-0 flex flex-row items-center justify-between gap-2 py-4 bg-seashell dark:bg-navy">
-            <div class="flex flex-row items-center gap-2">
+        <div class="sticky top-0 flex flex-row items-center justify-between gap-2 py-1.5 bg-seashell dark:bg-navy">
+            <div class="flex flex-row items-center gap-3">
                 <div
-                    class="w-6 h-6 rounded-full"
+                    class="w-4 h-4 rounded-full"
                     :class="style"
                 />
                 <h3 class="h3">
