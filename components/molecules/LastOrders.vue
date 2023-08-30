@@ -24,7 +24,7 @@
                                         :src="item.supplier.logo.url"
                                     >
                                 </div>
-                                <div class="flex flex-col text-sm dark:mt-4">
+                                <div class="flex flex-col text-sm dark:mt-4 lg:text-xs">
                                     <span class="flex flex-row items-center justify-center space-x-2 dark:text-butterscotch-500 text-navy-500">
                                         <Icon
                                             class="w-6 h-6 p-1 rounded-full bg-butterscotch-500 dark:bg-navy-700 "
