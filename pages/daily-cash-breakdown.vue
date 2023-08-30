@@ -10,7 +10,7 @@
             name="daily-cash-breakdown"
         >
             <div class="flex flex-col">
-                <h2 class="h5">
+                <h2 class="h4">
                     Close lead
                 </h2>
                 <label
@@ -27,7 +27,7 @@
                 </label>
             </div>
             <div>
-                <h2 class="h6">
+                <h2 class="h4">
                     Waste
                 </h2>
                 <label
@@ -42,20 +42,24 @@
                     Have you put waste through the till?
                 </label>
             </div>
-            <div />
-            <div>
-                <div class="sticky top-0 flex flex-row items-center gap-2 p-5 bg-seashell dark:bg-navy">
-                    <div class="w-6 h-6 bg-red-500 rounded-full" />
-                    <h3>Safe (Red tin)</h3>
-                </div>
-                <div class="">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut tincidunt lectus. Suspendisse aliquet dapibus vulputate. Integer odio massa, volutpat a viverra quis, scelerisque quis lectus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nunc laoreet sapien at ligula volutpat volutpat. Integer malesuada ipsum vel neque viverra, ac tincidunt ligula iaculis. Pellentesque et luctus augue, vitae blandit sapien. Proin nec tortor ac tortor porttitor pretium. Proin tempor enim ut dignissim pharetra.
-
-                    Pellentesque vitae arcu eu est accumsan convallis feugiat id mi. Donec quis scelerisque augue, rutrum rhoncus tellus. Sed dignissim bibendum turpis ac tincidunt. Phasellus cursus dapibus nulla eget viverra. Morbi eu faucibus velit. Nulla egestas, erat eu molestie commodo, nulla massa malesuada diam, vel mattis risus lorem id dolor. Sed maximus tellus sit amet lorem interdum, vel congue enim gravida. Fusce maximus pellentesque neque, eget gravida sapien placerat nec. Quisque metus ex, elementum quis mi ac, varius vulputate quam. Pellentesque luctus imperdiet lectus, ut malesuada libero blandit nec. Nulla non convallis orci. Aenean nec tortor sed risus volutpat pulvinar a a erat.
-
-                    Fusce feugiat metus urna, et varius orci accumsan id. Quisque eu nisi vitae ex posuere mattis non convallis nunc. Praesent congue, ipsum id sollicitudin luctus, dui nulla ornare sapien, eget tempor justo lorem quis nibh. Cras bibendum interdum libero quis vestibulum. Nam accumsan dui in volutpat suscipit. Integer consectetur arcu at dui varius, quis finibus mi vestibulum. Proin ultricies eros cursus mauris varius elementum eu ac quam. Fusce id metus suscipit, fermentum ante et, vestibulum augue. Nullam quis erat et orci aliquam consequat. Curabitur quis ex at velit efficitur pulvinar. Praesent aliquet quam ullamcorper metus consectetur venenatis. Proin dui neque, pulvinar at sodales vitae, fringilla ut nibh. Donec iaculis purus non venenatis scelerisque.
-                </div>
-            </div>
+            <daily-cash-breakdown-collection
+                collection="Banking (Black tin)"
+                collection-style="bg-black"
+            />
+            <daily-cash-breakdown-collection
+                collection="Till float"
+                collection-style="bg-white"
+            />
+            <daily-cash-breakdown-collection
+                collection="Safe (Red tin)"
+                collection-style="bg-red-500"
+            />
+            <button
+                type="submit"
+                class="button"
+            >
+                I'm done, submit!
+            </button>
         </form>
     </div>
 </template>
