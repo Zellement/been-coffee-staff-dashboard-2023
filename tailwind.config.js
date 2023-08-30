@@ -2,7 +2,7 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
 
 /**
- * Font Scale
+ * Font 'Scale'
  * Can be adjusted using the link below.
  * @link https://utopia.fyi/type/calculator/?c=320,16,1.2,1848,16,1.38,6,0,&s=0.75%7C0.5%7C0.25,1.5%7C2%7C3%7C4%7C6,s-l
  */
@@ -182,6 +182,7 @@ module.exports = {
                 50: '50',
                 60: '60'
             }
+
         }
     },
     plugins: [],

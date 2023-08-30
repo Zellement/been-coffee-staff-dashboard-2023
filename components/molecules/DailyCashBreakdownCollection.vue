@@ -1,20 +1,38 @@
 <template>
     <div>
-        <div class="sticky top-0 flex flex-row items-center justify-between gap-2 py-1.5 bg-seashell dark:bg-navy">
-            <div class="flex flex-row items-center gap-3">
+        <div class="sticky top-0 flex flex-row items-center justify-between gap-2 py-1.5 bg-seashell dark:bg-navy mb-6">
+            <div class="flex flex-row gap-3">
                 <div
-                    class="w-4 h-4 rounded-full"
+                    class="flex self-stretch w-4"
                     :class="style"
                 />
-                <h3 class="h3">
-                    {{ title }}
-                </h3>
+                <div class="flex flex-col ">
+                    <h3 class="h6">
+                        {{ titleBrow }}
+                    </h3>
+                    <h3 class="h3">
+                        {{ title }}
+                    </h3>
+                </div>
             </div>
-            <p>{{ totalValue }}</p>
+            <p
+                class="flex flex-col justify-between duration-300 transform-all"
+            >
+                <span class="leading-none text-2xs">Total</span>
+                <span>{{ totalValueFormatted }}</span>
+            </p>
+            <p
+                class="flex flex-col justify-between duration-300 transform-all"
+            >
+                <span class="leading-none text-2xs">Difference</span>
+                <span
+                    :class="differenceColor"
+                >{{ differenceFormatted }}</span>
+            </p>
         </div>
         <div class="flex flex-col gap-2">
             <div class="grid grid-cols-3">
-                <span class="font-bold">Denomination</span>
+                <span class="font-bold">Cash</span>
                 <span class="font-bold">Value</span>
                 <span class="font-bold">Count</span>
             </div>
@@ -42,6 +60,11 @@ const props = defineProps({
         type: String,
         required: true
     },
+    collectionBrow: {
+        type: String,
+        required: false,
+        default: null
+    },
     collectionStyle: {
         type: String,
         required: true
@@ -50,6 +73,10 @@ const props = defineProps({
 
 const title = computed(() => {
     return props.collection
+})
+
+const titleBrow = computed(() => {
+    return props.collectionBrow
 })
 
 const style = computed(() => {
@@ -66,16 +93,8 @@ const state = reactive({
         { denomination: '£5', value: 0, multiple: 5 },
         { denomination: '£10', value: 0, multiple: 10 },
         { denomination: '£20', value: 0, multiple: 20 }
-    ],
-    totalValue: 0
+    ]
 })
-
-// const denominations = reactive(() => {
-//         { denomination: '5p', value: 0 },
-//         { denomination: '10p', value: 0 },
-//         { denomination: '20p', value: 0 },
-//         { denomination: '50p', value: 0 }
-// })
 
 const formatter = new Intl.NumberFormat('en-UK', {
     style: 'currency',
@@ -92,7 +111,31 @@ const totalValue = computed(() => {
         value = value + (element.value * element.multiple)
     }
     )
-    return formatter.format(value)
+    return value
+})
+
+const totalValueFormatted = computed(() => {
+    return formatter.format(totalValue.value)
+})
+
+const difference = computed(() => {
+    return totalValue.value - 100
+})
+
+const differenceFormatted = computed(() => {
+    return totalValue.value === 0 ? '£--.--' : formatter.format(difference.value)
+})
+
+const differenceColor = computed(() => {
+    return totalValue.value === 0 ? 'opacity-20' : difference.value === 0 ? 'text-green-500' : 'text-red-500'
+})
+
+watch(difference, (newVal, oldVal) => {
+    if (newVal === oldVal) return false
+    state.totalsAnimating = true
+    setTimeout(() => {
+        state.totalsAnimating = false
+    }, 500)
 })
 
 </script>

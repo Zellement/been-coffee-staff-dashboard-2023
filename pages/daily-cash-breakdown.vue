@@ -54,7 +54,8 @@
                 </label>
             </div>
             <daily-cash-breakdown-collection
-                collection="Banking (Black tin)"
+                collection-brow="(Black tin)"
+                collection="Banking"
                 collection-style="bg-black"
             />
             <daily-cash-breakdown-collection
@@ -62,8 +63,13 @@
                 collection-style="bg-white"
             />
             <daily-cash-breakdown-collection
-                collection="Safe (Red tin)"
+                collection-brow="(Red tin)"
+                collection="Safe"
                 collection-style="bg-red-500"
+            />
+            <textarea
+                placeholder="Notes and comments"
+                class="h-40"
             />
             <button
                 type="submit"
