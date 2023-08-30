@@ -1,6 +1,6 @@
 <template>
     <div class="relative">
-        <div class="flex flex-col">
+        <div class="flex flex-col pb-32">
             <last-orders />
             <standing-orders />
             <team-members />
