@@ -7,10 +7,10 @@
                     :class="style"
                 />
                 <div class="flex flex-col ">
-                    <h3 class="h6">
+                    <h3 class="leading-none font-riverside">
                         {{ titleBrow }}
                     </h3>
-                    <h3 class="h3">
+                    <h3 class="text-xl leading-none font-riverside">
                         {{ title }}
                     </h3>
                 </div>
