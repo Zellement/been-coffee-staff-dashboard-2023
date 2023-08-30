@@ -10,7 +10,7 @@
             name="daily-cash-breakdown"
         >
             <div class="flex flex-col">
-                <h2 class="h4">
+                <h2 class="mb-4 h4">
                     Close lead
                 </h2>
                 <div class="flex flex-col md:flex-row md:flex-wrap md:gap-8">
@@ -23,7 +23,8 @@
                             type="radio"
                             name="team-member"
                             :value="member.name"
-                            class="ml-2"
+                            class="ml-2 opacity-0"
+                            @click="toggleIsOtherSelected(false)"
                         >
 
                         <div class="absolute left-0 flex w-12 h-12 p-1 overflow-hidden -translate-y-1/2 rounded-full daily-cash-breakdown-form__img-wrapper aspect-square top-1/2">
@@ -35,10 +36,38 @@
                         </div>
                         <span class="pl-8">{{ member.name }}</span>
                     </label>
+                    <label
+                        class="relative flex flex-row items-center gap-2 py-3"
+                    >
+                        <input
+                            type="radio"
+                            name="team-member"
+                            value="Other"
+                            class="ml-2 opacity-0"
+                            @click="toggleIsOtherSelected(true)"
+                        >
+
+                        <div class="absolute left-0 flex w-12 h-12 p-1 overflow-hidden -translate-y-1/2 rounded-full daily-cash-breakdown-form__img-wrapper aspect-square top-1/2">
+                            <img
+                                alt="Placeholder"
+                                src="@/assets/images/been-staff-dashboard.png"
+                                class="object-cover w-full h-full rounded-full"
+                            >
+                        </div>
+                        <span class="pl-8">Other</span>
+                    </label>
+                    <label v-if="otherSelected">
+                        <input
+                            class="w-full mt-4"
+                            type="text"
+                            placeholder="Hello, who are you?"
+                            name="other_team_member"
+                        >
+                    </label>
                 </div>
             </div>
             <div>
-                <h2 class="h4">
+                <h2 class="mb-4 h4">
                     Waste
                 </h2>
                 <label
@@ -84,6 +113,18 @@
 
 useHead({
     title: 'Daily Cash Breakdown'
+})
+
+const toggleIsOtherSelected = (value) => {
+    state.isOtherSelected = value ?? !state.isOtherSelected
+}
+
+const state = reactive({
+    isOtherSelected: false
+})
+
+const otherSelected = computed(() => {
+    return state.isOtherSelected
 })
 
 const QUERY = `
