@@ -89,7 +89,7 @@
             />
             <daily-cash-breakdown-collection
                 collection="Till float"
-                collection-style="bg-white"
+                collection-style="bg-butterscotch-500"
             />
             <daily-cash-breakdown-collection
                 collection-brow="(Red tin)"

@@ -12,14 +12,14 @@
     }
 
     &__img-wrapper {
-        @apply border-2 border-transparent pointer-events-none transition-colors duration-300;
+        @apply border-2 border-transparent pointer-events-none transition-colors duration-300 grayscale;
     }
 
     input[type="radio"] {
 
         &:checked {
             & + .daily-cash-breakdown-form__img-wrapper {
-                @apply  border-navy-500 dark:border-tuscany-500;
+                @apply  border-navy-500 dark:border-tuscany-500 filter-none;
             }
         }
     }

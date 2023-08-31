@@ -1,7 +1,7 @@
 <template>
-    <div>
-        <div class="sticky top-0 flex flex-row items-center justify-between gap-2 py-1.5 bg-seashell dark:bg-navy mb-6">
-            <div class="flex flex-row gap-3">
+    <div class="pb-8 border-b border-seashell-600 dark:border-navy-300">
+        <div class="sticky  top-0 grid grid-cols-7 items-center justify-between gap-2 py-1.5 bg-seashell dark:bg-navy mb-6 ">
+            <div class="flex flex-row self-end col-span-3 gap-3">
                 <div
                     class="flex self-stretch w-4"
                     :class="style"
@@ -16,39 +16,44 @@
                 </div>
             </div>
             <p
-                class="flex flex-col justify-between duration-300 transform-all"
+                class="flex flex-col self-end justify-between col-span-2 leading-none duration-300 transform-all"
             >
-                <span class="leading-none text-2xs">Total</span>
-                <span>{{ totalValueFormatted }}</span>
+                <span class=" text-2xs">Total</span>
+                <span :class="totalColor">{{ totalValueFormatted }}</span>
             </p>
             <p
-                class="flex flex-col justify-between duration-300 transform-all"
+                class="flex flex-col items-end self-end justify-between col-span-2 mt-auto leading-none duration-300 transform-all"
             >
-                <span class="leading-none text-2xs">Difference</span>
+                <span class=" text-2xs">
+                    <Icon
+                        name="mdi:plus-minus-variant"
+                        class="flex w-3 h-3 mx-auto"
+                    /></span>
                 <span
                     :class="differenceColor"
                 >{{ differenceFormatted }}</span>
             </p>
         </div>
         <div class="flex flex-col gap-2">
-            <div class="grid grid-cols-3">
-                <span class="font-bold">Cash</span>
-                <span class="font-bold">Value</span>
-                <span class="font-bold">Count</span>
+            <div class="grid grid-cols-12">
+                <span class="col-span-3 font-bold">Cash</span>
+                <span class="col-span-6 font-bold">Value</span>
+                <span class="col-span-3 font-bold">Count</span>
             </div>
-            <label
+            <div
                 v-for="(item) in state.denominations"
                 :key="`black-tin__${item}`"
-                class="grid grid-cols-3 gap-2"
+                class="grid grid-cols-12"
             >
-                <span>{{ item.denomination }}</span>
-                <span>{{ getValue(item) }}</span>
+                <span class="col-span-3">{{ item.denomination }}</span>
+                <span class="col-span-6">{{ getValue(item) }}</span>
                 <input
                     v-model="item.value"
+                    class="col-span-3"
                     :name="`${item}_amount`"
                     type="number"
                 >
-            </label>
+            </div>
         </div>
     </div>
 </template>
@@ -115,7 +120,11 @@ const totalValue = computed(() => {
 })
 
 const totalValueFormatted = computed(() => {
-    return formatter.format(totalValue.value)
+    return totalValue.value === 0 ? '£--.--' : formatter.format(totalValue.value)
+})
+
+const totalColor = computed(() => {
+    return totalValue.value === 0 ? 'opacity-20' : null
 })
 
 const difference = computed(() => {
