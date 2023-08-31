@@ -1,7 +1,7 @@
 <template>
     <div class="pb-8 border-b border-seashell-600 dark:border-navy-300">
-        <div class="sticky  top-0 grid grid-cols-7 items-center justify-between gap-2 py-1.5 bg-seashell dark:bg-navy mb-6 ">
-            <div class="flex flex-row self-end col-span-3 gap-3">
+        <div class="sticky  top-0 grid grid-cols-6 items-center justify-between gap-2 py-1.5 bg-seashell dark:bg-navy mb-6 ">
+            <div class="flex flex-row self-end col-span-3 gap-3 md:col-span-4">
                 <div
                     class="flex self-stretch w-4"
                     :class="style"
@@ -15,24 +15,26 @@
                     </h3>
                 </div>
             </div>
-            <p
-                class="flex flex-col self-end justify-between col-span-2 leading-none duration-300 transform-all"
-            >
-                <span class=" text-2xs">Total</span>
-                <span :class="totalColor">{{ totalValueFormatted }}</span>
-            </p>
-            <p
-                class="flex flex-col items-end self-end justify-between col-span-2 mt-auto leading-none duration-300 transform-all"
-            >
-                <span class=" text-2xs">
-                    <Icon
-                        name="mdi:plus-minus-variant"
-                        class="flex w-3 h-3 mx-auto"
-                    /></span>
-                <span
-                    :class="differenceColor"
-                >{{ differenceFormatted }}</span>
-            </p>
+            <div class="flex flex-row justify-between col-span-3 md:col-span-2">
+                <p
+                    class="flex flex-col self-end justify-between leading-none duration-300 transform-all"
+                >
+                    <span class=" text-2xs">Total</span>
+                    <span :class="totalColor">{{ totalValueFormatted }}</span>
+                </p>
+                <p
+                    class="flex flex-col items-end self-end justify-between mt-auto leading-none duration-300 transform-all"
+                >
+                    <span class=" text-2xs">
+                        <Icon
+                            name="mdi:plus-minus-variant"
+                            class="flex w-3 h-3 mx-auto"
+                        /></span>
+                    <span
+                        :class="differenceColor"
+                    >{{ differenceFormatted }}</span>
+                </p>
+            </div>
         </div>
         <div class="flex flex-col gap-2">
             <div class="grid grid-cols-12">

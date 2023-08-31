@@ -16,10 +16,13 @@
     }
 
     input[type="radio"] {
-
         &:checked {
             & + .daily-cash-breakdown-form__img-wrapper {
-                @apply  border-navy-500 dark:border-tuscany-500 filter-none;
+                @apply border-navy-500 dark:border-tuscany-500 filter-none;
+            }
+
+            & ~ .daily-cash-breakdown-form__member-name {
+                @apply text-tuscany-500 dark:text-butterscotch-500;
             }
         }
     }

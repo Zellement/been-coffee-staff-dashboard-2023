@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col px-10 pt-0 pb-32">
+    <div class="flex flex-col max-w-screen-md px-10 pt-0 pb-32 mx-auto">
         <h1 class="mb-8 h1">
             Daily Cash Breakdown
         </h1>
@@ -34,7 +34,7 @@
                                 class="object-cover w-full h-full rounded-full"
                             >
                         </div>
-                        <span class="pl-8">{{ member.name }}</span>
+                        <span class="pl-8 daily-cash-breakdown-form__member-name">{{ member.name }}</span>
                     </label>
                     <label
                         class="relative flex flex-row items-center gap-2 py-3"
@@ -58,7 +58,7 @@
                     </label>
                     <label v-if="otherSelected">
                         <input
-                            class="w-full mt-4"
+                            class="w-full mt-4 lg:mt-2"
                             type="text"
                             placeholder="Hello, who are you?"
                             name="other_team_member"
