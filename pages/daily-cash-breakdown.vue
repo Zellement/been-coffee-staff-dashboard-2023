@@ -17,6 +17,9 @@
                     Yeah, we all good!
                 </h2>
                 <p> All sent, thanks.</p>
+                <p class="text-xs">
+                    To see the form again, please refresh this page.
+                </p>
             </div>
         </div>
 
@@ -39,6 +42,9 @@
                         href="https://forms.gle/ain6gfLguMcnRQsa7"
                         target="_blank"
                     >use this form</a>.
+                </p>
+                <p class="text-xs">
+                    To see the form again, please refresh this page.
                 </p>
             </div>
         </div>
