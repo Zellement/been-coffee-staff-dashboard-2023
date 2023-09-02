@@ -1,7 +1,7 @@
 <template>
     <div
         :class="showInstantSearch"
-        class="fixed inset-0 z-50 flex transition-all duration-500 bg-butterscotch dark:bg-navy-500"
+        class="fixed inset-0 z-50 flex pb-12 transition-all duration-500 overscroll-none bg-butterscotch dark:bg-navy-500"
     >
         <button
             class="fixed top-2 right-2"
@@ -30,22 +30,24 @@
                     </h2>
                     <span class="text-xs">Last updated</span>
                 </div>
-                <ul class="relative z-10 flex flex-col pb-8 overflow-y-scroll md:justify-center">
-                    <li
-                        v-for="item in filteredItems"
-                        :key="item.id"
-                        class="flex"
-                    >
-                        <nuxt-link
-                            :to="`/article/${item.slug}`"
-                            class="flex flex-row items-center self-start justify-between w-full py-1 transition-all duration-300 border-b border-transparent shadow-sm hover:border-current"
-                            @click="uiStore.toggleSearchResults"
+                <div class="h-full overflow-y-scroll">
+                    <ul class="relative z-10 flex flex-col pb-8 md:justify-center">
+                        <li
+                            v-for="item in filteredItems"
+                            :key="item.id"
+                            class="flex"
                         >
-                            <span>{{ item.title }}</span>
-                            <span class="text-right whitespace-nowrap text-2xs opacity-60">{{ dateConverter(item._updatedAt) }}</span>
-                        </nuxt-link>
-                    </li>
-                </ul>
+                            <nuxt-link
+                                :to="`/article/${item.slug}`"
+                                class="flex flex-row items-center self-start justify-between w-full py-1 transition-all duration-300 border-b border-transparent shadow-sm hover:border-current"
+                                @click="uiStore.toggleSearchResults"
+                            >
+                                <span>{{ item.title }}</span>
+                                <span class="text-right whitespace-nowrap text-2xs opacity-60">{{ dateConverter(item._updatedAt) }}</span>
+                            </nuxt-link>
+                        </li>
+                    </ul>
+                </div>
             </div>
 
             <div

@@ -10,7 +10,7 @@
             <nuxt-link
                 :to="campaign.long_archive_url"
                 target="_blank"
-                class="grid items-center justify-between grid-cols-12 p-2 button"
+                class="grid items-center justify-between grid-cols-12 p-2 bg-butterscotch dark:bg-navy-400"
             >
                 <span class="col-span-full opacity-60 lg:col-span-2">{{ dateConverter(campaign.send_time) }}</span>
                 <span class="col-span-10 row-start-2 lg:col-span-8 lg:row-start-1 lg:col-start-3">{{ campaign.settings.title }}</span>

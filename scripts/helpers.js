@@ -8,3 +8,8 @@ export const dateConverter = (value) => {
     const options = { year: 'numeric', month: 'short', day: 'numeric' }
     return event.toLocaleDateString('en-UK', options)
 }
+export const dateConverterWithDayNoYear = (value) => {
+    const event = new Date(value)
+    const options = { weekday: 'short', month: 'short', day: 'numeric' }
+    return event.toLocaleDateString('en-UK', options)
+}

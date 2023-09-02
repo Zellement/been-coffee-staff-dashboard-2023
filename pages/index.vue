@@ -4,10 +4,12 @@
             <button>
                 Hello
             </button>
-            {{ connect }}
-            <last-orders />
-            <standing-orders />
-            <team-members />
+            <!-- {{ connect }} -->
+            <div class="flex flex-col pb-32">
+                <last-orders />
+                <standing-orders />
+                <team-members />
+            </div>
         </div>
     </div>
 </template>
@@ -16,10 +18,13 @@
 
 // import { run } from '@/server/api/dato-cma'
 
-const { data } = await useFetch('/api/dato-cma')
+// const { data } = await useFetch('/api/dato-cma')
 
-const connect = computed(() => {
-    return data
+// const connect = computed(() => {
+//     return data
+
+useHead({
+    title: 'Been Staff Dashboard'
 })
 
 </script>

@@ -8,7 +8,8 @@ export default defineNuxtConfig({
         public: {
             DATO_CMS_TOKEN: process.env.DATO_CMS_TOKEN,
             MC_CLIENT: process.env.MC_CLIENT,
-            MC_API: process.env.MC_API
+            MC_API: process.env.MC_API,
+            GOOGLE_SHEETS_SCRIPT_DAILY_CASH_BREAKDOWN: process.env.GOOGLE_SHEETS_SCRIPT_DAILY_CASH_BREAKDOWN
         }
     },
     image: {
@@ -22,7 +23,7 @@ export default defineNuxtConfig({
             pathPrefix: false
         }
     ],
-    modules: ['@nuxtjs/color-mode', 'nuxt-icon', '@nuxtjs/tailwindcss', '@pinia/nuxt', '@nuxt/image-edge'],
+    modules: ['@nuxtjs/color-mode', 'nuxt-icon', '@nuxtjs/tailwindcss', '@pinia/nuxt', '@nuxt/image-edge', '@nuxtjs/supabase'],
     colorMode: {
         classSuffix: '',
         preference: 'dark'
@@ -47,11 +48,11 @@ export default defineNuxtConfig({
                     content: 'width=device-width, initial-scale=1'
                 }, {
                     name: 'description',
-                    content: 'Zellement'
+                    content: 'Been Coffee Staff Dashboard'
                 },
                 { hid: 'og-type', property: 'og:type', content: 'website' }
             ],
-            link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.png' }]
+            link: [{ rel: 'icon', type: 'image/x-icon', href: '/been-staff-dashboard.png' }]
         },
         pageTransition: { name: 'page', mode: 'out-in' }
     },

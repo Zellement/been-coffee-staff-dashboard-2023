@@ -125,4 +125,7 @@ const articleData = computed(() => {
     return data.value.article
 })
 
+useHead({
+    title: data.value?.article.title
+})
 </script>
