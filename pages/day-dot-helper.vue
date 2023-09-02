@@ -39,11 +39,11 @@
 <script setup>
 
 const today = new Date()
-const plus3days = new Date(new Date().getTime() + (3 * 24 * 60 * 60 * 1000))
-const plus5days = new Date(new Date().getTime() + (5 * 24 * 60 * 60 * 1000))
-const plus7days = new Date(new Date().getTime() + (7 * 24 * 60 * 60 * 1000))
-const plus14days = new Date(new Date().getTime() + (14 * 24 * 60 * 60 * 1000))
-const plus21days = new Date(new Date().getTime() + (21 * 24 * 60 * 60 * 1000))
-const plus28days = new Date(new Date().getTime() + (28 * 24 * 60 * 60 * 1000))
+const plus3days = new Date(new Date().getTime() + (2 * 24 * 60 * 60 * 1000))
+const plus5days = new Date(new Date().getTime() + (4 * 24 * 60 * 60 * 1000))
+const plus7days = new Date(new Date().getTime() + (6 * 24 * 60 * 60 * 1000))
+const plus14days = new Date(new Date().getTime() + (13 * 24 * 60 * 60 * 1000))
+const plus21days = new Date(new Date().getTime() + (20 * 24 * 60 * 60 * 1000))
+const plus28days = new Date(new Date().getTime() + (27 * 24 * 60 * 60 * 1000))
 
 </script>
