@@ -160,7 +160,7 @@
                 collection="Till float"
                 collection-style="bg-butterscotch-500"
             />
-            <daily-cash-breakdown-collection
+            <daily-cash-breakdown-collection-safe
                 collection-brow="(Red tin)"
                 collection="Safe"
                 collection-style="bg-red-500"

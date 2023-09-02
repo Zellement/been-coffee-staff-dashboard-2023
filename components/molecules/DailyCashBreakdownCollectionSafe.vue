@@ -50,11 +50,11 @@
                 </p>
             </div>
         </div>
-        <div class="flex flex-col gap-2">
+        <div class="flex flex-col gap-1">
             <div class="grid items-center grid-cols-12">
                 <span class="col-span-2 font-bold">Cash</span>
                 <span class="col-span-5 font-bold">Value</span>
-                <span class="col-span-5 font-bold">Count</span>
+                <span class="col-span-5 font-bold">Bag / Note Count</span>
             </div>
             <div
                 v-for="denomination in state.denominations"
@@ -111,12 +111,12 @@ const style = computed(() => {
 })
 const state = reactive({
     denominations: [
-        { denomination: '5p', value: 0, multiple: 0.05 },
-        { denomination: '10p', value: 0, multiple: 0.1 },
-        { denomination: '20p', value: 0, multiple: 0.2 },
-        { denomination: '50p', value: 0, multiple: 0.5 },
-        { denomination: '£1', value: 0, multiple: 1 },
-        { denomination: '£2', value: 0, multiple: 2 },
+        { denomination: '5p', value: 0, multiple: 5 },
+        { denomination: '10p', value: 0, multiple: 5 },
+        { denomination: '20p', value: 0, multiple: 10 },
+        { denomination: '50p', value: 0, multiple: 10 },
+        { denomination: '£1', value: 0, multiple: 20 },
+        { denomination: '£2', value: 0, multiple: 20 },
         { denomination: '£5', value: 0, multiple: 5 },
         { denomination: '£10', value: 0, multiple: 10 },
         { denomination: '£20', value: 0, multiple: 20 }

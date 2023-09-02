@@ -4,11 +4,11 @@
     }
 
     input:read-only {
-        @apply bg-transparent focus:outline-none cursor-default px-0;
+        @apply bg-transparent focus:outline-none cursor-default p-0;
     }
 
     textarea {
-        @apply p-1 bg-seashell-400 dark:bg-navy-300;
+        @apply p-4 bg-seashell-400 dark:bg-navy-300;
     }
 
     label {
