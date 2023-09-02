@@ -6,10 +6,17 @@
 
         <form
             id="daily-cash-breakdown"
+            ref="dailyCashBreakdown"
             class="flex flex-col gap-8 daily-cash-breakdown-form"
             name="daily-cash-breakdown"
+            @submit.prevent="submitToGoogleSheets"
         >
-            <div class="flex flex-col">
+            <input
+                name="hello"
+                type="text"
+                placeholder="anything"
+            >
+            <!-- <div class="flex flex-col">
                 <h2 class="mb-4 h4">
                     Close lead
                 </h2>
@@ -21,7 +28,7 @@
                     >
                         <input
                             type="radio"
-                            name="team-member"
+                            name="team_member"
                             :value="member.name"
                             class="ml-2 opacity-0"
                             @click="toggleIsOtherSelected(false)"
@@ -65,8 +72,8 @@
                         >
                     </label>
                 </div>
-            </div>
-            <div>
+            </div> -->
+            <!-- <div>
                 <h2 class="mb-4 h4">
                     Waste
                 </h2>
@@ -81,8 +88,8 @@
                     >
                     Have you put waste through the till?
                 </label>
-            </div>
-            <daily-cash-breakdown-collection
+            </div> -->
+            <!-- <daily-cash-breakdown-collection
                 collection-brow="(Black tin)"
                 collection="Banking"
                 collection-style="bg-black"
@@ -99,7 +106,7 @@
             <textarea
                 placeholder="Notes and comments"
                 class="h-40"
-            />
+            /> -->
             <button
                 type="submit"
                 class="button"
@@ -111,44 +118,58 @@
 </template>
 <script setup>
 
+const dailyCashBreakdown = ref()
+
+const scriptURL = 'https://script.google.com/macros/s/AKfycbxpUGdmbjZTldL8lntdL7tN2Te23CH-OeCv_jjS_3MEACqu0mAbLr-TntKC-YAECE1C/exec'
+// const form = document.forms['submit-to-google-sheet']
+
+const submitToGoogleSheets = () => {
+    console.log(dailyCashBreakdown.value)
+    const formData = new FormData(dailyCashBreakdown.value)
+    console.log(formData)
+    fetch(scriptURL, { method: 'POST', body: formData })
+        .then(response => console.log('Success!', response))
+        .catch(error => console.error('Error!', error.message))
+}
+
 useHead({
     title: 'Daily Cash Breakdown'
 })
 
-const toggleIsOtherSelected = (value) => {
-    state.isOtherSelected = value ?? !state.isOtherSelected
-}
+// const toggleIsOtherSelected = (value) => {
+//     state.isOtherSelected = value ?? !state.isOtherSelected
+// }
 
-const state = reactive({
-    isOtherSelected: false
-})
+// const state = reactive({
+//     isOtherSelected: false
+// })
 
-const otherSelected = computed(() => {
-    return state.isOtherSelected
-})
+// const otherSelected = computed(() => {
+//     return state.isOtherSelected
+// })
 
-const QUERY = `
-query {
-    allTeams(orderBy: name_ASC, filter: {managerKeyHolder: {eq: "true"}}) {
-        id
-        name
-        picture {
-            responsiveImage {
-                alt
-                base64
-                bgColor
-                title
-                srcSet
-                }
-            url
-        }
-        }
-    }
-`
-const { data } = await useGraphqlQuery({ query: QUERY })
+// const QUERY = `
+// query {
+//     allTeams(orderBy: name_ASC, filter: {managerKeyHolder: {eq: "true"}}) {
+//         id
+//         name
+//         picture {
+//             responsiveImage {
+//                 alt
+//                 base64
+//                 bgColor
+//                 title
+//                 srcSet
+//                 }
+//             url
+//         }
+//         }
+//     }
+// `
+// const { data } = await useGraphqlQuery({ query: QUERY })
 
-const team = computed(() => {
-    return data.value?.allTeams
-})
+// const team = computed(() => {
+//     return data.value?.allTeams
+// })
 
 </script>
