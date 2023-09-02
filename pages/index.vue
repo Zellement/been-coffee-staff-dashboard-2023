@@ -16,12 +16,25 @@
 
 <script setup>
 
-// import { run } from '@/server/api/dato-cma'
+import { buildClient } from '@datocms/cma-client-node';
+async function run() {
+  const client = buildClient({ apiToken: '<YOUR_API_TOKEN>' });
+  const records = await client.items.list({
+    filter: {
+      // you can also use models IDs instead of API keys!
+      type: 'order',
+    },
+  });
+  console.log(records);
+}
 
-// const { data } = await useFetch('/api/dato-cma')
 
 // const connect = computed(() => {
 //     return data
+
+onMounted(() => {
+    run()
+}
 
 useHead({
     title: 'Been Staff Dashboard'
