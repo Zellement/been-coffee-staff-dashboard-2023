@@ -1,6 +1,6 @@
 <template>
     <div class="pb-8 border-b border-seashell-600 dark:border-navy-300">
-        <div class="sticky  top-0 grid grid-cols-6 denominations-center justify-between gap-2 py-1.5 bg-seashell dark:bg-navy mb-6 ">
+        <div class="sticky  top-0 grid grid-cols-6 justify-between gap-2 py-1.5 bg-seashell dark:bg-navy mb-6 ">
             <div class="flex flex-row self-end col-span-3 gap-3 md:col-span-4">
                 <div
                     class="flex self-stretch w-4"
@@ -19,7 +19,7 @@
                 <p
                     class="flex flex-col self-end justify-between leading-none duration-300 transform-all"
                 >
-                    <span class="text-2xs">Total</span>
+                    <span class="text-right text-2xs">Total</span>
 
                     <input
                         tabindex="-1"
@@ -27,13 +27,13 @@
                         :class="totalColor"
                         :value="totalValueFormatted"
                         :name="`${collection} total`"
-                        class="w-full"
+                        class="w-full text-right"
                     >
                 </p>
                 <p
                     class="flex flex-col self-end justify-between mt-auto leading-none duration-300 denominations-end transform-all"
                 >
-                    <span class="text-2xs">
+                    <span class="text-right text-2xs">
                         <Icon
                             name="mdi:plus-minus-variant"
                             class="flex w-3 h-3 mx-auto"
@@ -45,7 +45,7 @@
                         :class="differenceColor"
                         :value="differenceFormatted"
                         :name="`${collection} difference`"
-                        class="w-full"
+                        class="w-full text-right"
                     >
                 </p>
             </div>
