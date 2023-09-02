@@ -4,7 +4,47 @@
             Daily Cash Breakdown
         </h1>
 
+        <div
+            v-if="state.hasSent"
+            class="flex flex-row items-center gap-6 p-4 mb-8 border border-green-500"
+        >
+            <Icon
+                name="noto-v1:party-popper"
+                class="w-12 h-12 animate-pulse"
+            />
+            <div>
+                <h2 class="h2">
+                    Yeah, we all good!
+                </h2>
+                <p> All sent, thanks.</p>
+            </div>
+        </div>
+
+        <div
+            v-if="state.hasErrored"
+            class="flex flex-row items-center gap-6 p-4 mb-8 border border-red-500"
+        >
+            <Icon
+                name="noto:skull-and-crossbones"
+                class="w-12 h-12 animate-ping"
+            />
+            <div>
+                <h2 class="h2">
+                    Hmmm...
+                </h2>
+                <p> Looks like something isn't behaving. Please let Dan know pronto.</p>
+                <p>
+                    In the meantime, let's go old school and <a
+                        class="underline"
+                        href="https://forms.gle/ain6gfLguMcnRQsa7"
+                        target="_blank"
+                    >use this form</a>.
+                </p>
+            </div>
+        </div>
+
         <form
+            v-if="!state.isSending"
             id="daily-cash-breakdown"
             ref="dailyCashBreakdown"
             class="flex flex-col gap-8 daily-cash-breakdown-form"
@@ -26,6 +66,7 @@
                             name="Team member"
                             :value="member.name"
                             class="ml-2 opacity-0"
+                            required
                             @click="toggleIsOtherSelected(false)"
                         >
 
@@ -44,6 +85,7 @@
                         <input
                             type="radio"
                             name="Team member"
+                            required
                             value="Other"
                             class="ml-2 opacity-0"
                             @click="toggleIsOtherSelected(true)"
@@ -135,6 +177,12 @@
                 I'm done, submit!
             </button>
         </form>
+        <div
+            v-else
+            class=""
+        >
+            Sending, please wait...
+        </div>
     </div>
 </template>
 <script setup>
@@ -147,11 +195,15 @@ const scriptURL = runtimeConfig.public.GOOGLE_SHEETS_SCRIPT_DAILY_CASH_BREAKDOWN
 // const form = document.forms['submit-to-google-sheet']
 
 const submitToGoogleSheets = () => {
-    console.log(dailyCashBreakdown.value)
     const formData = new FormData(dailyCashBreakdown.value)
-    console.log(formData)
+    state.isSending = true
+    state.hasSent = false
     fetch(scriptURL, { method: 'POST', body: formData })
-        .then(response => console.log('Success!', response))
+        .then((response) => {
+            console.log('Success!', response)
+            state.isSending = false
+            state.hasSent = true
+        })
         .catch(error => console.error('Error!', error.message))
 }
 
@@ -164,7 +216,10 @@ const toggleIsOtherSelected = (value) => {
 }
 
 const state = reactive({
-    isOtherSelected: false
+    isOtherSelected: false,
+    isSending: false,
+    hasSent: false,
+    hasErrored: false
 })
 
 const otherSelected = computed(() => {
