@@ -1,5 +1,5 @@
 <template>
-    <header class="container fixed bottom-0 left-0 z-50 flex w-full dark:bg-navy-600 bg-butterscotch-600">
+    <header class="container fixed bottom-0 left-0 z-50 flex w-full overflow-hidden dark:bg-navy-600 bg-butterscotch-600">
         <div class="flex flex-row items-center justify-between w-full gap-1">
             <div class="flex flex-row items-center gap-1">
                 <button

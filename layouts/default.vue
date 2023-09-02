@@ -1,7 +1,7 @@
 <template>
     <div
         v-if="user"
-        class=""
+        class="overflow-hidden"
     >
         <site-header />
         <div class="layout">
