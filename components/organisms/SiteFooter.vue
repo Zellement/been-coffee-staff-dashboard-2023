@@ -16,6 +16,15 @@
                 </button>
             </div>
             <div class="flex flex-row items-center gap-1">
+                <nuxt-link
+                    to="/daily-cash-breakdown"
+                    class="flex p-2 transition-all duration-300 dark:hover:text-butterscotch-500 hover:text-white"
+                >
+                    <Icon
+                        name="streamline:money-cash-coins-stack-accounting-billing-payment-stack-cash-coins-currency-money-finance"
+                        class="w-6 h-6 "
+                    />
+                </nuxt-link>
                 <color-mode />
 
                 <nuxt-link

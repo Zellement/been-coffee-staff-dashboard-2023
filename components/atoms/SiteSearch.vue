@@ -4,7 +4,7 @@
         @click="uiStore.toggleSearchResults"
     >
         <Icon
-            name="carbon:search"
+            name="ri:menu-search-line"
             class="w-6 h-6"
         />
     </button>
