@@ -15,7 +15,7 @@
                     </h3>
                 </div>
             </div>
-            <div class="flex flex-row justify-between col-span-3 md:col-span-2">
+            <div class="flex flex-row justify-between w-full col-span-3 md:col-span-2">
                 <p
                     class="flex flex-col self-end justify-between leading-none duration-300 transform-all"
                 >
@@ -27,6 +27,7 @@
                         :class="totalColor"
                         :value="totalValueFormatted"
                         :name="`${collection} total`"
+                        class="w-full"
                     >
                 </p>
                 <p
@@ -44,6 +45,7 @@
                         :class="differenceColor"
                         :value="differenceFormatted"
                         :name="`${collection} difference`"
+                        class="w-full"
                     >
                 </p>
             </div>

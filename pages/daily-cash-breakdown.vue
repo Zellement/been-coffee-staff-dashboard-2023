@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col max-w-screen-md px-10 pt-0 pb-32 mx-auto">
+    <div class="flex flex-col w-full max-w-screen-md px-10 pt-0 pb-32 mx-auto">
         <h1 class="mb-8 h1">
             Daily Cash Breakdown
         </h1>
