@@ -31,7 +31,7 @@
                     >
                 </p>
                 <p
-                    v-if="!collection === 'Banking'"
+                    v-if="props.collection !== 'Banking'"
                     class="flex flex-col self-end justify-between mt-auto leading-none duration-300 denominations-end transform-all"
                 >
                     <span class="text-2xs">
