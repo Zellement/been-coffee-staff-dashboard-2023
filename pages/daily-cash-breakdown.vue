@@ -44,7 +44,7 @@
         </div>
 
         <form
-            v-if="!state.isSending"
+            v-if="!state.isSending && !state.hasSent && !state.hasErrored"
             id="daily-cash-breakdown"
             ref="dailyCashBreakdown"
             class="flex flex-col gap-8 daily-cash-breakdown-form"
@@ -178,7 +178,7 @@
             </button>
         </form>
         <div
-            v-else
+            v-else-if="state.isSending"
             class=""
         >
             Sending, please wait...
