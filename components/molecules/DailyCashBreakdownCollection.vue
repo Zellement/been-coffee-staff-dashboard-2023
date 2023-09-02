@@ -31,6 +31,7 @@
                     >
                 </p>
                 <p
+                    v-if="!collection === 'Banking'"
                     class="flex flex-col self-end justify-between mt-auto leading-none duration-300 denominations-end transform-all"
                 >
                     <span class="text-2xs">
@@ -111,6 +112,8 @@ const style = computed(() => {
 })
 const state = reactive({
     denominations: [
+        { denomination: '1p', value: 0, multiple: 0.01 },
+        { denomination: '2p', value: 0, multiple: 0.02 },
         { denomination: '5p', value: 0, multiple: 0.05 },
         { denomination: '10p', value: 0, multiple: 0.1 },
         { denomination: '20p', value: 0, multiple: 0.2 },
