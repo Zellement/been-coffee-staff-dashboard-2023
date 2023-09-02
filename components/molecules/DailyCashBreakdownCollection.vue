@@ -1,6 +1,6 @@
 <template>
     <div class="pb-8 border-b border-seashell-600 dark:border-navy-300">
-        <div class="sticky  top-0 grid grid-cols-6 items-center justify-between gap-2 py-1.5 bg-seashell dark:bg-navy mb-6 ">
+        <div class="sticky  top-0 grid grid-cols-6 denominations-center justify-between gap-2 py-1.5 bg-seashell dark:bg-navy mb-6 ">
             <div class="flex flex-row self-end col-span-3 gap-3 md:col-span-4">
                 <div
                     class="flex self-stretch w-4"
@@ -19,20 +19,32 @@
                 <p
                     class="flex flex-col self-end justify-between leading-none duration-300 transform-all"
                 >
-                    <span class=" text-2xs">Total</span>
-                    <span :class="totalColor">{{ totalValueFormatted }}</span>
+                    <span class="text-2xs">Total</span>
+
+                    <input
+                        tabindex="-1"
+                        readonly
+                        :class="totalColor"
+                        :value="totalValueFormatted"
+                        :name="`${collection} total`"
+                    >
                 </p>
                 <p
-                    class="flex flex-col items-end self-end justify-between mt-auto leading-none duration-300 transform-all"
+                    class="flex flex-col self-end justify-between mt-auto leading-none duration-300 denominations-end transform-all"
                 >
-                    <span class=" text-2xs">
+                    <span class="text-2xs">
                         <Icon
                             name="mdi:plus-minus-variant"
                             class="flex w-3 h-3 mx-auto"
-                        /></span>
-                    <span
+                        />
+                    </span>
+                    <input
+                        tabindex="-1"
+                        readonly
                         :class="differenceColor"
-                    >{{ differenceFormatted }}</span>
+                        :value="differenceFormatted"
+                        :name="`${collection} difference`"
+                    >
                 </p>
             </div>
         </div>
@@ -43,16 +55,22 @@
                 <span class="col-span-3 font-bold">Count</span>
             </div>
             <div
-                v-for="(item) in state.denominations"
-                :key="`black-tin__${item}`"
+                v-for="denomination in state.denominations"
+                :key="`black-tin__${denomination}`"
                 class="grid grid-cols-12"
             >
-                <span class="col-span-3">{{ item.denomination }}</span>
-                <span class="col-span-6">{{ getValue(item) }}</span>
+                <span class="col-span-3">{{ denomination.denomination }}</span>
                 <input
-                    v-model="item.value"
+                    class="col-span-6 pointer-events-none"
+                    readonly
+                    tabindex="-1"
+                    :value="getValue(denomination)"
+                    :name="`${collection} ${denomination.denomination} value`"
+                >
+                <input
+                    v-model="denomination.value"
                     class="col-span-3"
-                    :name="`${item}_amount`"
+                    :name="`${collection} ${denomination.denomination} count`"
                     type="number"
                 >
             </div>
@@ -108,8 +126,8 @@ const formatter = new Intl.NumberFormat('en-UK', {
     currency: 'GBP'
 })
 
-const getValue = (item) => {
-    return formatter.format(item.value * item.multiple)
+const getValue = (denomination) => {
+    return formatter.format(denomination.value * denomination.multiple)
 }
 
 const totalValue = computed(() => {

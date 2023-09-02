@@ -11,12 +11,7 @@
             name="daily-cash-breakdown"
             @submit.prevent="submitToGoogleSheets"
         >
-            <input
-                name="hello"
-                type="text"
-                placeholder="anything"
-            >
-            <!-- <div class="flex flex-col">
+            <div class="flex flex-col">
                 <h2 class="mb-4 h4">
                     Close lead
                 </h2>
@@ -28,7 +23,7 @@
                     >
                         <input
                             type="radio"
-                            name="team_member"
+                            name="Team member"
                             :value="member.name"
                             class="ml-2 opacity-0"
                             @click="toggleIsOtherSelected(false)"
@@ -48,7 +43,7 @@
                     >
                         <input
                             type="radio"
-                            name="team-member"
+                            name="Team member"
                             value="Other"
                             class="ml-2 opacity-0"
                             @click="toggleIsOtherSelected(true)"
@@ -68,28 +63,53 @@
                             class="w-full mt-4 lg:mt-2"
                             type="text"
                             placeholder="Hello, who are you?"
-                            name="other_team_member"
+                            name="Other team member"
                         >
                     </label>
                 </div>
-            </div> -->
-            <!-- <div>
-                <h2 class="mb-4 h4">
+            </div>
+            <div>
+                <h2 class=" h4">
                     Waste
                 </h2>
+                <p class="mb-4">
+                    Have you put waste through the till?
+                </p>
                 <label
                     class="flex flex-row items-center gap-2"
                 >
                     <input
-                        type="checkbox"
+                        type="radio"
                         required
-                        name="team-member"
-                        value="waste_added_to_till"
+                        value="yes"
+                        name="Waste thru till"
                     >
-                    Have you put waste through the till?
+                    <span>Yes</span>
                 </label>
-            </div> -->
-            <!-- <daily-cash-breakdown-collection
+                <label
+                    class="flex flex-row items-center gap-2"
+                >
+                    <input
+                        type="radio"
+                        required
+                        value="No, zero waste to declare"
+                        name="Waste thru till"
+                    >
+                    <span>No, zero waste to declare</span>
+                </label>
+                <label
+                    class="flex flex-row items-center gap-2"
+                >
+                    <input
+                        type="radio"
+                        required
+                        value="No, see notes"
+                        name="Waste thru till"
+                    >
+                    <span>No, see notes</span>
+                </label>
+            </div>
+            <daily-cash-breakdown-collection
                 collection-brow="(Black tin)"
                 collection="Banking"
                 collection-style="bg-black"
@@ -106,7 +126,8 @@
             <textarea
                 placeholder="Notes and comments"
                 class="h-40"
-            /> -->
+                name="Comments"
+            />
             <button
                 type="submit"
                 class="button"
@@ -120,7 +141,9 @@
 
 const dailyCashBreakdown = ref()
 
-const scriptURL = 'https://script.google.com/macros/s/AKfycbxpUGdmbjZTldL8lntdL7tN2Te23CH-OeCv_jjS_3MEACqu0mAbLr-TntKC-YAECE1C/exec'
+const runtimeConfig = useRuntimeConfig()
+
+const scriptURL = runtimeConfig.public.GOOGLE_SHEETS_SCRIPT_DAILY_CASH_BREAKDOWN
 // const form = document.forms['submit-to-google-sheet']
 
 const submitToGoogleSheets = () => {
@@ -136,40 +159,40 @@ useHead({
     title: 'Daily Cash Breakdown'
 })
 
-// const toggleIsOtherSelected = (value) => {
-//     state.isOtherSelected = value ?? !state.isOtherSelected
-// }
+const toggleIsOtherSelected = (value) => {
+    state.isOtherSelected = value ?? !state.isOtherSelected
+}
 
-// const state = reactive({
-//     isOtherSelected: false
-// })
+const state = reactive({
+    isOtherSelected: false
+})
 
-// const otherSelected = computed(() => {
-//     return state.isOtherSelected
-// })
+const otherSelected = computed(() => {
+    return state.isOtherSelected
+})
 
-// const QUERY = `
-// query {
-//     allTeams(orderBy: name_ASC, filter: {managerKeyHolder: {eq: "true"}}) {
-//         id
-//         name
-//         picture {
-//             responsiveImage {
-//                 alt
-//                 base64
-//                 bgColor
-//                 title
-//                 srcSet
-//                 }
-//             url
-//         }
-//         }
-//     }
-// `
-// const { data } = await useGraphqlQuery({ query: QUERY })
+const QUERY = `
+query {
+    allTeams(orderBy: name_ASC, filter: {managerKeyHolder: {eq: "true"}}) {
+        id
+        name
+        picture {
+            responsiveImage {
+                alt
+                base64
+                bgColor
+                title
+                srcSet
+                }
+            url
+        }
+        }
+    }
+`
+const { data } = await useGraphqlQuery({ query: QUERY })
 
-// const team = computed(() => {
-//     return data.value?.allTeams
-// })
+const team = computed(() => {
+    return data.value?.allTeams
+})
 
 </script>

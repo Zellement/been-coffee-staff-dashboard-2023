@@ -7,7 +7,8 @@ export default defineNuxtConfig({
         public: {
             DAT0_CMS_TOKEN: process.env.DATO_CMS_TOKEN,
             MC_CLIENT: process.env.MC_CLIENT,
-            MC_API: process.env.MC_API
+            MC_API: process.env.MC_API,
+            GOOGLE_SHEETS_SCRIPT_DAILY_CASH_BREAKDOWN: process.env.GOOGLE_SHEETS_SCRIPT_DAILY_CASH_BREAKDOWN
         }
     },
     image: {
