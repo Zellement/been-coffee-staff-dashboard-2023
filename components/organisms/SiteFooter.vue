@@ -17,6 +17,12 @@
             </div>
             <div class="flex flex-row items-center gap-1">
                 <nuxt-link
+                    to="/day-dot-helper"
+                    class="flex flex-col w-6 h-6 mx-2 transition-all duration-300 border-2 rounded-full border-navy bg-navy dark:border-white dark:bg-white group hover:bg-white hover:border-white"
+                >
+                    <span class="w-5 h-2.5 rounded-tl-full transition-all duration-300 rounded-tr-full bg-butterscotch dark:bg-navy group-hover:bg-gray-200" />
+                </nuxt-link>
+                <nuxt-link
                     to="/daily-cash-breakdown"
                     class="flex p-2 transition-all duration-300 dark:hover:text-butterscotch-500 hover:text-white"
                 >
