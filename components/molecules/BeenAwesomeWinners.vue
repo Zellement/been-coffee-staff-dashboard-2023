@@ -8,7 +8,7 @@
         <div class="px-2 overflow-hidden">
             <div class="w-full pb-4 overflow-x-scroll ">
                 <div class="relative flex flex-row w-full space-x-4">
-                    <div class="relative  flex flex-col items-center p-8 border-2 border-gray-400 border-dashed min-w-[20rem] w-[20rem] bg-gray-50 dark:bg-gray-800 dark:text-gray-200">
+                    <div class="relative  flex flex-col items-center p-8 border-2 border-gray-400 border-dashed min-w-[20rem] w-[20rem] bg-neutral-50 dark:bg-neutral-900 dark:text-gray-200">
                         <img
                             src="@/assets/images/beenawesome.png"
                             alt="You've Been Awesome logo"
