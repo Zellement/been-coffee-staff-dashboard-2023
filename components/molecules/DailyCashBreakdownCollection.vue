@@ -112,17 +112,17 @@ const style = computed(() => {
 })
 const state = reactive({
     denominations: [
-        { denomination: '1p', value: 0, multiple: 0.01 },
-        { denomination: '2p', value: 0, multiple: 0.02 },
-        { denomination: '5p', value: 0, multiple: 0.05 },
-        { denomination: '10p', value: 0, multiple: 0.1 },
-        { denomination: '20p', value: 0, multiple: 0.2 },
-        { denomination: '50p', value: 0, multiple: 0.5 },
-        { denomination: '£1', value: 0, multiple: 1 },
-        { denomination: '£2', value: 0, multiple: 2 },
-        { denomination: '£5', value: 0, multiple: 5 },
+        { denomination: '£20', value: 0, multiple: 20 },
         { denomination: '£10', value: 0, multiple: 10 },
-        { denomination: '£20', value: 0, multiple: 20 }
+        { denomination: '£5', value: 0, multiple: 5 },
+        { denomination: '£2', value: 0, multiple: 2 },
+        { denomination: '£1', value: 0, multiple: 1 },
+        { denomination: '50p', value: 0, multiple: 0.5 },
+        { denomination: '20p', value: 0, multiple: 0.2 },
+        { denomination: '10p', value: 0, multiple: 0.1 },
+        { denomination: '5p', value: 0, multiple: 0.05 },
+        { denomination: '2p', value: 0, multiple: 0.02 },
+        { denomination: '1p', value: 0, multiple: 0.01 }
     ]
 })
 
