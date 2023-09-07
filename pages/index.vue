@@ -3,6 +3,7 @@
         <div class="flex flex-col pb-32">
             <last-orders />
             <standing-orders />
+            <been-awesome-winners />
             <team-members />
         </div>
     </div>
