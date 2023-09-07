@@ -24,14 +24,14 @@
                                 class="w-5 h-5 "
                             />
                         </a>
-                        <h3 class=" h3">
+                        <h3 class="text-black dark:text-white h2">
                             {{ currentWinner.winner?.name }}
                         </h3>
 
-                        <div class="flex flex-row items-center gap-2 mb-4">
+                        <div class="flex flex-row items-center gap-2 mb-4 opacity-80">
                             <Icon
                                 name="pepicons-pop:calendar-circle"
-                                class="w-4 h-4 opacity-50"
+                                class="w-4 h-4 "
                             />
                             <span><em>Since</em> {{ dateConverter(currentWinner?.from) }}</span>
                         </div>
@@ -50,13 +50,14 @@
                         :key="winner.id"
                         class="relative flex flex-col items-center p-8 my-16 bg-transparent border-2 border-gray-400 border-dotted w-[16rem] min-w-[16rem] dark:text-gray-200 "
                     >
-                        <h3 class=" h3">
+                        <h3 class="h3">
                             {{ winner.winner?.name }}
                         </h3>
 
-                        <div class="flex flex-col items-center mb-4">
+                        <div class="flex flex-col items-center mb-4 opacity-80">
                             <span><strong>From</strong> {{ dateConverter(winner?.from) }}</span>
                             <span><strong>To</strong> {{ dateConverter(winner?.to) }}</span>
+                            <span class="text-xs italic">{{ duration(winner.to, winner.from) }} days</span>
                         </div>
 
                         <div class="flex w-auto overflow-hidden aspect-square">
@@ -97,6 +98,13 @@ const { data } = await useGraphqlQuery({ query: QUERY })
 const allWinners = computed(() => {
     return data.value?.allBeenAwesomeWinners
 })
+
+const duration = (to, from) => {
+    const startDate = new Date(from)
+    const endDate = new Date(to)
+    const months = ((endDate.getTime() - startDate.getTime()) / 1000) / 86400
+    return months
+}
 
 const currentWinner = computed(() => {
     return allWinners.value[0]
