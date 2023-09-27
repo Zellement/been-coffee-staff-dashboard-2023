@@ -1,8 +1,7 @@
 <template>
     <nuxt-link
         class="fixed flex flex-col items-center p-1 text-white rounded text-2xs bottom-12 right-1 bg-tuscany"
-        to="https://dashboard.been.coffee/article/target-day-bonus"
-        target="_blank"
+        to="/article/target-day-bonus"
     >
         <p class="leading-none">
             Next Target
