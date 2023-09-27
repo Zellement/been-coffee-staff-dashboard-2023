@@ -3,7 +3,7 @@
         <NuxtPage />
         <instant-search />
         <profile-data />
-        <current-record />
+        <current-target />
     </NuxtLayout>
 </template>
 
