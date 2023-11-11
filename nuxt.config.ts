@@ -23,7 +23,7 @@ export default defineNuxtConfig({
             pathPrefix: false
         }
     ],
-    modules: ['@nuxtjs/color-mode', 'nuxt-icon', '@nuxtjs/tailwindcss', '@pinia/nuxt', '@nuxt/image-edge', '@nuxtjs/supabase'],
+    modules: ['@nuxtjs/color-mode', 'nuxt-icon', '@nuxtjs/tailwindcss', '@pinia/nuxt', '@nuxt/image', '@nuxtjs/supabase'],
     colorMode: {
         classSuffix: '',
         preference: 'dark'

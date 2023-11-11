@@ -132,10 +132,10 @@ hr {
     @apply mb-4 text-sm flex flex-col space-y-2;
 
     li {
-      @apply ml-6  list-disc leading-tight;
+      @apply ml-6 list-disc leading-tight;
     }
     ul {
-        @apply mt-4;
+        @apply mt-4 ml-6;
     }
   }
 
