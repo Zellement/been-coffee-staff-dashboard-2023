@@ -1,0 +1,21 @@
+.shift-leads {
+    label {
+        @apply cursor-pointer;
+    }
+
+    &__img-wrapper {
+        @apply border-2 border-transparent pointer-events-none transition-colors duration-300 grayscale;
+    }
+
+    input[type="radio"] {
+        &:checked {
+            & + .shift-leads__img-wrapper {
+                @apply border-navy-500 dark:border-tuscany-500 filter-none;
+            }
+
+            & ~ .shift-leads__member-name {
+                @apply text-tuscany-500 dark:text-butterscotch-500;
+            }
+        }
+    }
+}

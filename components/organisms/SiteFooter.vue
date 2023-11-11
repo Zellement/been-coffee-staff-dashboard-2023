@@ -23,7 +23,7 @@
                     <span class="w-5 h-2.5 rounded-tl-full transition-all duration-300 rounded-tr-full bg-butterscotch dark:bg-navy group-hover:bg-gray-200" />
                 </nuxt-link>
                 <nuxt-link
-                    to="/daily-cash-breakdown"
+                    to="/forms/daily-cash-breakdown"
                     class="flex p-2 transition-all duration-300 dark:hover:text-butterscotch-500 hover:text-white"
                 >
                     <Icon

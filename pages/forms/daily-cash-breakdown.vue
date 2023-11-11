@@ -57,65 +57,8 @@
             name="daily-cash-breakdown"
             @submit.prevent="submitToGoogleSheets"
         >
-            <div class="flex flex-col">
-                <h2 class="mb-4 h4">
-                    Close lead
-                </h2>
-                <div class="flex flex-col md:flex-row md:flex-wrap md:gap-8">
-                    <label
-                        v-for="member in team"
-                        :key="member.id"
-                        class="relative flex flex-row items-center gap-2 py-3"
-                    >
-                        <input
-                            type="radio"
-                            name="Team member"
-                            :value="member.name"
-                            class="ml-2 opacity-0"
-                            required
-                            @click="toggleIsOtherSelected(false)"
-                        >
+            <shift-leads />
 
-                        <div class="absolute left-0 flex w-12 h-12 p-1 overflow-hidden -translate-y-1/2 rounded-full daily-cash-breakdown-form__img-wrapper aspect-square top-1/2">
-                            <img
-                                :alt="member.name"
-                                :src="`${member?.picture?.url}?w=50`"
-                                class="object-cover w-full h-full rounded-full"
-                            >
-                        </div>
-                        <span class="pl-8 daily-cash-breakdown-form__member-name">{{ member.name }}</span>
-                    </label>
-                    <label
-                        class="relative flex flex-row items-center gap-2 py-3"
-                    >
-                        <input
-                            type="radio"
-                            name="Team member"
-                            required
-                            value="Other"
-                            class="ml-2 opacity-0"
-                            @click="toggleIsOtherSelected(true)"
-                        >
-
-                        <div class="absolute left-0 flex w-12 h-12 p-1 overflow-hidden -translate-y-1/2 rounded-full daily-cash-breakdown-form__img-wrapper aspect-square top-1/2">
-                            <img
-                                alt="Placeholder"
-                                src="@/assets/images/been-staff-dashboard.png"
-                                class="object-cover w-full h-full rounded-full"
-                            >
-                        </div>
-                        <span class="pl-8">Other</span>
-                    </label>
-                    <label v-if="otherSelected">
-                        <input
-                            class="w-full mt-4 lg:mt-2"
-                            type="text"
-                            placeholder="Hello, who are you?"
-                            name="Other team member"
-                        >
-                    </label>
-                </div>
-            </div>
             <div>
                 <h2 class=" h4">
                     Waste
@@ -217,43 +160,10 @@ useHead({
     title: 'Daily Cash Breakdown'
 })
 
-const toggleIsOtherSelected = (value) => {
-    state.isOtherSelected = value ?? !state.isOtherSelected
-}
-
 const state = reactive({
-    isOtherSelected: false,
     isSending: false,
     hasSent: false,
     hasErrored: false
-})
-
-const otherSelected = computed(() => {
-    return state.isOtherSelected
-})
-
-const QUERY = `
-query {
-    allTeams(orderBy: name_ASC, filter: {managerKeyHolder: {eq: "true"}}) {
-        id
-        name
-        picture {
-            responsiveImage {
-                alt
-                base64
-                bgColor
-                title
-                srcSet
-                }
-            url
-        }
-        }
-    }
-`
-const { data } = await useGraphqlQuery({ query: QUERY })
-
-const team = computed(() => {
-    return data.value?.allTeams
 })
 
 </script>
