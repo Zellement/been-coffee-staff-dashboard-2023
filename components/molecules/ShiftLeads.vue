@@ -50,7 +50,7 @@
             </label>
             <label v-if="otherSelected">
                 <input
-                    class="w-full mt-4 md:mt-2"
+                    class="w-full p-1 mt-4 md:mt-2"
                     type="text"
                     placeholder="Hello, who are you?"
                     name="Other team member"
