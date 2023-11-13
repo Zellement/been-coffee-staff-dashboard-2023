@@ -9,12 +9,12 @@
             class="flex flex-row items-center gap-6 p-4 mb-8 border border-green-500"
         >
             <Icon
-                name="noto-v1:party-popper"
+                name="ph:snowflake-bold"
                 class="w-12 h-12 animate-pulse"
             />
             <div>
                 <h2 class="h2">
-                    Yeah, we all good!
+                    Yeah, we <span class="text-blue-500">cool</span>!
                 </h2>
                 <p> All sent, thanks.</p>
                 <p class="text-xs">
@@ -52,6 +52,12 @@
         >
             <shift-leads />
 
+            <div class="flex flex-row items-center justify-end gap-2 italic">
+                <p>Freezers: -18&deg;C or lower</p>
+                <p>
+                    Fridges: 1&deg;C - 7&deg;C
+                </p>
+            </div>
             <h2 class="h4">
                 Bar Area
             </h2>
@@ -87,7 +93,7 @@
             />
             <textarea
                 placeholder="Notes and comments"
-                class="h-40"
+                class="h-40 p-2 dark:bg-navy-400"
                 name="Comments"
             />
             <button

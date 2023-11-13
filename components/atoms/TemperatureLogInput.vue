@@ -1,31 +1,27 @@
 <template>
     <label class="grid justify-between w-full grid-cols-12 gap-2 lg:items-center">
         <span class="mb-2 font-bold col-span-full lg:col-span-2">{{ item }}</span>
-        <span class="relative grid items-center justify-center grid-cols-2 col-span-5 gap-1 py-2 border border-current rounded lg:col-span-3 lg:col-start-3">
-            <span class="col-span-full tracking-widest leading-none text-center uppercase text-[8px] whitespace-nowrap ">Below (Zero) Above</span>
+        <span class="relative grid items-center justify-center grid-cols-2 col-span-5 gap-1 lg:col-span-3 lg:col-start-3">
             <button
                 type="button"
                 :class="[plusMinusClasses, dynamicMinusClasses, 'ml-auto']"
                 @click="togglePlusMinus('minus')"
-            ><Icon
-                name="typcn:minus"
-                class="w-4 h-4 transition-all duration-300 hover:rotate-90"
-            /></button>
+            >Below 0&deg;</button>
             <button
                 type="button"
                 :class="[plusMinusClasses, dynamicPlusClasses, 'mr-auto']"
                 @click="togglePlusMinus('plus')"
-            ><Icon
-                name="icon-park-outline:plus"
-                class="w-4 h-4 transition-all duration-300 hover:rotate-90"
-            /></button>
+            >
+                Above 0&deg;</button>
         </span>
         <input
             v-model="input"
-            class="col-span-4 col-start-6 text-center lg:col-span-3 lg:col-start-6"
+            class="col-span-4 col-start-6 text-center dark:bg-navy-400 lg:col-span-3 lg:col-start-6"
+            min="0"
             :name="`${item} raw`"
             type="number"
             placeholder="Temp"
+            required
         >
         <input
             :name="item"
@@ -53,7 +49,7 @@ const props = defineProps({
 console.log(props)
 
 const plusMinusClasses = computed(() => {
-    return 'p-2 border border-current rounded-full aspect-square w-8 h-8 flex items-center justify-center bg-gradient-to-b col-span-1 '
+    return 'px-1 flex items-center justify-center bg-gradient-to-b col-span-1 whitespace-no-wrap text-2xs'
 })
 
 const dynamicPlusClasses = computed(() => {
