@@ -3,14 +3,18 @@ import { defineStore } from 'pinia'
 export const useUiStore = defineStore('ui', {
     state: () => ({
         showSearchResults: false,
-        showProfileData: false
+        showProfileData: false,
+        showKeyholderNav: false
     }),
     actions: {
-        toggleSearchResults () {
+        toggleSearchResults() {
             this.showSearchResults = !this.showSearchResults
         },
-        toggleProfileData () {
+        toggleProfileData() {
             this.showProfileData = !this.showProfileData
+        },
+        toggleKeyholderNav() {
+            this.showKeyholderNav = !this.showKeyholderNav
         }
     }
 })

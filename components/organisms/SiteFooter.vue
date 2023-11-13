@@ -18,24 +18,25 @@
             <div class="flex flex-row items-center gap-1">
                 <nuxt-link
                     to="/day-dot-helper"
-                    class="flex flex-col w-6 h-6 mx-2 transition-all duration-300 border-2 rounded-full border-navy bg-navy dark:border-white dark:bg-white group hover:bg-white hover:border-white"
+                    class="flex flex-col flex-1 w-5 h-5 mx-2 transition-all duration-300 border-2 rounded-full border-navy bg-navy dark:border-white dark:bg-white group hover:bg-white hover:border-white"
                 >
-                    <span class="w-5 h-2.5 rounded-tl-full transition-all duration-300 rounded-tr-full bg-butterscotch dark:bg-navy group-hover:bg-gray-200" />
+                    <span class="w-4 h-2 transition-all duration-300 rounded-tl-full rounded-tr-full bg-butterscotch dark:bg-navy group-hover:bg-gray-200" />
                 </nuxt-link>
-                <nuxt-link
-                    to="/forms/daily-cash-breakdown"
-                    class="flex p-2 transition-all duration-300 dark:hover:text-butterscotch-500 hover:text-white"
+                <button
+                    class="flex flex-1 p-2"
+                    @click="uiStore.toggleKeyholderNav"
                 >
                     <Icon
-                        name="streamline:money-cash-coins-stack-accounting-billing-payment-stack-cash-coins-currency-money-finance"
-                        class="w-6 h-6 "
+                        name="material-symbols:key-vertical"
+                        class="w-auto h-6"
                     />
-                </nuxt-link>
+                </button>
+
                 <color-mode />
 
                 <nuxt-link
                     to="/mailchimp"
-                    class="flex p-2 transition-all duration-300 dark:hover:text-butterscotch-500 hover:text-white"
+                    class="flex flex-1 p-2 transition-all duration-300 dark:hover:text-butterscotch-500 hover:text-white"
                 >
                     <Icon
                         name="ic:baseline-newspaper"

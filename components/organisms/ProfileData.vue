@@ -10,7 +10,7 @@
         >
             <button
                 class="absolute top-3 right-3"
-                @click="uiStore.toggleProfileData"
+                @click="uiStore.toggleProfileData(false)"
             >
                 <Icon
                     name="ri:close-circle-line"

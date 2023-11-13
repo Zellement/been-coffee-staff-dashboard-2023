@@ -1,22 +1,20 @@
 <template>
     <label class="grid justify-between w-full grid-cols-12 gap-2 lg:items-center">
-        <span class="mb-2 font-bold col-span-full lg:col-span-2">{{ item }}</span>
-        <span class="relative grid items-center justify-center grid-cols-2 col-span-5 gap-1 lg:col-span-3 lg:col-start-3">
-            <button
-                type="button"
-                :class="[plusMinusClasses, dynamicMinusClasses, 'ml-auto']"
+        <span class="mb-2 font-bold col-span-full md:col-span-4">{{ item }}</span>
+        <span class="relative grid items-center justify-center grid-cols-2 col-span-5 gap-1 md:col-span-3 md:col-start-5">
+            <span
+                :class="[plusMinusClasses, dynamicMinusClasses]"
                 @click="togglePlusMinus('minus')"
-            >Below 0&deg;</button>
-            <button
-                type="button"
-                :class="[plusMinusClasses, dynamicPlusClasses, 'mr-auto']"
+            >Below 0&deg;</span>
+            <span
+                :class="[plusMinusClasses, dynamicPlusClasses]"
                 @click="togglePlusMinus('plus')"
             >
-                Above 0&deg;</button>
+                Above 0&deg;</span>
         </span>
         <input
             v-model="input"
-            class="col-span-4 col-start-6 text-center dark:bg-navy-400 lg:col-span-3 lg:col-start-6"
+            class="col-span-4 col-start-6 text-center dark:bg-navy-400 md:col-span-2 md:col-start-9"
             min="0"
             :name="`${item} raw`"
             type="number"
@@ -26,7 +24,7 @@
         <input
             :name="item"
             readonly
-            class="col-span-3 col-start-10 bg-transparent"
+            class="col-span-2 col-start-11 text-center bg-transparent pointer-events-none"
             :value="valueString"
         >
     </label>
@@ -46,18 +44,16 @@ const props = defineProps({
     }
 })
 
-console.log(props)
-
 const plusMinusClasses = computed(() => {
-    return 'px-1 flex items-center justify-center bg-gradient-to-b col-span-1 whitespace-no-wrap text-2xs'
+    return 'px-1 flex items-center justify-center bg-gradient-to-b col-span-1 whitespace-no-wrap text-2xs cursor-pointer'
 })
 
 const dynamicPlusClasses = computed(() => {
-    return state.plusOrMinus === 'plus' ? 'from-red-500 to-red-800 text-white' : 'from-transparent'
+    return state.plusOrMinus === 'plus' ? 'from-orange-500 to-orange-800 text-white' : 'bg-none'
 })
 
 const dynamicMinusClasses = computed(() => {
-    return state.plusOrMinus === 'minus' ? 'from-blue-500 to-blue-400 text-white' : 'from-transparent'
+    return state.plusOrMinus === 'minus' ? 'from-blue-500 to-blue-400 text-white' : 'bg-none'
 })
 
 const input = ref()

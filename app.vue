@@ -3,6 +3,7 @@
         <NuxtPage />
         <instant-search />
         <profile-data />
+        <keyholder-nav />
         <current-target />
     </NuxtLayout>
 </template>

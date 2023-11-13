@@ -52,9 +52,9 @@
         >
             <shift-leads />
 
-            <div class="flex flex-row items-center justify-end gap-2 italic">
-                <p>Freezers: -18&deg;C or lower</p>
+            <div class="flex flex-row items-center justify-start gap-2 text-xs italic">
                 <p>
+                    Freezers: -18&deg;C or lower &bull;
                     Fridges: 1&deg;C - 7&deg;C
                 </p>
             </div>
