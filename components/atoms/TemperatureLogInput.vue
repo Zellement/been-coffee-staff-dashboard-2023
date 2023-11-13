@@ -17,6 +17,7 @@
             class="col-span-4 col-start-6 text-center dark:bg-navy-400 md:col-span-2 md:col-start-9"
             min="0"
             :name="`${item} raw`"
+            step=".1"
             type="number"
             placeholder="Temp"
             required
