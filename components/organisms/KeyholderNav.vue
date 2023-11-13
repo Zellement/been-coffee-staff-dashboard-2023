@@ -27,17 +27,39 @@
                     v-for="link in nav"
                     :key="link.url"
                 >
-                    <nuxt-link
-                        :to="link.url"
+                    <span
                         class="flex flex-row items-center gap-2"
-                        @click="uiStore.toggleKeyholderNav(true)"
                     >
                         <Icon
                             :name="link.icon"
                             class="w-4 h-4"
                         />
                         <span>{{ link.title }}</span>
-                    </nuxt-link>
+                        <ul class="flex flex-row items-center gap-2 text-2xs">
+
+                            <li
+                                v-for="subnav in link.subnav"
+                                :key="subnav.url"
+                            >
+                                <nuxt-link
+                                    v-if="subnav.url"
+                                    :to="subnav.url"
+                                    :target="subnav.blank ? '_blank' : null"
+                                    class="flex flex-row button button--sm items-center gap-1 p-0.5 px-1 rounded border border-current"
+                                    @click="uiStore.toggleKeyholderNav(false)"
+                                >
+                                    {{ subnav.title }}
+
+                                    <Icon
+                                        v-if="subnav.blank"
+                                        name="iconamoon:link-external-fill"
+                                        class="w-3 h-3 transition-all duration-300 hover:rotate-90"
+                                    />
+                                </nuxt-link>
+                            </li>
+                        </ul>
+
+                    </span>
                 </li>
             </ul>
         </div>
@@ -57,14 +79,31 @@ const showPanel = computed(() => {
 const nav = computed(() => {
     return [
         {
-            url: '/forms/daily-cash-breakdown',
             title: 'Daily Cash Breakdown',
-            icon: 'streamline:money-cash-coins-stack-accounting-billing-payment-stack-cash-coins-currency-money-finance'
+            icon: 'streamline:money-cash-coins-stack-accounting-billing-payment-stack-cash-coins-currency-money-finance',
+            subnav: [
+                {
+                    title: 'Form',
+                    url: '/forms/daily-cash-breakdown'
+
+                }
+            ]
         },
         {
-            url: '/forms/daily-temperature-logs',
             title: 'Daily Temperature Logs',
-            icon: 'mingcute:low-temperature-line'
+            icon: 'mingcute:low-temperature-line',
+            subnav: [
+                {
+                    title: 'Form',
+                    url: '/forms/daily-temperature-logs'
+
+                },
+                {
+                    title: 'Responses',
+                    url: 'https://docs.google.com/spreadsheets/d/1Bh5vjjW7wU8HaMsP7-R0M0XTlx1Ohd9uh25AK3ZZrIY/edit?usp=sharing',
+                    blank: true
+                }
+            ]
         }
     ]
 })
