@@ -14,9 +14,23 @@
             />
             <div>
                 <h2 class="h2">
-                    Yeah, we <span class="text-blue-500">cool</span>!
+                    Yeah, we <span class="text-blue-500">cool</span>, but just to make sure...
                 </h2>
-                <p> All sent, thanks.</p>
+                <nuxt-link
+                    class="flex items-center gap-2 my-8 button"
+                    to="https://docs.google.com/spreadsheets/d/1Bh5vjjW7wU8HaMsP7-R0M0XTlx1Ohd9uh25AK3ZZrIY/edit#gid=0"
+                    target="_blank"
+                >
+                    <Icon
+                        name="ph:warning-fill"
+                        class="w-4 h-4 text-red-500 transition-all duration-300 hover:rotate-90"
+                    />
+                    Please check your submission was logged.
+                    <Icon
+                        name="iconamoon:link-external-fill"
+                        class="w-4 h-4 transition-all duration-300 hover:rotate-90"
+                    />
+                </nuxt-link>
                 <p class="text-xs">
                     To see the form again, please refresh this page.
                 </p>

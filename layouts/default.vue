@@ -1,6 +1,6 @@
 <template>
     <div
-        v-if="user"
+        v-if="userLoggedIn"
         class="overflow-hidden"
     >
         <site-header />
@@ -17,5 +17,9 @@
 <script setup>
 
 const user = useSupabaseUser()
+
+const userLoggedIn = computed(() => {
+    return user?.value?.aud === 'authenticated'
+})
 
 </script>
