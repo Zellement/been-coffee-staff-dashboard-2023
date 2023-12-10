@@ -74,12 +74,12 @@ const handleSignup = async () => {
                 data: {
                     display_name: displayName.value,
                     till_pin: tillPin.value,
-                    payslip_dir: payslipDir.value
+                    payslip_dir: payslipDir.value,
+                    keyholder: keyholder.value
                 }
             }
         })
         if (error) throw error
-        console.log(data)
         router.push('/sorted')
     } catch (error) {
         errorMsg.value = error.message

@@ -1,14 +1,30 @@
 <template>
     <div class="relative">
         <div class="flex flex-col pb-32">
-            <last-orders />
-            <standing-orders />
-            <been-awesome-winners />
-            <team-members />
+            <template v-if="keyholder">
+                <last-orders />
+                <standing-orders />
+                <been-awesome-winners />
+                <team-members />
+            </template>
+            <template v-else>
+                <dashboard-intro />
+                <team-members />
+                <been-awesome-winners />
+                <last-orders />
+                <standing-orders />
+            </template>
         </div>
     </div>
 </template>
 <script setup>
+import { useUserStore } from '@/stores/user'
+
+const userStore = useUserStore()
+
+const keyholder = computed(() => {
+    return userStore?.userData?.keyholder
+})
 
 useHead({
     title: 'Been Staff Dashboard'

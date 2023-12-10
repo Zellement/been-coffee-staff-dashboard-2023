@@ -20,7 +20,7 @@
             <h2 class="self mb-8 h1 max-w-[80%]">
                 Hello, {{ userName }}
             </h2>
-            <ul class="flex flex-col mb-8 space-y-8">
+            <ul class="flex flex-col mb-8 space-y-2">
                 <li
                     v-if="tillPin"
                     class="flex flex-row gap-2"
@@ -34,6 +34,19 @@
                         <span>Till pin:</span>
                     </span>
                     {{ tillPin }}
+                </li>
+                <li
+                    v-if="keyholder"
+                    class="flex flex-row gap-2"
+                >
+                    <span class="flex flex-row items-center gap-2">
+
+                        <Icon
+                            name="fa6-solid:check"
+                            class="w-4 h-4 transition-all duration-300 hover:rotate-90"
+                        />
+                        <span>You are a keyholder</span>
+                    </span>
                 </li>
                 <li
                     v-if="payslipDir"
@@ -77,6 +90,9 @@ const tillPin = computed(() => {
 })
 const payslipDir = computed(() => {
     return userStore.userData?.payslip_dir
+})
+const keyholder = computed(() => {
+    return userStore.userData?.keyholder
 })
 
 </script>

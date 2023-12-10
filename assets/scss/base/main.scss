@@ -18,7 +18,7 @@ html {
 }
 
 .generic-link {
-    @apply border-b border-transparent hover:border-current;
+    @apply border-b border-transparent text-butterscotch-500 hover:border-current;
 }
 
 @layer utilities {

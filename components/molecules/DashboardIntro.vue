@@ -1,0 +1,34 @@
+<template>
+    <div class="relative">
+        <section class="py-8">
+            <div class="container ">
+                <h2 class="h1">
+                    Welcome to the Been Coffee Dashboard
+                </h2>
+                <p>
+                    You can find all relevant details for Been Coffee here, including <nuxt-link
+                        class="generic-link"
+                        to="/category/onboarding"
+                    >
+                        onboarding
+                    </nuxt-link>, <nuxt-link
+                        class="generic-link"
+                        to="/category/policies"
+                    >
+                        policies
+                    </nuxt-link>
+                    and <nuxt-link
+                        class="generic-link"
+                        to="/category/general"
+                    >
+                        general documentation
+                    </nuxt-link>.
+                </p>
+                <site-search
+                    display-text="Launch navigation"
+                    class="mt-8 button"
+                />
+            </div>
+        </section>
+    </div>
+</template>

@@ -5,12 +5,13 @@ export const useUserStore = defineStore('user', {
         userData: null
     }),
     actions: {
-        async setUserData () {
+        async setUserData() {
             const client = useSupabaseClient()
             const { data } = await client
                 .from('profiles')
-                .select('display_name, till_pin, payslip_dir')
+                .select('display_name, till_pin, payslip_dir, keyholder')
             this.userData = data[0]
+            console.log(data)
         }
     }
 })

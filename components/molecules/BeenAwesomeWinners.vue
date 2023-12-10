@@ -1,7 +1,7 @@
 <template>
     <section>
         <div class="container mb-6 ">
-            <h2 class="h2">
+            <h2 class="h1">
                 Been Awesome Winners
             </h2>
         </div>

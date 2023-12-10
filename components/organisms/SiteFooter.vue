@@ -23,6 +23,7 @@
                     <span class="w-4 h-2 transition-all duration-300 rounded-tl-full rounded-tr-full bg-butterscotch dark:bg-navy group-hover:bg-gray-200" />
                 </nuxt-link>
                 <button
+                    v-if="keyholder"
                     class="flex flex-1 p-2"
                     @click="uiStore.toggleKeyholderNav"
                 >
@@ -58,6 +59,10 @@ const userStore = useUserStore()
 
 const userName = computed(() => {
     return userStore?.userData?.display_name
+})
+
+const keyholder = computed(() => {
+    return userStore?.userData?.keyholder
 })
 
 const uiStore = useUiStore()
