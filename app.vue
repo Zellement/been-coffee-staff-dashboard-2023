@@ -2,6 +2,7 @@
     <NuxtLayout>
         <snow-fall
             v-if="isXmasTheme"
+            class="dark:opacity-40"
         />
         <div
             v-if="isXmasTheme"
