@@ -48,9 +48,26 @@
                         <span>You are a keyholder</span>
                     </span>
                 </li>
+                <li class="flex flex-row items-center gap-2">
+                    <button
+                        class="flex items-center gap-2"
+                        @click="toggleKeyholderLayout()"
+                    >
+                        <span
+                            :class="toggleClasses"
+                            class="relative w-12 h-6 rounded-3xl"
+                        >
+                            <span
+                                :class="toggleActiveClasses"
+                                class="absolute w-4 h-4 transition-all duration-300 rounded-full dark:bg-white bg-butterscotch-500 left-1/2 top-1"
+                            />
+                        </span>
+                        <span>Toggle Keyholder layout</span>
+                    </button>
+                </li>
                 <li
                     v-if="payslipDir"
-                    class="flex"
+                    class="flex pt-4"
                 >
                     <nuxt-link
                         class="self-start button"
@@ -94,5 +111,21 @@ const payslipDir = computed(() => {
 const keyholder = computed(() => {
     return userStore.userData?.keyholder
 })
+
+const keyholderLayout = computed(() => {
+    return userStore.keyholderLayout
+})
+
+const toggleClasses = computed(() => {
+    return keyholderLayout.value ? 'bg-green-500' : 'dark:bg-white/30 bg-black/10'
+})
+
+const toggleActiveClasses = computed(() => {
+    return keyholderLayout.value ? '-translate-x-full' : 'ml-auto'
+})
+
+const toggleKeyholderLayout = (value) => {
+    userStore.toggleKeyholderLayout(value)
+}
 
 </script>
