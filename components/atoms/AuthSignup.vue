@@ -79,8 +79,8 @@ const handleSignup = async () => {
                 }
             }
         })
-        console.log(data)
         if (error) throw error
+        console.log(data)
         router.push('/sorted')
     } catch (error) {
         errorMsg.value = error.message
