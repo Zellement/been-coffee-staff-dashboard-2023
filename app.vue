@@ -2,7 +2,6 @@
     <NuxtLayout>
         <snow-fall
             v-if="isXmasTheme"
-            class="opacity-20"
         />
         <button
             v-if="showBahHumbug"
