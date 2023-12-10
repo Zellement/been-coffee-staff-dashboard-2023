@@ -23,12 +23,12 @@
                 >
                     <Icon
                         name="ph:warning-fill"
-                        class="w-4 h-4 text-red-500 transition-all duration-300 hover:rotate-90"
+                        class="flex-shrink-0 w-4 h-4 text-red-500 transition-all duration-300 hover:rotate-90"
                     />
                     Please check your submission was logged.
                     <Icon
                         name="iconamoon:link-external-fill"
-                        class="w-4 h-4 transition-all duration-300 hover:rotate-90"
+                        class="flex-shrink-0 w-4 h-4 transition-all duration-300 hover:rotate-90"
                     />
                 </nuxt-link>
                 <p class="text-xs">
