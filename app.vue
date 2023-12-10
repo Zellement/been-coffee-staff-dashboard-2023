@@ -3,20 +3,11 @@
         <NuxtPage />
         <instant-search />
         <profile-data />
-        <keyholder-nav v-if="keyholder" />
         <current-target />
     </NuxtLayout>
 </template>
 
 <script setup>
-
-import { useUserStore } from '@/stores/user'
-
-const userStore = useUserStore()
-
-const keyholder = computed(() => {
-    return userStore.userData?.keyholder
-})
 
 </script>
 

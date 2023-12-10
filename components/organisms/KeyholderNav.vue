@@ -1,68 +1,55 @@
 <template>
-    <div
-        class="fixed inset-0 z-50 flex p-4 duration-500 bg-tuscany/80 backdrop-blur dark:bg-navy/80"
-        :class="showPanel"
-        @click="uiStore.toggleKeyholderNav"
-    >
-        <div
-            class="relative flex flex-col w-full max-w-screen-sm p-4 m-auto bg-white shadow-xl lg:p-12 dark:bg-navy-600 rounded-xl"
-            @click="uiStore.toggleKeyholderNav(true)"
-        >
-            <button
-                class="absolute top-3 right-3"
-                @click="uiStore.toggleKeyholderNav"
-            >
-                <Icon
-                    name="ri:close-circle-line"
-                    class="w-8 h-8 transition-all duration-300 hover:rotate-90"
-                />
-            </button>
+    <div class="relative">
+        <section class="pb-8">
+            <div class="container">
+                <h2 class="h1">
+                    Keyholder Quick Items
+                </h2>
 
-            <h2 class="mb-8 h2">
-                Keyholder Quick Nav
-            </h2>
-
-            <ul class="flex flex-col gap-2">
-                <li
-                    v-for="link in nav"
-                    :key="link.url"
-                >
-                    <span
-                        class="flex flex-row items-center gap-2"
+                <ul class="grid grid-cols-1 gap-4 py-8 md:grid-cols-3 lg:grid-cols-4">
+                    <li
+                        v-for="link in nav"
+                        :key="link.url"
                     >
-                        <Icon
-                            :name="link.icon"
-                            class="w-4 h-4"
-                        />
-                        <span>{{ link.title }}</span>
-                        <ul class="flex flex-row items-center gap-2 text-2xs">
+                        <span
+                            class="flex flex-col items-start gap-2 p-4 dark:bg-black/10"
+                        >
+                            <span class="flex items-center gap-2">
+                                <Icon
+                                    :name="link.icon"
+                                    class="w-4 h-5"
+                                />
+                                <h3 class="h4">{{ link.title }}</h3>
+                            </span>
+                            <ul class="flex flex-row items-center gap-2 text-2xs">
 
-                            <li
-                                v-for="subnav in link.subnav"
-                                :key="subnav.url"
-                            >
-                                <nuxt-link
-                                    v-if="subnav.url"
-                                    :to="subnav.url"
-                                    :target="subnav.blank ? '_blank' : null"
-                                    class="flex flex-row button button--sm items-center gap-1 p-0.5 px-1 rounded border border-current"
-                                    @click="uiStore.toggleKeyholderNav(false)"
+                                <li
+                                    v-for="subnav in link.subnav"
+                                    :key="subnav.url"
                                 >
-                                    {{ subnav.title }}
+                                    <nuxt-link
+                                        v-if="subnav.url"
+                                        :to="subnav.url"
+                                        :target="subnav.blank ? '_blank' : null"
+                                        class="flex flex-row button  items-center gap-1 p-0.5 px-1 rounded "
+                                        @click="uiStore.toggleKeyholderNav(false)"
+                                    >
+                                        {{ subnav.title }}
 
-                                    <Icon
-                                        v-if="subnav.blank"
-                                        name="iconamoon:link-external-fill"
-                                        class="w-3 h-3 transition-all duration-300 hover:rotate-90"
-                                    />
-                                </nuxt-link>
-                            </li>
-                        </ul>
+                                        <Icon
+                                            v-if="subnav.blank"
+                                            name="iconamoon:link-external-fill"
+                                            class="w-3 h-3 transition-all duration-300 hover:rotate-90"
+                                        />
+                                    </nuxt-link>
+                                </li>
+                            </ul>
 
-                    </span>
-                </li>
-            </ul>
-        </div>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+        </section>
     </div>
 </template>
 
@@ -71,10 +58,6 @@
 import { useUiStore } from '@/stores/ui'
 
 const uiStore = useUiStore()
-
-const showPanel = computed(() => {
-    return uiStore.showKeyholderNav ? 'opacity-100' : 'opacity-0 pointer-events-none'
-})
 
 const nav = computed(() => {
     return [

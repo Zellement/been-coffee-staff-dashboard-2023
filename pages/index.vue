@@ -2,6 +2,7 @@
     <div class="relative">
         <div class="flex flex-col pb-32">
             <template v-if="keyholder">
+                <keyholder-nav />
                 <last-orders />
                 <standing-orders />
                 <been-awesome-winners />
