@@ -79,6 +79,7 @@ const handleSignup = async () => {
                 }
             }
         })
+        console.log(data)
         if (error) throw error
         router.push('/sorted')
     } catch (error) {

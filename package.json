@@ -41,7 +41,8 @@
         "@vueuse/core": "^9.13.0",
         "esbuild": "^0.19.5",
         "pinia": "^2.1.7",
-        "vue-datocms": "^4.0.6"
+        "vue-datocms": "^4.0.6",
+        "vue3-lottie": "^3.2.0"
     },
     "overrides": {
         "vue": "latest"

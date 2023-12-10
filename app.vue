@@ -3,6 +3,12 @@
         <snow-fall
             v-if="isXmasTheme"
         />
+        <div
+            v-if="isXmasTheme"
+            class="absolute top-0 right-0 flex w-1/2 h-auto overflow-hidden "
+        >
+            <lottie-swinging-santa class="translate-x-1/4" />
+        </div>
         <button
             v-if="showBahHumbug"
             class="fixed z-10 flex flex-row items-center gap-2 text-xs top-2 right-3"
