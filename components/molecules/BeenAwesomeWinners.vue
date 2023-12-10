@@ -5,7 +5,7 @@
                 Been Awesome Winners
             </h2>
         </div>
-        <div class="px-2 overflow-hidden">
+        <div class="px-2 overflow-hidden md:px-4">
             <div class="w-full pb-4 overflow-x-scroll ">
                 <div class="relative flex flex-row w-full space-x-4">
                     <div class="relative  flex flex-col items-center p-8 border-2 border-gray-400 border-dashed min-w-[20rem] w-[20rem] bg-neutral-50 dark:bg-neutral-900 dark:text-gray-200">

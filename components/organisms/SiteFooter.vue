@@ -12,7 +12,10 @@
                         name="ri:user-line"
                         class="w-6 h-6"
                     />
-                    <span>Hi, {{ userName }}</span>
+                    <span>
+                        <template v-if="isXmasTheme">Merry Christmas,</template>
+                        <template v-else>Hi,</template>
+                        {{ userName }}</span>
                 </button>
             </div>
             <div class="flex flex-row items-center gap-1">
@@ -52,6 +55,10 @@ const userName = computed(() => {
 })
 
 const uiStore = useUiStore()
+
+const isXmasTheme = computed(() => {
+    return uiStore.isXmasThemed
+})
 
 onMounted(() => {
     userStore.setUserData()
