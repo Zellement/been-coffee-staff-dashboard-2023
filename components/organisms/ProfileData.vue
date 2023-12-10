@@ -8,6 +8,12 @@
             class="relative flex flex-col w-full max-w-screen-sm p-4 m-auto bg-white shadow-xl lg:p-12 dark:bg-navy-600 rounded-xl"
             @click="uiStore.toggleProfileData(true)"
         >
+            <div
+                v-if="isXmasTheme && uiStore.showProfileData"
+                class="absolute top-0 flex w-full max-w-[150px] -translate-x-1/2 -translate-y-[90%] pointer-events-none left-1/2 "
+            >
+                <lottie-christmas-tree class=" left-1/2" />
+            </div>
             <button
                 class="absolute top-3 right-3"
                 @click="uiStore.toggleProfileData(false)"
@@ -93,6 +99,10 @@ import { useUiStore } from '@/stores/ui'
 import { useUserStore } from '@/stores/user'
 
 const uiStore = useUiStore()
+
+const isXmasTheme = computed(() => {
+    return uiStore.isXmasThemed
+})
 
 const showPanel = computed(() => {
     return uiStore.showProfileData ? 'opacity-100' : 'opacity-0 pointer-events-none'
