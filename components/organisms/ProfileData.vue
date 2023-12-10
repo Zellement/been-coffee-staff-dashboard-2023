@@ -41,19 +41,6 @@
                     </span>
                     {{ tillPin }}
                 </li>
-                <li
-                    v-if="keyholder"
-                    class="flex flex-row gap-2"
-                >
-                    <span class="flex flex-row items-center gap-2">
-
-                        <Icon
-                            name="fa6-solid:check"
-                            class="w-4 h-4 transition-all duration-300 hover:rotate-90"
-                        />
-                        <span>You are a keyholder</span>
-                    </span>
-                </li>
                 <li class="flex flex-row items-center gap-2">
                     <button
                         class="flex items-center gap-2"
@@ -118,9 +105,9 @@ const tillPin = computed(() => {
 const payslipDir = computed(() => {
     return userStore.userData?.payslip_dir
 })
-const keyholder = computed(() => {
-    return userStore.userData?.keyholder
-})
+// const keyholder = computed(() => {
+//     return userStore.userData?.keyholder
+// })
 
 const keyholderLayout = computed(() => {
     return userStore.keyholderLayout
