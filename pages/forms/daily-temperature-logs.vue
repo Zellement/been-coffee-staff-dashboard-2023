@@ -102,9 +102,6 @@
             <temperature-log-input
                 item="Fridge"
             />
-            <temperature-log-input
-                item="Stella Fridge"
-            />
             <textarea
                 placeholder="Notes and comments"
                 class="h-40 p-2 dark:bg-navy-400"
