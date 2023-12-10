@@ -32,7 +32,6 @@
                                         :to="subnav.url"
                                         :target="subnav.blank ? '_blank' : null"
                                         class="flex flex-row button  items-center gap-1 p-0.5 px-1 rounded "
-                                        @click="uiStore.toggleKeyholderNav(false)"
                                     >
                                         {{ subnav.title }}
 
@@ -54,10 +53,6 @@
 </template>
 
 <script setup>
-
-import { useUiStore } from '@/stores/ui'
-
-const uiStore = useUiStore()
 
 const nav = computed(() => {
     return [

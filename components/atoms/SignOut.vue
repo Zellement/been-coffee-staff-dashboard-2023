@@ -13,12 +13,17 @@
 
 <script setup>
 
+import { useUiStore } from '@/stores/ui'
+
+const uiStore = useUiStore()
+
 const client = useSupabaseClient()
 
 const handleSignOut = async () => {
     try {
         const { error } = await client.auth.signOut()
         if (error) throw error
+        uiStore.toggleProfileData(false)
         navigateTo('/login')
     } catch (error) {
         console.log(error.message)
