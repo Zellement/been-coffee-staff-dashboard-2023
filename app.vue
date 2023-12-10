@@ -7,7 +7,7 @@
             v-if="isXmasTheme"
             class="absolute top-0 right-0 flex w-1/2 h-auto overflow-hidden "
         >
-            <lottie-swinging-santa class="translate-x-1/4" />
+            <lottie-swinging-santa class="-translate-y-10 translate-x-1/4" />
         </div>
         <button
             v-if="showBahHumbug"

@@ -13,7 +13,7 @@
                         class="w-6 h-6"
                     />
                     <span>
-                        <template v-if="isXmasTheme">Merry Christmas,</template>
+                        <template v-if="isXmasTheme">Merry Xmas,</template>
                         <template v-else>Hi,</template>
                         {{ userName }}</span>
                 </button>
