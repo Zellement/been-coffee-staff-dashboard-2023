@@ -23,7 +23,7 @@ import { useUserStore } from '@/stores/user'
 const userStore = useUserStore()
 
 const keyholder = computed(() => {
-    return userStore?.userData?.keyholder
+    return userStore?.keyholderLayout
 })
 
 useHead({

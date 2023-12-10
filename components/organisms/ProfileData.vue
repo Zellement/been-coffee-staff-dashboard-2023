@@ -59,7 +59,7 @@
                         >
                             <span
                                 :class="toggleActiveClasses"
-                                class="absolute w-4 h-4 transition-all duration-300 rounded-full dark:bg-white bg-butterscotch-500 left-1/2 top-1"
+                                class="absolute w-4 h-4 transition-all duration-300 bg-white rounded-full dark:bg-white left-1/2 top-1"
                             />
                         </span>
                         <span>Toggle Keyholder layout</span>
@@ -117,11 +117,11 @@ const keyholderLayout = computed(() => {
 })
 
 const toggleClasses = computed(() => {
-    return keyholderLayout.value ? 'bg-green-500' : 'dark:bg-white/30 bg-black/10'
+    return keyholderLayout.value ? 'bg-green-500' : 'dark:bg-white/30 bg-black/20'
 })
 
 const toggleActiveClasses = computed(() => {
-    return keyholderLayout.value ? '-translate-x-full' : 'ml-auto'
+    return keyholderLayout.value ? 'ml-auto' : '-translate-x-full'
 })
 
 const toggleKeyholderLayout = (value) => {
