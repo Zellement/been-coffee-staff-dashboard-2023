@@ -6,7 +6,7 @@
                     Keyholder Quick Items
                 </h2>
 
-                <ul class="grid grid-cols-1 gap-4 py-8 md:grid-cols-3 lg:grid-cols-4">
+                <ul class="grid grid-cols-1 gap-4 py-8 md:grid-cols-2">
                     <li
                         v-for="link in nav"
                         :key="link.url"
