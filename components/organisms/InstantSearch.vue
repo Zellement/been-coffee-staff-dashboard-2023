@@ -31,7 +31,7 @@
                     <span class="text-xs">Last updated</span>
                 </div>
                 <div class="h-full overflow-y-scroll">
-                    <ul class="relative z-10 flex flex-col pb-8 md:justify-center">
+                    <ul class="relative z-10 flex flex-col pb-8 lg:pb-32 md:justify-center">
                         <li
                             v-for="item in filteredItems"
                             :key="item.id"
