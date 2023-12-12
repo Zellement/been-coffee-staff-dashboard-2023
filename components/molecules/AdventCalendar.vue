@@ -8,7 +8,7 @@
                 <div
                     v-for="i in 24"
                     :key="i"
-                    class="relative grid flex-shrink-0 w-full grid-cols-1 text-center aspect-square font-riverside bg-black/20"
+                    class="relative grid flex-shrink-0 w-full grid-cols-1 text-center bg-white/50 aspect-square font-riverside dark:bg-black/20"
                 >
                     <template
                         v-for="winner in winners"
@@ -23,7 +23,7 @@
                                 :key="`${singleWinner.name}${singleWinner.id}`"
                                 class="relative flex flex-col w-full text-right "
                             >
-                                <div class="absolute bottom-0 right-0 z-10 px-2 text-2xs bg-navy-500">
+                                <div class="absolute bottom-0 right-0 z-10 px-2 text-2xs xl:text-base bg-butterscotch-500 dark:bg-navy-500">
                                     {{ singleWinner.name }}
                                 </div>
 
@@ -36,7 +36,7 @@
                             </div>
                         </div>
                         <div
-                            class="absolute top-0 left-0 block p-1 text-sm leading-none bg-navy-500 aspect-square"
+                            class="absolute top-0 left-0 block p-1 text-sm leading-none xl:text-base bg-butterscotch-500 dark:bg-navy-500 aspect-square"
                         >
                             {{ i.toString().padStart(2,'0') }}
                         </div>
