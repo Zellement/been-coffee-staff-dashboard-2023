@@ -25,7 +25,7 @@
             <input
                 type="submit"
                 class="self-end cursor-pointer button"
-                :value="loading ? 'Loading' : 'Login'"
+                :value="loading ? 'Bear with...' : 'Login'"
                 :disabled="loading"
             >
         </div>
