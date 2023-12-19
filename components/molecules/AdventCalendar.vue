@@ -23,9 +23,18 @@
                                 :key="`${singleWinner.name}${singleWinner.id}`"
                                 class="relative flex flex-col w-full text-right "
                             >
-                                <div class="absolute bottom-0 right-0 z-10 px-2 text-2xs xl:text-base bg-butterscotch-500 dark:bg-navy-500">
+                                <div
+                                    class="absolute bottom-0 right-0 z-10 px-2 text-2xs xl:text-base bg-butterscotch-500 dark:bg-navy-500"
+                                    :class="golden(winner.isGoldenTicket)"
+                                >
                                     {{ singleWinner.name }}
                                 </div>
+
+                                <Icon
+                                    v-if="winner.isGoldenTicket"
+                                    name="ion:ticket-sharp"
+                                    class="absolute z-10 w-8 h-8 p-1 text-yellow-300 rounded-full shadow-lg -top-2 bg-gradient-to-b from-navy animate-spin to-tuscany-700 -right-2 "
+                                />
 
                                 <div class="flex items-center w-full h-full ">
                                     <Image
@@ -36,7 +45,7 @@
                             </div>
                         </div>
                         <div
-                            class="absolute top-0 left-0 block p-1 text-sm leading-none xl:text-base bg-butterscotch-500 dark:bg-navy-500 aspect-square"
+                            class="absolute top-0 left-0 block p-1 text-sm leading-none text-black dark:text-white xl:text-base aspect-square dark:bg-navy bg-seashell-500"
                         >
                             {{ i.toString().padStart(2,'0') }}
                         </div>
@@ -58,6 +67,8 @@ query MyQuery {
     winners {
       id
       date
+      isGoldenTicket
+
       winner {
         name
         picture {
@@ -75,6 +86,11 @@ query MyQuery {
   }
 }
 `
+
+const golden = (data) => {
+    console.log(data)
+    return data === true ? 'bg-gradient-to-b from-yellow-300 to-yellow-500 text-black' : 'dark:bg-navy-500 dark:text-white bg-seashell-500 text-black'
+}
 
 const { data } = await useGraphqlQuery({ query: QUERY })
 
