@@ -87,12 +87,11 @@ query MyQuery {
 }
 `
 
+const { data } = await useGraphqlQuery({ query: QUERY })
+
 const golden = (data) => {
-    console.log(data)
     return data === true ? 'bg-gradient-to-b from-yellow-300 to-yellow-500 text-black' : 'dark:bg-navy-500 dark:text-white bg-seashell-500 text-black'
 }
-
-const { data } = await useGraphqlQuery({ query: QUERY })
 
 const winners = computed(() => {
     return data?.value?.adventCalendar?.winners

@@ -3,6 +3,7 @@
         <div class="flex flex-col pb-32">
             <template v-if="!keyholder">
                 <dashboard-intro />
+                <recently-updated-articles />
                 <advent-calendar v-if="isXmasTheme" />
                 <team-members />
                 <been-awesome-winners />
@@ -13,6 +14,7 @@
                 <keyholder-nav />
                 <last-orders />
                 <standing-orders />
+                <recently-updated-articles />
                 <advent-calendar v-if="isXmasTheme" />
                 <been-awesome-winners />
                 <team-members />

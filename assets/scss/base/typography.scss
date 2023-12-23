@@ -128,6 +128,10 @@ hr {
     @apply mt-6;
   }
 
+  ol {
+    @apply list-decimal ml-8;
+  }
+
   ul {
     @apply mb-4 text-sm flex flex-col space-y-2;
 
