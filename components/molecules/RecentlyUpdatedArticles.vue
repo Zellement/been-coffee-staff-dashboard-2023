@@ -1,32 +1,34 @@
 <template>
-    <section class="my-16 ">
-        <div class="container">
-            <h2 class="mb-6 h1">
-                Recently Updated Articles
-            </h2>
-            <ul class="grid grid-cols-2 gap-2 md:gap-4 lg:gap-8 md:grid-cols-2 lg:grid-cols-4">
-                <li
-                    v-for="item in data.allArticles"
-                    :key="item.id"
-                    class="flex flex-grow w-full"
-                >
-                    <nuxt-link
-                        class="flex flex-col flex-grow p-2 transition-colors duration-300 border rounded-lg lg:p-4 bg-white/50 dark:bg-navy/60 hover:bg-white dark:hover:bg-navy-600 border-current/40"
-                        :to="`/article/${item.slug}`"
+    <div class="relative">
+        <section class="py-8">
+            <div class="container">
+                <h2 class="mb-6 h1">
+                    Recently Updated Articles
+                </h2>
+                <ul class="grid grid-cols-2 gap-2 md:gap-4 lg:gap-8 md:grid-cols-2 lg:grid-cols-4">
+                    <li
+                        v-for="item in data.allArticles"
+                        :key="item.id"
+                        class="flex flex-grow w-full"
                     >
-                        <span class="text-lg font-bold font-riverside">{{ item.title }}</span>
-                        <span class="mb-4 text-xs">{{ item.subtitle }}</span>
-                        <span class="mt-auto text-2xs">Updated: {{ inputDate(item._updatedAt) }}</span>
-                    </nuxt-link>
-                </li>
-            </ul>
+                        <nuxt-link
+                            class="flex flex-col flex-grow p-2 transition-colors duration-300 border rounded-lg lg:p-4 bg-white/50 dark:bg-navy/60 hover:bg-white dark:hover:bg-navy-600 border-current/40"
+                            :to="`/article/${item.slug}`"
+                        >
+                            <span class="text-lg font-bold font-riverside">{{ item.title }}</span>
+                            <span class="mb-4 text-xs">{{ item.subtitle }}</span>
+                            <span class="mt-auto text-2xs">Updated: {{ inputDate(item._updatedAt) }}</span>
+                        </nuxt-link>
+                    </li>
+                </ul>
 
-            <site-search
-                display-text="See all articles"
-                class="mt-8 button"
-            />
-        </div>
-    </section>
+                <site-search
+                    display-text="See all articles"
+                    class="mt-8 button"
+                />
+            </div>
+        </section>
+    </div>
 </template>
 
 <script setup>
