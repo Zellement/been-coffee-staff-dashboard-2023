@@ -5,7 +5,8 @@ export const useUiStore = defineStore('ui', {
         showSearchResults: false,
         showProfileData: false,
         isXmasThemed: false,
-        showBahHumbug: false
+        showBahHumbug: false,
+        isNewYearThemed: false
     }),
     actions: {
         toggleSearchResults() {
@@ -25,9 +26,21 @@ export const useUiStore = defineStore('ui', {
             if (thisMonth === 'Dec') {
                 this.isXmasThemed = true
                 this.showBahHumbug = true
+            }
+        },
+        setNewYearTheme() {
+            const thisMonth = new Date().toLocaleDateString('en-GB', {
+                month: 'short'
+            })
+            const thisDay = new Date().toLocaleDateString('en-GB', {
+                day: '2-digit'
+            })
+            if (thisMonth === 'Jan') {
+                if (thisDay < 8) {
+                    this.isNewYearThemed = true
+                }
             } else {
-                this.isXmasThemed = false
-                this.showBahHumbug = false
+                this.isNewYearThemed = false
             }
         }
     }

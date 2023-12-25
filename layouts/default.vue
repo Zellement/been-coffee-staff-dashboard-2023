@@ -13,6 +13,12 @@
         >
             <lottie-swinging-santa class="-translate-y-10 translate-x-1/4" />
         </div>
+        <div
+            v-if="isNewYearTheme"
+            class="absolute top-0 right-0 flex w-[400px] h-auto overflow-hidden pointer-events-none "
+        >
+            <lottie-new-year class="" />
+        </div>
         <button
             v-if="showBahHumbug"
             class="fixed z-10 flex flex-row items-center gap-2 text-xs top-2 right-3"
@@ -47,6 +53,10 @@ const isXmasTheme = computed(() => {
     return uiStore.isXmasThemed
 })
 
+const isNewYearTheme = computed(() => {
+    return uiStore.isNewYearThemed
+})
+
 const showBahHumbug = computed(() => {
     return uiStore.showBahHumbug
 })
@@ -61,6 +71,7 @@ const toggleActiveClasses = computed(() => {
 
 onMounted(() => {
     uiStore.setXmasMonth()
+    uiStore.setNewYearTheme()
 })
 
 </script>
