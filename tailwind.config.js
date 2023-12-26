@@ -17,6 +17,9 @@ module.exports = {
         './components/**/*.{js,vue}',
         './layouts/**/*.{js,vue}'
     ],
+    safelist: [
+        'fill-current'
+    ],
     theme: {
         fontSize: {
             '3xs': [

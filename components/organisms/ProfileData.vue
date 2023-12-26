@@ -59,19 +59,32 @@
                     </button>
                 </li>
                 <li
-                    v-if="payslipDir"
-                    class="flex pt-4"
+                    class="flex flex-col pt-4"
                 >
                     <nuxt-link
                         class="self-start button"
                         target="_blank"
-                        :to="payslipDir"
+                        to="https://beencoffeehouseltd.freeagent.com/"
                     >
                         <Icon
                             name="ic:sharp-currency-pound"
                             class="w-4 h-4 transition-all duration-300 hover:rotate-90"
                         />
-                        <span>View your payslips</span>
+                        <span class="flex gap-2">View your payslips on <img
+                            src="/freeagent.svg"
+                            class="w-full h-auto max-w-[80px] "
+                        ></span>
+                        <Icon
+                            name="iconamoon:link-external-fill"
+                            class="w-4 h-4 transition-all duration-300 hover:rotate-90"
+                        />
+                    </nuxt-link>
+                    <nuxt-link
+                        class="flex gap-2 mt-2 text-xs italic transition-all duration-300 hover:text-butterscotch-500 dark:hover:text-butterscotch-500 dark:text-white"
+                        to="/article/payslips"
+                        @click="uiStore.toggleProfileData(false)"
+                    >
+                        Learn more about Freeagent
                     </nuxt-link>
                 </li>
             </ul>
@@ -102,13 +115,6 @@ const userName = computed(() => {
 const tillPin = computed(() => {
     return userStore.userData?.till_pin
 })
-const payslipDir = computed(() => {
-    return userStore.userData?.payslip_dir
-})
-// const keyholder = computed(() => {
-//     return userStore.userData?.keyholder
-// })
-
 const keyholderLayout = computed(() => {
     return userStore.keyholderLayout
 })
