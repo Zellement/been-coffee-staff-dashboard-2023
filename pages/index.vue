@@ -1,6 +1,6 @@
 <template>
     <div class="relative">
-        <div class="flex flex-col pb-32">
+        <div class="flex flex-col pb-32 gap-16 pt-8">
             <template v-if="!keyholder">
                 <dashboard-intro />
                 <recently-updated-articles />

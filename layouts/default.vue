@@ -47,6 +47,10 @@
 
 import { useUiStore } from '@/stores/ui'
 
+const fixPage = computed(() => {
+    return uiStore.fixBody
+})
+
 const uiStore = useUiStore()
 
 const isXmasTheme = computed(() => {
@@ -72,6 +76,15 @@ const toggleActiveClasses = computed(() => {
 onMounted(() => {
     uiStore.setXmasMonth()
     uiStore.setNewYearTheme()
+})
+
+useHead({
+    bodyAttrs: {
+        class: computed(() => {
+            if (fixPage.value) return 'overflow-hidden'
+            return ''
+        })
+    }
 })
 
 </script>

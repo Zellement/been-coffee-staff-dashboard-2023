@@ -19,6 +19,8 @@ const uiStore = useUiStore()
 
 const client = useSupabaseClient()
 
+console.log(client)
+
 const handleSignOut = async () => {
     try {
         const { error } = await client.auth.signOut()

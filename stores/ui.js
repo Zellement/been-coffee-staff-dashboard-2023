@@ -8,6 +8,11 @@ export const useUiStore = defineStore('ui', {
         showBahHumbug: false,
         isNewYearThemed: false
     }),
+    getters: {
+        fixBody() {
+            return this.showSearchResults || this.showProfileData
+        }
+    },
     actions: {
         toggleSearchResults() {
             this.showSearchResults = !this.showSearchResults

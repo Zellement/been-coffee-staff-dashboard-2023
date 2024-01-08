@@ -28,12 +28,15 @@
                             {{ currentWinner.winner?.name }}
                         </h3>
 
-                        <div class="flex flex-row items-center gap-2 mb-4 opacity-80">
-                            <Icon
-                                name="pepicons-pop:calendar-circle"
-                                class="w-4 h-4 "
-                            />
-                            <span><em>Since</em> {{ dateConverter(currentWinner?.from) }}</span>
+                        <div class="flex flex-col items-center mb-4 opacity-80">
+                            <span class="flex flex-row gap-1 items-center">
+                                <Icon
+                                    name="pepicons-pop:calendar-circle"
+                                    class="w-4 h-4 "
+                                />
+                                <span><em>Since</em> {{ dateConverter(currentWinner?.from) }}</span>
+                            </span>
+                            <span class="text-xs italic">{{ Math.round(duration(new Date(), currentWinner.from)) }} days</span>
                         </div>
 
                         <div class="flex w-auto overflow-hidden aspect-square">

@@ -1,5 +1,5 @@
 <template>
-    <section class="my-16 ">
+    <section class="">
         <div class="container">
             <h2 class="mb-6 h1">
                 Advent Calendar Winners
