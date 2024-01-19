@@ -1,7 +1,10 @@
 <template>
-    <NuxtLayout>
-        <nuxt-page />
-    </NuxtLayout>
+    <div>
+        <nuxt-pwa-manifest />
+        <NuxtLayout>
+            <nuxt-page />
+        </NuxtLayout>
+    </div>
 </template>
 
 <script setup>
