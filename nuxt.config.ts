@@ -15,7 +15,6 @@ export default defineNuxtConfig({
     image: {
         domains: ['https://www.datocms-assets.com']
     },
-    target: 'static',
     devServerHandlers: [],
     components: [
         {
@@ -23,10 +22,35 @@ export default defineNuxtConfig({
             pathPrefix: false
         }
     ],
-    modules: ['@nuxtjs/color-mode', 'nuxt-icon', '@nuxtjs/tailwindcss', '@pinia/nuxt', '@nuxt/image', '@nuxtjs/supabase'],
+    modules: ['@nuxtjs/color-mode', 'nuxt-icon', '@nuxtjs/tailwindcss', '@pinia/nuxt', '@nuxt/image', '@nuxtjs/supabase', '@vite-pwa/nuxt'],
     colorMode: {
         classSuffix: '',
         preference: 'dark'
+    },
+    pwa: {
+        registerType: 'autoUpdate',
+        manifest: {
+            name: 'Been Coffee Dashboard',
+            short_name: 'Been Dash',
+            theme_color: '#FAB944',
+            background_color: '#FFF4E8',
+            icons: [
+                {
+                    src: '/been-staff-dashboard.png',
+                    sizes: '1364x1364',
+                    type: 'image/png',
+                    purpose: 'any'
+                }
+            ]
+        },
+        workbox: {
+            globPatterns: ['**/*.{js,css,html,png,svg,ico}']
+        },
+        devOptions: {
+            enabled: true,
+            suppressWarnings: true,
+            navigateFallbackAllowlist: [/^\/$/]
+        }
     },
     tailwindcss: {
         cssPath: '~/assets/scss/app.scss'
