@@ -24,3 +24,8 @@ export const dateConverterYearOnly = (value) => {
     const options = { year: 'numeric' }
     return event.toLocaleDateString('en-UK', options)
 }
+
+export const timeConverter = (value) => {
+    const event = new Date(value)
+    return event.toLocaleTimeString('en-UK')
+}

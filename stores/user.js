@@ -4,6 +4,7 @@ export const useUserStore = defineStore('user', {
     state: () => ({
         userData: null,
         userDatoData: null,
+        userMeta: null,
         keyholderLayout: null
     }),
     actions: {
@@ -12,6 +13,10 @@ export const useUserStore = defineStore('user', {
             const { data } = await client
                 .from('profiles')
                 .select('display_name, till_pin, payslip_dir, keyholder, dato_id')
+
+            const user = useSupabaseUser()
+
+            this.userMeta = user.value
             this.userData = data[0]
             this.keyholderLayout = data[0].keyholder
             if (this.userData.dato_id) {
