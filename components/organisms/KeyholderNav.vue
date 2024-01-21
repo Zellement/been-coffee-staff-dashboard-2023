@@ -1,7 +1,7 @@
 <template>
     <div class="relative">
         <div class="container">
-            <h2 class="h1">
+            <h2 class="mb-8 h1">
                 Keyholder Quick Items
             </h2>
 
