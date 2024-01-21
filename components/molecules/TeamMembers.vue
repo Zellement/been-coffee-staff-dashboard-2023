@@ -1,9 +1,13 @@
 <template>
     <div class="relative">
-        <div class="container ">
+        <div class="container flex flex-row justify-between">
             <h2 class="h1">
                 Team
             </h2>
+            <a
+                class="button"
+                href="/team"
+            >See the whole team</a>
         </div>
         <div class="px-2 overflow-hidden md:px-4">
             <div class="w-full py-8 overflow-x-scroll">

@@ -46,4 +46,8 @@ const plus14days = new Date(new Date().getTime() + (13 * 24 * 60 * 60 * 1000))
 const plus21days = new Date(new Date().getTime() + (20 * 24 * 60 * 60 * 1000))
 const plus28days = new Date(new Date().getTime() + (27 * 24 * 60 * 60 * 1000))
 
+useHead({
+    title: 'Day Dot Helper'
+})
+
 </script>
