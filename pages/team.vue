@@ -4,7 +4,7 @@
             The Team
         </h1>
 
-        <ul class="grid grid-cols-2 gap-2 md:grid-cols-3 lg:grid-cols-4 md:gap-8">
+        <ul class="grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-4 md:gap-8">
             <li
                 v-for="member in team"
                 :key="member.id"
