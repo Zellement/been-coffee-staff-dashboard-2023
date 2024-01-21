@@ -1,5 +1,8 @@
 <template>
-    <div class="relative">
+    <div
+        v-if="team?.length"
+        class="relative"
+    >
         <div class="container flex flex-row justify-between">
             <h2 class="h1">
                 Team
@@ -41,32 +44,12 @@
 
 <script setup>
 import { dateConverter } from '@/scripts/helpers'
-const QUERY = `
-query {
-    allTeams {
-        id
-        name
-        position
-        picture {
-            responsiveImage {
-                alt
-                base64
-                bgColor
-                title
-                srcSet
-                }
-            url
-            }
-        role
-        startDate
-        }
-    }
-`
+import { useTeamStore } from '@/stores/team'
+
+const teamStore = useTeamStore()
 
 const team = computed(() => {
-    return data.value?.allTeams
+    return teamStore.currentTeam
 })
-
-const { data } = await useGraphqlQuery({ query: QUERY })
 
 </script>

@@ -1,10 +1,10 @@
 <template>
-    <div class="flex flex-col w-full container px-10 pt-0 pb-32 mx-auto">
+    <div class="container flex flex-col w-full px-10 pt-0 pb-32 mx-auto">
         <h1 class="mb-8 h1">
             The Team
         </h1>
 
-        <ul class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-8">
+        <ul class="grid grid-cols-2 gap-2 md:grid-cols-3 lg:grid-cols-4 md:gap-8">
             <li
                 v-for="member in team"
                 :key="member.id"
@@ -19,9 +19,9 @@
                         class="object-cover w-full h-full"
                     >
                 </div>
-                <ul class="flex flex-col p-4 bg-butterscotch-200 rounded shadow-xl text-xs dark:bg-black mx-2 -mt-2 md:mx-4 md:-mt-4 relative">
+                <ul class="relative flex flex-col p-4 mx-2 -mt-2 text-xs rounded shadow-xl bg-butterscotch-200 dark:bg-black md:mx-4 md:-mt-4">
                     <li
-                        class="flex flex-row items-center justify-between gap-2 font-krete text-sm"
+                        class="flex flex-row items-center justify-between gap-2 text-sm font-krete"
                     >
                         {{ member.role }}
                     </li>
@@ -53,35 +53,14 @@
 </template>
 <script setup>
 import { dateConverterNoYear, dateConverter } from '@/scripts/helpers'
-const QUERY = `
-query {
-    allTeams(filter: {formerEmployee: {eq: "false"}}) {
-        id
-        name
-        position
-        picture {
-            responsiveImage {
-                alt
-                base64
-                bgColor
-                title
-                srcSet
-                }
-            url
-            }
-        role
-        managerKeyHolder
-        startDate
-        birthday
-        }
-    }
-`
+
+import { useTeamStore } from '@/stores/team'
+
+const teamStore = useTeamStore()
 
 const team = computed(() => {
-    return data.value?.allTeams
+    return teamStore.currentTeam
 })
-
-const { data } = await useGraphqlQuery({ query: QUERY })
 
 useHead({
     title: 'The Team'

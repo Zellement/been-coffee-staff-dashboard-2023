@@ -18,3 +18,9 @@ export const dateConverterNoYear = (value) => {
     const options = { month: 'long', day: 'numeric' }
     return event.toLocaleDateString('en-UK', options)
 }
+
+export const dateConverterYearOnly = (value) => {
+    const event = new Date(value)
+    const options = { year: 'numeric' }
+    return event.toLocaleDateString('en-UK', options)
+}

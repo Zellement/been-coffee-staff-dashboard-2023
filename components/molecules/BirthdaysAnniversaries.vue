@@ -1,37 +1,55 @@
 <template>
-    <div class="relative">
-        <div class="container flex flex-row justify-between">
-            <h2 class="h1">
-                Team
-            </h2>
-            <a
-                class="button"
-                href="/team"
-            >See the whole team</a>
-        </div>
+    <div
+        v-if="hasTeamMembersToShow"
+        class="relative"
+    >
         <div class="px-2 overflow-hidden md:px-4">
-            <div class="w-full py-8 overflow-x-scroll">
-                <div class="flex flex-row space-x-4">
-                    <div
-                        v-for="item in team"
-                        :key="item.id"
-                        class="relative w-80 min-w-[200px] flex"
-                    >
-                        <span class="absolute bottom-0 left-0 flex flex-col px-2 py-1 text-xs rounded-tr bg-seashell dark:bg-navy-500">
-                            <span class="leading-tight">{{ item.name }}</span>
-                            <span class="leading-tight opacity-50 text-2xs">{{ item.role }}</span>
-                        </span>
-                        <span class="absolute bottom-0 right-0 flex flex-col items-end px-2 py-1 text-xs rounded-tl bg-seashell dark:bg-navy-500">
-                            <span class="leading-tight opacity-50 text-3xs">Started on</span>
-                            <span class="leading-tight text-3xs">{{ dateConverter(item.startDate) }}</span>
-                        </span>
-                        <div class="flex w-full overflow-hidden  aspect-[4/5]">
-                            <img
-                                :alt="item.name"
-                                :src="`${item?.picture?.url}?w=300`"
-                                class="object-cover w-full h-full"
-                            >
+            <div class="grid grid-cols-2 gap-4 lg:grid-cols-3">
+                <div
+                    v-for="member in teamWithBirthdays"
+                    :key="member.id"
+                    class="relative flex w-full overflow-hidden"
+                >
+                    <div class="flex w-full overflow-hidden relative aspect-[4/5]">
+                        <div class="absolute bottom-0 left-0 right-0 w-full h-1/2 bg-navy-500/50">
+                            <lottie-happy-birthday
+                                :key="`lottie__${member.id}`"
+                                class=""
+                            />
                         </div>
+                        <span class="absolute bottom-0 p-4 text-3xl text-white -translate-x-1/2 left-1/2 left font-riverside">{{ member.name }}</span>
+                        <img
+                            :alt="member.name"
+                            :src="`${member?.picture?.url}?w=300`"
+                            class="object-cover w-full h-full"
+                        >
+                    </div>
+                </div>
+                <div
+                    v-for="member in teamWithAnniversaries"
+                    :key="member.id"
+                    class="relative flex w-full overflow-hidden"
+                >
+                    <div class="flex w-full overflow-hidden relative aspect-[4/5]">
+                        <div class="absolute bottom-0 left-0 right-0 w-full h-2/3 bg-gradient-to-t from-seashell-600">
+                            <lottie-celebration
+                                :key="`lottie__celeb__${member.id}`"
+                                class=""
+                            />
+                        </div>
+                        <img
+                            :alt="member.name"
+                            :src="`${member?.picture?.url}?w=300`"
+                            class="object-cover w-full h-full"
+                        >
+                        <span class="absolute bottom-0 right-0 flex flex-col w-12 p-px pr-2 leading-none text-right rounded-tl-full text-2xs font-riverside bg-navy text-butterscotch aspect-square">
+                            <span class="flex flex-col my-auto ml-auto">
+
+                                <span class="text-xl leading-none ">{{ yearFinder(member.startDate) }}</span>
+
+                                <span class="leading-none">{{ yearFinder(member.startDate) === 1 ? 'Year' : 'Years' }}</span>
+                            </span>
+                        </span>
                     </div>
                 </div>
             </div>
@@ -40,33 +58,52 @@
 </template>
 
 <script setup>
-import { dateConverter } from '@/scripts/helpers'
-const QUERY = `
-query {
-    allTeams(filter: {formerEmployee: {eq: "false"}}) {
-        id
-        name
-        position
-        picture {
-            responsiveImage {
-                alt
-                base64
-                bgColor
-                title
-                srcSet
-                }
-            url
-            }
-        role
-        startDate
-        }
-    }
-`
+import { dateConverterNoYear, dateConverterYearOnly } from '@/scripts/helpers'
+import { useTeamStore } from '@/stores/team'
 
-const team = computed(() => {
-    return data.value?.allTeams
+const todaysDate = new Date()
+
+const todaysDateWithoutYear = dateConverterNoYear(todaysDate)
+const thisYear = computed(() => {
+    return dateConverterYearOnly(todaysDate)
 })
 
-const { data } = await useGraphqlQuery({ query: QUERY })
+const teamStore = useTeamStore()
+
+const team = computed(() => {
+    return teamStore.currentTeam
+})
+
+const yearFinder = (startYear) => {
+    return dateConverterYearOnly(thisYear.value) - dateConverterYearOnly(startYear)
+}
+
+const teamWithBirthdays = computed(() => {
+    const teamMembers = []
+    team.value.forEach((member) => {
+        if (dateConverterNoYear(member.birthday) === todaysDateWithoutYear) {
+            return teamMembers.push(member)
+        }
+    })
+    return teamMembers
+})
+
+const teamWithAnniversaries = computed(() => {
+    const teamMembers = []
+    team.value.forEach((member) => {
+        if ((dateConverterNoYear(member.startDate) === todaysDateWithoutYear) && dateConverterYearOnly(member.startDate) !== dateConverterYearOnly(todaysDate)) {
+            return teamMembers.push(member)
+        }
+    })
+    return teamMembers
+})
+
+const hasTeamMembersToShow = computed(() => {
+    return teamWithBirthdays.value.length > 0 || teamWithAnniversaries.value.length > 0
+})
+
+console.log(teamWithBirthdays.value)
+console.log(teamWithAnniversaries.value)
+console.log(hasTeamMembersToShow.value)
 
 </script>
