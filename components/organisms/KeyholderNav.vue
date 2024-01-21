@@ -11,7 +11,7 @@
                     :key="link.url"
                 >
                     <span
-                        class="flex flex-col items-start gap-2 p-4 dark:bg-black/10"
+                        class="flex flex-col items-start gap-2 p-4 bg-white dark:bg-black/10"
                     >
                         <span class="flex items-center gap-2">
                             <Icon
