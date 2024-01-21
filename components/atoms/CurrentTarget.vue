@@ -1,6 +1,6 @@
 <template>
     <nuxt-link
-        class="fixed z-50 flex flex-col items-center p-1 text-white rounded text-2xs bottom-12 right-1 bg-tuscany"
+        class="fixed z-50 flex flex-col items-center p-1 text-white rounded text-2xs bottom-16 right-1 bg-tuscany"
         to="/article/target-day-bonus"
     >
         <p class="leading-none">
