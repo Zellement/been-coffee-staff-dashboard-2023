@@ -102,8 +102,4 @@ const hasTeamMembersToShow = computed(() => {
     return teamWithBirthdays.value.length > 0 || teamWithAnniversaries.value.length > 0
 })
 
-console.log(teamWithBirthdays.value)
-console.log(teamWithAnniversaries.value)
-console.log(hasTeamMembersToShow.value)
-
 </script>

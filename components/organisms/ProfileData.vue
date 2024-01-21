@@ -23,7 +23,17 @@
                     class="w-8 h-8 transition-all duration-300 hover:rotate-90"
                 />
             </button>
-            <h2 class="self mb-8 h1 max-w-[80%]">
+            <h2 class="flex flex-row gap-2 items-center mb-8 h1 max-w-[80%]">
+                <Icon
+                    v-if="!userDatoData?.picture?.url"
+                    name="ri:user-line"
+                    class="w-6 h-6"
+                />
+                <img
+                    v-else
+                    :src="`${userDatoData.picture.url}?w=50`"
+                    class="object-cover w-6 h-8 rounded-full"
+                >
                 Hello, {{ userName }}
             </h2>
             <ul class="flex flex-col mb-8 space-y-2">
@@ -40,6 +50,28 @@
                         <span>Till pin:</span>
                     </span>
                     {{ tillPin }}
+                </li>
+                <li
+                    v-if="userDatoData?.birthday"
+                    class="flex flex-row items-center gap-2"
+                >
+                    <span class="flex flex-row items-center gap-2">
+
+                        <Icon name="heroicons:cake-16-solid" />
+                        <span>Birthday:</span>
+                    </span>
+                    <span>{{ userDatoData?.birthday ? dateConverterNoYear(userDatoData?.birthday) : '--' }}</span>
+                </li>
+                <li
+                    v-if="userDatoData?.startDate"
+                    class="flex flex-row items-center gap-2"
+                >
+                    <span class="flex flex-row items-center gap-2">
+
+                        <Icon name="material-symbols-light:play-circle" />
+                        <span>Start date:</span>
+                    </span>
+                    {{ dateConverter(userDatoData?.startDate) }}
                 </li>
                 <li class="flex flex-row items-center gap-2">
                     <button
@@ -97,17 +129,22 @@
 
 import { useUiStore } from '@/stores/ui'
 import { useUserStore } from '@/stores/user'
+import { dateConverter, dateConverterNoYear } from '@/scripts/helpers'
 
 const uiStore = useUiStore()
+const userStore = useUserStore()
 
 const isXmasTheme = computed(() => {
     return uiStore.isXmasThemed
 })
 
+const userDatoData = computed(() => {
+    return userStore?.userDatoData
+})
+
 const showPanel = computed(() => {
     return uiStore.showProfileData ? 'opacity-100' : 'opacity-0 pointer-events-none'
 })
-const userStore = useUserStore()
 
 const userName = computed(() => {
     return userStore.userData?.display_name

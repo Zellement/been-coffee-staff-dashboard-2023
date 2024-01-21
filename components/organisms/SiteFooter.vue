@@ -9,9 +9,15 @@
                     @click="uiStore.toggleProfileData"
                 >
                     <Icon
+                        v-if="!userProfilePicture?.picture?.url"
                         name="ri:user-line"
                         class="w-6 h-6"
                     />
+                    <img
+                        v-else
+                        :src="`${userProfilePicture.picture.url}?w=50`"
+                        class="object-cover w-6 h-8 rounded-full"
+                    >
                     <span>
                         <template v-if="isXmasTheme">Merry Xmas,</template>
                         <template v-else>Hi,</template>
@@ -52,6 +58,10 @@ const userStore = useUserStore()
 
 const userName = computed(() => {
     return userStore?.userData?.display_name
+})
+
+const userProfilePicture = computed(() => {
+    return userStore?.userDatoData
 })
 
 const uiStore = useUiStore()
