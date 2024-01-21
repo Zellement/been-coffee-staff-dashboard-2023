@@ -1,5 +1,5 @@
 <template>
-    <div class="container flex flex-col items-center mb-16 space-y-8">
+    <div class="container flex flex-col items-center pb-20 mb-16 space-y-8">
         <content-hero
             :title="data.article.title"
             :date="data.article._updatedAt"
