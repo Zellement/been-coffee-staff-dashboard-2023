@@ -23,7 +23,7 @@
                     class="w-8 h-8 transition-all duration-300 hover:rotate-90"
                 />
             </button>
-            <h2 class="flex flex-row gap-2 items-center mb-8 h1 max-w-[80%]">
+            <h2 class="flex flex-row gap-2 items-center leading-none mb-8 h1 max-w-[80%]">
                 <Icon
                     v-if="!userDatoData?.picture?.url"
                     name="ri:user-line"
@@ -32,9 +32,9 @@
                 <img
                     v-else
                     :src="`${userDatoData.picture.url}?w=50`"
-                    class="object-cover w-6 h-8 rounded-full"
+                    class="object-cover w-6 h-8 rounded-full shadow-lg"
                 >
-                Hello, {{ userName }}
+                <span class="-mt-1 leading-none">Hello, {{ userName }}</span>
             </h2>
             <ul class="flex flex-col mb-8 space-y-2">
                 <li
