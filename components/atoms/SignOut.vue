@@ -19,7 +19,7 @@ const uiStore = useUiStore()
 
 const client = useSupabaseClient()
 
-console.log(client)
+// console.log(client)
 
 const handleSignOut = async () => {
     try {

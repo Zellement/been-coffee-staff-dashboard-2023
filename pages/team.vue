@@ -55,7 +55,7 @@
 import { dateConverterNoYear, dateConverter } from '@/scripts/helpers'
 const QUERY = `
 query {
-    allTeams(filter: {activeEmployee: {eq: "true"}}) {
+    allTeams(filter: {formerEmployee: {eq: "false"}}) {
         id
         name
         position

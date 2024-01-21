@@ -6,6 +6,12 @@
 
 <script setup>
 
+import { useTeamStore } from '@/stores/team'
+
+const teamStore = useTeamStore()
+
+teamStore.fetchCurrentTeam()
+
 </script>
 
 <style>

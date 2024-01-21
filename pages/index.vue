@@ -2,6 +2,7 @@
     <div class="relative">
         <div class="flex flex-col pb-32 gap-16 pt-8">
             <template v-if="!keyholder">
+                <birthdays-anniversaries />
                 <dashboard-intro />
                 <recently-updated-articles />
                 <advent-calendar v-if="isXmasTheme" />
@@ -11,6 +12,7 @@
                 <standing-orders />
             </template>
             <template v-else>
+                <birthdays-anniversaries />
                 <keyholder-nav />
                 <last-orders />
                 <standing-orders />
