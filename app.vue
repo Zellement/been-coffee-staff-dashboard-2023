@@ -15,6 +15,12 @@ const teamStore = useTeamStore()
 
 teamStore.fetchCurrentTeam()
 
+useHead({
+    meta: [
+        { 'theme-color': '#FAB944' }
+    ]
+})
+
 </script>
 
 <style>
