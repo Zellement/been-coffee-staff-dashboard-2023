@@ -2,7 +2,12 @@
     <div>
         <NuxtPwaManifest />
         <NuxtLayout>
-            <nuxt-page />
+            <NuxtPage
+                :transition="{
+                    name: 'page',
+                    mode: 'out-in'
+                }"
+            />
         </NuxtLayout>
     </div>
 </template>
@@ -34,7 +39,7 @@ useHead({
 
 .page-enter-from,
 .page-leave-to {
-    @apply translate-x-full;
+    @apply opacity-0 translate-y-4;
 }
 
 </style>

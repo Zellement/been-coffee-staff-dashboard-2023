@@ -7,10 +7,12 @@
             <h2 class="h1">
                 Team
             </h2>
-            <a
+            <nuxt-link
                 class="button"
-                href="/team"
-            >See the whole team</a>
+                to="/team"
+            >
+                See the whole team
+            </nuxt-link>
         </div>
         <div class="px-2 overflow-hidden md:px-4">
             <div class="w-full py-8 overflow-x-scroll">
