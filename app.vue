@@ -1,7 +1,10 @@
 <template>
-    <NuxtLayout>
-        <nuxt-page />
-    </NuxtLayout>
+    <div>
+        <NuxtPwaManifest />
+        <NuxtLayout>
+            <nuxt-page />
+        </NuxtLayout>
+    </div>
 </template>
 
 <script setup>
@@ -11,6 +14,15 @@ import { useTeamStore } from '@/stores/team'
 const teamStore = useTeamStore()
 
 teamStore.fetchCurrentTeam()
+
+useHead({
+    meta: [
+        {
+            name: 'theme-color',
+            content: '#FAB944'
+        }
+    ]
+})
 
 </script>
 

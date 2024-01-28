@@ -15,7 +15,6 @@ export default defineNuxtConfig({
     image: {
         domains: ['https://www.datocms-assets.com']
     },
-    target: 'static',
     devServerHandlers: [],
     components: [
         {
@@ -23,10 +22,49 @@ export default defineNuxtConfig({
             pathPrefix: false
         }
     ],
-    modules: ['@nuxtjs/color-mode', 'nuxt-icon', '@nuxtjs/tailwindcss', '@pinia/nuxt', '@nuxt/image', '@nuxtjs/supabase'],
+    modules: ['@nuxtjs/color-mode', 'nuxt-icon', '@nuxtjs/tailwindcss', '@pinia/nuxt', '@nuxt/image', '@nuxtjs/supabase', '@vite-pwa/nuxt'],
     colorMode: {
         classSuffix: '',
         preference: 'dark'
+    },
+    pwa: {
+        registerType: 'autoUpdate',
+        manifest: {
+            name: 'Been Coffee Dashboard',
+            description: 'Staff dashboard for Been Coffee',
+            short_name: 'Been Dash',
+            theme_color: '#FAB944',
+            background_color: '#FFF4E8',
+            icons: [
+                {
+                    src: '/icons/android-chrome-192x192.png',
+                    sizes: '192x192',
+                    type: 'image/png',
+                    purpose: 'any'
+                },
+                {
+                    src: '/icons/android-chrome-192x192.png',
+                    sizes: '180x180',
+                    type: 'image/png',
+                    purpose: 'any'
+                },
+                {
+                    src: '/icons/android-chrome-512x512.png',
+                    sizes: '512x512',
+                    type: 'image/png',
+                    purpose: 'any maskable'
+                }
+            ],
+            display: 'standalone'
+        },
+        workbox: {
+            globPatterns: ['**/*.{js,css,html,png,svg,ico}']
+        },
+        devOptions: {
+            enabled: true,
+            suppressWarnings: true,
+            navigateFallbackAllowlist: [/^\/$/]
+        }
     },
     tailwindcss: {
         cssPath: '~/assets/scss/app.scss'
