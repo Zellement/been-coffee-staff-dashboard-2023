@@ -31,6 +31,7 @@ export default defineNuxtConfig({
         registerType: 'autoUpdate',
         manifest: {
             name: 'Been Coffee Dashboard',
+            description: 'Staff dashboard for Been Coffee',
             short_name: 'Been Dash',
             theme_color: '#FAB944',
             background_color: '#FFF4E8',
@@ -42,10 +43,16 @@ export default defineNuxtConfig({
                     purpose: 'any'
                 },
                 {
+                    src: '/icons/android-chrome-192x192.png',
+                    sizes: '180x180',
+                    type: 'image/png',
+                    purpose: 'any'
+                },
+                {
                     src: '/icons/android-chrome-512x512.png',
                     sizes: '512x512',
                     type: 'image/png',
-                    purpose: 'any'
+                    purpose: 'any, maskable'
                 }
             ],
             display: 'standalone'
