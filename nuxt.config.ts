@@ -34,7 +34,7 @@ export default defineNuxtConfig({
             description: 'Staff dashboard for Been Coffee',
             short_name: 'Been Dash',
             theme_color: '#FAB944',
-            background_color: '#FFF4E8',
+            background_color: '#FAB944',
             icons: [
                 {
                     src: '/icons/android-chrome-192x192.png',
@@ -52,7 +52,7 @@ export default defineNuxtConfig({
                     src: '/icons/android-chrome-512x512.png',
                     sizes: '512x512',
                     type: 'image/png',
-                    purpose: 'any, maskable'
+                    purpose: 'any maskable'
                 }
             ],
             display: 'standalone'
