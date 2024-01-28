@@ -47,7 +47,8 @@ export default defineNuxtConfig({
                     type: 'image/png',
                     purpose: 'any'
                 }
-            ]
+            ],
+            display: 'standalone'
         },
         workbox: {
             globPatterns: ['**/*.{js,css,html,png,svg,ico}']
