@@ -17,7 +17,10 @@ teamStore.fetchCurrentTeam()
 
 useHead({
     meta: [
-        { 'theme-color': '#FAB944' }
+        {
+            name: 'theme-color',
+            content: '#FAB944'
+        }
     ]
 })
 
