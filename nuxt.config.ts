@@ -36,8 +36,14 @@ export default defineNuxtConfig({
             background_color: '#FFF4E8',
             icons: [
                 {
-                    src: '/been-staff-dashboard.png',
-                    sizes: '1364x1364',
+                    src: '/icons/android-chrome-192x192.png',
+                    sizes: '192x192',
+                    type: 'image/png',
+                    purpose: 'any'
+                },
+                {
+                    src: '/icons/android-chrome-512x512.png',
+                    sizes: '512x512',
                     type: 'image/png',
                     purpose: 'any'
                 }
