@@ -3,7 +3,7 @@
         <NuxtPwaManifest />
         <NuxtLoadingIndicator
             color="#D05C32"
-            height="5"
+            :height="5"
         />
         <NuxtLayout>
             <NuxtPage
