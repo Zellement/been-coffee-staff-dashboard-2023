@@ -7,6 +7,7 @@ export default defineNuxtConfig({
         public: {
             DAT0_CMS_TOKEN: process.env.DATO_CMS_TOKEN,
             MC_CLIENT: process.env.MC_CLIENT,
+            SITE_URL: process.env.SITE_URL,
             MC_API: process.env.MC_API,
             GOOGLE_SHEETS_SCRIPT_DAILY_CASH_BREAKDOWN: process.env.GOOGLE_SHEETS_SCRIPT_DAILY_CASH_BREAKDOWN,
             GOOGLE_SHEETS_SCRIPT_DAILY_TEMPERATURE_LOGS: process.env.GOOGLE_SHEETS_SCRIPT_DAILY_TEMPERATURE_LOGS
@@ -16,6 +17,10 @@ export default defineNuxtConfig({
         domains: ['https://www.datocms-assets.com']
     },
     devServerHandlers: [],
+    devServer: {
+        port: 3000, // default: 3000
+        host: '0.0.0.0' // default: localhost
+    },
     components: [
         {
             path: '~/components',

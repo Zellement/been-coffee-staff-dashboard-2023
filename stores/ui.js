@@ -7,7 +7,8 @@ export const useUiStore = defineStore('ui', {
         isXmasThemed: false,
         showBahHumbug: false,
         isNewYearThemed: false,
-        originalUrl: null
+        originalUrl: null,
+        currentUrl: null
     }),
     getters: {
         fixBody () {

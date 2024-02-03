@@ -1,4 +1,11 @@
+import { useUiStore } from '@/stores/ui'
+
 export default defineNuxtRouteMiddleware((to, from) => {
+    const uiStore = useUiStore()
+    const config = useRuntimeConfig()
+
+    uiStore.currentUrl = `${config.public.SITE_URL}${to.path}`
+
     const user = useSupabaseUser()
 
     if (user?.value?.aud === 'authenticated') {
