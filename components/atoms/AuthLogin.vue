@@ -36,6 +36,7 @@
 const client = useSupabaseClient()
 
 const router = useRouter()
+const route = useRoute()
 
 const loading = ref(false)
 const email = ref('')
@@ -45,13 +46,14 @@ const errorMsg = ref(null)
 
 const handleLogin = async () => {
     try {
+        console.log(route)
         loading.value = true
         const { error } = await client.auth.signInWithPassword({
             email: email.value,
             password: password.value
         })
         if (error) throw error
-        router.push('/')
+        router.push(`${route.query?.url ?? '/'}`)
     } catch (error) {
         errorMsg.value = error.message
     } finally {

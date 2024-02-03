@@ -6,24 +6,28 @@ export const useUiStore = defineStore('ui', {
         showProfileData: false,
         isXmasThemed: false,
         showBahHumbug: false,
-        isNewYearThemed: false
+        isNewYearThemed: false,
+        originalUrl: null
     }),
     getters: {
-        fixBody() {
+        fixBody () {
             return this.showSearchResults || this.showProfileData
         }
     },
     actions: {
-        toggleSearchResults() {
+        setOriginalUrl (url) {
+            this.originalUrl = url
+        },
+        toggleSearchResults () {
             this.showSearchResults = !this.showSearchResults
         },
-        toggleProfileData() {
+        toggleProfileData () {
             this.showProfileData = !this.showProfileData
         },
-        toggleXmasTheme() {
+        toggleXmasTheme () {
             this.isXmasThemed = !this.isXmasThemed
         },
-        setXmasMonth() {
+        setXmasMonth () {
             const thisMonth = new Date().toLocaleDateString('en-GB', {
                 month: 'short'
             })
@@ -33,7 +37,7 @@ export const useUiStore = defineStore('ui', {
                 this.showBahHumbug = true
             }
         },
-        setNewYearTheme() {
+        setNewYearTheme () {
             const thisMonth = new Date().toLocaleDateString('en-GB', {
                 month: 'short'
             })

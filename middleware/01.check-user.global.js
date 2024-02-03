@@ -1,11 +1,23 @@
-export default defineNuxtRouteMiddleware(to => {
+export default defineNuxtRouteMiddleware((to, from) => {
     const user = useSupabaseUser()
 
     if (user?.value?.aud === 'authenticated') {
         return
     }
 
-    if (to.fullPath === '/login') return
+    if (to.path === '/login') return
+    // Prevent adding QS to index
+    if (to.path === '/') {
+        return navigateTo({
+            path: '/login'
+        })
+    }
 
-    return navigateTo('/login')
+    // Add QS from originating URL to forward on to
+    return navigateTo({
+        path: '/login',
+        query: {
+            url: from.path
+        }
+    })
 })
