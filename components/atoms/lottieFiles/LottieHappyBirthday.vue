@@ -1,8 +1,10 @@
 <template>
-    <Vue3Lottie
-        :animation-data="HappyBirthday"
-        class="w-full h-auto"
-    />
+    <client-only>
+        <Vue3Lottie
+            :animation-data="HappyBirthday"
+            class="w-full h-auto"
+        />
+    </client-only>
 </template>
 
 <script setup>

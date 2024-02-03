@@ -13,8 +13,7 @@
                     <div class="flex w-full overflow-hidden relative aspect-[4/5]">
                         <div class="absolute bottom-0 left-0 right-0 w-full h-1/2 bg-navy-500/50">
                             <lottie-happy-birthday
-                                :key="`lottie__${member.id}`"
-                                class=""
+                                :key="`lottie___birthday__${member.id}`"
                             />
                         </div>
                         <span class="absolute bottom-0 p-4 text-3xl text-white -translate-x-1/2 left-1/2 left font-riverside">{{ member.name }}</span>

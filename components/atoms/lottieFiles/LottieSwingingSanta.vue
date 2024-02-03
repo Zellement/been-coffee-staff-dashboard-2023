@@ -1,9 +1,11 @@
 <template>
-    <Vue3Lottie
-        :animation-data="SwingingSanta"
-        :height="300"
-        :width="300"
-    />
+    <client-only>
+        <Vue3Lottie
+            :animation-data="SwingingSanta"
+            :height="300"
+            :width="300"
+        />
+    </client-only>
 </template>
 
 <script setup>
