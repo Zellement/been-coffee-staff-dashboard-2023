@@ -4,6 +4,9 @@
         class="relative"
     >
         <div class="px-2 overflow-hidden md:px-4">
+            <h2 class="mb-6 text-3xl font-riverside">
+                Celebrations today!
+            </h2>
             <div class="grid grid-cols-2 gap-4 lg:grid-cols-3">
                 <div
                     v-for="member in teamWithBirthdays"
