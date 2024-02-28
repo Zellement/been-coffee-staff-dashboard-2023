@@ -5,7 +5,7 @@
             <template v-if="!keyholder">
                 <dashboard-intro />
                 <recently-updated-articles />
-                <advent-calendar v-if="isXmasTheme" />
+                <!-- <advent-calendar v-if="isXmasTheme" /> -->
                 <team-members />
                 <been-awesome-winners />
                 <last-orders />
@@ -16,7 +16,7 @@
                 <last-orders />
                 <standing-orders />
                 <recently-updated-articles />
-                <advent-calendar v-if="isXmasTheme" />
+                <!-- <advent-calendar v-if="isXmasTheme" /> -->
                 <been-awesome-winners />
                 <team-members />
             </template>
@@ -25,17 +25,13 @@
 </template>
 <script setup>
 import { useUserStore } from '@/stores/user'
-import { useUiStore } from '@/stores/ui'
+// import { useUiStore } from '@/stores/ui'
 
 const userStore = useUserStore()
-const uiStore = useUiStore()
+// const uiStore = useUiStore()
 
 const keyholder = computed(() => {
     return userStore?.keyholderLayout
-})
-
-const isXmasTheme = computed(() => {
-    return uiStore.isXmasThemed
 })
 
 useHead({

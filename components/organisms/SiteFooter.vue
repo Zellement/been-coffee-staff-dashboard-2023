@@ -19,7 +19,7 @@
                         class="object-cover w-6 h-8 rounded-full"
                     >
                     <span>
-                        <template v-if="isXmasTheme">Merry Xmas,</template>
+                        <template v-if="uiStore.isXmasTheme">Merry Xmas,</template>
                         <template v-else>Hi,</template>
                         {{ userName }}</span>
                 </button>
@@ -65,10 +65,6 @@ const userProfilePicture = computed(() => {
 })
 
 const uiStore = useUiStore()
-
-const isXmasTheme = computed(() => {
-    return uiStore.isXmasThemed
-})
 
 onMounted(() => {
     userStore.setUserData()
