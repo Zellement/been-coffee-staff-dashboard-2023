@@ -12,11 +12,14 @@
                 v-if="uiStore.theme !== 'standard' && uiStore.showProfileData"
                 class="absolute top-0 flex w-full max-w-[150px] -translate-x-1/2 -translate-y-[90%] pointer-events-none left-1/2 "
             >
-                <lottie-easter-egg
-                    v-if="uiStore.isEasterTheme"
-                />
                 <lottie-christmas-tree
                     v-if="uiStore.isXmasTheme"
+                />
+                <lottie-fireworks
+                    v-if="uiStore.isNewYearTheme"
+                />
+                <lottie-easter-egg
+                    v-if="uiStore.isEasterTheme"
                 />
             </div>
             <button
