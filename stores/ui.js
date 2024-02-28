@@ -9,7 +9,8 @@ export const useUiStore = defineStore('ui', {
         theme: 'standard',
         themeToggleBtn: {
             show: false,
-            text: null
+            text: null,
+            icon: null
         }
     }),
     getters: {
@@ -53,7 +54,8 @@ export const useUiStore = defineStore('ui', {
                 this.theme = 'xmas'
                 this.themeToggleBtn = {
                     show: true,
-                    text: 'Bah Humbug'
+                    text: 'Bah Humbug',
+                    icon: 'tabler:christmas-tree'
                 }
                 break
             case 'Jan':
@@ -61,7 +63,8 @@ export const useUiStore = defineStore('ui', {
                     this.theme = 'newyear'
                     this.themeToggleBtn = {
                         show: true,
-                        text: 'Hide the fireworks!'
+                        text: 'Hide the fireworks!',
+                        icon: 'mingcute:firework-fill'
                     }
                 }
                 break
@@ -70,7 +73,8 @@ export const useUiStore = defineStore('ui', {
                     this.theme = 'easter'
                     this.themeToggleBtn = {
                         show: true,
-                        text: 'Bunnies give me nightmares'
+                        text: 'Bunnies give me nightmares',
+                        icon: 'mdi:rabbit'
                     }
                 }
                 break
