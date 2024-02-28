@@ -68,7 +68,7 @@ export const useUiStore = defineStore('ui', {
                     }
                 }
                 break
-            case 'Mar':
+            case 'Feb':
                 if (thisDay > 10) {
                     this.theme = 'easter'
                     this.themeToggleBtn = {

@@ -27,9 +27,6 @@
         <lottie-easter-bunny
             v-if="uiStore.isEasterTheme"
         />
-        <lottie-easter-egg
-            v-if="uiStore.isEasterTheme"
-        />
     </div>
 </template>
 
