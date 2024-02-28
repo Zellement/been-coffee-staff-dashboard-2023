@@ -4,13 +4,13 @@ export const useUiStore = defineStore('ui', {
     state: () => ({
         showSearchResults: false,
         showProfileData: false,
-        isXmasThemed: false,
-        showBahHumbug: false,
-        isNewYearThemed: false,
         originalUrl: null,
         currentUrl: null,
         theme: 'standard',
-        showDisableTheme: false
+        themeToggleBtn: {
+            show: false,
+            text: null
+        }
     }),
     getters: {
         fixBody () {
@@ -24,9 +24,6 @@ export const useUiStore = defineStore('ui', {
         },
         isEasterTheme () {
             return this.theme === 'easter'
-        },
-        showDisableTheme () {
-            return this.showDisableTheme
         }
     },
     actions: {
@@ -39,9 +36,6 @@ export const useUiStore = defineStore('ui', {
         toggleProfileData () {
             this.showProfileData = !this.showProfileData
         },
-        toggleXmasTheme () {
-            this.isXmasThemed = !this.isXmasThemed
-        },
         setTheme (theme) {
             if (theme) {
                 this.theme = theme
@@ -50,61 +44,53 @@ export const useUiStore = defineStore('ui', {
             const thisMonth = new Date().toLocaleDateString('en-GB', {
                 month: 'short'
             })
-            const thisDay = today.toLocaleDateString('en-GB', {
+            const thisDay = new Date().toLocaleDateString('en-GB', {
                 day: '2-digit'
             })
 
             switch (thisMonth) {
             case 'Dec':
                 this.theme = 'xmas'
-                this.showDisableTheme = true
+                this.themeToggleBtn = {
+                    show: true,
+                    text: 'Bah Humbug'
+                }
                 break
             case 'Jan':
                 if (thisDay < 8) {
                     this.theme = 'newyear'
+                    this.themeToggleBtn = {
+                        show: true,
+                        text: 'Hide the fireworks!'
+                    }
                 }
                 break
-            case 'Mar':
+            case 'Feb':
                 if (thisDay > 15) {
                     this.theme = 'easter'
+                    this.themeToggleBtn = {
+                        show: true,
+                        text: 'Bunnies give me nightmares'
+                    }
                 }
                 break
             case 'Apr':
                 if (thisDay < 15) {
                     this.theme = 'easter'
+                    this.themeToggleBtn = {
+                        show: true,
+                        text: 'Bunnies give me nightmares'
+                    }
                 }
                 break
-            default: this.theme = 'standard'
+            default:
+                this.theme = 'standard'
+                this.themeToggleBtn = {
+                    show: false,
+                    text: null
+                }
             }
         }
-        // setXmasMonth () {
-        //     const today = new Date()
-        //     const thisMonth = today.toLocaleDateString('en-GB', {
-        //         month: 'short'
-        //     })
-        //     const thisDay = today.toLocaleDateString('en-GB', {
-        //         day: '2-digit'
-        //     })
 
-        //     if (thisMonth === 'Dec') {
-        //         this.isXmasThemed = true
-        //         this.showBahHumbug = true
-        //     }
-        // },
-        // setNewYearTheme () {
-        //     const thisMonth = new Date().toLocaleDateString('en-GB', {
-        //         month: 'short'
-        //     })
-        //     const thisDay = new Date().toLocaleDateString('en-GB', {
-        //         day: '2-digit'
-        //     })
-        //     if (thisMonth === 'Jan') {
-        //         if (thisDay < 8) {
-        //             this.isNewYearThemed = true
-        //         }
-        //     } else {
-        //         this.isNewYearThemed = false
-        //     }
-        // }
     }
 })
