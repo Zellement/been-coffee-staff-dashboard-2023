@@ -1,11 +1,15 @@
 <template>
     <client-only>
-        <Vue3Lottie
-            :animation-data="NewYear"
-            :height="300"
-            :width="300"
-            class="object-contain w-full h-auto"
-        />
+        <div
+            class="absolute top-0 right-0 flex w-[400px] h-auto overflow-hidden pointer-events-none "
+        >
+            <Vue3Lottie
+                :animation-data="NewYear"
+                :height="300"
+                :width="300"
+                class="object-contain w-full h-auto"
+            />
+        </div>
     </client-only>
 </template>
 

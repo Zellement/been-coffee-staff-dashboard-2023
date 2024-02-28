@@ -4,25 +4,19 @@
     >
         <site-header />
         <snow-fall
-            v-if="isXmasTheme"
+            v-if="uiStore.isXmasTheme"
             class="dark:opacity-40"
         />
-        <div
-            v-if="isXmasTheme"
-            class="absolute top-0 right-0 flex w-1/2 h-auto overflow-hidden pointer-events-none "
-        >
-            <lottie-swinging-santa class="-translate-y-10 translate-x-1/4" />
-        </div>
-        <div
-            v-if="isNewYearTheme"
-            class="absolute top-0 right-0 flex w-[400px] h-auto overflow-hidden pointer-events-none "
-        >
-            <lottie-new-year class="" />
-        </div>
+        <lottie-swinging-santa
+            v-if="uiStore.isXmasTheme"
+        />
+        <lottie-new-year
+            v-if="uiStore.isNewYearTheme"
+        />
         <button
-            v-if="showBahHumbug"
+            v-if="uiStore.showDisableTheme"
             class="fixed z-10 flex flex-row items-center gap-2 text-xs top-2 right-3"
-            @click="uiStore.toggleXmasTheme()"
+            @click="uiStore.setTheme('standard')"
         >
             <span
                 :class="toggleClasses"
@@ -53,29 +47,18 @@ const fixPage = computed(() => {
 
 const uiStore = useUiStore()
 
-const isXmasTheme = computed(() => {
-    return uiStore.isXmasThemed
-})
-
-const isNewYearTheme = computed(() => {
-    return uiStore.isNewYearThemed
-})
-
-const showBahHumbug = computed(() => {
-    return uiStore.showBahHumbug
-})
-
 const toggleClasses = computed(() => {
-    return !isXmasTheme.value ? 'bg-green-500' : 'dark:bg-white/30 bg-black/20'
+    return !uiStore.isXmasTheme.value ? 'bg-green-500' : 'dark:bg-white/30 bg-black/20'
 })
 
 const toggleActiveClasses = computed(() => {
-    return isXmasTheme.value ? '-translate-x-full' : 'ml-auto'
+    return uiStore.isXmasTheme.value ? '-translate-x-full' : 'ml-auto'
 })
 
 onMounted(() => {
-    uiStore.setXmasMonth()
-    uiStore.setNewYearTheme()
+    // uiStore.setXmasMonth()
+    // uiStore.setNewYearTheme()
+    uiStore.setTheme()
 })
 
 useHead({
