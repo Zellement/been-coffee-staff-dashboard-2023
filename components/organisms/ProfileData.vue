@@ -9,7 +9,7 @@
             @click="uiStore.toggleProfileData(true)"
         >
             <div
-                v-if="isXmasTheme && uiStore.showProfileData"
+                v-if="uiStore.isXmasTheme && uiStore.showProfileData"
                 class="absolute top-0 flex w-full max-w-[150px] -translate-x-1/2 -translate-y-[90%] pointer-events-none left-1/2 "
             >
                 <lottie-christmas-tree class=" left-1/2" />
@@ -134,10 +134,6 @@ import { dateConverter, dateConverterNoYear } from '@/scripts/helpers'
 
 const uiStore = useUiStore()
 const userStore = useUserStore()
-
-const isXmasTheme = computed(() => {
-    return uiStore.isXmasThemed
-})
 
 const userDatoData = computed(() => {
     return userStore?.userDatoData
