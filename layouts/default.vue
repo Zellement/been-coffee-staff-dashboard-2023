@@ -3,25 +3,30 @@
         class="overflow-hidden"
     >
         <site-header />
+        <theme-toggle-btn
+            v-if="uiStore.themeToggleBtn.show"
+        />
+        <nuxt-page />
+        <instant-search />
+        <profile-data />
+        <current-target />
+        <site-footer />
+
+        <!-- Themed stuff -->
         <snow-fall
             v-if="uiStore.isXmasTheme"
             class="dark:opacity-40"
         />
+
         <lottie-swinging-santa
             v-if="uiStore.isXmasTheme"
         />
         <lottie-new-year
             v-if="uiStore.isNewYearTheme"
         />
-        <theme-toggle-btn
-            v-if="uiStore.themeToggleBtn.show"
+        <lottie-easter-bunny
+            v-if="uiStore.isEasterTheme"
         />
-
-        <nuxt-page />
-        <instant-search />
-        <profile-data />
-        <current-target />
-        <site-footer />
     </div>
 </template>
 
