@@ -31,16 +31,12 @@
                             <span class="leading-tight text-2xs">{{ dateConverter(item.startDate) }}</span>
                         </span>
                         <div class="flex w-full overflow-hidden">
-                            <SanityImage
-                                :asset-id="`${item.image.asset._ref}`"
-                                auto="format"
-                                fit="crop"
-                                class="object-cover w-full h-full"
-                                :fp-x="item.image.hotspot?.x"
-                                :fp-y="item.image.hotspot?.y"
-                                w="500"
-                                h="700"
-                            />
+                            <img
+                                :src="$urlFor(item.image).width(400).height(700).url()"
+                                height="400"
+                                width="700"
+                                loading="lazy"
+                            >
                         </div>
                     </div>
                 </div>
