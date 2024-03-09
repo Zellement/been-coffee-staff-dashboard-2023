@@ -116,8 +116,15 @@ hr {
 .content {
   @for $i from 2 through 6 {
     h#{$i} {
-      @apply font-bold;
+      @apply font-bold ;
     }
+  }
+
+  h2 {
+    @apply text-xl dark:text-butterscotch-500 text-tuscany-500;
+  }
+  h3 {
+    @apply text-lg dark:text-butterscotch-300 text-tuscany-600;
   }
 
   p strong {
@@ -144,7 +151,7 @@ hr {
   }
 
   a {
-    @apply  border-b border-current text-tuscany-500 hover:text-tuscany-600 transition-all duration-300;
+    @apply  border-b border-current dark:text-tuscany-300 text-tuscany-500 hover:text-tuscany-600 transition-all duration-300;
   }
 
     table td {
