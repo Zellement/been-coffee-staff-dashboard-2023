@@ -12,12 +12,17 @@
                 <h3 class="h4">
                     {{ member.name }}
                 </h3>
-                <div class="flex w-full overflow-hidden aspect-[4/5]">
-                    <img
-                        :alt="member.name"
-                        :src="`${member?.picture?.url}?w=300`"
+                <div class="flex w-full overflow-hidden">
+                    <SanityImage
+                        :asset-id="`${member.image.asset._ref}`"
+                        auto="format"
+                        fit="crop"
                         class="object-cover w-full h-full"
-                    >
+                        :fp-x="member.image.hotspot?.x"
+                        :fp-y="member.image.hotspot?.y"
+                        w="500"
+                        h="700"
+                    />
                 </div>
                 <ul class="relative flex flex-col p-4 mx-2 -mt-2 text-xs rounded shadow-xl bg-butterscotch-200 dark:bg-black md:mx-4 md:-mt-4">
                     <li
