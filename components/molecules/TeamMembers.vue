@@ -27,15 +27,20 @@
                             <span class="leading-tight opacity-50 text-2xs">{{ item.role }}</span>
                         </span>
                         <span class="absolute bottom-0 right-0 flex flex-col items-end px-2 py-1 text-xs rounded-tl bg-seashell dark:bg-navy-500">
-                            <span class="leading-tight opacity-50 text-3xs">Started on</span>
-                            <span class="leading-tight text-3xs">{{ dateConverter(item.startDate) }}</span>
+                            <span class="leading-tight opacity-50 text-2xs">Started on</span>
+                            <span class="leading-tight text-2xs">{{ dateConverter(item.startDate) }}</span>
                         </span>
-                        <div class="flex w-full overflow-hidden  aspect-[4/5]">
-                            <img
-                                :alt="item.name"
-                                :src="`${item?.picture?.url}?w=300`"
+                        <div class="flex w-full overflow-hidden">
+                            <SanityImage
+                                :asset-id="`${item.image.asset._ref}`"
+                                auto="format"
+                                fit="crop"
                                 class="object-cover w-full h-full"
-                            >
+                                :fp-x="item.image.hotspot?.x"
+                                :fp-y="item.image.hotspot?.y"
+                                w="500"
+                                h="700"
+                            />
                         </div>
                     </div>
                 </div>
@@ -53,5 +58,7 @@ const teamStore = useTeamStore()
 const team = computed(() => {
     return teamStore.currentTeam
 })
+
+console.log(team.value)
 
 </script>

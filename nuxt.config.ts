@@ -27,7 +27,10 @@ export default defineNuxtConfig({
             pathPrefix: false
         }
     ],
-    modules: ['@nuxtjs/color-mode', 'nuxt-icon', '@nuxtjs/tailwindcss', '@pinia/nuxt', '@nuxt/image', '@nuxtjs/supabase', '@vite-pwa/nuxt'],
+    modules: ['@nuxtjs/color-mode', 'nuxt-icon', '@nuxtjs/tailwindcss', '@pinia/nuxt', '@nuxt/image', '@nuxtjs/supabase', '@vite-pwa/nuxt', '@nuxtjs/sanity'],
+    sanity: {
+        projectId: 'mxklvbih'
+    },
     colorMode: {
         classSuffix: '',
         preference: 'dark'
