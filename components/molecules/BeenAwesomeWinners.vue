@@ -1,5 +1,5 @@
 <template>
-    <section>
+    <section v-if="allWinners">
         <div class="container mb-6 ">
             <h2 class="h1">
                 Been Awesome Winners
@@ -29,7 +29,7 @@
                         </h3>
 
                         <div class="flex flex-col items-center mb-4 opacity-80">
-                            <span class="flex flex-row gap-1 items-center">
+                            <span class="flex flex-row items-center gap-1">
                                 <Icon
                                     name="pepicons-pop:calendar-circle"
                                     class="w-4 h-4 "
@@ -39,11 +39,12 @@
                             <span class="text-xs italic">{{ Math.round(duration(new Date(), currentWinner.from)) }} days</span>
                         </div>
 
-                        <div class="flex w-auto overflow-hidden aspect-square">
+                        <div class="flex w-auto overflow-hidden ">
                             <img
-                                :alt="currentWinner.winner.name"
-                                :src="`${currentWinner.winner?.picture?.url}?w=300`"
-                                class="object-cover w-full h-full"
+                                :src="$urlFor(currentWinner.winner.image).width(300).height(400).url()"
+                                height="500"
+                                width="300"
+                                loading="lazy"
                             >
                         </div>
                     </div>
@@ -51,7 +52,7 @@
                     <div
                         v-for="winner in previousWinners"
                         :key="winner.id"
-                        class="relative flex flex-col items-center p-8 my-16 bg-transparent border-2 border-gray-400 border-dotted w-[16rem] min-w-[16rem] dark:text-gray-200 "
+                        class="relative flex flex-col justify-center items-center my-16 p-8 bg-transparent border-2 border-gray-400 border-dotted w-[16rem] min-w-[16rem] dark:text-gray-200 "
                     >
                         <h3 class="h3">
                             {{ winner.winner?.name }}
@@ -63,11 +64,12 @@
                             <span class="text-xs italic">{{ duration(winner.to, winner.from) }} days</span>
                         </div>
 
-                        <div class="flex w-auto overflow-hidden aspect-square">
+                        <div class="flex w-auto overflow-hidden ">
                             <img
-                                :alt="winner.winner.name"
-                                :src="`${winner.winner?.picture?.url}?w=220`"
-                                class="object-cover w-full h-full"
+                                :src="$urlFor(winner.winner.image).width(300).height(450).url()"
+                                width="300"
+                                height="450"
+                                loading="lazy"
                             >
                         </div>
                     </div>
@@ -78,28 +80,23 @@
 </template>
 
 <script setup>
-
 import { dateConverter } from '~/scripts/helpers'
-const QUERY = `
-query BeenAwesomeWinners {
-  allBeenAwesomeWinners(orderBy: from_DESC) {
-    id
-    winner {
-      name
-      picture {
-        url
-      }
-    }
-    from
+
+const query = groq`*[_type == "beenAwesomeWinner"] | order(from desc) {
+  winner->{
+    name,
+    image
+  },
+    from,
     to
-  }
 }
 `
+const sanity = useSanity()
 
-const { data } = await useGraphqlQuery({ query: QUERY })
+const { data } = await useAsyncData('beenAwesomeWinners', () => sanity.fetch(query))
 
 const allWinners = computed(() => {
-    return data.value?.allBeenAwesomeWinners
+    return data.value
 })
 
 const duration = (to, from) => {
@@ -110,15 +107,10 @@ const duration = (to, from) => {
 }
 
 const currentWinner = computed(() => {
-    return allWinners.value[0]
+    return allWinners?.value[0]
 })
-
 const previousWinners = computed(() => {
-    return allWinners.value.slice(1)
+    return allWinners?.value.slice(1)
 })
-
-// const previousWinners = computed(() => {
-//     return allWinners.value
-// })
 
 </script>

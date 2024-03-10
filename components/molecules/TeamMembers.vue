@@ -55,6 +55,4 @@ const team = computed(() => {
     return teamStore.currentTeam
 })
 
-console.log(team.value)
-
 </script>
