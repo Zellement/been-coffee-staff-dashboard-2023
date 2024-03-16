@@ -1,11 +1,17 @@
 <template>
-    <div class="container flex flex-col items-center pb-20 mb-16 space-y-8">
+    <div
+        v-if="articleData"
+        class="container flex flex-col items-center pb-20 mb-16 space-y-8"
+    >
         <content-hero
-            :title="data.article.title"
-            :date="data.article._updatedAt"
-            :subtitle="data.article.subtitle"
+            :title="articleData.title"
+            :subtitle="articleData.subtitle"
+            :date="articleData.publishedAt"
         />
-        <template v-if="articleData.articleContent">
+        <PortableText
+            :value="articleData.content"
+        />
+        <!-- <template v-if="articleData.articleContent">
             <div
                 v-for="content in articleData.articleContent"
                 :key="content.id"
@@ -65,67 +71,89 @@
                     </video>
                 </div>
             </div>
-        </template>
+        </template> -->
     </div>
 </template>
 
 <script setup>
+import { PortableText } from '@portabletext/vue'
 
-const QUERY = `query ArticleQuery ($slug: String!) {
-        article(filter: {slug: {eq: $slug}}) {
-            _updatedAt
-            slug
-            subtitle
-            title
-            articleContent {
-                ... on DownloadBlockRecord {
-                    id
-                    _modelApiKey
-                    pdfs {
-                        url
-                        title
-                    }
-            }
-                ... on ImageBlockRecord {
-                    id
-                    _modelApiKey
-                    fullWidth
-                    images {
-                        url
-                        id
-                    }
-                }
-                ... on TextBlockRecord {
-                    id
-                    text
-                    _modelApiKey
-                }
-                ... on VideoBlockRecord {
-                    id
-                    _modelApiKey
-                    video {
-                        width
-                        height
-                        video {
-                            streamingUrl
-                            thumbnailUrl
-                        }
-                        url
-                        mimeType
-                    }
-                }
-            }
-        }
-    }
-`
 const route = useRoute()
-const { data } = await useGraphqlQuery({ query: QUERY, variables: { slug: route.params.slug } })
+const query = groq`*[_type == "article" && slug.current == '${route.params.slug}'] [0]{
+    title,
+    subtitle,
+    publishedAt,
+    content
+}
+`
+const sanity = useSanity()
+
+const { data } = await useAsyncData('singleArticle', () => sanity.fetch(query))
 
 const articleData = computed(() => {
-    return data.value.article
+    return data.value
 })
 
-useHead({
-    title: data.value?.article.title
+onMounted(() => {
+    console.log(route)
+    console.log(articleData.value)
 })
+
+// const query = `query ArticleQuery ($slug: String!) {
+//         article(filter: {slug: {eq: $slug}}) {
+//             _updatedAt
+//             slug
+//             subtitle
+//             title
+//             articleContent {
+//                 ... on DownloadBlockRecord {
+//                     id
+//                     _modelApiKey
+//                     pdfs {
+//                         url
+//                         title
+//                     }
+//             }
+//                 ... on ImageBlockRecord {
+//                     id
+//                     _modelApiKey
+//                     fullWidth
+//                     images {
+//                         url
+//                         id
+//                     }
+//                 }
+//                 ... on TextBlockRecord {
+//                     id
+//                     text
+//                     _modelApiKey
+//                 }
+//                 ... on VideoBlockRecord {
+//                     id
+//                     _modelApiKey
+//                     video {
+//                         width
+//                         height
+//                         video {
+//                             streamingUrl
+//                             thumbnailUrl
+//                         }
+//                         url
+//                         mimeType
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// `
+// const route = useRoute()
+// const { data } = await useGraphqlQuery({ query: QUERY, variables: { slug: route.params.slug } })
+
+// const articleData = computed(() => {
+//     return data.value.article
+// })
+
+// useHead({
+//     title: data.value?.article.title
+// })
 </script>
