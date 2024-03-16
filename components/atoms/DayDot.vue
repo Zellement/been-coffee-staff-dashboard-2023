@@ -61,11 +61,6 @@ const getMonth = (date) => {
     return date.getMonth() + 1
 }
 
-// var today = new Date();
-// var plus3days = 6;
-// var result = today.setDate(today.getDate() + plus3days);
-// console.log(new Date(result))
-
 const dayDotConverter = [
     {
         classes: 'bg-black text-white'

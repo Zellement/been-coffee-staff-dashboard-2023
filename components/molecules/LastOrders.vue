@@ -5,7 +5,10 @@
                 Recent 15 Orders
             </h2>
         </div>
-        <div class="px-2 overflow-hidden md:px-4">
+        <div
+            v-if="allOrders"
+            class="px-2 overflow-hidden md:px-4"
+        >
             <div class="w-full py-8 overflow-x-scroll ">
                 <div class="flex flex-row w-full space-x-4">
                     <div
@@ -111,7 +114,5 @@ const allOrders = computed(() => {
 const getOrderedBy = (item) => {
     return item.orderedBy?.name ?? 'Sarah'
 }
-
-console.log(allOrders.value)
 
 </script>

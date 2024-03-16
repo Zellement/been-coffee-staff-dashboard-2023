@@ -5,7 +5,10 @@
                 Standing Orders
             </h2>
         </div>
-        <div class="px-2 overflow-hidden md:px-4">
+        <div
+            v-if="standingOrders"
+            class="px-2 overflow-hidden md:px-4"
+        >
             <div class="w-full py-8 overflow-x-scroll ">
                 <div class="flex flex-row w-full space-x-4">
                     <div
