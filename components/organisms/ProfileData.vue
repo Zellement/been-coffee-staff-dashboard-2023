@@ -31,18 +31,21 @@
                     class="w-8 h-8 transition-all duration-300 hover:rotate-90"
                 />
             </button>
-            <h2 class="flex flex-row gap-2 items-center leading-none mb-8 h1 max-w-[80%]">
-                <Icon
-                    v-if="!userDatoData?.picture?.url"
-                    name="ri:user-line"
-                    class="w-6 h-6"
-                />
+            <h2 class="flex flex-row items-center gap-2 mb-8 leading-none h1">
                 <img
-                    v-else
-                    :src="`${userDatoData.picture.url}?w=50`"
-                    class="object-cover w-6 h-8 rounded-full shadow-lg"
+                    v-if="userSanityData?.image?.asset?._ref"
+                    :src="$urlFor(userSanityData.image).width(40).height(40).url()"
+                    height="40"
+                    width="40"
+                    loading="lazy"
+                    class="flex-grow flex-shrink-0 object-cover rounded-full shadow-lg"
                 >
-                <span class="-mt-1 leading-none">Hello, {{ userName }}</span>
+                <Icon
+                    v-else
+                    name="ri:user-line"
+                    class="w-12 h-12"
+                />
+                <span class="w-full -mt-1 leading-none">Hello, {{ userName }}</span>
             </h2>
 
             <ul class="flex flex-col mb-8 space-y-2">
@@ -61,7 +64,7 @@
                     {{ tillPin }}
                 </li>
                 <li
-                    v-if="userDatoData?.birthday"
+                    v-if="userSanityData?.birthday"
                     class="flex flex-row items-center gap-2"
                 >
                     <span class="flex flex-row items-center gap-2">
@@ -69,10 +72,10 @@
                         <Icon name="heroicons:cake-16-solid" />
                         <span>Birthday:</span>
                     </span>
-                    <span>{{ userDatoData?.birthday ? dateConverterNoYear(userDatoData?.birthday) : '--' }}</span>
+                    <span>{{ userSanityData?.birthday ? dateConverterNoYear(userSanityData?.birthday) : '--' }}</span>
                 </li>
                 <li
-                    v-if="userDatoData?.startDate"
+                    v-if="userSanityData?.startDate"
                     class="flex flex-row items-center gap-2"
                 >
                     <span class="flex flex-row items-center gap-2">
@@ -80,7 +83,7 @@
                         <Icon name="material-symbols-light:play-circle" />
                         <span>Start date:</span>
                     </span>
-                    {{ dateConverter(userDatoData?.startDate) }}
+                    {{ dateConverter(userSanityData?.startDate) }}
                 </li>
                 <li class="flex flex-row items-center gap-2">
                     <button
@@ -143,8 +146,8 @@ import { dateConverter, dateConverterNoYear } from '@/scripts/helpers'
 const uiStore = useUiStore()
 const userStore = useUserStore()
 
-const userDatoData = computed(() => {
-    return userStore?.userDatoData
+const userSanityData = computed(() => {
+    return userStore?.userSanityData
 })
 
 const showPanel = computed(() => {

@@ -8,16 +8,19 @@
                     class="flex flex-row items-center gap-1 p-2 transition-all duration-300 dark:hover:text-butterscotch-500 hover:text-white"
                     @click="uiStore.toggleProfileData"
                 >
-                    <Icon
-                        v-if="!userProfilePicture?.picture?.url"
-                        name="ri:user-line"
-                        class="w-6 h-6"
-                    />
                     <img
-                        v-else
-                        :src="`${userProfilePicture.picture.url}?w=50`"
-                        class="object-cover w-6 h-8 rounded-full"
+                        v-if="userProfilePicture?.asset?._ref"
+                        :src="$urlFor(userProfilePicture).width(32).height(32).url()"
+                        height="32"
+                        width="32"
+                        loading="lazy"
+                        class="flex-grow flex-shrink-0 object-cover mr-2 rounded-full shadow-lg"
                     >
+                    <Icon
+                        v-else
+                        name="ri:user-line"
+                        class="w-12 h-12"
+                    />
                     <span>
                         <template v-if="uiStore.isXmasTheme">Merry Xmas,</template>
                         <template v-else>Hi,</template>
@@ -61,7 +64,7 @@ const userName = computed(() => {
 })
 
 const userProfilePicture = computed(() => {
-    return userStore?.userDatoData
+    return userStore?.userSanityData?.image
 })
 
 const uiStore = useUiStore()

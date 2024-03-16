@@ -46,7 +46,6 @@ const errorMsg = ref(null)
 
 const handleLogin = async () => {
     try {
-        console.log(route)
         loading.value = true
         const { error } = await client.auth.signInWithPassword({
             email: email.value,
