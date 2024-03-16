@@ -2,7 +2,7 @@
     <div class="relative">
         <div class="container ">
             <h2 class="h1">
-                Last {{ orderTotal }} Orders
+                Recent 15 Orders
             </h2>
         </div>
         <div class="px-2 overflow-hidden md:px-4">
@@ -17,10 +17,19 @@
                             {{ item.supplier.name }}
                         </div>
                         <div class="flex flex-col w-full">
-                            <div class="flex h-16 p-1 overflow-hidden bg-white rounded-full">
+                            <div class="flex justify-between h-16 p-1 overflow-hidden bg-white rounded-full">
                                 <img
-                                    class="w-auto h-auto m-auto max-w-[8rem] dark:m-auto max-h-12"
-                                    :src="item.supplier.logo.url"
+                                    :src="$urlFor(item.supplier.logo).height(50).fit('clip').url()"
+                                    class="w-auto my-auto max-w-[60%] pl-4"
+                                    height="60"
+                                    loading="lazy"
+                                >
+                                <img
+                                    :src="$urlFor(item.orderedBy.image).width(60).height(60).url()"
+                                    class="flex-shrink-0 rounded-full"
+                                    width="60"
+                                    height="60"
+                                    loading="lazy"
                                 >
                             </div>
                             <div class="flex flex-col text-sm dark:mt-4 lg:text-xs">
@@ -87,38 +96,36 @@
 
 <script setup>
 import { dateConverterWithDay } from '@/scripts/helpers'
-const QUERY = `
-  query {
-    allOrders(orderBy: expectedDeliveryDate_DESC) {
-        id
-        expectedDeliveryDate
-        orderDate
-        standard
-        supplier {
-            logo {
-                url
-            }
-            name
-        }
-        details
-        notes
-        orderedBy {
-            name
-        }
-    }
-  }
+
+const query = groq`
+*[_type == "order"][0..14] | order(expectedDeliveryDate asc){
+  supplier->{
+    logo,
+    title
+  },
+  orderDate,
+  expectedDeliveryDate,
+  orderedBy->{
+     image,
+    name
+  },
+  usualOrder,
+  orderDetails
+}
+
 `
 
-const orderTotal = 15
+const sanity = useSanity()
+
+const { data } = await useAsyncData('orders', () => sanity.fetch(query))
 
 const allOrders = computed(() => {
-    return data.value.allOrders.slice(0, orderTotal)
+    return data.value
 })
-
-const { data } = await useGraphqlQuery({ query: QUERY })
-
 const getOrderedBy = (item) => {
     return item.orderedBy?.name ?? 'Sarah'
 }
+
+console.log(allOrders.value)
 
 </script>
