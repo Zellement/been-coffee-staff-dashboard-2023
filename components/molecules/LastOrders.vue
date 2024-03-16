@@ -17,7 +17,7 @@
                             {{ item.supplier.name }}
                         </div>
                         <div class="flex flex-col w-full">
-                            <div class="flex justify-between h-16 p-1 overflow-hidden bg-white rounded-full">
+                            <div class="flex justify-between h-16 p-1 mb-4 overflow-hidden bg-white border border-gray-200 rounded-full shadow-lg">
                                 <img
                                     :src="$urlFor(item.supplier.logo).height(50).fit('clip').url()"
                                     class="w-auto my-auto max-w-[60%] pl-4"
@@ -32,7 +32,7 @@
                                     loading="lazy"
                                 >
                             </div>
-                            <div class="flex flex-col text-sm dark:mt-4 lg:text-xs">
+                            <div class="flex flex-col text-sm lg:text-xs">
                                 <span class="flex flex-row items-center justify-center space-x-2 dark:text-butterscotch-500 text-navy-500">
                                     <Icon
                                         class="w-6 h-6 p-1 rounded-full bg-butterscotch-500 dark:bg-navy-700 "
