@@ -13,7 +13,7 @@
                         :key="item.id"
                         class="flex relative flex-col w-3/4 p-4 shadow-lg rounded-xl  min-w-[300px] bg-seashell-400 dark:bg-navy-400"
                     >
-                        <div class="absolute top-0 right-0 uppercase -translate-y-1/2 bg-white text-3xs px-2 dark:text-navy-50 dark:bg-navy-400 text-gray-400 rounded-tl-lg py-0.5 tracking-wider">
+                        <div class="absolute top-0 left-0 uppercase -translate-y-1/2 bg-white text-3xs px-2 dark:text-navy-50 dark:bg-navy-400 text-gray-400 rounded-tl-lg rounded-tr-lg py-0.5 tracking-wider">
                             {{ item.supplier.title }}
                         </div>
                         <div class="flex flex-col w-full">
@@ -83,7 +83,7 @@ import { dateConverterWithDay } from '@/scripts/helpers'
 import { PortableText } from '@portabletext/vue'
 
 const query = groq`
-*[_type == "order"][0..14] | order(expectedDeliveryDate asc){
+*[_type == "order"][0..14] | order(expectedDeliveryDate desc){
   supplier->{
     logo,
     title
