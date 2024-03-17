@@ -74,4 +74,8 @@ const myPortableTextComponents = {
     // }
 }
 
+useHead({
+    title: data.value?.title
+})
+
 </script>
