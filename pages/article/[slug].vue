@@ -1,7 +1,7 @@
 <template>
     <div
         v-if="articleData"
-        class="container flex flex-col items-center pb-20 mb-16"
+        class="container flex flex-col items-center w-full pb-20 mb-16 lg:gap-16"
     >
         <content-hero
             :title="articleData.title"
@@ -9,8 +9,8 @@
             :date="articleData.publishedAt"
             :categories="articleData.categories"
         />
-        <div class="flex flex-col">
-            <div class="grid w-full grid-cols-2 py-4">
+        <div class="flex flex-col w-full max-w-screen-xl lg:flex-row lg:gap-8 xl:gap-20">
+            <div class="grid w-full grid-cols-2 py-4 lg:flex lg:flex-col lg:gap-8 lg:basis-1/4">
                 <p
                     v-if="articleData._updatedAt"
                     class="text-xs opacity-50 font-krete"
@@ -19,7 +19,7 @@
                 </p>
                 <ul
                     v-if="articleData.categories"
-                    class="flex flex-row flex-wrap gap-2 ml-auto"
+                    class="flex flex-row flex-wrap gap-2 ml-auto lg:m-0"
                 >
                     <li
                         v-for="category in articleData.categories"
@@ -36,18 +36,18 @@
                 </ul>
                 <div
                     v-if="articleData.files"
-                    class="py-8 col-span-full"
+                    class="py-8 col-span-full lg:p-0"
                 >
-                    <h2 class="font-krete">
+                    <h2 class="font-krete lg:mb-2">
                         <Icon
                             name="material-symbols-light:file-copy-rounded"
                             class="w-4 h-4 "
                         />
                         Related files &amp; downloads
                     </h2>
-                    <div class="w-full pb-4 overflow-x-scroll">
+                    <div class="w-full pb-4 overflow-x-scroll ">
                         <ul
-                            class="flex w-full gap-4"
+                            class="flex w-full gap-4 lg:flex-col lg:gap-0 lg:divide-y-[1px] dark:divide-navy-200"
                         >
                             <li
                                 v-for="file in articleData.files"
@@ -57,11 +57,11 @@
                                 <a
                                     :href="file.asset.url"
                                     target="_blank"
-                                    class="w-full relative h-full min-w-[270px] pl-4 py-1 pr-2 text-xs font-krete shadow dark:shadow-navy-400 text-tuscany rounded"
+                                    class="w-full relative h-full min-w-[270px] pl-4 py-1 pr-2 text-xs font-krete shadow dark:shadow-navy-400 lg:py-2 lg:pl-0 text-tuscany rounded lg:shadow-none"
                                 >
                                     <Icon
                                         name="material-symbols-light:file-copy-rounded"
-                                        class="absolute left-0 w-3 h-3 opacity-50 top-3"
+                                        class="absolute left-0 w-3 h-3 opacity-50 top-3 lg:opacity-0"
                                     />
                                     {{ file.asset.originalFilename }}
                                 </a>
@@ -70,11 +70,13 @@
                     </div>
                 </div>
             </div>
-            <div class="content">
-                <PortableText
-                    :value="articleData.content"
-                    :components="myPortableTextComponents"
-                />
+            <div class="w-full lg:basis-2/3 ">
+                <div class="content lg:max-w-screen-sm lg:mx-auto">
+                    <PortableText
+                        :value="articleData.content"
+                        :components="myPortableTextComponents"
+                    />
+                </div>
             </div>
         </div>
     </div>
