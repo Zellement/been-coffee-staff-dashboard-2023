@@ -7,24 +7,34 @@
             :title="articleData.title"
             :subtitle="articleData.subtitle"
             :date="articleData.publishedAt"
+            :categories="articleData.categories"
         />
-        <PortableText
-            :value="articleData.content"
-            :components="myPortableTextComponents"
-        />
+        <div class="content">
+            <PortableText
+                :value="articleData.content"
+                :components="myPortableTextComponents"
+            />
+        </div>
     </div>
 </template>
 
 <script setup>
 import { PortableText } from '@portabletext/vue'
-// import { getFileAsset } from '@sanity/asset-utils'
 
 const route = useRoute()
 const query = groq`*[_type == "article" && slug.current == '${route.params.slug}'] [0]{
     title,
     subtitle,
     publishedAt,
-    content 
+    _updatedAt,
+    content,
+    files,
+    sticky,
+    categories[]->{
+        _id,
+    slug,
+    title
+  },
 }
 `
 const sanity = useSanity()
@@ -37,13 +47,18 @@ const articleData = computed(() => {
 
 const myPortableTextComponents = {
     types: {
-        file: ({ value }) => {
-            console.log(value)
-            // const fullAsset = getFileAsset(value)
-            // console.log(fullAsset)
+        // file: ({ children, value }) => {
+        //     console.log(value)
+        //     console.log(children)
 
-            // h('a', { src:  }) console.log(value)
-        },
+        //     const fullAsset = getFileAsset(value, { projectId: 'mxklvbih', dataset: 'production' })
+        //     console.log(fullAsset.url)
+
+        //     const fileName = getUrlFilename(fullAsset.url)
+        //     console.log(fileName)
+
+        //     // return h('a', { src: fullAsset.asset.url, target: '_blank' }, 'Download')
+        // },
         image: ({ value }) => h('img', { src: value.imageUrl })
         // callToAction: ({ value, isInline }, { slots }) =>
         //     isInline
