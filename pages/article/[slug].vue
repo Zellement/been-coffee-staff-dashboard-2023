@@ -55,15 +55,15 @@
                                 class="flex "
                             >
                                 <a
-                                    :href="file.asset.url"
+                                    :href="file.file.asset.url"
                                     target="_blank"
-                                    class="w-full relative h-full min-w-[270px] pl-4 py-1 pr-2 text-xs font-krete shadow dark:shadow-navy-400 lg:py-2 lg:pl-0 text-tuscany rounded lg:shadow-none"
+                                    class="w-full relative h-full min-w-[270px] pl-6 py-1 pr-2 text-xs font-krete shadow dark:shadow-navy-400 lg:py-2 text-tuscany rounded lg:shadow-none"
                                 >
                                     <Icon
                                         name="material-symbols-light:file-copy-rounded"
-                                        class="absolute left-0 w-3 h-3 opacity-50 top-3 lg:opacity-0"
+                                        class="absolute w-3 h-3 opacity-50 left-2 top-3 lg:opacity-0"
                                     />
-                                    {{ file.asset.originalFilename }}
+                                    {{ file.value }}
                                 </a>
                             </li>
                         </ul>
@@ -96,10 +96,12 @@ const query = groq`*[_type == "article" && slug.current == '${route.params.slug}
     content,
     files[]{
       _key,
-      asset->{
-        url,
-        originalFilename
-      }
+        value,
+        file{
+            asset->{
+                url
+            }
+        }
     },
     sticky,
     categories[]->{
