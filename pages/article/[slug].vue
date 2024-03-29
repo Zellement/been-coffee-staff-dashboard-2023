@@ -115,7 +115,7 @@ const sanity = useSanity()
 
 const { data } = await useAsyncData('singleArticle', () => sanity.fetch(query))
 
-console.log(data)
+console.log('all data', data)
 
 // const getAsset = (asset) => {
 //     console.log('asset', asset)
@@ -129,18 +129,17 @@ const articleData = computed(() => {
 
 const myPortableTextComponents = {
     types: {
-        // file: ({ children, value }) => {
-        //     console.log(value)
-        //     console.log(children)
+        fileVideo: ({ value }) => {
+            console.log('value', value)
 
-        //     const fullAsset = getFileAsset(value, { projectId: 'mxklvbih', dataset: 'production' })
-        //     console.log(fullAsset.url)
+            // const fullAsset = getFileAsset(value, { projectId: 'mxklvbih', dataset: 'production' })
+            // console.log(fullAsset.url)
 
-        //     const fileName = getUrlFilename(fullAsset.url)
-        //     console.log(fileName)
+            // const fileName = getUrlFilename(fullAsset.url)
+            // console.log(fileName)
 
-        //     // return h('a', { src: fullAsset.asset.url, target: '_blank' }, 'Download')
-        // },
+            // return h('a', { src: fullAsset.asset.url, target: '_blank' }, 'Download')
+        },
         image: ({ value }) => h('img', { src: value.imageUrl })
         // callToAction: ({ value, isInline }, { slots }) =>
         //     isInline
