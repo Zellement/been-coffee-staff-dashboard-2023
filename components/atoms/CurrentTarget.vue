@@ -8,7 +8,7 @@
             Next Target
         </p>
         <p class="mb-1 text-2xl leading-none font-riverside">
-            £2,250
+            £2,500
         </p>
         <span class="leading-none underline">What is this?</span>
     </nuxt-link>
