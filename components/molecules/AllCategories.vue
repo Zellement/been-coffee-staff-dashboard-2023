@@ -31,7 +31,7 @@ import { useUiStore } from '@/stores/ui'
 const uiStore = useUiStore()
 
 const queryArticleCats = groq`
-*[_type == "articleCategory"] 
+*[_type == "articleCategory"]|order(title)
 `
 
 const sanity = useSanity()

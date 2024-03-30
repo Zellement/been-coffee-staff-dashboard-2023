@@ -42,7 +42,7 @@ import { useUiStore } from '@/stores/ui'
 const uiStore = useUiStore()
 
 const queryArticle = groq`
-*[_type == "article"] 
+*[_type == "article"]|order(title)
 `
 
 const searchInput = ref()

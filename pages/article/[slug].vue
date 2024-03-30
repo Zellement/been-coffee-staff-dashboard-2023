@@ -71,7 +71,7 @@
                 </div>
             </div>
             <div class="w-full lg:basis-2/3 ">
-                <div class="content lg:max-w-screen-sm lg:mx-auto">
+                <div class="content lg:max-w-screen-sm ">
                     <PortableText
                         :value="articleData.content"
                         :components="myPortableTextComponents"
@@ -85,7 +85,8 @@
 <script setup>
 import { PortableText } from '@portabletext/vue'
 import { dateConverter } from '@/scripts/helpers'
-import { getFileAsset } from '@sanity/asset-utils'
+import { getFileAsset, getImageAsset } from '@sanity/asset-utils'
+import { NuxtPicture } from '#components'
 
 const route = useRoute()
 const query = groq`*[_type == "article" && slug.current == '${route.params.slug}'] [0]{
@@ -145,7 +146,19 @@ const myPortableTextComponents = {
                 'Your browser does not support the video tag.'
             ])
         },
-        image: ({ value }) => h('img', { src: value.imageUrl })
+        image: ({ value }) => {
+            console.log(value)
+
+            const fullAsset = getImageAsset(value, { projectId: 'mxklvbih', dataset: 'production' })
+            console.log(fullAsset)
+            // :src="$urlFor(currentWinner.winner.image).width(300).height(400).url()"
+            // const image = $urlFor(fullAsset.assetId).width(800).url()
+            const image = fullAsset.url
+
+            // return h(resolveComponent('NuxtLink'), { key, href, target }, linkContent)
+
+            return h(NuxtPicture, { src: image, class: 'w-full' })
+        }
         // callToAction: ({ value, isInline }, { slots }) =>
         //     isInline
         //         ? h('a', { href: value.url }, value.text)
