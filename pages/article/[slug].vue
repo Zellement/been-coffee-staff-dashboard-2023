@@ -85,7 +85,7 @@
 <script setup>
 import { PortableText } from '@portabletext/vue'
 import { dateConverter } from '@/scripts/helpers'
-// import { getFileAsset } from '@sanity/asset-utils'
+import { getFileAsset } from '@sanity/asset-utils'
 
 const route = useRoute()
 const query = groq`*[_type == "article" && slug.current == '${route.params.slug}'] [0]{
@@ -130,15 +130,20 @@ const articleData = computed(() => {
 const myPortableTextComponents = {
     types: {
         fileVideo: ({ value }) => {
-            console.log('value', value)
+            // console.log('value', value)
 
-            // const fullAsset = getFileAsset(value, { projectId: 'mxklvbih', dataset: 'production' })
-            // console.log(fullAsset.url)
+            const fullAsset = getFileAsset(value, { projectId: 'mxklvbih', dataset: 'production' })
+            // console.log(fullAsset)
 
-            // const fileName = getUrlFilename(fullAsset.url)
-            // console.log(fileName)
+            if (!fullAsset.url) {
+                console.error('No URL returned for video')
+                return null
+            }
 
-            // return h('a', { src: fullAsset.asset.url, target: '_blank' }, 'Download')
+            return h('video', { class: 'w-auto h-full max-h-[80dvh] mx-auto', controls: true }, [
+                h('source', { src: fullAsset.url, type: `video/${fullAsset.extension}` }),
+                'Your browser does not support the video tag.'
+            ])
         },
         image: ({ value }) => h('img', { src: value.imageUrl })
         // callToAction: ({ value, isInline }, { slots }) =>
