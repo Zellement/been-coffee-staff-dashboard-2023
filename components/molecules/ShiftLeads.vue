@@ -3,7 +3,7 @@
         <h2 class="mb-4 h4">
             Close lead
         </h2>
-        <!-- <div class="flex flex-col md:flex-row md:flex-wrap md:gap-8">
+        <div class="flex flex-col md:flex-row md:flex-wrap md:gap-8">
             <label
                 v-for="member in team"
                 :key="member.id"
@@ -21,7 +21,7 @@
                 <div class="absolute left-0 flex w-12 h-12 p-1 overflow-hidden -translate-y-1/2 rounded-full shift-leads__img-wrapper aspect-square top-1/2">
                     <img
                         :alt="member.name"
-                        :src="`${member?.picture?.url}?w=50`"
+                        :src="$urlFor(member.image).width(60).height(60).url()"
                         class="object-cover w-full h-full rounded-full"
                     >
                 </div>
@@ -56,45 +56,35 @@
                     name="Other team member"
                 >
             </label>
-        </div> -->
+        </div>
     </div>
 </template>
 
 <script setup>
 
-// const state = reactive({
-//     isOtherSelected: false
-// })
+const state = reactive({
+    isOtherSelected: false
+})
 
-// const otherSelected = computed(() => {
-//     return state.isOtherSelected
-// })
+const otherSelected = computed(() => {
+    return state.isOtherSelected
+})
 
-// const toggleIsOtherSelected = (value) => {
-//     state.isOtherSelected = value ?? !state.isOtherSelected
-// }
+const toggleIsOtherSelected = (value) => {
+    state.isOtherSelected = value ?? !state.isOtherSelected
+}
 
-// const QUERY = `
-// query {
-//     allTeams(orderBy: name_ASC, filter: {managerKeyHolder: {eq: "true"}}) {
-//         id
-//         name
-//         picture {
-//             responsiveImage {
-//                 alt
-//                 base64
-//                 bgColor
-//                 title
-//                 srcSet
-//                 }
-//             url
-//         }
-//         }
-//     }
-// `
-// const { data } = await useGraphqlQuery({ query: QUERY })
+const query = groq`*[_type == "teamMember" && managerKeyHolder]{
+    name,
+      image
+}
+`
 
-// const team = computed(() => {
-//     return data.value?.allTeams
-// })
+const sanity = useSanity()
+
+const { data } = await useAsyncData('latestUpdatedArticles', () => sanity.fetch(query))
+
+const team = computed(() => {
+    return data.value
+})
 </script>
