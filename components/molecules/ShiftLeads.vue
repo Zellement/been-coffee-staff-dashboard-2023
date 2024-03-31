@@ -74,7 +74,7 @@ const toggleIsOtherSelected = (value) => {
     state.isOtherSelected = value ?? !state.isOtherSelected
 }
 
-const query = groq`*[_type == "teamMember" && managerKeyHolder]{
+const query = groq`*[_type == "teamMember" && managerKeyHolder]|order(name asc){
     name,
       image
 }
