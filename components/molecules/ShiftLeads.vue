@@ -3,7 +3,7 @@
         <h2 class="mb-4 h4">
             Close lead
         </h2>
-        <div class="flex flex-col md:flex-row md:flex-wrap md:gap-8">
+        <!-- <div class="flex flex-col md:flex-row md:flex-wrap md:gap-8">
             <label
                 v-for="member in team"
                 :key="member.id"
@@ -56,45 +56,45 @@
                     name="Other team member"
                 >
             </label>
-        </div>
+        </div> -->
     </div>
 </template>
 
 <script setup>
 
-const state = reactive({
-    isOtherSelected: false
-})
+// const state = reactive({
+//     isOtherSelected: false
+// })
 
-const otherSelected = computed(() => {
-    return state.isOtherSelected
-})
+// const otherSelected = computed(() => {
+//     return state.isOtherSelected
+// })
 
-const toggleIsOtherSelected = (value) => {
-    state.isOtherSelected = value ?? !state.isOtherSelected
-}
+// const toggleIsOtherSelected = (value) => {
+//     state.isOtherSelected = value ?? !state.isOtherSelected
+// }
 
-const QUERY = `
-query {
-    allTeams(orderBy: name_ASC, filter: {managerKeyHolder: {eq: "true"}}) {
-        id
-        name
-        picture {
-            responsiveImage {
-                alt
-                base64
-                bgColor
-                title
-                srcSet
-                }
-            url
-        }
-        }
-    }
-`
-const { data } = await useGraphqlQuery({ query: QUERY })
+// const QUERY = `
+// query {
+//     allTeams(orderBy: name_ASC, filter: {managerKeyHolder: {eq: "true"}}) {
+//         id
+//         name
+//         picture {
+//             responsiveImage {
+//                 alt
+//                 base64
+//                 bgColor
+//                 title
+//                 srcSet
+//                 }
+//             url
+//         }
+//         }
+//     }
+// `
+// const { data } = await useGraphqlQuery({ query: QUERY })
 
-const team = computed(() => {
-    return data.value?.allTeams
-})
+// const team = computed(() => {
+//     return data.value?.allTeams
+// })
 </script>

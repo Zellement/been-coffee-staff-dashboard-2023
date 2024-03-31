@@ -116,14 +116,6 @@ const sanity = useSanity()
 
 const { data } = await useAsyncData('singleArticle', () => sanity.fetch(query))
 
-console.log('all data', data)
-
-// const getAsset = (asset) => {
-//     console.log('asset', asset)
-//     // const file = getFileAsset(asset, { projectId: 'mxklvbih', dataset: 'production' })
-//     // console.log('file', file)
-// }
-
 const articleData = computed(() => {
     return data.value
 })

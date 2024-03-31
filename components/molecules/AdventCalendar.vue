@@ -1,6 +1,6 @@
 <template>
     <section class="">
-        <div class="container">
+        <!--<div class="container">
             <h2 class="mb-6 h1">
                 Advent Calendar Winners
             </h2>
@@ -52,12 +52,12 @@
                     </template>
                 </div>
             </div>
-        </div>
+        </div>-->
     </section>
 </template>
 
 <script setup>
-
+/*
 import { Image } from 'vue-datocms'
 
 const QUERY = `
@@ -94,7 +94,7 @@ const golden = (data) => {
 }
 
 const winners = computed(() => {
-    return data?.value?.adventCalendar?.winners
-})
+     return data?.value?.adventCalendar?.winners
+}) */
 
 </script>

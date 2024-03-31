@@ -47,7 +47,6 @@
         "esbuild": "^0.19.11",
         "ipx": "^3.0.0",
         "pinia": "^2.1.7",
-        "vue-datocms": "^4.0.7",
         "vue3-lottie": "^3.2.0"
     },
     "overrides": {

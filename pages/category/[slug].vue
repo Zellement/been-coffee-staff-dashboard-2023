@@ -2,7 +2,7 @@
     <div
         class="container flex flex-col items-center space-y-8"
     >
-        <content-hero
+        <!-- <content-hero
             v-if="categoryData"
             :title="categoryData.title"
             subtitle="Category"
@@ -30,41 +30,41 @@
                     />
                     <span>{{ dateConverter(article._updatedAt) }}</span></span>
             </nuxt-link>
-        </div>
+        </div> -->
     </div>
 </template>
 
 <script setup>
-import { dateConverter } from '@/scripts/helpers'
+// import { dateConverter } from '@/scripts/helpers'
 
-const QUERY = `query CatQuery ($slug: String!) {
-    category(filter: {slug: {eq: $slug}})  {
-        id
-        title
-        slug
-        _allReferencingArticles {
-            id
-            slug
-            title
-            subtitle
-            _updatedAt
-        }
-    }
-}
-`
-const route = useRoute()
-const { data } = await useGraphqlQuery({ query: QUERY, variables: { slug: route.params.slug } })
+// const QUERY = `query CatQuery ($slug: String!) {
+//     category(filter: {slug: {eq: $slug}})  {
+//         id
+//         title
+//         slug
+//         _allReferencingArticles {
+//             id
+//             slug
+//             title
+//             subtitle
+//             _updatedAt
+//         }
+//     }
+// }
+// `
+// const route = useRoute()
+// const { data } = await useGraphqlQuery({ query: QUERY, variables: { slug: route.params.slug } })
 
-const categoryData = computed(() => {
-    return data?.value?.category
-})
+// const categoryData = computed(() => {
+//     return data?.value?.category
+// })
 
-const allArticles = computed(() => {
-    return data?.value?.category._allReferencingArticles
-})
+// const allArticles = computed(() => {
+//     return data?.value?.category._allReferencingArticles
+// })
 
-useHead({
-    title: categoryData.value?.title
-})
+// useHead({
+//     title: categoryData.value?.title
+// })
 
 </script>

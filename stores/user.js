@@ -12,7 +12,7 @@ export const useUserStore = defineStore('user', {
             const client = useSupabaseClient()
             const { data } = await client
                 .from('profiles')
-                .select('display_name, till_pin, payslip_dir, keyholder, dato_id, sanity_slug')
+                .select('display_name, till_pin, payslip_dir, keyholder, sanity_slug')
 
             const user = useSupabaseUser()
 

@@ -5,7 +5,6 @@ import eslintVitePlugin from 'vite-plugin-eslint'
 export default defineNuxtConfig({
     runtimeConfig: {
         public: {
-            DAT0_CMS_TOKEN: process.env.DATO_CMS_TOKEN,
             MC_CLIENT: process.env.MC_CLIENT,
             SITE_URL: process.env.SITE_URL,
             MC_API: process.env.MC_API,
@@ -13,9 +12,9 @@ export default defineNuxtConfig({
             GOOGLE_SHEETS_SCRIPT_DAILY_TEMPERATURE_LOGS: process.env.GOOGLE_SHEETS_SCRIPT_DAILY_TEMPERATURE_LOGS
         }
     },
-    image: {
-        domains: ['https://www.datocms-assets.com']
-    },
+    // image: {
+    //     domains: ['https://www.datocms-assets.com']
+    // },
     devServerHandlers: [],
     devServer: {
         port: 3000, // default: 3000

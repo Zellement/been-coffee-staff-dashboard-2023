@@ -6,13 +6,14 @@
             </h2>
             <ul class="grid grid-cols-2 gap-2 md:gap-4 lg:gap-8 md:grid-cols-2 lg:grid-cols-4">
                 <li
-                    v-for="item in data.allArticles"
-                    :key="item.id"
+                    v-for="item in data"
+                    :key="item._id"
                     class="flex flex-grow w-full"
                 >
+                    {{ console.log('item', item) }}
                     <nuxt-link
                         class="flex flex-col flex-grow p-2 transition-colors duration-300 bg-white border rounded-lg lg:p-4 dark:bg-navy/60 hover:bg-white dark:hover:bg-navy-600 border-current/40"
-                        :to="`/article/${item.slug}`"
+                        :to="`/article/${item.slug.current}`"
                     >
                         <span class="text-lg font-bold font-riverside">{{ item.title }}</span>
                         <span class="mb-4 text-xs">{{ item.subtitle }}</span>
@@ -31,19 +32,18 @@
 
 <script setup>
 
-const QUERY = `
-query MyQuery {
-  allArticles(orderBy: _updatedAt_DESC, first: "4") {
-    slug
-    id
-    title
-    subtitle
-    _updatedAt
-  }
+const query = groq`*[_type == "article"][0..3]{
+    title,
+    subtitle,
+    publishedAt,
+    _updatedAt,
+    slug,
 }
 `
 
-const { data } = await useGraphqlQuery({ query: QUERY })
+const sanity = useSanity()
+
+const { data } = await useAsyncData('latestUpdatedArticles', () => sanity.fetch(query))
 
 const inputDate = (date) => {
     const theDate = new Date(date)
