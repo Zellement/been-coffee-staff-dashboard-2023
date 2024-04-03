@@ -52,7 +52,7 @@ const query = groq`*[_type == "article" && references(*[ slug.current == "${rout
 
 const sanity = useSanity()
 
-const { data } = await useAsyncData('catArticles', () => sanity.fetch(query))
+const { data } = await useLazyAsyncData('catArticles', () => sanity.fetch(query))
 
 const catTitle = computed(() => toPascalCase(route.params.slug))
 
