@@ -1,30 +1,29 @@
 <template>
     <section v-if="allWinners">
-        <div class="container relative flex flex-row items-center justify-between mb-6">
+        <div class="container relative flex flex-row items-center justify-between mb-6 md:justify-start md:gap-4">
             <h2 class="h1">
                 Been Awesome Winners
             </h2>
-            <a
-                class="transition-opacity duration-300 opacity-50  hover:opacity-100"
-                target="_blank"
-                href="https://mailchi.mp/745f4973215e/welcome-to-whats-been-happening-12011162"
+            <nuxt-link
+                class="transition-opacity duration-300 opacity-50 hover:opacity-100"
+                to="/article/been-awesome-award"
             >
                 <Icon
-                    name="ph:info-bold"
-                    class="w-5 h-5 "
+                    name="ic:baseline-help"
+                    class="w-6 h-6"
                 />
-            </a>
+            </nuxt-link>
         </div>
         <div class="px-2 overflow-hidden md:px-4">
             <div class="w-full pb-4 overflow-x-scroll ">
                 <div class="relative flex flex-row w-full space-x-4">
-                    <div class="relative  flex flex-col items-center p-8 border-2 border-gray-300 dark:border-gray-700 border-dashed min-w-[20rem] w-[20rem] bg-neutral-50 dark:bg-neutral-900 dark:text-gray-200">
+                    <div class="relative  flex flex-col items-center p-8 shadow-lg min-w-[20rem] w-[20rem] bg-gradient-to-br from-neutral-800 to-black text-white dark:bg-neutral-900 dark:text-gray-200">
                         <img
                             src="@/assets/images/beenawesome.png"
                             alt="You've Been Awesome logo"
-                            class="max-w-[10rem] w-full mb-4 dark:contrast-200 dark:invert dark:brightness-0"
+                            class="max-w-[10rem] w-full mb-4 contrast-200 invert brightness-75"
                         >
-                        <h3 class="text-2xl text-black dark:text-white font-krete">
+                        <h3 class="text-2xl font-krete">
                             {{ currentWinner.winner?.name }}
                         </h3>
 
@@ -52,7 +51,7 @@
                     <div
                         v-for="winner in previousWinners"
                         :key="winner.id"
-                        class="relative flex flex-col justify-center items-center my-16 p-8 bg-transparent border-2 border-gray-300 dark:border-navy-200 border-dotted w-[16rem] min-w-[16rem] dark:text-gray-200 "
+                        class="relative flex flex-col justify-center items-center my-16 p-8 bg-white shadow-lg dark:border-navy-200 dark:bg-navy-400 border-dotted w-[16rem] min-w-[16rem] dark:text-gray-200 "
                     >
                         <h3 class="text-xl font-krete">
                             {{ winner.winner?.name }}

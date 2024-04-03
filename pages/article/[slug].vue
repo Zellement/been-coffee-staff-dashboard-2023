@@ -78,6 +78,14 @@
                         :components="myPortableTextComponents"
                     />
                 </div>
+                <nuxt-link
+                    v-if="nextArticle"
+                    :to="nextArticle.slug.current"
+                    class="inline-flex flex-col p-4 mt-8 transition-colors duration-300 bg-butterscotch-500 dark:bg-navy-400 dark:hover:bg-navy-600 hover:bg-butterscotch-600"
+                >
+                    <span class="opacity-70">Next Article</span>
+                    <span class="font-serif text-xl">{{ nextArticle.title }} &raquo;</span>
+                </nuxt-link>
             </div>
         </div>
     </div>
@@ -96,6 +104,11 @@ const query = groq`*[_type == "article" && slug.current == '${route.params.slug}
     publishedAt,
     _updatedAt,
     content,
+    nextArticle->{
+        title,
+        subtitle,
+        slug
+    },
     files[]{
       _key,
         value,
@@ -109,16 +122,21 @@ const query = groq`*[_type == "article" && slug.current == '${route.params.slug}
     categories[]->{
         _id,
     slug,
-    title
+    title,
   },
 }
 `
+
 const sanity = useSanity()
 
 const { data } = await useAsyncData('singleArticle', () => sanity.fetch(query))
 
 const articleData = computed(() => {
     return data.value
+})
+
+const nextArticle = computed(() => {
+    return articleData.value?.nextArticle
 })
 
 const myPortableTextComponents = {
