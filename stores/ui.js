@@ -32,7 +32,6 @@ export const useUiStore = defineStore('ui', {
             this.originalUrl = url
         },
         toggleSearchResults (value) {
-            console.log(value)
             this.showSearchResults = value ?? !this.showSearchResults
         },
         toggleProfileData () {

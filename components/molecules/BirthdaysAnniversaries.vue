@@ -91,7 +91,7 @@ const yearFinder = (startYear) => {
 
 const teamWithBirthdays = computed(() => {
     const teamMembers = []
-    team.value.forEach((member) => {
+    team.value?.forEach((member) => {
         if (dateConverterNoYear(member.birthday) === todaysDateWithoutYear) {
             return teamMembers.push(member)
         }
@@ -101,7 +101,7 @@ const teamWithBirthdays = computed(() => {
 
 const teamWithAnniversaries = computed(() => {
     const teamMembers = []
-    team.value.forEach((member) => {
+    team.value?.forEach((member) => {
         if ((dateConverterNoYear(member.startDate) === todaysDateWithoutYear) && dateConverterYearOnly(member.startDate) !== dateConverterYearOnly(todaysDate)) {
             return teamMembers.push(member)
         }
@@ -110,7 +110,7 @@ const teamWithAnniversaries = computed(() => {
 })
 
 const hasTeamMembersToShow = computed(() => {
-    return teamWithBirthdays.value.length > 0 || teamWithAnniversaries.value.length > 0
+    return (teamWithBirthdays.value && teamWithBirthdays.value.length > 0) || (teamWithAnniversaries.value && teamWithAnniversaries.value.length > 0)
 })
 
 </script>

@@ -3,7 +3,10 @@
         <h2 class="mb-4 h4">
             Close lead
         </h2>
-        <div class="flex flex-col md:flex-row md:flex-wrap md:gap-8">
+        <div
+            v-if="hasTeam"
+            class="flex flex-col md:flex-row md:flex-wrap md:gap-8"
+        >
             <label
                 v-for="member in team"
                 :key="member.id"
@@ -20,6 +23,7 @@
 
                 <div class="absolute left-0 flex w-12 h-12 p-1 overflow-hidden -translate-y-1/2 rounded-full shift-leads__img-wrapper aspect-square top-1/2">
                     <img
+                        v-if="member.image"
                         :alt="member.name"
                         :src="$urlFor(member.image).width(60).height(60).url()"
                         class="object-cover w-full h-full rounded-full"
@@ -84,7 +88,11 @@ const sanity = useSanity()
 
 const { data } = await useAsyncData('latestUpdatedArticles', () => sanity.fetch(query))
 
+const hasTeam = computed(() => {
+    return data.value && data.value.length > 0
+})
 const team = computed(() => {
     return data.value
 })
+
 </script>

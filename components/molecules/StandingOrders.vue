@@ -7,7 +7,7 @@
         </div>
         <div
             v-if="standingOrders"
-            class="px-2 overflow-hidden md:px-4"
+            class="px-2 overflow-hidden md:px-4 xl:px-6"
         >
             <div class="w-full py-8 overflow-x-scroll">
                 <div class="flex flex-row w-full space-x-4">
