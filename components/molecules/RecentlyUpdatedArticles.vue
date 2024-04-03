@@ -34,13 +34,14 @@
 
 <script setup>
 
-const query = groq`*[_type == "article"][0..3]{
-    title,
-    subtitle,
-    publishedAt,
-    _updatedAt,
-    slug,
+const query = groq`*[_type == "article"]|order(_updatedAt desc)[0..3]{  
+  title,
+  subtitle,
+  publishedAt,
+  _updatedAt,
+  slug,
 }
+
 `
 
 const sanity = useSanity()
