@@ -18,7 +18,7 @@
                                 :name="link.icon"
                                 class="w-4 h-5"
                             />
-                            <h3 class="h4">{{ link.title }}</h3>
+                            <h3 class="krete-title">{{ link.title }}</h3>
                         </span>
                         <ul class="flex flex-row items-center gap-2 text-2xs">
 

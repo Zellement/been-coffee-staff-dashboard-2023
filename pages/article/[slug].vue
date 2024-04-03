@@ -15,7 +15,8 @@
                     v-if="articleData._updatedAt"
                     class="text-xs opacity-50 font-krete"
                 >
-                    Last updated: {{ dateConverter(articleData._updatedAt) }}
+                    Created: {{ dateConverter(articleData.publishedAt) }}<br>
+                    Updated: {{ dateConverter(articleData._updatedAt) }}
                 </p>
                 <ul
                     v-if="articleData.categories"

@@ -13,9 +13,6 @@
                 :key="member.id"
                 class="max-w-[280px] mx-auto"
             >
-                <h3 class="h4">
-                    {{ member.name }}
-                </h3>
                 <div class="flex w-full overflow-hidden">
                     <SanityImage
                         :asset-id="`${member.image.asset._ref}`"
@@ -28,9 +25,12 @@
                         h="700"
                     />
                 </div>
-                <ul class="relative flex flex-col p-4 mx-2 -mt-2 text-xs text-gray-300 shadow-xl bg-navy dark:bg-navy-600 md:mx-4 md:-mt-8">
+                <ul class="relative flex flex-col p-4 mx-2 -mt-16 text-xs text-gray-300 shadow-xl bg-navy dark:bg-navy-600 md:mx-4 md:-mt-6">
+                    <li class="text-lg font-krete">
+                        {{ member.name }}
+                    </li>
                     <li
-                        class="flex flex-row items-center justify-between gap-2 text-sm font-krete"
+                        class="flex flex-row items-center justify-between gap-2 text-sm font-krete text-butterscotch-300"
                     >
                         {{ member.role }}
                     </li>

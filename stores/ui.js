@@ -31,8 +31,9 @@ export const useUiStore = defineStore('ui', {
         setOriginalUrl (url) {
             this.originalUrl = url
         },
-        toggleSearchResults () {
-            this.showSearchResults = !this.showSearchResults
+        toggleSearchResults (value) {
+            console.log(value)
+            this.showSearchResults = value ?? !this.showSearchResults
         },
         toggleProfileData () {
             this.showProfileData = !this.showProfileData

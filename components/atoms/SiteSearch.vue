@@ -1,7 +1,7 @@
 <template>
     <button
         class="flex items-center gap-2 p-2 transition-all duration-300 dark:hover:text-butterscotch-500 hover:text-white"
-        @click="uiStore.toggleSearchResults"
+        @click="uiStore.toggleSearchResults()"
     >
         <Icon
             name="ri:menu-search-line"

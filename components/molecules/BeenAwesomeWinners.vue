@@ -1,9 +1,19 @@
 <template>
     <section v-if="allWinners">
-        <div class="container mb-6 ">
+        <div class="container relative flex flex-row items-center justify-between mb-6">
             <h2 class="h1">
                 Been Awesome Winners
             </h2>
+            <a
+                class="transition-opacity duration-300 opacity-50  hover:opacity-100"
+                target="_blank"
+                href="https://mailchi.mp/745f4973215e/welcome-to-whats-been-happening-12011162"
+            >
+                <Icon
+                    name="ph:info-bold"
+                    class="w-5 h-5 "
+                />
+            </a>
         </div>
         <div class="px-2 overflow-hidden md:px-4">
             <div class="w-full pb-4 overflow-x-scroll ">
@@ -14,17 +24,7 @@
                             alt="You've Been Awesome logo"
                             class="max-w-[10rem] w-full mb-4 dark:contrast-200 dark:invert dark:brightness-0"
                         >
-                        <a
-                            class="absolute top-0 transition-opacity duration-300 opacity-50 right-1 hover:opacity-100"
-                            target="_blank"
-                            href="https://mailchi.mp/745f4973215e/welcome-to-whats-been-happening-12011162"
-                        >
-                            <Icon
-                                name="ph:info-bold"
-                                class="w-5 h-5 "
-                            />
-                        </a>
-                        <h3 class="text-black dark:text-white h2">
+                        <h3 class="text-2xl text-black dark:text-white font-krete">
                             {{ currentWinner.winner?.name }}
                         </h3>
 
@@ -54,11 +54,11 @@
                         :key="winner.id"
                         class="relative flex flex-col justify-center items-center my-16 p-8 bg-transparent border-2 border-gray-300 dark:border-navy-200 border-dotted w-[16rem] min-w-[16rem] dark:text-gray-200 "
                     >
-                        <h3 class="h3">
+                        <h3 class="text-xl font-krete">
                             {{ winner.winner?.name }}
                         </h3>
 
-                        <div class="flex flex-col items-center mb-4 opacity-80">
+                        <div class="flex flex-col items-center mb-4 opacity-60">
                             <span><strong>From</strong> {{ dateConverter(winner?.from) }}</span>
                             <span><strong>To</strong> {{ dateConverter(winner?.to) }}</span>
                             <span class="text-xs italic">{{ duration(winner.to, winner.from) }} days</span>

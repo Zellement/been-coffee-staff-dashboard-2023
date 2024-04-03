@@ -4,7 +4,7 @@
             <h2 class="mb-6 h1">
                 Recently Updated Articles
             </h2>
-            <ul class="grid grid-cols-2 gap-2 md:gap-4 lg:gap-8 md:grid-cols-2 lg:grid-cols-4">
+            <ul class="grid gap-2 md:grid-cols-2 md:gap-4 lg:gap-8 lg:grid-cols-4">
                 <li
                     v-for="item in data"
                     :key="item._id"
@@ -14,7 +14,7 @@
                         class="flex flex-col flex-grow p-2 transition-colors duration-300 bg-white lg:p-4 dark:bg-navy-400 hover:bg-butterscotch-200 dark:hover:bg-navy-600 border-current/40"
                         :to="`/article/${item.slug.current}`"
                     >
-                        <span class="text-lg font-bold font-riverside">{{ item.title }}</span>
+                        <span class="krete-title">{{ item.title }}</span>
                         <span class="mb-4 text-xs">{{ item.subtitle }}</span>
                         <span class="mt-auto text-2xs">Updated: {{ inputDate(item._updatedAt) }}</span>
                     </nuxt-link>

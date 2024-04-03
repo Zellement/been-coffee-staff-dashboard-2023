@@ -16,7 +16,7 @@
                 <nuxt-link
                     :to="`/category/${item.slug.current}`"
                     class="inline-flex flex-row items-end self-start transition-all duration-300 border-b border-transparent hover:border-current"
-                    @click="uiStore.toggleSearchResults"
+                    @click="uiStore.toggleSearchResults()"
                 >
                     <span>{{ item.title }}</span>
                 </nuxt-link>

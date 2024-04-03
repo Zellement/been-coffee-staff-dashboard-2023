@@ -25,7 +25,7 @@
                     <nuxt-link
                         :to="`/article/${item.slug.current}`"
                         class="flex flex-row items-center self-start justify-between w-full py-1 transition-all duration-300 border-b border-transparent shadow-sm hover:border-current"
-                        @click="uiStore.toggleSearchResults"
+                        @click="uiStore.toggleSearchResults()"
                     >
                         <span>{{ item.title }}</span>
                         <span class="text-right whitespace-nowrap text-2xs opacity-60">{{ dateConverter(item._updatedAt) }}</span>

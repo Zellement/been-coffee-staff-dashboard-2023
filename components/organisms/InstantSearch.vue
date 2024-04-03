@@ -5,7 +5,7 @@
     >
         <button
             class="fixed top-2 right-2"
-            @click="uiStore.toggleSearchResults"
+            @click="uiStore.toggleSearchResults()"
         >
             <Icon
                 name="ri:close-circle-line"

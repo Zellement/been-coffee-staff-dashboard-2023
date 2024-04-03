@@ -64,7 +64,7 @@
                         </template>
                         <template v-if="item.orderDetails">
                             <div class="flex flex-col mt-4">
-                                <h3 class="h4">
+                                <h3 class="krete-title">
                                     Details
                                 </h3>
                                 <div class="content">
