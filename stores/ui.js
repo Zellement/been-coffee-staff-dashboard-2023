@@ -69,7 +69,7 @@ export const useUiStore = defineStore('ui', {
                 }
                 break
             case 'Mar':
-                if (thisDay > 10) {
+                if (thisDay > 20) {
                     this.theme = 'easter'
                     this.themeToggleBtn = {
                         show: true,
@@ -79,10 +79,13 @@ export const useUiStore = defineStore('ui', {
                 }
                 break
             case 'Apr':
-                this.theme = 'easter'
-                this.themeToggleBtn = {
-                    show: true,
-                    text: 'Bunnies give me nightmares'
+                if (thisDay < 22) {
+                    this.theme = 'easter'
+                    this.themeToggleBtn = {
+                        show: true,
+                        text: 'Bunnies give me nightmares',
+                        icon: 'mdi:rabbit'
+                    }
                 }
                 break
             default:
