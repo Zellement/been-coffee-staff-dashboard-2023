@@ -8,7 +8,7 @@ export const useTeamStore = defineStore('team', {
         async fetchCurrentTeam () {
             const sanity = useSanity()
 
-            const query = '*[_type == "teamMember"]|order(orderRank)'
+            const query = '*[_type == "teamMember" && formerEmployee != true]|order(orderRank)'
 
             try {
                 const data = await sanity.fetch(query)

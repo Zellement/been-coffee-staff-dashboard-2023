@@ -20,20 +20,16 @@
                     <div
                         v-for="item in team"
                         :key="item.id"
-                        class="relative w-80 min-w-[200px] flex"
+                        class="relative w-full min-w-[200px] lg:min-w-[240px] flex"
                     >
-                        <span class="absolute bottom-0 left-0 flex flex-col px-2 py-1 text-xs rounded-tr bg-seashell dark:bg-navy-500">
-                            <span class="leading-tight">{{ item.name }}</span>
-                            <span class="leading-tight opacity-50 text-2xs">{{ item.role }}</span>
-                        </span>
-                        <span class="absolute bottom-0 right-0 flex flex-col items-end px-2 py-1 text-xs rounded-tl bg-seashell dark:bg-navy-500">
-                            <span class="leading-tight opacity-50 text-2xs">Started on</span>
-                            <span class="leading-tight text-2xs">{{ dateConverter(item.startDate) }}</span>
+                        <span class="absolute bottom-0 left-0 flex flex-col items-start dark:bg-navy-500 ">
+                            <span class="px-2 pt-1 font-serif text-base leading-tight bg-seashell/90 dark:bg-navy-500/90">{{ item.name }}</span>
+                            <span class="px-2 py-1 leading-tight text-2xs bg-seashell/90 dark:bg-navy-500/90">{{ item.role }}</span>
                         </span>
                         <div class="flex w-full overflow-hidden">
                             <img
-                                :src="$urlFor(item.image).width(400).height(700).url()"
-                                height="400"
+                                :src="$urlFor(item.image).width(450).height(700).url()"
+                                height="450"
                                 width="700"
                                 loading="lazy"
                             >
@@ -46,7 +42,6 @@
 </template>
 
 <script setup>
-import { dateConverter } from '@/scripts/helpers'
 import { useTeamStore } from '@/stores/team'
 
 const teamStore = useTeamStore()

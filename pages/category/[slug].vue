@@ -14,7 +14,7 @@
                 v-for="article in data"
                 :key="article._id"
                 :to="`/article/${article.slug.current}`"
-                class="flex flex-col w-full p-4 transition-all duration-300 rounded bg-butterscotch-500 dark:bg-navy-600 bg-opacity-10 hover:bg-opacity-80 dark:hover:text-butterscotch-200"
+                class="flex flex-col w-full p-4 transition-all duration-300 bg-butterscotch-500 dark:bg-navy-600 bg-opacity-10 hover:bg-opacity-80 dark:hover:text-butterscotch-200"
             >
                 <h2 class="h4">
                     {{ article.title }}

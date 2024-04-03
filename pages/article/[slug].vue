@@ -38,7 +38,7 @@
                     v-if="articleData.files"
                     class="py-8 col-span-full lg:p-0"
                 >
-                    <h2 class="font-krete lg:mb-2">
+                    <h2 class="mb-2 font-krete">
                         <Icon
                             name="material-symbols-light:file-copy-rounded"
                             class="w-4 h-4 "
@@ -47,7 +47,7 @@
                     </h2>
                     <div class="w-full pb-4 overflow-x-scroll ">
                         <ul
-                            class="flex w-full gap-4 lg:flex-col lg:gap-0 lg:divide-y-[1px] dark:divide-navy-200"
+                            class="flex w-full gap-4 lg:flex-col lg:gap-2"
                         >
                             <li
                                 v-for="file in articleData.files"
@@ -57,7 +57,7 @@
                                 <a
                                     :href="file.file.asset.url"
                                     target="_blank"
-                                    class="w-full relative h-full min-w-[270px] pl-6 py-1 pr-2 text-xs font-krete shadow dark:shadow-navy-400 lg:py-2 text-tuscany rounded lg:shadow-none"
+                                    class="w-full relative h-full min-w-[270px] pl-6 py-1 pr-2 text-xs font-krete border dark:border-navy-300 border-seashell-600 lg:py-2 text-tuscany "
                                 >
                                     <Icon
                                         name="material-symbols-light:file-copy-rounded"

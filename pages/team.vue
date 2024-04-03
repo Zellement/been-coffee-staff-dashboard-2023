@@ -4,10 +4,14 @@
             The Team
         </h1>
 
-        <ul class="grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-4 md:gap-8">
+        <ul
+            v-if="team"
+            class="grid grid-cols-1 gap-6 mx-auto max-w-screen-3xl sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 md:gap-8"
+        >
             <li
                 v-for="member in team"
                 :key="member.id"
+                class="max-w-[280px] mx-auto"
             >
                 <h3 class="h4">
                     {{ member.name }}
@@ -24,7 +28,7 @@
                         h="700"
                     />
                 </div>
-                <ul class="relative flex flex-col p-4 mx-2 -mt-2 text-xs rounded shadow-xl bg-butterscotch-200 dark:bg-black md:mx-4 md:-mt-4">
+                <ul class="relative flex flex-col p-4 mx-2 -mt-2 text-xs text-gray-300 shadow-xl bg-navy dark:bg-navy-600 md:mx-4 md:-mt-8">
                     <li
                         class="flex flex-row items-center justify-between gap-2 text-sm font-krete"
                     >
@@ -35,7 +39,8 @@
                         class="flex flex-row items-center justify-between gap-2"
                     >
                         <Icon
-                            :name="member.managerKeyHolder ? `material-symbols:person-check` : 'iconamoon:sign-times-fill'"
+                            :name="member.managerKeyHolder ? `material-symbols:check` : 'iconamoon:sign-times-fill'"
+                            :class="member.managerKeyHolder ? `text-green-500` : `text-red-500`"
                         />
                         Key Holder
                     </li>

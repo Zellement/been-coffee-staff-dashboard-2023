@@ -3,7 +3,7 @@
         <input
             id="site-search"
             v-model="searchInput"
-            class="w-full max-w-[20rem] max-h-10 mx-auto p-2 rounded dark:bg-navy-300"
+            class="w-full max-w-[20rem] max-h-10 mx-auto p-2  dark:bg-navy-300"
             name="site-search"
             placeholder="Search articles..."
         >
