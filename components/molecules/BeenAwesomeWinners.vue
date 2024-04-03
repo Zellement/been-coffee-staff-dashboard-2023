@@ -8,7 +8,7 @@
         <div class="px-2 overflow-hidden md:px-4">
             <div class="w-full pb-4 overflow-x-scroll ">
                 <div class="relative flex flex-row w-full space-x-4">
-                    <div class="relative  flex flex-col items-center p-8 border-2 border-gray-400 border-dashed min-w-[20rem] w-[20rem] bg-neutral-50 dark:bg-neutral-900 dark:text-gray-200">
+                    <div class="relative  flex flex-col items-center p-8 border-2 border-gray-300 dark:border-gray-700 border-dashed min-w-[20rem] w-[20rem] bg-neutral-50 dark:bg-neutral-900 dark:text-gray-200">
                         <img
                             src="@/assets/images/beenawesome.png"
                             alt="You've Been Awesome logo"
@@ -52,7 +52,7 @@
                     <div
                         v-for="winner in previousWinners"
                         :key="winner.id"
-                        class="relative flex flex-col justify-center items-center my-16 p-8 bg-transparent border-2 border-gray-400 border-dotted w-[16rem] min-w-[16rem] dark:text-gray-200 "
+                        class="relative flex flex-col justify-center items-center my-16 p-8 bg-transparent border-2 border-gray-300 dark:border-navy-200 border-dotted w-[16rem] min-w-[16rem] dark:text-gray-200 "
                     >
                         <h3 class="h3">
                             {{ winner.winner?.name }}

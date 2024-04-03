@@ -8,10 +8,10 @@
                 <li
                     v-for="item in data"
                     :key="item._id"
-                    class="flex flex-grow w-full"
+                    class="flex flex-grow w-full shadow-lg "
                 >
                     <nuxt-link
-                        class="flex flex-col flex-grow p-2 transition-colors duration-300 bg-white border lg:p-4 dark:bg-navy/60 hover:bg-butterscotch-200 dark:hover:bg-navy-600 border-current/40"
+                        class="flex flex-col flex-grow p-2 transition-colors duration-300 bg-white lg:p-4 dark:bg-navy-400 hover:bg-butterscotch-200 dark:hover:bg-navy-600 border-current/40"
                         :to="`/article/${item.slug.current}`"
                     >
                         <span class="text-lg font-bold font-riverside">{{ item.title }}</span>

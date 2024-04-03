@@ -12,6 +12,7 @@ export default defineNuxtConfig({
             GOOGLE_SHEETS_SCRIPT_DAILY_TEMPERATURE_LOGS: process.env.GOOGLE_SHEETS_SCRIPT_DAILY_TEMPERATURE_LOGS
         }
     },
+    ssr: false,
     devServerHandlers: [],
     devServer: {
         port: 3000, // default: 3000

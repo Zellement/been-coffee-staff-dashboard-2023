@@ -9,7 +9,7 @@
             </template>
         </h2>
         <div class="flex flex-col">
-            <div class="flex flex-col items-center w-24 h-24 overflow-hidden bg-white border-2 border-white rounded-full">
+            <div class="flex flex-col items-center w-24 h-24 overflow-hidden bg-white border-2 border-white rounded-full shadow-lg">
                 <span
                     class="flex w-full text-xl basis-1/2 font-riverside"
                     :class="dayDotConverter[getDayNumeric(props.date)].classes"

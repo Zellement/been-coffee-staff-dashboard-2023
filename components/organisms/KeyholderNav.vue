@@ -11,7 +11,7 @@
                     :key="link.url"
                 >
                     <span
-                        class="flex flex-col items-start gap-2 p-4 bg-white dark:bg-black/10"
+                        class="flex flex-col items-start gap-2 p-4 bg-white shadow-lg dark:bg-navy-400"
                     >
                         <span class="flex items-center gap-2">
                             <Icon
@@ -30,7 +30,7 @@
                                     v-if="subnav.url"
                                     :to="subnav.url"
                                     :target="subnav.blank ? '_blank' : null"
-                                    class="flex flex-row button  items-center gap-1 p-0.5 px-1 rounded "
+                                    class="flex flex-row button items-center gap-1 p-0.5 px-1"
                                 >
                                     {{ subnav.title }}
 

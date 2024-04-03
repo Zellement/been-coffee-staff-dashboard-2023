@@ -14,22 +14,22 @@
                     <div
                         v-for="item in allOrders"
                         :key="item._id"
-                        class="flex relative flex-col w-3/4 p-4 shadow-lg rounded-xl  min-w-[300px] bg-seashell-400 dark:bg-navy-400"
+                        class="flex relative flex-col w-3/4 p-4 shadow-lg  min-w-[300px] bg-seashell-400 dark:bg-navy-400"
                     >
-                        <div class="absolute top-0 left-0 uppercase -translate-y-1/2 bg-white text-3xs px-2 dark:text-navy-50 dark:bg-navy-400 text-gray-400 rounded-tl-lg rounded-tr-lg py-0.5 tracking-wider">
+                        <div class="absolute top-0 left-0 uppercase -translate-y-1/2 bg-white text-3xs px-2 dark:text-navy-50 dark:bg-navy-400 text-gray-400 py-0.5 tracking-wider">
                             {{ item.supplier.title }}
                         </div>
                         <div class="flex flex-col w-full">
-                            <div class="flex justify-between h-16 p-1 mb-2 overflow-hidden bg-white border border-gray-200 rounded-full shadow-lg">
+                            <div class="flex justify-between h-16 p-1 mb-2 overflow-hidden bg-white border border-gray-200 ">
                                 <img
                                     :src="$urlFor(item.supplier.logo).height(50).fit('clip').url()"
-                                    class="w-auto my-auto max-w-[60%] pl-4"
+                                    class="w-auto my-auto max-w-[50%] pl-4"
                                     height="60"
                                     loading="lazy"
                                 >
                                 <img
                                     :src="$urlFor(item.orderedBy.image).width(54).height(54).url()"
-                                    class="rounded-full aspect-square"
+                                    class=" aspect-square"
                                     width="54"
                                     height="54"
                                     loading="lazy"
@@ -44,9 +44,9 @@
                                 </p>
                             </div>
                             <div class="flex flex-col text-sm">
-                                <span class="flex flex-row items-center justify-center space-x-2 dark:text-butterscotch-500 text-navy-500">
+                                <span class="flex flex-row items-center justify-center space-x-1 dark:text-butterscotch-500 text-navy-500">
                                     <Icon
-                                        class="w-6 h-6 p-1 rounded-full bg-butterscotch-500 dark:bg-navy-700 "
+                                        class="w-6 h-6 p-1"
                                         name="clarity:truck-solid"
                                     />
                                     <span>

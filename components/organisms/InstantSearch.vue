@@ -15,7 +15,7 @@
 
         <div class="flex flex-col w-full mx-auto mt-8 lg:m-0 md:grid md:grid-cols-2">
             <all-articles />
-            <all-categories />
+            <all-categories class="w-full h-48 mt-auto xl:m-0 xl:h-auto" />
         </div>
     </div>
 </template>

@@ -1,11 +1,11 @@
 <template>
     <div
-        class="fixed inset-0 z-50 flex p-4 duration-500 bg-tuscany/80 backdrop-blur dark:bg-navy/80"
+        class="fixed inset-0 z-[100] flex p-4 duration-500 bg-tuscany/80 backdrop-blur dark:bg-navy/80"
         :class="showPanel"
         @click="uiStore.toggleProfileData"
     >
         <div
-            class="relative flex flex-col w-full max-w-screen-sm p-4 m-auto bg-white shadow-xl lg:p-12 dark:bg-navy-600 rounded-xl"
+            class="relative flex flex-col w-full max-w-screen-sm p-4 m-auto bg-white shadow-xl lg:p-12 dark:bg-navy-600"
             @click="uiStore.toggleProfileData(true)"
         >
             <div
@@ -114,7 +114,7 @@
                             name="ic:sharp-currency-pound"
                             class="w-4 h-4 transition-all duration-300 hover:rotate-90"
                         />
-                        <span class="flex gap-2">View your payslips on <img
+                        <span class="flex gap-2">View payslips <img
                             src="/freeagent.svg"
                             class="w-full h-auto max-w-[80px] "
                         ></span>

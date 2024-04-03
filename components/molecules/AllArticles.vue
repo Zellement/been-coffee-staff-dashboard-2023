@@ -8,7 +8,7 @@
             placeholder="Search articles..."
         >
     </div>
-    <div class="flex flex-col w-full p-4 overflow-hidden h-max-h-screen xl:p-16 xl:pt-0">
+    <div class="flex flex-col w-full p-4 overflow-hidden xl:p-16 xl:pt-0">
         <div class="flex flex-row items-center justify-between">
             <h2 class="mb-2 h4">
                 Article
