@@ -139,10 +139,7 @@ const myPortableTextComponents = {
             ])
         },
         image: ({ value }) => {
-            console.log(value)
-
             const fullAsset = getImageAsset(value, { projectId: 'mxklvbih', dataset: 'production' })
-            console.log(fullAsset)
             // :src="$urlFor(currentWinner.winner.image).width(300).height(400).url()"
             // const image = $urlFor(fullAsset.assetId).width(800).url()
             const image = fullAsset.url

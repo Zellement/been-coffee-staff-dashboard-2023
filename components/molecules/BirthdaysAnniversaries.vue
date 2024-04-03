@@ -7,7 +7,7 @@
             <h2 class="mb-8 h1">
                 Celebrations today!
             </h2>
-            <div class="grid grid-cols-2 gap-4 lg:grid-cols-3">
+            <div class="grid grid-cols-2 gap-4 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6">
                 <div
                     v-for="member in teamWithBirthdays"
                     :key="member.id"
@@ -25,6 +25,13 @@
                             :src="`${member?.picture?.url}?w=300`"
                             class="object-cover w-full h-full"
                         >
+                        <img
+                            :src="$urlFor(member.image).width(600).height(1000).url()"
+                            height="400"
+                            width="700"
+                            loading="lazy"
+                            class="object-cover w-full h-full"
+                        >
                     </div>
                 </div>
                 <div
@@ -40,8 +47,10 @@
                             />
                         </div>
                         <img
-                            :alt="member.name"
-                            :src="`${member?.picture?.url}?w=300`"
+                            :src="$urlFor(member.image).width(600).height(1000).url()"
+                            height="400"
+                            width="700"
+                            loading="lazy"
                             class="object-cover w-full h-full"
                         >
                         <span class="absolute bottom-0 right-0 flex flex-col w-12 p-px pr-2 leading-none text-right rounded-tl-full text-2xs font-riverside bg-navy text-butterscotch aspect-square">

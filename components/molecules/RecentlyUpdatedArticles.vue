@@ -10,7 +10,6 @@
                     :key="item._id"
                     class="flex flex-grow w-full"
                 >
-                    {{ console.log('item', item) }}
                     <nuxt-link
                         class="flex flex-col flex-grow p-2 transition-colors duration-300 bg-white border rounded-lg lg:p-4 dark:bg-navy/60 hover:bg-butterscotch-200 dark:hover:bg-navy-600 border-current/40"
                         :to="`/article/${item.slug.current}`"
