@@ -24,6 +24,13 @@ export default defineNuxtConfig({
             pathPrefix: false
         }
     ],
+    image: {
+        sanity: {
+            projectId: 'mxklvbih'
+            // Defaults to 'production'
+            // dataset: 'development'
+        }
+    },
     modules: ['@nuxtjs/color-mode', 'nuxt-icon', '@nuxtjs/tailwindcss', '@pinia/nuxt', '@nuxt/image', '@nuxtjs/supabase', '@vite-pwa/nuxt', '@nuxtjs/sanity'],
     sanity: {
         projectId: 'mxklvbih'
