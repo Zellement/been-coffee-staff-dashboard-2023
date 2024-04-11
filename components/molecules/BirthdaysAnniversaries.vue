@@ -21,11 +21,6 @@
                         </div>
                         <span class="absolute bottom-0 p-4 text-3xl text-white -translate-x-1/2 left-1/2 left font-riverside">{{ member.name }}</span>
                         <img
-                            :alt="member.name"
-                            :src="`${member?.picture?.url}?w=300`"
-                            class="object-cover w-full h-full"
-                        >
-                        <img
                             :src="$urlFor(member.image).width(600).height(1000).url()"
                             height="400"
                             width="700"
