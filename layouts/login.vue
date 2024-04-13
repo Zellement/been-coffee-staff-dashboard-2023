@@ -1,6 +1,6 @@
 <template>
     <div
-        class="overflow-hidden"
+        class="px-4 mx-auto overflow-hidden max-w-screen-xs"
     >
         <slot />
     </div>

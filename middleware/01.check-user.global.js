@@ -12,7 +12,8 @@ export default defineNuxtRouteMiddleware((to, from) => {
         return
     }
 
-    if (to.path === '/login') return
+    if (to.path === '/login' || to.path === '/forgot-password' || to.path === '/update-password') return
+
     // Prevent adding QS to index
     if (to.path === '/') {
         return navigateTo({

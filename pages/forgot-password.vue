@@ -54,7 +54,7 @@ definePageMeta({
 const submitForm = async () => {
     try {
         const { data, error } = await supabase.auth.resetPasswordForEmail(email.value, {
-            redirectTo: '/update-password'
+            redirectTo: 'http://localhost:3000/update-password'
         })
         console.log(data)
         if (error) throw error

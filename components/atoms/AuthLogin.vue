@@ -1,9 +1,9 @@
 <template>
     <form
-        class="flex justify-center max-w-screen-md p-8 mx-auto"
+        class="flex justify-center"
         @submit.prevent="handleLogin"
     >
-        <div class="flex flex-col gap-4">
+        <div class="flex flex-col w-full gap-4">
             <h1 class="h1">
                 Been Coffee Dashboard
             </h1>
