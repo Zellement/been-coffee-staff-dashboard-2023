@@ -1,17 +1,32 @@
 <template>
     <div>
         <nuxt-layout name="login">
+            <div class="flex flex-col gap-4 mb-8">
+                <h1 class="h1">
+                    Been Coffee Dashboard
+                </h1>
+                <h2 class="h2">
+                    Update your password
+                </h2>
+            </div>
+            <span
+                v-if="success"
+                class="flex flex-col gap-4 text-sm"
+            >
+                <span class="mb-4 text-green-500">Password updated.</span>
+                <a
+                    class="button"
+                    href="/login"
+                >
+                    Login
+                </a>
+            </span>
             <form
-                class="flex justify-center max-w-screen-md p-8 mx-auto"
+                v-else
+                class="flex justify-center w-full"
                 @submit.prevent="submitForm"
             >
-                <div class="flex flex-col w-full gap-4 max-w-screen-xs">
-                    <h1 class="h1">
-                        Been Coffee Dashboard
-                    </h1>
-                    <h2 class="h2">
-                        Update your password
-                    </h2>
+                <div class="flex flex-col w-full gap-4 ">
                     <input
                         v-model="password"
                         type="password"
@@ -36,10 +51,6 @@
                         :value="loading ? 'Bear with...' : 'Reset my password'"
                         :disabled="loading"
                     >
-                    <span
-                        v-if="status"
-                        class="text-sm "
-                    >{{ status }}</span>
                 </div>
             </form>
         </nuxt-layout>
@@ -52,7 +63,7 @@ const supabase = useSupabaseClient()
 const password = ref('')
 const passwordagain = ref('')
 const loading = ref(false)
-const status = ref('')
+const success = ref('')
 const error = ref('')
 
 useHead({
@@ -78,10 +89,7 @@ const submitForm = async () => {
             })
         console.log(data)
         if (error) throw error
-        status.value = 'Sorted, redirecting you to the login page...'
-        setTimeout(() => {
-            navigateTo('/login')
-        }, 2000)
+        success.value = 'Sorted!'
     } catch (error) {
         alert(error.message)
     }

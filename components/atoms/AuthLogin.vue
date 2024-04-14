@@ -1,15 +1,9 @@
 <template>
     <form
-        class="flex justify-center"
+        class="flex justify-center w-full"
         @submit.prevent="handleLogin"
     >
         <div class="flex flex-col w-full gap-4">
-            <h1 class="h1">
-                Been Coffee Dashboard
-            </h1>
-            <h2 class="h2">
-                Login
-            </h2>
             <input
                 v-model="email"
                 class="p-2 dark:bg-navy-700"

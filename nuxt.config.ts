@@ -24,6 +24,13 @@ export default defineNuxtConfig({
             pathPrefix: false
         }
     ],
+    supabase: {
+        redirectOptions: {
+            login: '/login',
+            callback: '/confirm',
+            exclude: ['/login', '/register', '/forgot-password', '/update-password']
+        }
+    },
     image: {
         sanity: {
             projectId: 'mxklvbih'
