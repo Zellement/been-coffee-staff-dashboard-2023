@@ -59,6 +59,8 @@ useHead({
     title: 'Reset your password'
 })
 
+const config = useRuntimeConfig()
+
 definePageMeta({
     layout: false
 })
@@ -66,7 +68,7 @@ definePageMeta({
 const submitForm = async () => {
     try {
         const { error } = await supabase.auth.resetPasswordForEmail(email.value, {
-            redirectTo: 'http://localhost:3000/update-password'
+            redirectTo: `${config.public.SITE_URL}/update-password`
         })
         if (error) throw error
         success.value = 'If this email exists, we will send you a password reset link. Check your inbox AND your junk/spam folders.'
