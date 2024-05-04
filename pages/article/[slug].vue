@@ -186,8 +186,10 @@ const myPortableTextComponents = {
     // }
 }
 
-useHead({
-    title: articleData.value?.title
+watch(articleData, (newVal) => {
+    useHead({
+        title: newVal?.title
+    })
 })
 
 </script>
