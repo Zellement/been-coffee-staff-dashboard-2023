@@ -155,10 +155,14 @@ hr {
     @apply mb-4 text-sm flex flex-col space-y-2;
 
     li {
-      @apply ml-6 list-disc leading-tight;
+      @apply  pl-3 list-none leading-snug relative;
+
+      &:before {
+        @apply w-0 h-0 border-t-4 border-t-transparent border-b-4 border-b-transparent  absolute top-1.5 left-0 content-[''] border-l-4 border-l-tuscany-500;
+      }
     }
     ul {
-        @apply mt-4 ml-6;
+        @apply mt-4 ml-4;
     }
   }
 
