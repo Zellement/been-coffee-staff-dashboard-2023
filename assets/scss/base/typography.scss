@@ -142,8 +142,13 @@ hr {
   ol {
     @apply list-decimal ml-8;
   }
+
   img {
     @apply my-8;
+  }
+
+  blockquote {
+    @apply border-l-4 border-navy dark:border-butterscotch-500 border-opacity-20 pl-4 italic;
   }
 
   ul {
