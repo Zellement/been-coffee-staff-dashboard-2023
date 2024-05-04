@@ -187,7 +187,7 @@ const myPortableTextComponents = {
 }
 
 useHead({
-    title: data.value?.title
+    title: articleData.value?.title
 })
 
 </script>
