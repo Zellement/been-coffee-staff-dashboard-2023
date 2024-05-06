@@ -18,9 +18,14 @@ export const useUserStore = defineStore('user', {
 
             this.userMeta = user.value
             this.userData = data[0]
-            this.keyholderLayout = data[0].keyholder
+            this.keyholderLayout = this.userData.keyholder
+            // const sanitySlug = data[0].sanity_slug
+            const params = {
+                sanitySlug: this.userData.sanity_slug
+            }
             if (this.userData.sanity_slug) {
-                const query = groq`*[_type == "teamMember" && slug.current == 'dan'][0] {
+                console.log('we have a slug')
+                const query = groq`*[_type == "teamMember" && slug.current == $sanitySlug][0] {
                     name,
                     role,
                     startDate,
@@ -30,7 +35,7 @@ export const useUserStore = defineStore('user', {
 
                 const sanity = useSanity()
 
-                const data = await sanity.fetch(query)
+                const data = await sanity.fetch(query, params)
 
                 this.userSanityData = data
             }
