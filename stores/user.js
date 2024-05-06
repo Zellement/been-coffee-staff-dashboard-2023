@@ -19,12 +19,10 @@ export const useUserStore = defineStore('user', {
             this.userMeta = user.value
             this.userData = data[0]
             this.keyholderLayout = this.userData.keyholder
-            // const sanitySlug = data[0].sanity_slug
             const params = {
                 sanitySlug: this.userData.sanity_slug
             }
             if (this.userData.sanity_slug) {
-                console.log('we have a slug')
                 const query = groq`*[_type == "teamMember" && slug.current == $sanitySlug][0] {
                     name,
                     role,
