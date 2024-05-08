@@ -86,7 +86,7 @@ import { dateConverterWithDay } from '@/scripts/helpers'
 import { PortableText } from '@portabletext/vue'
 
 const query = groq`
-*[_type == "order"][0..14] | order(expectedDeliveryDate desc){
+*[_type == "order"]|order(expectedDeliveryDate desc)[0..14]{
   supplier->{
     logo,
     title
