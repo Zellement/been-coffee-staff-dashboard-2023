@@ -28,6 +28,7 @@
                 </button>
             </div>
             <div class="flex flex-row items-center gap-1">
+                <weather-meteo />
                 <nuxt-link
                     to="/day-dot-helper"
                     class="flex flex-col flex-1 w-5 h-5 mx-2 transition-all duration-300 border-2 rounded-full border-navy bg-navy dark:border-white dark:bg-white group hover:bg-white hover:border-white"
