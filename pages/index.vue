@@ -14,7 +14,6 @@
             </template>
             <template v-else>
                 <keyholder-nav />
-                <trip-advisor-reviews />
                 <last-orders />
                 <standing-orders />
                 <recently-updated-articles />
