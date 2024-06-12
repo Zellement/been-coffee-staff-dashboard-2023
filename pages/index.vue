@@ -5,6 +5,7 @@
             <template v-if="!keyholder">
                 <dashboard-intro />
                 <recently-updated-articles />
+                <trip-advisor-reviews />
                 <!-- <advent-calendar v-if="isXmasTheme" /> -->
                 <team-members />
                 <been-awesome-winners />
@@ -13,9 +14,11 @@
             </template>
             <template v-else>
                 <keyholder-nav />
+                <trip-advisor-reviews />
                 <last-orders />
                 <standing-orders />
                 <recently-updated-articles />
+                <trip-advisor-reviews />
                 <!-- <advent-calendar v-if="isXmasTheme" /> -->
                 <been-awesome-winners />
                 <team-members />
