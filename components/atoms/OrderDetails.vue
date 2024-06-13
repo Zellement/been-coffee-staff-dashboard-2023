@@ -42,7 +42,7 @@ import { PortableText } from '@portabletext/vue'
 
 defineProps({
     details: {
-        type: Object,
+        type: [Object, String],
         required: true
     },
     string: {

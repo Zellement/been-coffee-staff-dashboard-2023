@@ -18,7 +18,7 @@
                     <div
                         v-for="item in tripadvisorData"
                         :key="item.id"
-                        class="flex relative flex-col w-3/4 p-4 gap-2 shadow-lg  min-w-[300px] bg-seashell-400 dark:bg-navy-400"
+                        class="flex relative flex-col w-3/4 p-4 gap-2 shadow-lg  min-w-[300px] card"
                     >
                         <div class="flex gap-2">
                             <Icon

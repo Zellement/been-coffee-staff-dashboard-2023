@@ -11,13 +11,13 @@
                 <li
                     v-for="item in data"
                     :key="item._id"
-                    class="flex flex-grow w-full  card"
+                    class="flex flex-grow w-full card"
                 >
                     <nuxt-link
-                        class="flex flex-col flex-grow p-2 transition-colors duration-300  lg:p-4  hover:bg-butterscotch-200 dark:hover:bg-navy-600 border-current/40"
+                        class="flex flex-col flex-grow p-3 transition-colors duration-300  lg:p-4  hover:bg-butterscotch-200 dark:hover:bg-navy-600 border-current/40"
                         :to="`/article/${item.slug?.current}`"
                     >
-                        <span class="krete-title">{{ item.title }}</span>
+                        <span class="krete-title !text-sm">{{ item.title }}</span>
                         <span class="mt-auto text-2xs opacity-50">Updated: {{ inputDate(item._updatedAt) }}</span>
                     </nuxt-link>
                 </li>

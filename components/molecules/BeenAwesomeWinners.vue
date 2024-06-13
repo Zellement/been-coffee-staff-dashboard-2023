@@ -51,7 +51,7 @@
                     <div
                         v-for="winner in previousWinners"
                         :key="winner.id"
-                        class="relative flex flex-col justify-center items-center my-16 p-8 bg-white shadow-lg dark:border-navy-200 dark:bg-navy-400 border-dotted w-[16rem] min-w-[16rem] dark:text-gray-200 "
+                        class="relative flex flex-col justify-center items-center my-16 p-8 card  w-[16rem] min-w-[16rem]  "
                     >
                         <h3 class="text-xl font-krete">
                             {{ winner.winner?.name }}

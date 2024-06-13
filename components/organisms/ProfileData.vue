@@ -5,7 +5,7 @@
         @click="uiStore.toggleProfileData"
     >
         <div
-            class="relative flex flex-col w-full max-w-screen-sm p-4 m-auto bg-white shadow-xl lg:p-12 dark:bg-navy-600"
+            class="relative flex flex-col w-full max-w-screen-sm p-4 m-auto  shadow-lg lg:p-12 card"
             @click="uiStore.toggleProfileData(true)"
         >
             <div

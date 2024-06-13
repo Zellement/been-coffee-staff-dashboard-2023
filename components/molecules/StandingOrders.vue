@@ -14,14 +14,14 @@
                     <div
                         v-for="item in standingOrders"
                         :key="item._id"
-                        class="flex relative flex-col w-3/4 p-4 shadow-lg md:w-auto min-w-[300px] sm:w-2/5 bg-seashell-400 dark:bg-navy-400"
+                        class="flex relative flex-col w-3/4 p-4 !rounded-tl-none !rounded-tr-none md:w-auto min-w-[300px] sm:w-2/5 card"
                     >
-                        <div class="absolute top-0 left-0 uppercase -translate-y-1/2 bg-white text-3xs px-2 dark:text-navy-50 dark:bg-navy-400 text-gray-400  py-0.5 tracking-wider">
+                        <div class="absolute -top-px border dark:border-navy-500 border-b-0 left-0 uppercase -translate-y-full bg-white text-3xs px-2 dark:text-navy-50 dark:bg-navy-700 text-gray-400 py-0.5 tracking-wider">
                             {{ item.supplier.title }}
                         </div>
-                        <div class="flex col-span-2 px-1 py-2 mb-4 overflow-hidden bg-white ">
+                        <div class="flex col-span-2 px-1 py-2 mb-4 overflow-hidden  rounded-full">
                             <img
-                                class="w-auto h-auto m-auto max-h-12"
+                                class="w-auto h-auto m-auto max-h-14 shadow-lg p-2 rounded-full"
                                 :src="$urlFor(item.supplier.logo).height(60).url()"
                                 height="60"
                             >

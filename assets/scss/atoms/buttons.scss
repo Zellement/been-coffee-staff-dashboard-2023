@@ -1,5 +1,5 @@
 .button {
-    @apply px-4 py-2 transition-all duration-300 flex flex-row items-center gap-2 border-b border-r rounded-full; 
+    @apply px-4 py-2 transition-all duration-300 flex flex-row items-center gap-2 border-b border-r rounded-full shadow-lg; 
 
     &--sm {
         @apply px-2 py-0.5;
@@ -11,6 +11,6 @@ html.dark .button {
 }
 
 html.light .button {
-    @apply bg-butterscotch-500 text-navy hover:bg-butterscotch-600;
+    @apply border-navy-300 text-navy hover:bg-butterscotch-600;
 }
 
