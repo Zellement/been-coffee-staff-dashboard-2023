@@ -6,7 +6,7 @@
             </h2>
             <ul
                 v-if="data"
-                class="grid gap-2 md:grid-cols-2 md:gap-4 lg:gap-8 lg:grid-cols-4"
+                class="grid gap-2 grid-cols-2 md:gap-4 lg:gap-8 lg:grid-cols-4"
             >
                 <li
                     v-for="item in data"
@@ -18,8 +18,7 @@
                         :to="`/article/${item.slug?.current}`"
                     >
                         <span class="krete-title">{{ item.title }}</span>
-                        <span class="mb-4 text-xs">{{ item.subtitle }}</span>
-                        <span class="mt-auto text-2xs">Updated: {{ inputDate(item._updatedAt) }}</span>
+                        <span class="mt-auto text-2xs opacity-50">Updated: {{ inputDate(item._updatedAt) }}</span>
                     </nuxt-link>
                 </li>
             </ul>

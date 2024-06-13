@@ -38,14 +38,7 @@
                         </div>
                         <template v-if="item.standingOrderDetails">
                             <div class="flex flex-col mt-4">
-                                <h3 class="mb-3 krete-title">
-                                    Details
-                                </h3>
-                                <div class="content">
-                                    <PortableText
-                                        :value="item.standingOrderDetails"
-                                    />
-                                </div>
+                                <order-details :details="item.standingOrderDetails" />
                             </div>
                         </template>
                     </div>
@@ -56,8 +49,6 @@
 </template>
 
 <script setup>
-
-import { PortableText } from '@portabletext/vue'
 
 const query = groq`
 *[_type == "standingOrder"]{

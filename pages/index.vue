@@ -15,9 +15,9 @@
             <template v-else>
                 <keyholder-nav />
                 <last-orders />
-                <standing-orders />
                 <recently-updated-articles />
                 <trip-advisor-reviews />
+                <standing-orders />
                 <!-- <advent-calendar v-if="isXmasTheme" /> -->
                 <been-awesome-winners />
                 <team-members />

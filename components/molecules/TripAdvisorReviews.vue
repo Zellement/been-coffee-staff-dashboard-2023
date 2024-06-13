@@ -47,7 +47,10 @@
                             {{ item.title }}
                         </h3>
                         <div class="">
-                            {{ item.text }}
+                            <order-details
+                                :details="item.text"
+                                :string="true"
+                            />
                         </div>
                     </div>
                 </div>

@@ -19,6 +19,9 @@
                         <div class="absolute top-0 left-0 uppercase -translate-y-1/2 bg-white text-3xs px-2 dark:text-navy-50 dark:bg-navy-400 text-gray-400 py-0.5 tracking-wider">
                             {{ item.supplier.title }}
                         </div>
+                        <div class="absolute top-0 right-0 uppercase -translate-y-1/2 bg-white text-3xs px-2 dark:text-navy-50 dark:bg-navy-400 text-gray-400 py-0.5 tracking-wider">
+                            {{ dateConverterWithDay(item.orderDate) }}
+                        </div>
                         <div class="flex flex-col w-full">
                             <div class="flex justify-between h-16 p-1 mb-2 overflow-hidden bg-white border border-gray-200 ">
                                 <img
@@ -35,21 +38,21 @@
                                     loading="lazy"
                                 >
                             </div>
-                            <div
+                            <!-- <div
                                 class="mb-4 text-xs italic text-center opacity-50"
                             >
                                 <p>
                                     Ordered by {{ getOrderedBy(item) }} on
                                     {{ dateConverterWithDay(item.orderDate) }}
                                 </p>
-                            </div>
+                            </div> -->
                             <div class="flex flex-col text-sm">
                                 <span class="flex flex-row items-center justify-center space-x-1 dark:text-butterscotch-500 text-navy-500">
                                     <Icon
                                         class="w-6 h-6 p-1"
                                         name="clarity:truck-solid"
                                     />
-                                    <span>
+                                    <span>Delivery
                                         {{ dateConverterWithDay(item.expectedDeliveryDate) }}
                                     </span>
                                 </span>
@@ -63,15 +66,8 @@
                             </div>
                         </template>
                         <template v-if="item.orderDetails">
-                            <div class="flex flex-col mt-4">
-                                <h3 class="mb-2 krete-title">
-                                    Details
-                                </h3>
-                                <div class="content">
-                                    <PortableText
-                                        :value="item.orderDetails"
-                                    />
-                                </div>
+                            <div class="flex flex-col mt-auto">
+                                <order-details :details="item.orderDetails" />
                             </div>
                         </template>
                     </div>
@@ -83,7 +79,6 @@
 
 <script setup>
 import { dateConverterWithDay } from '@/scripts/helpers'
-import { PortableText } from '@portabletext/vue'
 
 const query = groq`
 *[_type == "order"]|order(expectedDeliveryDate desc)[0..14]{
@@ -111,8 +106,8 @@ const { data } = await useAsyncData('orders', () => sanity.fetch(query))
 const allOrders = computed(() => {
     return data.value
 })
-const getOrderedBy = (item) => {
-    return item.orderedBy?.name ?? 'Sarah'
-}
+// const getOrderedBy = (item) => {
+//     return item.orderedBy?.name ?? 'Sarah'
+// }
 
 </script>
