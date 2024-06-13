@@ -22,9 +22,9 @@
                         :key="item.id"
                         class="relative w-full min-w-[200px] lg:min-w-[240px] flex"
                     >
-                        <span class="absolute bottom-0 left-0 flex flex-col items-start dark:bg-navy-500 ">
-                            <span class="px-2 pt-1 font-serif text-base leading-tight bg-seashell/90 dark:bg-navy-500/90">{{ item.name }}</span>
-                            <span class="px-2 py-1 leading-tight text-2xs bg-seashell/90 dark:bg-navy-500/90">{{ item.role }}</span>
+                        <span class="absolute bottom-0 left-0 flex flex-col items-start ">
+                            <span class="px-2 py-1 font-serif text-base leading-tight card !rounded-none translate-y-px">{{ item.name }}</span>
+                            <span class="px-2 py-1 leading-tight text-2xs card !rounded-none">{{ item.role }}</span>
                         </span>
                         <div class="flex w-full overflow-hidden">
                             <img

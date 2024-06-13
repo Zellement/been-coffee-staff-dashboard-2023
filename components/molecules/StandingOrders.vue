@@ -19,7 +19,7 @@
                         <div class="absolute -top-px border dark:border-navy-500 border-b-0 left-0 uppercase -translate-y-full bg-white text-3xs px-2 dark:text-navy-50 dark:bg-navy-700 text-gray-400 py-0.5 tracking-wider">
                             {{ item.supplier.title }}
                         </div>
-                        <div class="flex col-span-2 px-1 py-2 mb-4 overflow-hidden  rounded-full">
+                        <div class="flex col-span-2 px-1 py-2 mb-4 rounded-full">
                             <img
                                 class="w-auto h-auto m-auto max-h-14 shadow-lg p-2 rounded-full"
                                 :src="$urlFor(item.supplier.logo).height(60).url()"
