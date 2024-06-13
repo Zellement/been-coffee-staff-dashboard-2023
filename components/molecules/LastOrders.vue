@@ -14,25 +14,27 @@
                     <div
                         v-for="item in allOrders"
                         :key="item._id"
-                        class="flex relative flex-col w-3/4 p-4 shadow-lg  min-w-[300px] bg-seashell-400 dark:bg-navy-400"
+                        class="flex relative card !rounded-tl-none !rounded-tr-none flex-col w-3/4 p-4 shadow-lg min-w-[300px] "
                     >
-                        <div class="absolute top-0 left-0 uppercase -translate-y-1/2 bg-white text-3xs px-2 dark:text-navy-50 dark:bg-navy-400 text-gray-400 py-0.5 tracking-wider">
+                        <div class="absolute -top-px border dark:border-navy-500 border-b-0 left-0 uppercase -translate-y-full bg-white text-3xs px-2 dark:text-navy-50 dark:bg-navy-700 text-gray-400 py-0.5 tracking-wider">
                             {{ item.supplier.title }}
                         </div>
-                        <div class="absolute top-0 right-0 uppercase -translate-y-1/2 bg-white text-3xs px-2 dark:text-navy-50 dark:bg-navy-400 text-gray-400 py-0.5 tracking-wider">
+                        <div class="absolute top-0 right-0 border dark:border-navy-500 border-b-0 uppercase -translate-y-full  text-3xs px-2 dark:text-navy-50 dark:bg-navy-500/50 text-gray-400 py-0.5 tracking-wider">
                             {{ dateConverterWithDay(item.orderDate) }}
                         </div>
                         <div class="flex flex-col w-full">
-                            <div class="flex justify-between h-16 p-1 mb-2 overflow-hidden bg-white border border-gray-200 ">
-                                <img
-                                    :src="$urlFor(item.supplier.logo).height(50).fit('clip').url()"
-                                    class="w-auto my-auto max-w-[50%] pl-4"
-                                    height="60"
-                                    loading="lazy"
-                                >
+                            <div class="flex justify-between h-16 p-1 mb-2 overflow-hidden">
+                                <div class="h-full bg-white flex-grow-0 rounded-full overflow-hidden flex shadow">
+                                    <img
+                                        :src="$urlFor(item.supplier.logo).height(50).fit('clip').url()"
+                                        class="w-20 my-auto px-4 bg-white "
+                                        height="60"
+                                        loading="lazy"
+                                    >
+                                </div>
                                 <img
                                     :src="$urlFor(item.orderedBy.image).width(54).height(54).url()"
-                                    class=" aspect-square"
+                                    class=" aspect-square rounded-full"
                                     width="54"
                                     height="54"
                                     loading="lazy"

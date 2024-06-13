@@ -9,41 +9,36 @@
                 <li
                     v-for="link in nav"
                     :key="link.url"
+                    class="flex flex-col items-start gap-2 p-4 bg-white shadow-lg card"
                 >
-                    <span
-                        class="flex flex-col items-start gap-2 p-4 bg-white shadow-lg dark:bg-navy-400"
-                    >
-                        <span class="flex items-center gap-2">
-                            <Icon
-                                :name="link.icon"
-                                class="w-4 h-5"
-                            />
-                            <h3 class="krete-title">{{ link.title }}</h3>
-                        </span>
-                        <ul class="flex flex-row items-center gap-2 text-2xs">
-
-                            <li
-                                v-for="subnav in link.subnav"
-                                :key="subnav.url"
-                            >
-                                <nuxt-link
-                                    v-if="subnav.url"
-                                    :to="subnav.url"
-                                    :target="subnav.blank ? '_blank' : null"
-                                    class="flex flex-row button items-center gap-1 p-0.5 px-1"
-                                >
-                                    {{ subnav.title }}
-
-                                    <Icon
-                                        v-if="subnav.blank"
-                                        name="iconamoon:link-external-fill"
-                                        class="w-3 h-3 transition-all duration-300 hover:rotate-90"
-                                    />
-                                </nuxt-link>
-                            </li>
-                        </ul>
-
+                    <span class="flex items-center gap-2">
+                        <Icon
+                            :name="link.icon"
+                            class="w-4 h-5"
+                        />
+                        <h3 class="krete-title">{{ link.title }}</h3>
                     </span>
+                    <ul class="flex flex-row items-center gap-2 text-2xs">
+                        <li
+                            v-for="subnav in link.subnav"
+                            :key="subnav.url"
+                        >
+                            <nuxt-link
+                                v-if="subnav.url"
+                                :to="subnav.url"
+                                :target="subnav.blank ? '_blank' : null"
+                                class="flex flex-row button items-center gap-1 p-0.5 px-1"
+                            >
+                                {{ subnav.title }}
+
+                                <Icon
+                                    v-if="subnav.blank"
+                                    name="iconamoon:link-external-fill"
+                                    class="w-3 h-3 transition-all duration-300 hover:rotate-90"
+                                />
+                            </nuxt-link>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </div>
