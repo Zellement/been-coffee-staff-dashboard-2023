@@ -11,13 +11,19 @@
                     :key="link.url"
                     class="flex flex-col items-start gap-2 p-4 bg-white shadow-lg card"
                 >
-                    <span class="flex items-center gap-2">
-                        <Icon
-                            :name="link.icon"
-                            class="w-4 h-5"
+                    <div class="flex justify-between items-center w-full gap-4">
+                        <span class="flex items-center gap-2">
+                            <Icon
+                                :name="link.icon"
+                                class="w-4 h-5"
+                            />
+                            <h3 class="krete-title">{{ link.title }}</h3>
+                        </span>
+                        <component
+                            :is="link.component"
+                            class="self-center"
                         />
-                        <h3 class="krete-title">{{ link.title }}</h3>
-                    </span>
+                    </div>
                     <ul class="flex flex-row items-center gap-2 text-2xs">
                         <li
                             v-for="subnav in link.subnav"
@@ -46,6 +52,7 @@
 </template>
 
 <script setup>
+import BooleanCheckDailyCashBreakdown from '@/components/atoms/BooleanCheckDailyCashBreakdown.vue'
 
 const nav = computed(() => {
     return [
@@ -63,6 +70,7 @@ const nav = computed(() => {
         {
             title: 'Daily Temperature Logs',
             icon: 'mingcute:low-temperature-line',
+            component: BooleanCheckDailyCashBreakdown,
             subnav: [
                 {
                     title: 'Form',

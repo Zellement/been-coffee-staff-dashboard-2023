@@ -125,6 +125,9 @@
     </div>
 </template>
 <script setup>
+import { useSupabaseStore } from '@/stores/supabase'
+
+const supabaseStore = useSupabaseStore()
 
 const dailyTemperatureLogs = ref()
 
@@ -141,6 +144,7 @@ const submitToGoogleSheets = () => {
             console.log('Success!', response)
             state.isSending = false
             state.hasSent = true
+            supabaseStore.setCheck('daily_temperatures', true)
         })
         .catch(error => console.error('Error!', error.message))
 }

@@ -1,0 +1,11 @@
+.pill {
+  @apply px-0.5 rounded border border-current text-current relative  whitespace-nowrap text-2xs;
+
+  &--complete {
+    @apply border-green-700 bg-transparent text-green-700 dark:text-green-300;
+  }
+
+  &--urgent {
+    @apply border-red-800 bg-gradient-to-b from-red-700 to-red-800 text-red-300;
+  }
+}
