@@ -19,10 +19,13 @@
 <script setup>
 
 import { useTeamStore } from '@/stores/team'
+import { useSupabaseStore } from '@/stores/supabase'
 
 const teamStore = useTeamStore()
+const supabaseStore = useSupabaseStore()
 
 teamStore.fetchCurrentTeam()
+supabaseStore.fetchAllChecks()
 
 useHead({
     meta: [
