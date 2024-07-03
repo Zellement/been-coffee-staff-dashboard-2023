@@ -6,35 +6,37 @@
 
         <div
             v-if="state.hasSent"
-            class="flex flex-row items-center gap-6 p-4 mb-8 border border-green-500"
+            class="flex flex-col items-center gap-4 p-4 border border-green-500"
         >
-            <Icon
-                name="ph:snowflake-bold"
-                class="w-12 h-12 animate-pulse"
-            />
-            <div>
-                <h2 class="h2">
-                    Yeah, we <span class="text-blue-500">cool</span>, but just to make sure...
-                </h2>
-                <nuxt-link
-                    class="flex items-center gap-2 my-8 button"
-                    to="https://docs.google.com/spreadsheets/d/1Bh5vjjW7wU8HaMsP7-R0M0XTlx1Ohd9uh25AK3ZZrIY/edit#gid=0"
-                    target="_blank"
-                >
-                    <Icon
-                        name="ph:warning-fill"
-                        class="flex-shrink-0 w-4 h-4 text-red-500 transition-all duration-300 pointer-events-none hover:rotate-90"
-                    />
-                    Please check your submission was logged.
-                    <Icon
-                        name="iconamoon:link-external-fill"
-                        class="flex-shrink-0 w-4 h-4 transition-all duration-300 pointer-events-none hover:rotate-90"
-                    />
-                </nuxt-link>
-                <p class="text-xs">
-                    To see the form again, please refresh this page.
-                </p>
+            <div class="flex flex-row gap-4">
+                <Icon
+                    name="ph:snowflake-bold"
+                    class="w-12 h-12 animate-pulse"
+                />
+                <div>
+                    <h2 class="h2">
+                        Yeah, we <span class="text-blue-500">cool</span>, but just to make sure...
+                    </h2>
+                </div>
             </div>
+            <nuxt-link
+                class="flex items-center gap-2 button bg-butterscotch !text-black"
+                to="https://docs.google.com/spreadsheets/d/1Bh5vjjW7wU8HaMsP7-R0M0XTlx1Ohd9uh25AK3ZZrIY/edit#gid=0"
+                target="_blank"
+            >
+                <Icon
+                    name="ph:warning-fill"
+                    class="flex-shrink-0 w-4 h-4 text-red-500 transition-all duration-300 pointer-events-none hover:rotate-90"
+                />
+                Please check your submission was logged. Click here...
+                <Icon
+                    name="iconamoon:link-external-fill"
+                    class="flex-shrink-0 w-4 h-4 transition-all duration-300 pointer-events-none hover:rotate-90"
+                />
+            </nuxt-link>
+            <p class="text-xs">
+                To see the form again, please refresh this page.
+            </p>
         </div>
 
         <div

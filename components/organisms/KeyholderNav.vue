@@ -59,23 +59,23 @@ const nav = computed(() => {
 
                 }
             ]
-        }
-        // {
-        //     title: 'Daily Temperature Logs',
-        //     icon: 'mingcute:low-temperature-line',
-        //     subnav: [
-        //         {
-        //             title: 'Form',
-        //             url: '/forms/daily-temperature-logs'
+        },
+        {
+            title: 'Daily Temperature Logs',
+            icon: 'mingcute:low-temperature-line',
+            subnav: [
+                {
+                    title: 'Form',
+                    url: '/forms/daily-temperature-logs'
 
-        //         },
-        //         {
-        //             title: 'Responses',
-        //             url: 'https://docs.google.com/spreadsheets/d/1Bh5vjjW7wU8HaMsP7-R0M0XTlx1Ohd9uh25AK3ZZrIY/edit?usp=sharing',
-        //             blank: true
-        //         }
-        //     ]
-        // }
+                },
+                {
+                    title: 'Responses',
+                    url: 'https://docs.google.com/spreadsheets/d/1Bh5vjjW7wU8HaMsP7-R0M0XTlx1Ohd9uh25AK3ZZrIY/edit?usp=sharing',
+                    blank: true
+                }
+            ]
+        }
     ]
 })
 
