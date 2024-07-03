@@ -7,10 +7,10 @@
 }
 
 html.dark .button {
-    @apply  text-white hover:bg-navy-900 border-navy-300;
+    @apply  text-white hover:bg-navy-900  border-navy-300;
 }
 
 html.light .button {
-    @apply border-navy-300 text-navy hover:bg-butterscotch-600;
+    @apply border-navy-300 text-navy  hover:bg-butterscotch-600;
 }
 

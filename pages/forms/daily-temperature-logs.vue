@@ -20,13 +20,13 @@
                 </div>
             </div>
             <nuxt-link
-                class="flex items-center gap-2 button bg-butterscotch !text-black"
+                class="flex items-center gap-2 button bg-butterscotch !text-black hover:!text-white"
                 to="https://docs.google.com/spreadsheets/d/1Bh5vjjW7wU8HaMsP7-R0M0XTlx1Ohd9uh25AK3ZZrIY/edit#gid=0"
                 target="_blank"
             >
                 <Icon
                     name="ph:warning-fill"
-                    class="flex-shrink-0 w-4 h-4 text-red-500 transition-all duration-300 pointer-events-none hover:rotate-90"
+                    class="flex-shrink-0 w-4 h-4 text-red-500 transition-all duration-300 pointer-events-none hover:rotate-90 "
                 />
                 Please check your submission was logged. Click here...
                 <Icon

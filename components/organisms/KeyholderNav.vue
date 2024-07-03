@@ -6,7 +6,7 @@
             </h2>
 
             <div
-                class="px-2 overflow-hidden md:px-4 xl:px-6"
+                class="overflow-hidden md:px-4 xl:px-6"
             >
                 <div class="w-full py-8 overflow-x-scroll ">
                     <ul class="flex flex-row w-full">
