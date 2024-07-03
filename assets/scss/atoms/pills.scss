@@ -1,8 +1,8 @@
 .pill {
-  @apply px-0.5 rounded border border-current text-current relative  whitespace-nowrap text-2xs;
+  @apply px-1  flex items-center gap-1 rounded border border-current text-current relative  whitespace-nowrap text-2xs;
 
   &--complete {
-    @apply border-green-700 bg-transparent text-green-700 dark:text-green-300;
+    @apply border-green-700 bg-seashell-500 dark:bg-green-900 bg-transparent text-green-700 dark:text-green-300;
   }
 
   &--urgent {
