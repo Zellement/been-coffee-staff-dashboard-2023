@@ -1,10 +1,10 @@
 <template>
     <div class="flex flex-grow-0 p-4 md:col-span-2">
         <input
-            id="site-search"
+            id="button-site-search"
             v-model="searchInput"
             class="w-full max-w-[20rem] max-h-10 mx-auto p-2  dark:bg-navy-300"
-            name="site-search"
+            name="button-site-search"
             placeholder="Search articles..."
         >
     </div>

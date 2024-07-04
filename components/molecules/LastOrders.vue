@@ -69,7 +69,7 @@
                         </template>
                         <template v-if="item.orderDetails">
                             <div class="flex flex-col mt-4">
-                                <order-details :details="item.orderDetails" />
+                                <card-order-details :details="item.orderDetails" />
                             </div>
                         </template>
                     </div>

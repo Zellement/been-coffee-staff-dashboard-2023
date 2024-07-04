@@ -28,7 +28,7 @@
                 </button>
             </div>
             <div class="flex flex-row items-center gap-4 text-navy dark:text-white">
-                <color-mode class="mr-8" />
+                <button-colour-mode class="mr-8" />
                 <button
                     @click="uiStore.toggleCheckModal"
                 >
@@ -55,7 +55,7 @@
                     />
                 </nuxt-link>
 
-                <site-search />
+                <button-site-search />
             </div>
         </div>
     </header>

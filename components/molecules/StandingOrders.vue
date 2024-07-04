@@ -38,7 +38,7 @@
                         </div>
                         <template v-if="item.standingOrderDetails">
                             <div class="flex flex-col mt-4">
-                                <order-details :details="item.standingOrderDetails" />
+                                <card-order-details :details="item.standingOrderDetails" />
                             </div>
                         </template>
                     </div>

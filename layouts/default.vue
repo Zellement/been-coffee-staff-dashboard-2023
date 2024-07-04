@@ -3,7 +3,7 @@
         class="overflow-hidden"
     >
         <site-header />
-        <theme-toggle-btn
+        <button-toggle-theme
             v-if="uiStore.themeToggleBtn.show"
         />
         <nuxt-page />

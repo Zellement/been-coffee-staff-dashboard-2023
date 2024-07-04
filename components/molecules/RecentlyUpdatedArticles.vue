@@ -23,7 +23,7 @@
                 </li>
             </ul>
 
-            <site-search
+            <button-site-search
                 display-text="See all articles"
                 class="mt-8 button"
             />

@@ -23,7 +23,7 @@
                     general documentation
                 </nuxt-link>.
             </p>
-            <site-search
+            <button-site-search
                 display-text="Launch navigation"
                 class="mt-8 button"
             />

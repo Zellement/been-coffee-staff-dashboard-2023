@@ -5,31 +5,31 @@
         </h1>
 
         <div class="grid grid-cols-2 space-y-4">
-            <day-dot
+            <single-day-dot
                 :date="today"
                 class="col-span-2"
             />
-            <day-dot
+            <single-day-dot
                 :date="plus3days"
                 title="+ 3 Days"
             />
-            <day-dot
+            <single-day-dot
                 :date="plus5days"
                 title="+ 5 Days"
             />
-            <day-dot
+            <single-day-dot
                 :date="plus7days"
                 title="+ 7 Days"
             />
-            <day-dot
+            <single-day-dot
                 :date="plus14days"
                 title="+ 14 Days"
             />
-            <day-dot
+            <single-day-dot
                 :date="plus21days"
                 title="+ 21 Days"
             />
-            <day-dot
+            <single-day-dot
                 :date="plus28days"
                 title="+ 28 Days"
             />

@@ -1,14 +1,14 @@
 <template>
     <div class="relative">
         <div class="container">
-            <h2 class="mb-8 h1">
+            <h2 class="h1">
                 Keyholder Quick Items
             </h2>
 
             <div
                 class="overflow-hidden md:px-4 xl:px-6"
             >
-                <div class="w-full py-8 overflow-x-scroll ">
+                <div class="w-full pt-2 overflow-x-scroll ">
                     <ul class="flex flex-row w-full">
                         <li
                             v-for="link in nav"

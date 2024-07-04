@@ -47,7 +47,7 @@
                             {{ item.title }}
                         </h3>
                         <div class="">
-                            <order-details
+                            <card-order-details
                                 :details="item.text"
                                 :string="true"
                             />
