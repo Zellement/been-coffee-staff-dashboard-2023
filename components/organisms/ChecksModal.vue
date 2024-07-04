@@ -97,8 +97,12 @@ const dailyCashIsSet = computed(() => {
     return supabaseStore.daily_cash_breakdown
 })
 
+const dailyCashTime = computed(() => {
+    return new Date(supabaseStore.daily_cash_breakdown_time).toLocaleTimeString()
+})
+
 const dailyCashText = computed(() => {
-    return dailyCashIsSet.value ? `Completed by ${dailyCashIsSet.value}` : 'Incomplete'
+    return dailyCashIsSet.value ? `Completed by ${dailyCashIsSet.value} at ${dailyCashTime.value}` : 'Incomplete'
 })
 
 const dailyCashIcon = computed(() => {
