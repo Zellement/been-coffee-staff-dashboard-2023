@@ -135,6 +135,9 @@
     </div>
 </template>
 <script setup>
+import { useSupabaseStore } from '@/stores/supabase'
+
+const supabaseStore = useSupabaseStore()
 
 const dailyCashBreakdown = ref()
 
@@ -145,6 +148,8 @@ const scriptURL = runtimeConfig.public.GOOGLE_SHEETS_SCRIPT_DAILY_CASH_BREAKDOWN
 
 const submitToGoogleSheets = () => {
     const formData = new FormData(dailyCashBreakdown.value)
+    const user = formData.get('Team member')
+    const dateTime = new Date()
     state.isSending = true
     state.hasSent = false
     fetch(scriptURL, { method: 'POST', body: formData })
@@ -152,6 +157,8 @@ const submitToGoogleSheets = () => {
             console.log('Success!', response)
             state.isSending = false
             state.hasSent = true
+            supabaseStore.setCheck('daily_cash_breakdown', user)
+            supabaseStore.setCheck('daily_cash_breakdown_time', dateTime)
         })
         .catch(error => console.error('Error!', error.message))
 }
