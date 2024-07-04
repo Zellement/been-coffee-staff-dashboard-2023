@@ -111,7 +111,7 @@
             />
             <button
                 type="submit"
-                class="button"
+                class="button self-start"
             >
                 I'm done, submit!
             </button>
@@ -137,6 +137,8 @@ const scriptURL = runtimeConfig.public.GOOGLE_SHEETS_SCRIPT_DAILY_TEMPERATURE_LO
 
 const submitToGoogleSheets = () => {
     const formData = new FormData(dailyTemperatureLogs.value)
+    const user = formData.get('Team member')
+    const dateTime = new Date()
     state.isSending = true
     state.hasSent = false
     fetch(scriptURL, { method: 'POST', body: formData })
@@ -144,7 +146,8 @@ const submitToGoogleSheets = () => {
             console.log('Success!', response)
             state.isSending = false
             state.hasSent = true
-            supabaseStore.setCheck('daily_temperatures', true)
+            supabaseStore.setCheck('daily_temperatures', user)
+            supabaseStore.setCheck('daily_temperatures_time', dateTime)
         })
         .catch(error => console.error('Error!', error.message))
 }

@@ -64,8 +64,9 @@
 </template>
 
 <script setup>
-import BooleanCheckDailyCashBreakdown from '@/components/atoms/BooleanCheckDailyCashBreakdown.vue'
 import { useSupabaseStore } from '@/stores/supabase'
+import BooleanDailyCashBreakdown from '@/components/atoms/BooleanDailyCashBreakdown.vue'
+import BooleanDailyTemperatures from '@/components/atoms/BooleanDailyTemperatures.vue'
 
 const supabaseStore = useSupabaseStore()
 
@@ -80,7 +81,7 @@ const nav = computed(() => {
             brow: 'Daily',
             title: 'Temperature Logs',
             // icon: 'mingcute:low-temperature-line',
-            component: BooleanCheckDailyCashBreakdown,
+            component: BooleanDailyTemperatures,
             class: temperaturesOrder.value,
             subnav: [
                 {
@@ -98,6 +99,7 @@ const nav = computed(() => {
         {
             brow: 'Daily',
             title: 'Cash Breakdown',
+            component: BooleanDailyCashBreakdown,
             // icon: 'streamline:money-cash-coins-stack-accounting-billing-payment-stack-cash-coins-currency-money-finance',
             subnav: [
                 {
