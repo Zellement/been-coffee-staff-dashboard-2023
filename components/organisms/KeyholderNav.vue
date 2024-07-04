@@ -6,9 +6,9 @@
             </h2>
 
             <div
-                class="overflow-hidden md:px-4 xl:px-6"
+                class="overflow-hidden md:px-4  xl:px-6"
             >
-                <div class="w-full pt-2 overflow-x-scroll ">
+                <div class="w-full pt-2 overflow-x-scroll pb-8">
                     <ul class="flex flex-row w-full">
                         <li
                             v-for="link in nav"
