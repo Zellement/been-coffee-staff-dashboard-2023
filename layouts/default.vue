@@ -11,6 +11,7 @@
         <profile-data />
         <current-target />
         <site-footer />
+        <checks-modal />
 
         <!-- Themed stuff -->
         <snow-fall

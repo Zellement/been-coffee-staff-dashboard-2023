@@ -27,19 +27,27 @@
                         {{ userName }}</span>
                 </button>
             </div>
-            <div class="flex flex-row items-center gap-1">
+            <div class="flex flex-row items-center gap-4 text-navy dark:text-white">
+                <color-mode class="mr-8" />
+                <button
+                    @click="uiStore.toggleCheckModal"
+                >
+                    <Icon
+                        name="material-symbols:fact-check"
+                        class="w-6 h-6"
+                    />
+                </button>
                 <nuxt-link
                     to="/day-dot-helper"
-                    class="flex flex-col flex-1 w-5 h-5 mx-2 transition-all duration-300 border-2 rounded-full border-navy bg-navy dark:border-white dark:bg-white group hover:bg-white hover:border-white"
                 >
-                    <span class="w-4 h-2 transition-all duration-300 rounded-tl-full rounded-tr-full bg-butterscotch dark:bg-navy group-hover:bg-gray-200" />
+                    <Icon
+                        name="mdi:circle-half-full"
+                        class="w-6 h-6 -rotate-90"
+                    />
                 </nuxt-link>
-
-                <color-mode />
 
                 <nuxt-link
                     to="/mailchimp"
-                    class="flex flex-1 p-2 transition-all duration-300 dark:hover:text-butterscotch-500 hover:text-white"
                 >
                     <Icon
                         name="ic:baseline-newspaper"

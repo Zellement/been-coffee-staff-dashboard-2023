@@ -37,7 +37,7 @@ const date = new Date()
 const hours = date.getHours()
 
 const displayText = computed(() => {
-    return testAgainst.value ? '' : hours < dueTime ? 'Due by 6pm' : 'Due at 6pm'
+    return testAgainst.value ? '' : 'Due at 6pm'
 })
 
 const classes = computed(() => {

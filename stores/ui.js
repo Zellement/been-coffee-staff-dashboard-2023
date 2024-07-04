@@ -4,6 +4,7 @@ export const useUiStore = defineStore('ui', {
     state: () => ({
         showSearchResults: false,
         showProfileData: false,
+        showCheckModal: false,
         originalUrl: null,
         currentUrl: null,
         theme: 'standard',
@@ -36,6 +37,9 @@ export const useUiStore = defineStore('ui', {
         },
         toggleProfileData () {
             this.showProfileData = !this.showProfileData
+        },
+        toggleCheckModal () {
+            this.showCheckModal = !this.showCheckModal
         },
         setTheme (theme) {
             if (theme) {

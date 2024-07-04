@@ -37,7 +37,7 @@ const date = new Date()
 const hours = date.getHours()
 
 const displayText = computed(() => {
-    return temperatureChecks.value ? '' : hours < dueTime ? 'Due by 8am' : 'Due at 8am'
+    return temperatureChecks.value ? '' : 'Due at 8am'
 })
 
 const classes = computed(() => {

@@ -1,7 +1,7 @@
 <template>
     <button
         :aria-label="colorModeLabel"
-        class="flex p-2 transition-all duration-300 dark:hover:text-butterscotch-500 hover:text-white"
+        class=" "
         @click="toggleColorMode"
     >
         <Icon
