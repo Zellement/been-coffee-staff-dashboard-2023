@@ -7,11 +7,11 @@
             v-if="uiStore.themeToggleBtn.show"
         />
         <nuxt-page />
-        <instant-search />
-        <profile-data />
+        <modal-instant-search />
+        <modal-profile-data />
         <current-target />
         <site-footer />
-        <checks-modal />
+        <modal-checks />
 
         <!-- Themed stuff -->
         <snow-fall

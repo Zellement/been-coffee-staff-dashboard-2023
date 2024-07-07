@@ -5,7 +5,7 @@
         <template
             v-if="articleData"
         >
-            <content-hero
+            <page-hero
                 :title="articleData.title"
                 :subtitle="articleData.subtitle"
                 :date="articleData.publishedAt"

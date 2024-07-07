@@ -5,23 +5,23 @@
             <template v-if="!keyholder">
                 <dashboard-intro />
                 <recently-updated-articles />
-                <trip-advisor-reviews />
+                <carousel-trip-advisor-reviews />
                 <!-- <advent-calendar v-if="isXmasTheme" /> -->
-                <team-members />
-                <been-awesome-winners />
-                <last-orders />
-                <standing-orders />
-                <keyholder-nav />
+                <carousel-team-members />
+                <carousel-been-awesome-winners />
+                <carousel-recent-orders />
+                <carousel-standing-orders />
+                <carousel-checks />
             </template>
             <template v-else>
-                <keyholder-nav />
-                <last-orders />
+                <carousel-checks />
+                <carousel-recent-orders />
                 <recently-updated-articles />
-                <trip-advisor-reviews />
-                <standing-orders />
+                <carousel-trip-advisor-reviews />
+                <carousel-standing-orders />
                 <!-- <advent-calendar v-if="isXmasTheme" /> -->
-                <been-awesome-winners />
-                <team-members />
+                <carousel-been-awesome-winners />
+                <carousel-team-members />
             </template>
         </div>
     </div>

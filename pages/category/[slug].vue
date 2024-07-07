@@ -2,7 +2,7 @@
     <div
         class="container flex flex-col space-y-8"
     >
-        <content-hero
+        <page-hero
             :title="catTitle"
             subtitle="Category"
         />
