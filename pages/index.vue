@@ -11,6 +11,7 @@
                 <been-awesome-winners />
                 <last-orders />
                 <standing-orders />
+                <keyholder-nav />
             </template>
             <template v-else>
                 <keyholder-nav />
