@@ -14,6 +14,12 @@ export const useSupabaseStore = defineStore('supabase', {
         },
         getDailyCashBreakdownTime () {
             return new Date(this.daily_cash_breakdown_time).toTimeString().slice(0, 5)
+        },
+        getTotalIncompleteChecks () {
+            let total = 0
+            if (!this.daily_temperatures) { total++ }
+            if (!this.daily_cash_breakdown) { total++ }
+            return total
         }
     },
     actions: {

@@ -30,8 +30,13 @@
             <div class="flex flex-row items-center gap-4 text-navy dark:text-white">
                 <button-colour-mode class="mr-8" />
                 <button
+                    aria-label="Show modal for checks"
+                    class="relative"
                     @click="uiStore.toggleCheckModal"
                 >
+                    <span class="absolute top-0 left-0 -translate-x-1 -translate-y-1 bg-red-500 text-[10px] w-4 h-4 leading-none rounded-full flex">
+                        <span class="m-auto">{{ supabaseStore.getTotalIncompleteChecks }}</span>
+                    </span>
                     <Icon
                         name="material-symbols:fact-check"
                         class="w-6 h-6"
@@ -65,8 +70,10 @@
 
 import { useUiStore } from '@/stores/ui'
 import { useUserStore } from '@/stores/user'
-const userStore = useUserStore()
+import { useSupabaseStore } from '@/stores/supabase'
 
+const userStore = useUserStore()
+const supabaseStore = useSupabaseStore()
 const userName = computed(() => {
     return userStore?.userData?.display_name
 })
