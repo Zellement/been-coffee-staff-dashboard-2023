@@ -1,6 +1,6 @@
 <template>
     <span
-        :disabled="temperatureChecks"
+        :disabled="isComplete"
         class="pill"
         :class="classes"
     >
@@ -17,35 +17,40 @@
             :name="icon"
             class="w-4 h-4"
         />
-        {{ displayText }}
+        {{ showDisplayText }}
     </span>
 </template>
 
-<script setup>
+<script  setup>
 import { useSupabaseStore } from '@/stores/supabase'
-
 const supabaseStore = useSupabaseStore()
 
-const temperatureChecks = computed(() => {
-    return supabaseStore.daily_temperatures
+const props = defineProps({
+    isComplete: Boolean,
+    dueTime: {
+        type: Number,
+        default: 18
+    },
+    displayText: {
+        type: String,
+        default: 'Due at 6pm'
+    }
 })
 
-const dueTime = 8
+const showDisplayText = computed(() => {
+    return props.isComplete ? '' : props.displayText
+})
 
 const date = new Date()
 
 const hours = date.getHours()
 
-const displayText = computed(() => {
-    return temperatureChecks.value ? '' : 'Due at 8am'
-})
-
 const classes = computed(() => {
-    return temperatureChecks.value ? 'pill--complete' : hours < dueTime ? '' : 'pill--urgent'
+    return props.isComplete ? 'pill--complete' : hours < props.dueTime ? '' : 'pill--urgent'
 })
 
 const icon = computed(() => {
-    return temperatureChecks.value ? 'material-symbols:check-rounded' : 'material-symbols:warning'
+    return props.isComplete ? 'material-symbols:check-rounded' : 'material-symbols:warning'
 })
 
 </script>

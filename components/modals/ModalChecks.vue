@@ -80,7 +80,7 @@ const dailyTemperaturesTime = computed(() => {
 })
 
 const dailyTemperaturesText = computed(() => {
-    return dailyTemperaturesIsSet.value ? `Completed by ${dailyTemperaturesIsSet.value} at ${dailyTemperaturesTime.value}` : 'Incomplete'
+    return dailyTemperaturesIsSet.value ? `Logged by ${dailyTemperaturesIsSet.value} at ${dailyTemperaturesTime.value}` : 'Incomplete'
 })
 
 const dailyTemperaturesIcon = computed(() => {
@@ -102,7 +102,7 @@ const dailyCashTime = computed(() => {
 })
 
 const dailyCashText = computed(() => {
-    return dailyCashIsSet.value ? `Completed by ${dailyCashIsSet.value} at ${dailyCashTime.value}` : 'Incomplete'
+    return dailyCashIsSet.value ? `Logged by ${dailyCashIsSet.value} at ${dailyCashTime.value}` : 'Incomplete'
 })
 
 const dailyCashIcon = computed(() => {

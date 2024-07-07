@@ -2,11 +2,11 @@
     <div class="relative">
         <div class="container">
             <h2 class="h1">
-                Keyholder Quick Items
+                Daily Checks &amp; Forms
             </h2>
 
             <div
-                class="overflow-hidden md:px-4  xl:px-6"
+                class="overflow-hidden md:px-4 pt-4 xl:px-6"
             >
                 <div class="w-full pt-2 overflow-x-scroll pb-8">
                     <ul class="flex flex-row w-full">
@@ -28,9 +28,10 @@
                                     </div>
                                 </span>
                                 <div class=" absolute top-0 right-0 -mt-2 mr-1">
-                                    <component
-                                        :is="link.component"
-                                        class="self-center"
+                                    <checks-status
+                                        :is-complete="link.status.isComplete"
+                                        :due-time="link.status.dueTime"
+                                        :display-text="link.status.displayText"
                                     />
                                 </div>
                             </div>
@@ -65,13 +66,21 @@
 
 <script setup>
 import { useSupabaseStore } from '@/stores/supabase'
-import BooleanDailyCashBreakdown from '@/components/atoms/BooleanDailyCashBreakdown.vue'
-import BooleanDailyTemperatures from '@/components/atoms/BooleanDailyTemperatures.vue'
+// import BooleanDailyCashBreakdown from '@/components/atoms/BooleanDailyCashBreakdown.vue'
+// import BooleanDailyTemperatures from '@/components/atoms/BooleanDailyTemperatures.vue'
 
 const supabaseStore = useSupabaseStore()
 
+const temperaturesHaveData = computed(() => {
+    return supabaseStore.daily_temperatures !== null
+})
+
+const cashbreakdownHasData = computed(() => {
+    return supabaseStore.daily_cash_breakdown !== null
+})
+
 const temperaturesOrder = computed(() => {
-    return supabaseStore.daily_temperatures ? 'order-last ' : 'order-first'
+    return temperaturesHaveData.value ? 'order-last ' : 'order-first'
 })
 
 const nav = computed(() => {
@@ -81,7 +90,11 @@ const nav = computed(() => {
             brow: 'Daily',
             title: 'Temperature Logs',
             // icon: 'mingcute:low-temperature-line',
-            component: BooleanDailyTemperatures,
+            status: {
+                isComplete: temperaturesHaveData.value,
+                dueTime: 8,
+                displayText: 'Due at 8am'
+            },
             class: temperaturesOrder.value,
             subnav: [
                 {
@@ -99,7 +112,11 @@ const nav = computed(() => {
         {
             brow: 'Daily',
             title: 'Cash Breakdown',
-            component: BooleanDailyCashBreakdown,
+            status: {
+                isComplete: cashbreakdownHasData.value,
+                dueTime: 18,
+                displayText: 'Due at 6pm'
+            },
             // icon: 'streamline:money-cash-coins-stack-accounting-billing-payment-stack-cash-coins-currency-money-finance',
             subnav: [
                 {
