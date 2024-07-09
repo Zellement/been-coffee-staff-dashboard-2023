@@ -94,11 +94,11 @@
                 Back of House
             </h2>
             <temperature-log-input
-                item="Freezer One"
+                item="Double Freezer"
                 plus-or-minus="minus"
             />
             <temperature-log-input
-                item="Freezer Two"
+                item="Single Freezer"
                 plus-or-minus="minus"
             />
             <temperature-log-input
