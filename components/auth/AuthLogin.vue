@@ -24,6 +24,12 @@
             >
         </div>
     </form>
+    <div
+        v-if="errorMsg"
+        class="text-red-500"
+    >
+        {{ errorMsg }}
+    </div>
 </template>
 
 <script setup>

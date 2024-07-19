@@ -24,7 +24,11 @@
             <h3 class="mb-2 krete-title mt-8">
                 Details
             </h3>
-            <div class="content">
+            <slot name="extraData" />
+            <div
+                v-if="details"
+                class="content"
+            >
                 <template v-if="string">
                     {{ details }}
                 </template>
@@ -42,7 +46,7 @@ import { PortableText } from '@portabletext/vue'
 
 defineProps({
     details: {
-        type: [Object, String],
+        type: [Object, String, null],
         required: true
     },
     string: {

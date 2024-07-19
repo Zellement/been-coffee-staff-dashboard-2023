@@ -48,6 +48,7 @@
         "esbuild": "^0.19.11",
         "ipx": "^3.0.0",
         "pinia": "^2.1.7",
+        "serpapi": "^2.1.0",
         "vue3-lottie": "^3.2.0"
     },
     "overrides": {

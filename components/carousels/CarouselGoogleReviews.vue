@@ -1,29 +1,31 @@
 <template>
     <div class="relative">
+        <div class="container " />
         <div class="container flex flex-row justify-between">
             <h2 class="h1 flex gap-2 items-center">
                 <Icon
-                    name="simple-icons:tripadvisor"
+                    name="mingcute:google-fill"
                     class="w-8 h-8 "
                 />
-                Latest TripAdvisor Reviews
+                Latest Google Reviews
             </h2>
             <nuxt-link
                 class="button"
                 target="_blank"
-                to="https://www.tripadvisor.co.uk/Restaurant_Review-g1234748-d23838579-Reviews-Been_Coffee-Willington_Derbyshire_England.html"
+                to="https://www.google.com/search?q=been+coffee&rlz=1C5CHFA_enGB999GB999&oq=been+coffe&gs_lcrp=EgZjaHJvbWUqDAgAECMYJxiABBiKBTIMCAAQIxgnGIAEGIoFMhAIARAuGK8BGMcBGIAEGI4FMgYIAhBFGDkyBwgDEAAYgAQyBggEEEUYQTIGCAUQRRhBMgYIBhBFGEEyBggHEEUYPagCALACAA&sourceid=chrome&ie=UTF-8&zx=1721406730390&no_sw_cr=1#lrd=0x4879f76a544386ad:0xdd73c388e6606809,1,,,,"
             >
                 See more
             </nuxt-link>
         </div>
+
         <div
-            v-if="tripadvisorData"
+            v-if="googleReviewData"
             class="px-2 overflow-hidden md:px-4 xl:px-6"
         >
             <div class="w-full py-8 overflow-x-scroll ">
                 <div class="flex flex-row w-full space-x-4">
                     <div
-                        v-for="item in tripadvisorData"
+                        v-for="item in googleReviewData.reviews"
                         :key="item.id"
                         class="flex relative flex-col w-3/4 p-4 gap-2 shadow-lg  min-w-[300px] card"
                     >
@@ -32,15 +34,16 @@
                                 name="material-symbols:person"
                                 class="w-6 h-6 text-butterscotch"
                             />
-                            {{ item.user.username }}
+                            {{ item.user.name }}
                         </div>
                         <div class="flex gap-2">
                             <Icon
                                 name="material-symbols:calendar-month-outline-sharp"
                                 class="w-6 h-6 text-butterscotch"
                             />
-                            {{ shortDateConverter(item.published_date) }}
+                            {{ shortDateConverter(item.iso_date) }}
                         </div>
+
                         <div class="flex gap-1 relative">
                             <Icon
                                 v-for="i in 5"
@@ -57,29 +60,51 @@
                                 />
                             </div>
                         </div>
-                        <h3 class="font-krete font-bold text-lg">
-                            {{ item.title }}
-                        </h3>
                         <div class="">
                             <card-order-details
-                                :details="item.text"
+                                :details="item.snippet ?? null"
                                 :string="true"
-                            />
+                            >
+                                <template #extraData>
+                                    <ul class="mb-6">
+                                        <li v-if="item.details.food">
+                                            Food: {{ item.details.food }}
+                                        </li>
+                                        <li v-if="item.details.service">
+                                            Service: {{ item.details.service }}
+                                        </li>
+                                        <li v-if="item.details.atmosphere">
+                                            Atmosphere: {{ item.details.atmosphere }}
+                                        </li>
+                                    </ul>
+                                </template>
+                            </card-order-details>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+        <div
+            v-else
+            class="container py-4"
+        >
+            <h2>Why no Google reviews?</h2>
+            <p>We are running a free tier to retrieve Google reviews. So on occasion, the API may not return any data. Please try again another day.</p>
         </div>
     </div>
 </template>
 
 <script setup>
 const { shortDateConverter } = useDateUtils()
+const { data } = await useFetch('/api/serpapi')
 
-const { data } = await useFetch('/api/tripadvisor')
-
-const tripadvisorData = computed(() => {
-    return data.value.data
+const googleReviewData = computed(() => {
+    return data.value
 })
 
+onMounted(() => {
+    console.log(googleReviewData.value)
+})
+
+console.log(googleReviewData.value)
 </script>

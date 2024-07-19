@@ -5,8 +5,8 @@
             <template v-if="!keyholder">
                 <dashboard-intro />
                 <recently-updated-articles />
+                <carousel-google-reviews />
                 <carousel-trip-advisor-reviews />
-                <!-- <advent-calendar v-if="isXmasTheme" /> -->
                 <carousel-team-members />
                 <carousel-been-awesome-winners />
                 <carousel-recent-orders />
@@ -16,10 +16,10 @@
             <template v-else>
                 <carousel-checks />
                 <carousel-recent-orders />
-                <recently-updated-articles />
+                <carousel-google-reviews />
                 <carousel-trip-advisor-reviews />
+                <recently-updated-articles />
                 <carousel-standing-orders />
-                <!-- <advent-calendar v-if="isXmasTheme" /> -->
                 <carousel-been-awesome-winners />
                 <carousel-team-members />
             </template>
@@ -28,10 +28,8 @@
 </template>
 <script setup>
 import { useUserStore } from '@/stores/user'
-// import { useUiStore } from '@/stores/ui'
 
 const userStore = useUserStore()
-// const uiStore = useUiStore()
 
 const keyholder = computed(() => {
     return userStore?.keyholderLayout
