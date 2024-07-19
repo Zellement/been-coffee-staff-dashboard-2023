@@ -1,12 +1,12 @@
 <template>
     <div class="relative">
         <div class="container flex flex-row justify-between">
-            <h2 class="h1 flex gap-2 items-start">
+            <h2 class="h1 flex gap-2 items-center">
                 <Icon
                     name="simple-icons:tripadvisor"
-                    class="w-8 h-8 translate-y-1"
+                    class="w-6 h-6 translate-y-px"
                 />
-                Latest TripAdvisor Reviews
+                Reviews
             </h2>
             <nuxt-link
                 class="button flex-shrink-0 self-end"
