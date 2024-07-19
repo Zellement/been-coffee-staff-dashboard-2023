@@ -1,15 +1,15 @@
 <template>
     <div class="relative">
         <div class="container flex flex-row justify-between">
-            <h2 class="h1 flex gap-2 items-center">
+            <h2 class="h1 flex gap-2 items-start">
                 <Icon
                     name="simple-icons:tripadvisor"
-                    class="w-8 h-8 "
+                    class="w-8 h-8 translate-y-1"
                 />
                 Latest TripAdvisor Reviews
             </h2>
             <nuxt-link
-                class="button"
+                class="button flex-shrink-0 self-end"
                 target="_blank"
                 to="https://www.tripadvisor.co.uk/Restaurant_Review-g1234748-d23838579-Reviews-Been_Coffee-Willington_Derbyshire_England.html"
             >

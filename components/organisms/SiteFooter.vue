@@ -34,7 +34,10 @@
                     class="relative"
                     @click="uiStore.toggleCheckModal"
                 >
-                    <span class="absolute top-0 left-0 -translate-x-1 -translate-y-1 bg-red-500 text-[10px] w-4 h-4 leading-none rounded-full flex">
+                    <span
+                        class="absolute top-0 left-0 -translate-x-1 -translate-y-1  text-[10px] w-4 h-4 leading-none rounded-full flex"
+                        :class="checksNotificationClasses"
+                    >
                         <span class="m-auto">{{ supabaseStore.getTotalIncompleteChecks }}</span>
                     </span>
                     <Icon
@@ -80,6 +83,10 @@ const userName = computed(() => {
 
 const userProfilePicture = computed(() => {
     return userStore?.userSanityData?.image
+})
+
+const checksNotificationClasses = computed(() => {
+    return supabaseStore.getTotalIncompleteChecks > 0 ? 'bg-red-500' : 'bg-green-500'
 })
 
 const uiStore = useUiStore()

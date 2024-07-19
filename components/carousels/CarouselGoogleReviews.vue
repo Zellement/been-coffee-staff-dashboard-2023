@@ -2,15 +2,15 @@
     <div class="relative">
         <div class="container " />
         <div class="container flex flex-row justify-between">
-            <h2 class="h1 flex gap-2 items-center">
+            <h2 class="h1 flex gap-2 items-start">
                 <Icon
                     name="mingcute:google-fill"
-                    class="w-8 h-8 "
+                    class="w-8 h-8 translate-y-1"
                 />
                 Latest Google Reviews
             </h2>
             <nuxt-link
-                class="button"
+                class="button flex-shrink-0 self-end"
                 target="_blank"
                 to="https://www.google.com/search?q=been+coffee&rlz=1C5CHFA_enGB999GB999&oq=been+coffe&gs_lcrp=EgZjaHJvbWUqDAgAECMYJxiABBiKBTIMCAAQIxgnGIAEGIoFMhAIARAuGK8BGMcBGIAEGI4FMgYIAhBFGDkyBwgDEAAYgAQyBggEEEUYQTIGCAUQRRhBMgYIBhBFGEEyBggHEEUYPagCALACAA&sourceid=chrome&ie=UTF-8&zx=1721406730390&no_sw_cr=1#lrd=0x4879f76a544386ad:0xdd73c388e6606809,1,,,,"
             >
