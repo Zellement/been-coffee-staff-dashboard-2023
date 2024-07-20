@@ -1,6 +1,12 @@
 <template>
-    <div>
+    <div class="h-[100vh] fixed overflow-hidden w-full">
         <nuxt-layout name="locations">
+            <header class="container fixed top-0 left-0 z-50 flex flex-row items-center justify-between w-full gap-2 pt-2">
+                <img
+                    class="w-8 h-8"
+                    src="@/assets/images/been-staff-dashboard.png"
+                >
+            </header>
             <div class="relative">
                 <button
                     class="absolute top-0 right-4 uppercase text-[0.7em] tracking-wide px-1"
@@ -12,7 +18,7 @@
                         :style="timerLineClass"
                     />
                 </button>
-                <div class="flex flex-col gap-8 w-full -mt-8">
+                <div class="flex flex-col gap-8 w-full ">
                     <homebase-shifts-today />
                     <carousel-checks basic />
                     <homebase-shifts-tomorrow />
