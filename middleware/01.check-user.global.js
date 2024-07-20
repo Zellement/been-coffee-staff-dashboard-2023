@@ -8,11 +8,13 @@ export default defineNuxtRouteMiddleware((to, from) => {
 
     const user = useSupabaseUser()
 
+    console.log('to', to)
+
     if (user?.value?.aud === 'authenticated') {
         return
     }
 
-    if (to.path === '/login' || to.path === '/forgot-password' || to.path === '/update-password') return
+    if (to.path === '/login' || to.path === '/forgot-password' || to.path === '/update-password' || to.fullPath === '/locations/willington') return
 
     // Prevent adding QS to index
     if (to.path === '/') {

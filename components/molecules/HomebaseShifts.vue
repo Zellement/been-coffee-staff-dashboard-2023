@@ -1,18 +1,19 @@
 <template>
-    <div class="">
+    <div class="flex flex-col gap-4">
+        <h2 class="h2">
+            The Been team for today
+            <span class="text-[0.7em] block">
+                {{ shortDateConverter(today) }}
+            </span>
+        </h2>
         <div
-            v-for="shift in shifts"
-            :key="shift.id"
+            class="flex flex-col gap-4"
         >
             <homebase-single-shift
+                v-for="shift in shifts"
+                :key="shift.id"
                 :shift="shift"
             />
-            <!-- {{ shift.first_name }}
-            {{ shift.last_name }}
-            {{ shift.role }}
-            {{ shift.timecard_id }} -->
-
-            <!-- Clocked in at {{ formatIsoDateString(shift.clock_in) }} -->
         </div>
     </div>
 </template>
@@ -20,17 +21,10 @@
 <script setup>
 const { data } = await useFetch('/api/homebase-shifts')
 
+const { shortDateConverter } = useDateUtils()
+
 const shifts = data.value
 
-console.log(data.value)
+const today = new Date()
 
-// function formatIsoDateString (isoDateString) {
-//     const date = new Date(isoDateString)
-//     const options = {
-//         hour: 'numeric',
-//         minute: 'numeric',
-//         hour12: false
-//     }
-//     return new Intl.DateTimeFormat('en-US', options).format(date)
-// }
 </script>

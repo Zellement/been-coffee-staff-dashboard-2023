@@ -17,6 +17,10 @@ export const useTeamStore = defineStore('team', {
                 console.error('Failed to fetch data:', error)
                 throw error
             }
+        },
+        getUserByHomebaseId (userId) {
+            console.log(userId)
+            return this.currentTeam.find(user => user.homebaseUserId === userId)
         }
     }
 })

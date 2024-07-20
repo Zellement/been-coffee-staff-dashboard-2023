@@ -8,4 +8,8 @@
   &--urgent {
     @apply border-red-800 bg-gradient-to-b from-red-700 to-red-800 text-red-300;
   }
+
+  &--orange {
+    @apply border-orange-800 bg-gradient-to-b from-orange-700 to-orange-800 text-orange-300;
+  }
 }
