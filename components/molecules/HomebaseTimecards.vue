@@ -17,8 +17,6 @@ const { data } = await useFetch('/api/homebase-timecards')
 
 const shifts = data.value
 
-console.log(data.value)
-
 function formatIsoDateString (isoDateString) {
     const date = new Date(isoDateString)
     const options = {

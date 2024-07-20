@@ -102,9 +102,4 @@ const googleReviewData = computed(() => {
     return data.value
 })
 
-onMounted(() => {
-    console.log(googleReviewData.value)
-})
-
-console.log(googleReviewData.value)
 </script>

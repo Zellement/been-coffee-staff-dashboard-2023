@@ -1,7 +1,7 @@
 <template>
     <div class="container w-full">
         <div class="flex flex-col gap-4">
-            <h2 class="h2">
+            <h2 class="h1">
                 The Been team for tomorrow
                 <span class="text-[0.7em] block text-tuscany">
                     {{ fullDateConverter(today) }}

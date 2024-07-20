@@ -8,8 +8,6 @@ export default defineNuxtRouteMiddleware((to, from) => {
 
     const user = useSupabaseUser()
 
-    console.log('to', to)
-
     if (user?.value?.aud === 'authenticated') {
         return
     }
