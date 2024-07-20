@@ -35,7 +35,10 @@
                                     />
                                 </div>
                             </div>
-                            <ul class="flex flex-row items-center gap-2 text-2xs mt-auto">
+                            <ul
+                                v-if="!basic"
+                                class="flex flex-row items-center gap-2 text-2xs mt-auto"
+                            >
                                 <li
                                     v-for="subnav in link.subnav"
                                     :key="subnav.url"
@@ -68,6 +71,13 @@
 import { useSupabaseStore } from '@/stores/supabase'
 // import BooleanDailyCashBreakdown from '@/components/atoms/BooleanDailyCashBreakdown.vue'
 // import BooleanDailyTemperatures from '@/components/atoms/BooleanDailyTemperatures.vue'
+
+defineProps({
+    basic: {
+        type: Boolean,
+        default: false
+    }
+})
 
 const supabaseStore = useSupabaseStore()
 

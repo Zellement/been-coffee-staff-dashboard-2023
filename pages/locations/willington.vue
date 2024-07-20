@@ -1,9 +1,10 @@
 <template>
     <div>
         <nuxt-layout name="locations">
-            <div class="container -mt-8">
-                <!-- <homebase-timecards /> -->
-                <homebase-shifts />
+            <div class="flex flex-col gap-8 w-full -mt-8">
+                <homebase-shifts-today />
+                <carousel-checks basic />
+                <homebase-shifts-tomorrow />
             </div>
         </nuxt-layout>
     </div>

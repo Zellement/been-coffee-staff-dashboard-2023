@@ -19,7 +19,6 @@ export const useTeamStore = defineStore('team', {
             }
         },
         getUserByHomebaseId (userId) {
-            console.log(userId)
             return this.currentTeam.find(user => user.homebaseUserId === userId)
         }
     }

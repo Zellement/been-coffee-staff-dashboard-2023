@@ -68,6 +68,15 @@ export const useDateUtils = () => {
         return `${formattedHours}:${formattedMinutes}`;
     }
 
+    const getTodaysDateInUrlEncodedFormat = (date: Date) => {
+        // const today = new Date()
+        const dd = String(date.getDate()).padStart(2, '0')
+        const mm = String(date.getMonth() + 1).padStart(2, '0') // January is 0!
+        const yyyy = date.getFullYear()
+
+        return `${mm}%2F${dd}%2F${yyyy}`
+    }
+
     /**
      * Return a short user-friendly date.
      * @function
@@ -86,6 +95,7 @@ export const useDateUtils = () => {
 
     return {
         extractHourAndMinute,
+        getTodaysDateInUrlEncodedFormat,
         fullDateConverter,
         shortDateConverter
     }

@@ -1,16 +1,7 @@
-export default defineEventHandler(async () => {
-    const getTodaysDateInUrlEncodedFormat = () => {
-        const today = new Date()
-        const dd = String(today.getDate()).padStart(2, '0')
-        const mm = String(today.getMonth() + 1).padStart(2, '0') // January is 0!
-        const yyyy = today.getFullYear()
-
-        return `${mm}%2F${dd}%2F${yyyy}`
-    }
-
-    const today = getTodaysDateInUrlEncodedFormat()
+export default defineEventHandler(async (event) => {
+    const query = getQuery(event)
     try {
-        const response = await fetch(`https://api.joinhomebase.com/locations/${process.env.HOMEBASE_LOCATION_WILLINGTON_ID}/shifts?start_date=${today}&end_date=${today}`, {
+        const response = await fetch(`https://api.joinhomebase.com/locations/${process.env.HOMEBASE_LOCATION_WILLINGTON_ID}/shifts?start_date=${query.date}&end_date=${query.date}`, {
             method: 'GET',
             headers: {
                 Authorization: `Bearer ${process.env.HOMEBASE_API_KEY}`,
