@@ -5,11 +5,10 @@ import eslintVitePlugin from 'vite-plugin-eslint'
 export default defineNuxtConfig({
     runtimeConfig: {
         public: {
-            MC_CLIENT: process.env.MC_CLIENT,
             SITE_URL: process.env.SITE_URL,
-            MC_API: process.env.MC_API,
             GOOGLE_SHEETS_SCRIPT_DAILY_CASH_BREAKDOWN: process.env.GOOGLE_SHEETS_SCRIPT_DAILY_CASH_BREAKDOWN,
-            GOOGLE_SHEETS_SCRIPT_DAILY_TEMPERATURE_LOGS: process.env.GOOGLE_SHEETS_SCRIPT_DAILY_TEMPERATURE_LOGS
+            GOOGLE_SHEETS_SCRIPT_DAILY_TEMPERATURE_LOGS: process.env.GOOGLE_SHEETS_SCRIPT_DAILY_TEMPERATURE_LOGS,
+            HOMEBASE_LOCATION_WILLINGTON_ID: process.env.HOMEBASE_LOCATION_WILLINGTON_ID
         }
     },
     ssr: false,
@@ -91,9 +90,6 @@ export default defineNuxtConfig({
     css: [
         '@/assets/scss/app.scss'
     ],
-    build: {
-        extractCSS: true
-    },
     app: {
         head: {
             htmlAttrs: {

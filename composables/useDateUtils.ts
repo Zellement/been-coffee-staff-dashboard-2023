@@ -56,6 +56,18 @@ export const useDateUtils = () => {
         return `${day}, ${d}${dSuffix} ${m} ${y}`
     }
 
+    const extractHourAndMinute = (dateString: Date): string => {
+        const date = new Date(dateString);
+        const hours = date.getHours();
+        const minutes = date.getMinutes();
+    
+        // Format hours and minutes to ensure they are always two digits
+        const formattedHours = hours.toString().padStart(2, '0');
+        const formattedMinutes = minutes.toString().padStart(2, '0');
+    
+        return `${formattedHours}:${formattedMinutes}`;
+    }
+
     /**
      * Return a short user-friendly date.
      * @function
@@ -73,6 +85,7 @@ export const useDateUtils = () => {
     }
 
     return {
+        extractHourAndMinute,
         fullDateConverter,
         shortDateConverter
     }
