@@ -42,24 +42,24 @@
                 class="flex gap-8"
             >
                 <div
-                    v-if="data.clock_in"
+                    v-if="data?.clock_in"
                     class="inline-flex gap-1 items-center pill pill--clockin"
                 >
                     <Icon
                         name="ph:arrow-square-in-bold"
                         class="w-4 h-4 rotate-90"
                     />
-                    <span>{{ extractHourAndMinute(data.clock_in) }}</span>
+                    <span>{{ extractHourAndMinute(data?.clock_in) }}</span>
                 </div>
                 <div
-                    v-if="data.clock_out"
+                    v-if="data?.clock_out"
                     class="inline-flex gap-1 items-center pill pill--orange"
                 >
                     <Icon
                         name="ph:arrow-square-out-bold"
                         class="w-4 h-4"
                     />
-                    <span>{{ extractHourAndMinute(data.clock_out) }}</span>
+                    <span>{{ extractHourAndMinute(data?.clock_out) }}</span>
                 </div>
             </div>
             <div
@@ -103,13 +103,13 @@ const props = defineProps({
     }
 })
 
+const { data } = await useFetch('/api/homebase-timecard', { query: { timecardId: props.shift.timecard_id } })
+
 const hasClockedInOrOut = computed(() => {
-    return data.value.clock_in || data.value.clock_out
+    return data.value?.clock_in || data.value?.clock_out
 })
 
 const { extractHourAndMinute } = useDateUtils()
-
-const { data } = await useFetch('/api/homebase-timecard', { query: { timecardId: props.shift.timecard_id } })
 
 const user = computed(() => {
     if (!props.shift.user_id) return null
