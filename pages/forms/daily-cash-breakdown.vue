@@ -153,9 +153,9 @@ const submitToGoogleSheets = () => {
     state.isSending = true
     state.hasSent = false
     fetch(scriptURL, { method: 'POST', body: formData })
-        .then(() => {
-            supabaseStore.setCheck('daily_cash_breakdown', user)
-            supabaseStore.setCheck('daily_cash_breakdown_time', dateTime)
+        .then(async () => {
+            await supabaseStore.setCheck('daily_cash_breakdown', user)
+            await supabaseStore.setCheck('daily_cash_breakdown_time', dateTime)
             state.isSending = false
             state.hasSent = true
         })
