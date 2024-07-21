@@ -22,11 +22,16 @@
             <span>{{ extractHourAndMinute(shift.end_at) }}</span>
         </span>
         <span
-            class="flex-1 flex items-center basis-1/12"
+            class="flex-1 flex items-center basis-1/12 relative"
         >
             <Icon
-                v-if="data?.labor?.unpaid_break_hours"
-                name="solar:armchair-2-bold"
+                v-if="data?.labor?.unpaid_break_hours > 0"
+                name="ph:armchair-fill"
+                class="w-6 h-6  "
+            />
+            <Icon
+                v-else-if="shift?.labor?.scheduled_regular > 6"
+                name="ph:armchair-thin"
                 class="w-6 h-6"
             />
         </span>
@@ -104,6 +109,8 @@ const props = defineProps({
 })
 
 const { data } = await useFetch('/api/homebase-timecard', { query: { timecardId: props.shift.timecard_id } })
+
+console.log(data.value)
 
 const hasClockedInOrOut = computed(() => {
     return data.value?.clock_in || data.value?.clock_out

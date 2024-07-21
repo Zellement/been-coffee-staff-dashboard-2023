@@ -27,6 +27,9 @@ const { getTodaysDateInUrlEncodedFormat, fullDateConverter } = useDateUtils()
 const encodedDate = getTodaysDateInUrlEncodedFormat(today)
 const { data } = await useFetch('/api/homebase-shifts', { query: { date: encodedDate } })
 
-const shifts = data.value
+const shifts = computed(() => {
+    return data.value
+})
 
+console.log(shifts)
 </script>
