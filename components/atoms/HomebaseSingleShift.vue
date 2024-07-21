@@ -130,6 +130,4 @@ const wrapperClasses = computed(() => {
     return props.basic ? 'text-[0.7em]' : null
 })
 
-console.log(data.value)
-
 </script>

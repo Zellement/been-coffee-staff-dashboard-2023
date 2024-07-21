@@ -164,8 +164,8 @@ const myPortableTextComponents = {
             const fullAsset = getImageAsset(value, { projectId: 'mxklvbih', dataset: 'production' })
             // :src="$urlFor(currentWinner.winner.image).width(300).height(400).url()"
             // const image = $urlFor(fullAsset.assetId).width(800).url()
-            console.log('value', value)
-            console.log('full asset', fullAsset)
+            // console.log('value', value)
+            // console.log('full asset', fullAsset)
             const image = fullAsset.url
 
             // return h(resolveComponent('NuxtLink'), { key, href, target }, linkContent)

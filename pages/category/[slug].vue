@@ -95,8 +95,8 @@ useHead({
     title: catTitle.value
 })
 
-onMounted(() => {
-    console.log(data)
-})
+// onMounted(() => {
+//     console.log(data)
+// })
 
 </script>
