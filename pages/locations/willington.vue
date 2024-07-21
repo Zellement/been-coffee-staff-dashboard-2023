@@ -25,15 +25,16 @@
                         <homebase-shifts-tomorrow />
                         <div class=" w-full grid grid-cols-2 gap-8 flex-wrap justify-center items-center">
                             <single-day-dot
-                                :date="today"
-                            />
-                            <single-day-dot
                                 :date="plus3days"
                                 title="+ 3 Days"
                             />
                             <single-day-dot
                                 :date="plus5days"
                                 title="+ 5 Days"
+                            />
+                            <single-day-dot
+                                :date="plus7days"
+                                title="+ 7 Days"
                             />
                             <single-day-dot
                                 :date="plus14days"
@@ -88,9 +89,9 @@ onMounted(() => {
     }, 1000)
 })
 
-const today = new Date()
 const plus3days = new Date(new Date().getTime() + (2 * 24 * 60 * 60 * 1000))
 const plus5days = new Date(new Date().getTime() + (4 * 24 * 60 * 60 * 1000))
+const plus7days = new Date(new Date().getTime() + (6 * 24 * 60 * 60 * 1000))
 const plus14days = new Date(new Date().getTime() + (13 * 24 * 60 * 60 * 1000))
 
 // Cleanup on unmount to prevent memory leaks
