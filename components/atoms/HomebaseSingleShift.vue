@@ -1,6 +1,6 @@
 <template>
     <div
-        class="flex gap-8 w-full justify-between items-center"
+        class="flex gap-8 w-full justify-between items-center text-lg"
         :class="wrapperClasses"
     >
         <span class="basis-4/12 flex gap-2 items-center">
@@ -22,6 +22,7 @@
             <span>{{ extractHourAndMinute(shift.end_at) }}</span>
         </span>
         <span
+            v-if="!basic"
             class="flex-1 flex items-center basis-1/12 relative"
         >
             <Icon
@@ -48,7 +49,7 @@
             >
                 <div
                     v-if="data?.clock_in"
-                    class="inline-flex gap-1 items-center pill pill--clockin"
+                    class="inline-flex gap-1 items-center pill pill--clockin pill--lg"
                 >
                     <Icon
                         name="ph:arrow-square-in-bold"
@@ -58,7 +59,7 @@
                 </div>
                 <div
                     v-if="data?.clock_out"
-                    class="inline-flex gap-1 items-center pill pill--orange"
+                    class="inline-flex gap-1 items-center pill pill--orange pill--lg"
                 >
                     <Icon
                         name="ph:arrow-square-out-bold"
@@ -128,5 +129,7 @@ const timeNow = extractHourAndMinute(today)
 const wrapperClasses = computed(() => {
     return props.basic ? 'text-[0.7em]' : null
 })
+
+console.log(data.value)
 
 </script>

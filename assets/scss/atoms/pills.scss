@@ -16,4 +16,8 @@
   &--orange, &--clockout {
     @apply border-orange-800 bg-white text-orange-800;
   }
+
+  &--lg {
+    @apply text-lg;
+  }
 }
