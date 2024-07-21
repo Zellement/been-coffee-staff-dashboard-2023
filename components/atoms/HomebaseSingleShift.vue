@@ -110,8 +110,6 @@ const props = defineProps({
 
 const { data } = await useFetch('/api/homebase-timecard', { query: { timecardId: props.shift.timecard_id } })
 
-console.log(data.value)
-
 const hasClockedInOrOut = computed(() => {
     return data.value?.clock_in || data.value?.clock_out
 })
@@ -130,8 +128,5 @@ const timeNow = extractHourAndMinute(today)
 const wrapperClasses = computed(() => {
     return props.basic ? 'text-[0.7em]' : null
 })
-
-// console.log(props)
-// console.log('timecard data', data.value)
 
 </script>

@@ -1,15 +1,15 @@
 <template>
-    <div class="container w-full">
+    <div class="w-full">
         <div class="flex flex-col gap-4">
             <h2 class="h1">
-                The Been team for tomorrow
+                Tomorrow
                 <span class="text-[0.7em] block text-tuscany">
                     {{ fullDateConverter(today) }}
                 </span>
             </h2>
             <div
                 v-if="shifts"
-                class="grid grid-cols-2 gap-2"
+                class="grid grid-cols-1 gap-2"
             >
                 <homebase-single-shift
                     v-for="shift in shifts"

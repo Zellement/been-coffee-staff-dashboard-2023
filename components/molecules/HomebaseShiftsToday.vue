@@ -31,5 +31,4 @@ const shifts = computed(() => {
     return data.value
 })
 
-console.log(shifts)
 </script>
