@@ -46,7 +46,7 @@ const date = new Date()
 const hours = date.getHours()
 
 const classes = computed(() => {
-    return props.isComplete ? 'pill--complete' : hours < props.dueTime ? '' : 'pill--urgent'
+    return props.isComplete ? 'pill--complete' : hours < props.dueTime ? '' : 'pill--urgent animate-bounce'
 })
 
 const icon = computed(() => {
