@@ -153,12 +153,11 @@ const submitToGoogleSheets = () => {
     state.isSending = true
     state.hasSent = false
     fetch(scriptURL, { method: 'POST', body: formData })
-        .then((response) => {
-            console.log('Success!', response)
-            state.isSending = false
-            state.hasSent = true
+        .then(() => {
             supabaseStore.setCheck('daily_cash_breakdown', user)
             supabaseStore.setCheck('daily_cash_breakdown_time', dateTime)
+            state.isSending = false
+            state.hasSent = true
         })
         .catch(error => console.error('Error!', error.message))
 }
