@@ -49,7 +49,7 @@
             >
                 <div
                     v-if="data?.clock_in"
-                    class="inline-flex gap-1 items-center pill pill--clockin pill--lg"
+                    class="inline-flex gap-1 items-center pill pill--clockin pill--base"
                 >
                     <Icon
                         name="ph:arrow-square-in-bold"
@@ -59,7 +59,7 @@
                 </div>
                 <div
                     v-if="data?.clock_out"
-                    class="inline-flex gap-1 items-center pill pill--orange pill--lg"
+                    class="inline-flex gap-1 items-center pill pill--orange pill--base"
                 >
                     <Icon
                         name="ph:arrow-square-out-bold"

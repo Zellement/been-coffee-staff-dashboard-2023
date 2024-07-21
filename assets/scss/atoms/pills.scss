@@ -17,6 +17,10 @@
     @apply border-orange-800 bg-white text-orange-800;
   }
 
+  &--base {
+    @apply text-base;
+  }
+
   &--lg {
     @apply text-lg;
   }
