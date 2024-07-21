@@ -73,7 +73,7 @@
             >
                 <div
                     v-if="timeNow > extractHourAndMinute(shift.start_at)"
-                    class="inline-flex gap-1 items-center bg-orange-500 text-white px-2 py-1 rounded animate-bounce"
+                    class="inline-flex gap-1 items-center bg-gradient-to-b from-red-700 to-red-800 text-red-300 px-2 py-1 rounded animate-bounce"
                 >
                     <Icon
                         name="material-symbols:warning"
