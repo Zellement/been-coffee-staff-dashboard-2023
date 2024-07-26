@@ -72,7 +72,13 @@
                 v-else
             >
                 <div
-                    v-if="timeNow > extractHourAndMinute(shift.start_at)"
+                    v-if="timeNow > extractHourAndMinute(shift.end_at)"
+                    class="text-[0.9em] italic opacity-50"
+                >
+                    No show
+                </div>
+                <div
+                    v-else-if="timeNow > extractHourAndMinute(shift.start_at)"
                     class="inline-flex gap-1 items-center bg-gradient-to-b from-red-700 to-red-800 text-red-300 px-2 py-1 rounded animate-bounce"
                 >
                     <Icon
