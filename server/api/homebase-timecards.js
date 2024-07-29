@@ -10,7 +10,7 @@ export default defineEventHandler(async () => {
 
     const today = getTodaysDateInUrlEncodedFormat()
     try {
-        const response = await fetch(`https://api.joinhomebase.com/locations/${process.env.HOMEBASE_LOCATION_WILLINGTON_ID}/timecards?start_date=${today}&end_date=${today}`, {
+        const response = await fetch(`https://app.joinhomebase.com/api/public/locations/${process.env.HOMEBASE_LOCATION_WILLINGTON_ID}/timecards?start_date=${today}&end_date=${today}`, {
             method: 'GET',
             headers: {
                 Authorization: `Bearer ${process.env.HOMEBASE_API_KEY}`,

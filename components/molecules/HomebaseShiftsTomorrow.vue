@@ -4,11 +4,11 @@
             <h2 class="h1">
                 Tomorrow
                 <span class="text-[0.7em] block text-tuscany">
-                    {{ fullDateConverter(today) }}
+                    {{ fullDateConverter(tomorrow) }}
                 </span>
             </h2>
             <div
-                v-if="shifts"
+                v-if="shifts && shifts.length > 0"
                 class="grid grid-cols-1 gap-2"
             >
                 <homebase-single-shift
@@ -18,17 +18,27 @@
                     basic
                 />
             </div>
+            <div v-else>
+                <Icon
+                    name="ph:spinner-gap-light"
+                    class="text-lg animate-spin"
+                />
+            </div>
         </div>
     </div>
 </template>
 
 <script setup>
 const { getTodaysDateInUrlEncodedFormat, fullDateConverter } = useDateUtils()
-const today = new Date(+new Date() + 86400000)
+const tomorrow = new Date(+new Date() + 86400000)
 
-const encodedDate = getTodaysDateInUrlEncodedFormat(today)
-const { data } = await useFetch('/api/homebase-shifts', { query: { date: encodedDate } })
+const encodedDate = getTodaysDateInUrlEncodedFormat(tomorrow)
 
-const shifts = data.value
+const shifts = ref()
+
+onMounted(async () => {
+    const { data } = await useFetch('/api/homebase-shifts', { query: { date: encodedDate } })
+    shifts.value = data.value
+})
 
 </script>

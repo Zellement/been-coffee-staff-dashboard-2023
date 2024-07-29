@@ -1,13 +1,14 @@
 export default defineEventHandler(async (event) => {
     const query = getQuery(event)
     try {
-        const response = await fetch(`https://api.joinhomebase.com/locations/${process.env.HOMEBASE_LOCATION_WILLINGTON_ID}/shifts?start_date=${query.date}&end_date=${query.date}`, {
+        const response = await fetch(`https://app.joinhomebase.com/api/public/locations/${process.env.HOMEBASE_LOCATION_WILLINGTON_ID}/shifts?start_date=${query.date}&end_date=${query.date}`, {
             method: 'GET',
             headers: {
                 Authorization: `Bearer ${process.env.HOMEBASE_API_KEY}`,
                 Accept: 'application/vnd.homebase-v1+json'
             }
         })
+        console.log(response)
 
         if (!response.ok) {
             throw new Error(`Error: ${response.status}`)

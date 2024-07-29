@@ -8,12 +8,19 @@
                 </span>
             </h2>
             <div
+                v-if="shifts && shifts.length > 0"
                 class="flex flex-col gap-4"
             >
                 <homebase-single-shift
                     v-for="shift in shifts"
                     :key="shift.id"
                     :shift="shift"
+                />
+            </div>
+            <div v-else>
+                <Icon
+                    name="ph:spinner-gap-light"
+                    class="text-lg animate-spin"
                 />
             </div>
         </div>
@@ -25,10 +32,12 @@ const today = new Date()
 const { getTodaysDateInUrlEncodedFormat, fullDateConverter } = useDateUtils()
 
 const encodedDate = getTodaysDateInUrlEncodedFormat(today)
-const { data } = await useFetch('/api/homebase-shifts', { query: { date: encodedDate } })
 
-const shifts = computed(() => {
-    return data.value
+const shifts = ref()
+
+onMounted(async () => {
+    const { data } = await useFetch('/api/homebase-shifts', { query: { date: encodedDate } })
+    shifts.value = data.value
 })
 
 </script>
