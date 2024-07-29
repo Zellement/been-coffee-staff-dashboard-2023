@@ -21,7 +21,7 @@
                     to="/category/general"
                 >
                     general documentation
-                </nuxt-link>.
+                </nuxt-link>
             </p>
             <button-site-search
                 display-text="Launch navigation"
