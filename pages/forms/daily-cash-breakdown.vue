@@ -111,7 +111,7 @@
             />
             <daily-cash-breakdown-collection-safe
                 collection-brow="(Red tin)"
-                collection="Safe"
+                collection="Spare Coins"
                 collection-style="bg-red-500"
             />
             <textarea

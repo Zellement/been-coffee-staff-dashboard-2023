@@ -150,7 +150,7 @@ const totalColor = computed(() => {
 })
 
 const difference = computed(() => {
-    return totalValue.value - 100
+    return totalValue.value - 150
 })
 
 const differenceFormatted = computed(() => {
