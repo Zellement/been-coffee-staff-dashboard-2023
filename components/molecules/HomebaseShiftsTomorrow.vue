@@ -36,9 +36,7 @@ const encodedDate = getTodaysDateInUrlEncodedFormat(tomorrow)
 
 const shifts = ref()
 
-onMounted(async () => {
-    const { data } = await useFetch('/api/homebase-shifts', { query: { date: encodedDate } })
-    shifts.value = data.value
-})
+const { data } = await useFetch('/api/homebase-shifts', { query: { date: encodedDate } })
+shifts.value = data.value
 
 </script>
