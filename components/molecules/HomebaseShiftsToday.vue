@@ -7,27 +7,47 @@
                     {{ fullDateConverter(today) }}
                 </span>
             </h2>
-            <div
-                v-if="shifts && shifts.length > 0"
-                class="flex flex-col gap-4"
-            >
-                <homebase-single-shift
-                    v-for="shift in shifts"
-                    :key="shift.id"
-                    :shift="shift"
-                />
-            </div>
-            <div v-else>
-                <Icon
-                    name="ph:spinner-gap-light"
-                    class="text-lg animate-spin"
-                />
-            </div>
+            <template v-if="showAll">
+                <div
+                    v-if="shifts && shifts.length > 0"
+                    class="flex flex-col gap-1 md:gap-4"
+                >
+                    <homebase-single-shift
+                        v-for="shift in shifts"
+                        :key="shift.id"
+                        :shift="shift"
+                    />
+                </div>
+                <div v-else>
+                    <Icon
+                        name="ph:spinner-gap-light"
+                        class="text-lg animate-spin"
+                    />
+                </div>
+            </template>
+            <template v-else>
+                <button
+                    class="button"
+                    @click="showAll = true"
+                >
+                    Show shifts
+                </button>
+            </template>
         </div>
     </div>
 </template>
 
 <script setup>
+
+const props = defineProps({
+    show: {
+        type: Boolean,
+        default: true
+    }
+})
+
+const showAll = ref(props.show)
+
 const today = new Date()
 const { getTodaysDateInUrlEncodedFormat, fullDateConverter } = useDateUtils()
 

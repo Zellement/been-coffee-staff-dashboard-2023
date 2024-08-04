@@ -4,6 +4,7 @@
             <birthdays-anniversaries />
             <template v-if="!keyholder">
                 <dashboard-intro />
+                <homebase-shifts-today />
                 <recently-updated-articles />
                 <carousel-google-reviews />
                 <carousel-trip-advisor-reviews />
@@ -15,6 +16,7 @@
             </template>
             <template v-else>
                 <carousel-checks />
+                <homebase-shifts-today />
                 <carousel-recent-orders />
                 <carousel-google-reviews />
                 <carousel-trip-advisor-reviews />

@@ -1,9 +1,9 @@
 <template>
     <div
-        class="flex gap-8 w-full justify-between items-center text-lg"
+        class="flex gap-2 md:gap-8 w-full justify-between items-center text-lg"
         :class="wrapperClasses"
     >
-        <span class="basis-4/12 flex gap-2 items-center">
+        <span class="basis-5/12 md:basis-7/12 flex gap-2 items-center">
             <img
                 v-if="user.image?.asset?._ref"
                 :src="$urlFor(user.image?.asset).width(120).height(120).url()"
@@ -12,14 +12,16 @@
                 loading="lazy"
                 class="rounded-full self-center flex-grow-0 flex-shrink-0"
             >
-            <span class="whitespace-nowrap">
-                {{ shift.first_name }}
-            </span>
-        </span>
-        <span class="flex-1 basis-3/12 flex gap-2">
-            <span>{{ extractHourAndMinute(shift.start_at) }}</span>
-            <span>-</span>
-            <span>{{ extractHourAndMinute(shift.end_at) }}</span>
+            <div class="flex flex-col md:flex-row w-full">
+                <span class="flex whitespace-nowrap md:basis-1/2 text-sm md:text-base">
+                    {{ shift.first_name }}
+                </span>
+                <div class="flex text-xs md:text-base md:basis-1/2">
+                    <span>{{ extractHourAndMinute(shift.start_at) }}</span>
+                    <span>-</span>
+                    <span>{{ extractHourAndMinute(shift.end_at) }}</span>
+                </div>
+            </div>
         </span>
         <span
             v-if="!basic"
@@ -41,25 +43,37 @@
         </span> -->
         <div
             v-if="!basic"
-            class="flex-1 basis-4/12"
+            class="flex-1 basis-4/12 text-xs md:text-base"
         >
             <div
                 v-if="hasClockedInOrOut"
-                class="flex gap-8"
+                class="flex gap-2 md:gap-8"
             >
                 <div
                     v-if="data?.clock_in"
-                    class="inline-flex gap-1 items-center pill pill--clockin pill--base"
+                    class="inline-flex relative gap-1 items-center pill pill--clockin pill-xs md:pill--base"
                 >
+                    <Icon
+                        v-if="data?.clock_in > shift.start_at"
+                        name="material-symbols:assignment-late"
+                        class="absolute top-0 left-0 w-4 h-4 text-orange-400 -translate-x-2/3 -translate-y-2/3"
+                    />
                     <Icon
                         name="ph:arrow-square-in-bold"
                         class="w-4 h-4 rotate-90"
                     />
                     <span>{{ extractHourAndMinute(data?.clock_in) }}</span>
                 </div>
+
+                <div
+                    v-if="data?.clock_in && !data?.clock_out && timeNow > extractHourAndMinute(shift.end_at)"
+                    class="inline-flex gap-1 items-center pill pill--orange pill-xs md:pill--base"
+                >
+                    <span>Not Clocked Out</span>
+                </div>
                 <div
                     v-if="data?.clock_out"
-                    class="inline-flex gap-1 items-center pill pill--orange pill--base"
+                    class="inline-flex gap-1 items-center pill pill--orange pill-xs md:pill--base"
                 >
                     <Icon
                         name="ph:arrow-square-out-bold"
@@ -79,7 +93,7 @@
                 </div>
                 <div
                     v-else-if="timeNow > extractHourAndMinute(shift.start_at)"
-                    class="inline-flex gap-1 items-center bg-gradient-to-b from-red-700 to-red-800 text-red-300 px-2 py-1 rounded animate-bounce"
+                    class="inline-flex md:text-base text-xs gap-1 items-center bg-gradient-to-b from-red-700 to-red-800 text-red-300 px-2 py-1 rounded animate-bounce"
                 >
                     <Icon
                         name="material-symbols:warning"

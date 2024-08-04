@@ -1,3 +1,5 @@
+
+@layer utilities {
 .pill {
   @apply px-1 bg-white dark:bg-navy-700 flex items-center gap-1 rounded border border-current text-current relative  whitespace-nowrap text-2xs;
 
@@ -17,6 +19,10 @@
     @apply border-orange-800 bg-white text-orange-800;
   }
 
+  &--xs {
+    @apply text-xs;
+  }
+
   &--base {
     @apply text-base;
   }
@@ -24,4 +30,5 @@
   &--lg {
     @apply text-lg;
   }
+}
 }
