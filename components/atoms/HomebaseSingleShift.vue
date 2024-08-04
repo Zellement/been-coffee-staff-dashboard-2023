@@ -54,7 +54,7 @@
                     class="inline-flex relative gap-1 items-center pill pill--clockin pill-xs md:pill--base"
                 >
                     <Icon
-                        v-if="data?.clock_in > shift.start_at"
+                        v-if="extractHourAndMinute(data?.clock_in) > extractHourAndMinute(shift.start_at)"
                         name="material-symbols:assignment-late"
                         class="absolute top-0 left-0 w-4 h-4 text-orange-400 -translate-x-2/3 -translate-y-2/3"
                     />
