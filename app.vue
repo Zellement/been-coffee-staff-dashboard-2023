@@ -20,12 +20,15 @@
 
 import { useTeamStore } from '@/stores/team'
 import { useSupabaseStore } from '@/stores/supabase'
+import { useReviewsStore } from '@/stores/reviews'
 
 const teamStore = useTeamStore()
 const supabaseStore = useSupabaseStore()
+const reviewsStore = useReviewsStore()
 
 teamStore.fetchCurrentTeam()
 supabaseStore.fetchAllChecks()
+reviewsStore.fetchAllReviews()
 
 useHead({
     meta: [

@@ -84,12 +84,14 @@
 </template>
 
 <script setup>
+import { useReviewsStore } from '@/stores/reviews'
+
+const reviewsStore = useReviewsStore()
+
 const { shortDateConverter } = useDateUtils()
 
-const { data } = await useFetch('/api/tripadvisor')
-
 const tripadvisorData = computed(() => {
-    return data.value.data
+    return reviewsStore.reviewsTripadvisor
 })
 
 </script>
