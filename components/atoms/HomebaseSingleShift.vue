@@ -67,9 +67,9 @@
 
                 <div
                     v-if="data?.clock_in && !data?.clock_out && timeNow > extractHourAndMinute(shift.end_at)"
-                    class="inline-flex gap-1 items-center pill pill--orange pill-xs md:pill--base"
+                    class="inline-flex gap-1 items-center pill  pill-xs md:pill--base pill--urgent animate-bounce"
                 >
-                    <span>Not Clocked Out</span>
+                    <span class="text-xs tracking-tighter">Not Clocked Out</span>
                 </div>
                 <div
                     v-if="data?.clock_out"
