@@ -62,9 +62,19 @@
                         </h3>
                         <div class="">
                             <card-order-details
-                                :details="item.text"
+                                :details="item?.text"
                                 :string="true"
-                            />
+                                class="text-xs"
+                            >
+                                <template #response>
+                                    <div
+                                        v-if="item?.owner_response?.text"
+                                        class="mt-8 italic border-t pt-8 border-opacity-30 border-gray-500"
+                                    >
+                                        {{ item?.owner_response?.text }}
+                                    </div>
+                                </template>
+                            </card-order-details>
                         </div>
                     </div>
                 </div>

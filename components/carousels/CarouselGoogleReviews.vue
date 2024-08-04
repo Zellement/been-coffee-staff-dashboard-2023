@@ -78,6 +78,16 @@
                                         </li>
                                     </ul>
                                 </template>
+                                <template
+                                    v-if="item?.response?.snippet"
+                                    #response
+                                >
+                                    <div
+                                        class="mt-8 italic border-t pt-8 border-opacity-30 border-gray-500"
+                                    >
+                                        {{ item?.response?.snippet }}
+                                    </div>
+                                </template>
                             </card-order-details>
                         </div>
                     </div>

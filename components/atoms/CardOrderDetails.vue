@@ -21,7 +21,7 @@
             </div>
         </button>
         <div v-if="state.showDetails">
-            <h3 class="mb-2 krete-title mt-8">
+            <h3 class="mb-2 krete-title !text-base mt-8 not-italic">
                 Details
             </h3>
             <slot name="extraData" />
@@ -37,6 +37,7 @@
                     :value="details"
                 />
             </div>
+            <slot name="response" />
         </div>
     </div>
 </template>
