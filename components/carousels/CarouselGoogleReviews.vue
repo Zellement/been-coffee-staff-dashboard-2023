@@ -25,7 +25,7 @@
             <div class="w-full py-8 overflow-x-scroll ">
                 <div class="flex flex-row w-full space-x-4">
                     <div
-                        v-for="item in googleReviewData.reviews"
+                        v-for="item in googleReviewData"
                         :key="item.id"
                         class="flex relative flex-col w-3/4 p-4 gap-2 shadow-lg  min-w-[300px] card"
                     >
@@ -105,11 +105,13 @@
 </template>
 
 <script setup>
+import { useReviewsStore } from '@/stores/reviews'
+
+const reviewsStore = useReviewsStore()
 const { shortDateConverter } = useDateUtils()
-const { data } = await useFetch('/api/serpapi')
 
 const googleReviewData = computed(() => {
-    return data.value
+    return reviewsStore.reviewsGoogle
 })
 
 </script>
