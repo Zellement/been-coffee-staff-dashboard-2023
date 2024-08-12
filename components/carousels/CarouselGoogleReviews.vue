@@ -67,14 +67,14 @@
                             >
                                 <template #extraData>
                                     <ul class="mb-6">
-                                        <li v-if="item.details.food">
-                                            Food: {{ item.details.food }}
+                                        <li v-if="item?.details?.food">
+                                            Food: {{ item?.details?.food }}
                                         </li>
-                                        <li v-if="item.details.service">
-                                            Service: {{ item.details.service }}
+                                        <li v-if="item?.details?.service">
+                                            Service: {{ item?.details?.service }}
                                         </li>
-                                        <li v-if="item.details.atmosphere">
-                                            Atmosphere: {{ item.details.atmosphere }}
+                                        <li v-if="item?.details?.atmosphere">
+                                            Atmosphere: {{ item?.details?.atmosphere }}
                                         </li>
                                     </ul>
                                 </template>
