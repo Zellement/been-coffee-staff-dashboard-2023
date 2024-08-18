@@ -8,7 +8,6 @@ export default defineEventHandler(async (event) => {
                 Accept: 'application/vnd.homebase-v1+json'
             }
         })
-        console.log(response)
 
         if (!response.ok) {
             throw new Error(`Error: ${response.status}`)
