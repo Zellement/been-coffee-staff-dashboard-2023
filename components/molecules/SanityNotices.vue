@@ -48,7 +48,7 @@ const timer = ref(COUNTDOWN)
 const currentNotice = ref(0)
 
 const background = computed(() => {
-    return currentNotice.value % 2 === 0 ? 'bg-tuscany-500 text-white' : 'bg-butterscotch-500'
+    return currentNotice.value % 2 === 0 ? 'bg-tuscany-500 text-white' : 'bg-butterscotch-500 text-navy-500'
 })
 
 const bgTimerClasses = computed(() => {
