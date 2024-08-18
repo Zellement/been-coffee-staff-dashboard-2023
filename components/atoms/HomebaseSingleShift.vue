@@ -1,7 +1,7 @@
 <template>
     <div
         class="flex gap-2 md:gap-8 w-full justify-between items-center text-lg "
-        :class="wrapperClasses"
+        :class="[wrapperClasses, wrapperClockedOutClasses]"
     >
         <span
             class="flex gap-2 items-center"
@@ -152,6 +152,11 @@ const timeNow = extractHourAndMinute(today)
 const wrapperClasses = computed(() => {
     return props.basic ? 'text-[0.7em]' : null
 })
+
+const wrapperClockedOutClasses = computed(() => {
+    return data?.value?.clock_out ? ' opacity-30' : null
+})
+
 const userClasses = computed(() => {
     return props.basic ? 'basis-full' : 'basis-5/12 md:basis-7/12 '
 })

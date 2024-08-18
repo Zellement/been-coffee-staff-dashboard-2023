@@ -41,7 +41,7 @@ const totalNotices = computed(() => {
     return allNotices.value.length
 })
 
-const COUNTDOWN = 20
+const COUNTDOWN = 10
 
 const timer = ref(COUNTDOWN)
 
