@@ -1,5 +1,5 @@
 <template>
-    <div class="h-[100dvh] fixed overflow-hidden w-full">
+    <div class="h-[100dvh] fixed  w-full">
         <nuxt-layout name="locations">
             <header class="container fixed top-0 left-0 z-50 flex flex-row items-center justify-between w-full gap-2 pt-2">
                 <img
