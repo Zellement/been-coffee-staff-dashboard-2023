@@ -21,9 +21,10 @@
                 <div class="flex flex-col gap-4 w-full ">
                     <homebase-shifts-today />
                     <carousel-checks basic />
-                    <div class="container grid grid-cols-2 w-full">
-                        <homebase-shifts-tomorrow />
-                        <div class=" w-full grid grid-cols-2 gap-8 flex-wrap justify-center items-center">
+                    <div class="container grid grid-cols-12 w-full">
+                        <homebase-shifts-tomorrow class="col-span-5 flex w-full " />
+                        <div class="w-full grid grid-cols-4 gap-8 col-span-7 flex-wrap justify-center items-center">
+                            <sanity-notices />
                             <single-day-dot
                                 :date="plus3days"
                                 title="+ 3 Days"

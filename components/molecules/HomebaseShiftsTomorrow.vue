@@ -1,6 +1,6 @@
 <template>
     <div class="w-full">
-        <div class="flex flex-col gap-4">
+        <div class="flex w-full  flex-col gap-4">
             <h2 class="h1">
                 Tomorrow
                 <span class="text-[0.7em] block text-tuscany">
@@ -9,7 +9,7 @@
             </h2>
             <div
                 v-if="shifts && shifts.length > 0"
-                class="grid grid-cols-1 gap-2"
+                class="grid grid-cols-1 gap-2 w-full"
             >
                 <homebase-single-shift
                     v-for="shift in shifts"

@@ -1,9 +1,12 @@
 <template>
     <div
-        class="flex gap-2 md:gap-8 w-full justify-between items-center text-lg"
+        class="flex gap-2 md:gap-8 w-full justify-between items-center text-lg "
         :class="wrapperClasses"
     >
-        <span class="basis-5/12 md:basis-7/12 flex gap-2 items-center">
+        <span
+            class="flex gap-2 items-center"
+            :class="userClasses"
+        >
             <img
                 v-if="user.image?.asset?._ref"
                 :src="$urlFor(user.image?.asset).width(120).height(120).url()"
@@ -148,6 +151,9 @@ const timeNow = extractHourAndMinute(today)
 
 const wrapperClasses = computed(() => {
     return props.basic ? 'text-[0.7em]' : null
+})
+const userClasses = computed(() => {
+    return props.basic ? 'basis-full' : 'basis-5/12 md:basis-7/12 '
 })
 
 </script>
