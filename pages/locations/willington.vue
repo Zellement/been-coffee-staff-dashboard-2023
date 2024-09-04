@@ -1,5 +1,5 @@
 <template>
-    <div class="h-[100dvh] fixed overflow-hidden w-full">
+    <div class="w-full">
         <nuxt-layout name="locations">
             <header class="container fixed top-0 left-0 z-50 flex flex-row items-center justify-between w-full gap-2 pt-2">
                 <img
@@ -20,6 +20,8 @@
                 </button>
                 <div class="flex flex-col gap-4 w-full ">
                     <homebase-shifts-today />
+                    <homebase-shifts-today />
+                    <sanity-table-bookings />
                     <carousel-checks basic />
                     <div class="container grid grid-cols-12 w-full">
                         <homebase-shifts-tomorrow class="col-span-5 flex w-full " />
