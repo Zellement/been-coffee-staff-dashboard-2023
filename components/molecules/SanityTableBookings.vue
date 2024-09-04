@@ -21,7 +21,14 @@
                         v-if="shortDateConverter(today) === shortDateConverter(booking.datetime)"
                         class="bg-tuscany-500 flex-1 gap-2 py-2 px-4 flex flex-col  text-white"
                     >
-                        <span class="text-3xl font-riverside ">{{ extractHourAndMinute(booking.datetime) }}</span>
+                        <span class="text-3xl font-riverside flex items-center gap-4">
+
+                            <Icon
+                                name="material-symbols:alarm"
+                                class="w-6 h-6 flex-shrink-0 text-butterscotch-500"
+                            />
+
+                            {{ extractHourAndMinute(booking.datetime) }}</span>
                         <span class="flex flex-row gap-4 items-start ">
                             <Icon
                                 name="material-symbols:person"

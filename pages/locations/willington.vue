@@ -20,7 +20,6 @@
                 </button>
                 <div class="flex flex-col gap-4 w-full ">
                     <homebase-shifts-today />
-                    <homebase-shifts-today />
                     <sanity-table-bookings />
                     <carousel-checks basic />
                     <div class="container grid grid-cols-12 w-full">
