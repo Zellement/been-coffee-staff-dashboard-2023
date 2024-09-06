@@ -56,7 +56,7 @@ definePageMeta({
     layout: false
 })
 
-const time = 300
+const time = 600
 
 const countingDown = ref(true) // Start counting down immediately
 const countdown = ref(time) // Initial countdown value
