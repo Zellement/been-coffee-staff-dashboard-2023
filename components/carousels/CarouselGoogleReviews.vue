@@ -1,6 +1,5 @@
 <template>
     <div class="relative">
-        <div class="container " />
         <div class="container flex flex-row justify-between">
             <h2 class="h1 flex gap-2 items-center">
                 <Icon
@@ -20,14 +19,13 @@
 
         <div
             v-if="googleReviewData"
-            class="px-2 overflow-hidden md:px-4 xl:px-6"
+            class="px-2 overflow-clip md:px-4 xl:px-6"
         >
             <div class="w-full py-8 overflow-x-scroll ">
                 <div class="flex flex-row w-full space-x-4">
-                    <div
+                    <template
                         v-for="item in googleReviewData"
                         :key="item.id"
-                        class="flex relative flex-col w-3/4 p-4 gap-2 shadow-lg  min-w-[300px] card"
                     >
                         <card-review
                             :details="item.snippet ?? null"
@@ -36,6 +34,7 @@
                             :date-string="item.date"
                             :rating="item.rating"
                             :review-text="item.snippet"
+                            :review-text-translated="item.extracted_snippet?.translated"
                             :response="item.response.snippet"
                         >
                             <template #feedbackExtra>
@@ -52,7 +51,7 @@
                                 </ul>
                             </template>
                         </card-review>
-                    </div>
+                    </template>
                 </div>
             </div>
         </div>

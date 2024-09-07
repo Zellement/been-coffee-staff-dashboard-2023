@@ -1,5 +1,7 @@
 <template>
-    <div>
+    <div
+        class="flex relative flex-col w-3/4 p-4 gap-2 shadow-lg min-w-[300px] card"
+    >
         <div class="flex gap-2">
             <Icon
                 name="material-symbols:person"
@@ -31,49 +33,57 @@
                 />
             </div>
         </div>
+        <h3
+            v-if="title"
+            class="font-krete font-bold text-lg"
+        >
+            {{ title }}
+        </h3>
         <div class="flex flex-col h-full">
-            <!-- <button
-                class="mx-auto uppercase text-2xs mt-auto flex items-center gap-1"
+            <button
+                class="uppercase text-2xs mt-4 flex items-center gap-1"
                 @click="toggleDetails"
             >
-                Toggle details
+                Toggle all review feedback
                 <div
                     class="relative flex w-3 h-3"
                 >
                     <Icon
+                        v-if="showDetails"
                         name="mdi:minus"
                         class="absolute top-0flex w-3 h-3 transition-all"
-                        :class="minusClasses"
                     />
                     <Icon
+                        v-else
                         name="mdi:plus"
                         class="absolute top-0flex w-3 h-3 transition-all"
-                        :class="plusClasses"
                     />
                 </div>
-            </button> -->
-            <div>
-                <h3 class="mb-2 krete-title !text-base mt-8 ">
-                    Feedback
-                </h3>
-                <p v-if="reviewText">
-                    ‟{{ reviewText }}＂
-                </p>
-                <p v-else>
-                    No feedback left.
-                </p>
-                <slot name="feedbackExtra" />
-            </div>
-            <div
-                v-if="response"
-                class="text-tuscany-500 dark:text-tuscany-100 italic"
-            >
-                <h3 class="!text-sm krete-title mt-8 ">
-                    Response
-                </h3>
-                <p class="!text-xs">
-                    {{ response }}
-                </p>
+            </button>
+            <div v-if="showDetails">
+                <div>
+                    <h3 class="mb-2 krete-title !text-base mt-8 ">
+                        Feedback
+                    </h3>
+                    <p v-if="reviewText">
+                        ‟{{ reviewText }}＂
+                    </p>
+                    <p v-else>
+                        No feedback left.
+                    </p>
+                    <slot name="feedbackExtra" />
+                </div>
+                <div
+                    v-if="response"
+                    class="text-tuscany-500 dark:text-tuscany-100 italic"
+                >
+                    <h3 class="!text-sm krete-title mt-8 ">
+                        Response
+                    </h3>
+                    <p class="!text-xs">
+                        {{ response }}
+                    </p>
+                </div>
             </div>
         </div>
     </div>
@@ -113,8 +123,21 @@ defineProps({
         type: String,
         required: false,
         default: null
+    },
+    title: {
+        type: String,
+        required: false,
+        default: null
     }
 })
+
+const uiStore = useUiStore()
+
+const showDetails = computed(() => uiStore.showReviewDetails)
+
+const toggleDetails = () => {
+    uiStore.toggleShowReviewDetails()
+}
 
 // const { shortDateConverter } = useDateUtils()
 

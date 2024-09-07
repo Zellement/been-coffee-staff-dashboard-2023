@@ -22,61 +22,21 @@
         >
             <div class="w-full py-8 overflow-x-scroll ">
                 <div class="flex flex-row w-full space-x-4">
-                    <div
+                    <template
                         v-for="item in tripadvisorData"
                         :key="item.id"
-                        class="flex relative flex-col w-3/4 p-4 gap-2 shadow-lg  min-w-[300px] card"
                     >
-                        <div class="flex gap-2">
-                            <Icon
-                                name="material-symbols:person"
-                                class="w-6 h-6 text-butterscotch"
-                            />
-                            {{ item.user.username }}
-                        </div>
-                        <div class="flex gap-2">
-                            <Icon
-                                name="material-symbols:calendar-month-outline-sharp"
-                                class="w-6 h-6 text-butterscotch"
-                            />
-                            {{ shortDateConverter(item.published_date) }}
-                        </div>
-                        <div class="flex gap-1 relative">
-                            <Icon
-                                v-for="i in 5"
-                                :key="i"
-                                name="ic:outline-star-outline"
-                                class="w-6 h-6 text-butterscotch opacity-30"
-                            />
-                            <div class="absolute top-0 left-0 flex gap-1">
-                                <Icon
-                                    v-for="i in item.rating"
-                                    :key="i"
-                                    name="ic:outline-star"
-                                    class="w-6 h-6 text-butterscotch"
-                                />
-                            </div>
-                        </div>
-                        <h3 class="font-krete font-bold text-lg">
-                            {{ item.title }}
-                        </h3>
-                        <div class="">
-                            <card-order-details
-                                :details="item?.text"
-                                :string="true"
-                                class="text-xs"
-                            >
-                                <template #response>
-                                    <div
-                                        v-if="item?.owner_response?.text"
-                                        class="mt-8 italic border-t pt-8 border-opacity-30 border-gray-500"
-                                    >
-                                        {{ item?.owner_response?.text }}
-                                    </div>
-                                </template>
-                            </card-order-details>
-                        </div>
-                    </div>
+                        <card-review
+                            :details="item.snippet ?? null"
+                            :string="true"
+                            :name="item.user.username"
+                            :date-string="shortDateConverter(item.published_date)"
+                            :rating="item.rating"
+                            :review-text="item.text"
+                            :title="item.title"
+                            :response="item?.owner_response?.text"
+                        />
+                    </template>
                 </div>
             </div>
         </div>
