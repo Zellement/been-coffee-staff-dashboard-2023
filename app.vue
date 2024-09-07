@@ -18,17 +18,15 @@
 
 <script setup>
 
-import { useTeamStore } from '@/stores/team'
-import { useSupabaseStore } from '@/stores/supabase'
-import { useReviewsStore } from '@/stores/reviews'
-
 const teamStore = useTeamStore()
 const supabaseStore = useSupabaseStore()
 const reviewsStore = useReviewsStore()
+const routineTasksStore = useRoutineTasksStore()
 
 teamStore.fetchCurrentTeam()
 supabaseStore.fetchAllChecks()
 reviewsStore.fetchAllReviews()
+routineTasksStore.fetchAllRoutineTasks()
 
 useHead({
     meta: [
