@@ -3,18 +3,21 @@
         "name": "Fire Alarm Test",
         "value": "fire_alarm_test",
         "description": "Test the fire alarm system",
+        "ref_link": "https://dashboard.been.coffee/article/testing-the-fire-alarm",
         "frequency": 7
   },
   {
         "name": "Clean Fridge Vents",
         "value": "clean_fridge_vents",
         "description": "Clean the vents on the front of both display fridges at the bottom",
+        "ref_link": null,
         "frequency": 28
   },
   {
         "name": "Clean Ice Machine",
         "value": "clean_ice_machine",
         "description": "Clean inside, outside and behind the ice machine",
+        "ref_link": null,
         "frequency": 28
   }
 ]

@@ -90,7 +90,7 @@ export const useDateUtils = () => {
         const m: number = parsedDate.getMonth()
         const y: number = parsedDate.getFullYear()
 
-        return `${d <= 9 ? '0' + d : d}/${m <= 9 ? '0' + (m + 1) : m + 1}/${y}`
+        return `${d <= 9 ? '0' + d : d}/${m <= 8 ? '0' + (m + 1) : m + 1}/${y}`
     }
 
     return {

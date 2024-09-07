@@ -40,13 +40,13 @@ const routineTasksStore = useRoutineTasksStore()
 
 const today = new Date()
 
-const nextTwoWeeks = new Date(today)
-nextTwoWeeks.setDate(nextTwoWeeks.getDate() + 14)
+const upcomingTasks = new Date(today)
+upcomingTasks.setDate(upcomingTasks.getDate() + 222)
 
 const routineTasks = computed(() => {
     return routineTasksStore.routineTasks.filter(task => {
-        const dueDate = new Date(task.next_due_date)
-        return dueDate > today && dueDate < nextTwoWeeks
+        const dueDate = task.next_due_date ? new Date(task.next_due_date) : null
+        return dueDate === null || (dueDate > today && dueDate < upcomingTasks)
     })
 })
 
