@@ -16,6 +16,7 @@
             </template>
             <template v-else>
                 <carousel-checks />
+                <carousel-routine-tasks />
                 <homebase-shifts-today />
                 <carousel-recent-orders />
                 <carousel-google-reviews />
