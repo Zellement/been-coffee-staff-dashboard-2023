@@ -152,14 +152,12 @@ const scriptURL = runtimeConfig.public.GOOGLE_SHEETS_SCRIPT_ROUTINE_TASKS
 
 const submitToGoogleSheets = () => {
     const formData = new FormData(routineTasksForm.value)
-    const user = formData.get('Team member')
-    const dateTime = new Date()
+    const field = formData.get('Task')
     state.isSending = true
     state.hasSent = false
     fetch(scriptURL, { method: 'POST', body: formData })
         .then(async () => {
-            await supabaseStore.setCheck('xx', user)
-            await supabaseStore.setCheck('xx', dateTime)
+            await supabaseStore.setRoutineTask(field)
             state.isSending = false
             state.hasSent = true
         })
