@@ -37,14 +37,26 @@ export const useRoutineTasksStore = defineStore('routineTasks', {
             const finalData = []
 
             routineTasksFixedData.forEach((task) => {
-                console.log(supabaseData[task.value])
+                let lastCompletedDate = null
+                if (supabaseData[task.value] !== null) {
+                    lastCompletedDate = new Date(supabaseData[task.value])
+                }
+                let nextDueDate = null
+                if (lastCompletedDate !== null) {
+                    nextDueDate = new Date(lastCompletedDate)
+                    nextDueDate.setDate(nextDueDate.getDate() + task.frequency)
+                }
+
                 const data = {
                     ...task,
+                    next_due_date: nextDueDate,
                     last_completed_date: supabaseData[task.value]
                 }
 
                 finalData.push(data)
             })
+
+            finalData.sort((a, b) => { return a.next_due_date - b.next_due_date })
 
             this.routineTasks = finalData
             this.loading = false
