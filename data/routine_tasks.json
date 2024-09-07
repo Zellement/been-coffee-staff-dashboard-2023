@@ -1,23 +1,44 @@
 [
   {
-        "name": "Fire Alarm Test",
+        "name": "Fire alarm test",
         "value": "fire_alarm_test",
         "description": "Test the fire alarm system",
         "ref_link": "https://dashboard.been.coffee/article/testing-the-fire-alarm",
         "frequency": 7
   },
   {
-        "name": "Clean Fridge Vents",
+        "name": "Clean fridge vents",
         "value": "clean_fridge_vents",
         "description": "Clean the vents on the front of both display fridges at the bottom",
         "ref_link": null,
         "frequency": 28
   },
   {
-        "name": "Clean Ice Machine",
+        "name": "Clean ice machine",
         "value": "clean_ice_machine",
         "description": "Clean inside, outside and behind the ice machine",
         "ref_link": null,
         "frequency": 28
+  },
+  {
+        "name": "Emergency lighting check",
+        "value": "emergency_lighting_check",
+        "description": "Check the emergency lighting is working",
+        "ref_link": null,
+        "frequency": 7
+  },
+  {
+        "name": "Disabled pull cord check",
+        "value": "disabled_pull_cord_check",
+        "description": "Check the disabled pull cord still sounds and works",
+        "ref_link": null,
+        "frequency": 90
+  },
+  {
+        "name": "Temperature probe calibration",
+        "value": "temperature_probe_calibration",
+        "description": "Calibrate the temperature probes",
+        "ref_link": null,
+        "frequency": 14
   }
 ]

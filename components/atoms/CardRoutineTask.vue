@@ -1,7 +1,7 @@
 <template>
     <li
         :key="task.value"
-        class="flex flex-col  w-1/4 min-w-[100px] items-start gap-2 p-4 pt-6 scroll-pt-6 bg-white shadow-lg card mr-4 relative"
+        class="flex flex-col w-[180px] min-w-[180px] items-start gap-2 p-4 pt-6 scroll-pt-6 bg-white shadow-lg card mr-4 relative"
     >
         <span class="text-xs absolute top-0 -translate-y-1/2 left-0 ml-2">
             <span
