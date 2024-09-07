@@ -29,67 +29,29 @@
                         :key="item.id"
                         class="flex relative flex-col w-3/4 p-4 gap-2 shadow-lg  min-w-[300px] card"
                     >
-                        <div class="flex gap-2">
-                            <Icon
-                                name="material-symbols:person"
-                                class="w-6 h-6 text-butterscotch"
-                            />
-                            {{ item.user.name }}
-                        </div>
-                        <div class="flex gap-2">
-                            <Icon
-                                name="material-symbols:calendar-month-outline-sharp"
-                                class="w-6 h-6 text-butterscotch"
-                            />
-                            {{ shortDateConverter(item.iso_date) }}
-                        </div>
-
-                        <div class="flex gap-1 relative">
-                            <Icon
-                                v-for="i in 5"
-                                :key="i"
-                                name="ic:outline-star-outline"
-                                class="w-6 h-6 text-butterscotch opacity-30"
-                            />
-                            <div class="absolute top-0 left-0 flex gap-1">
-                                <Icon
-                                    v-for="i in item.rating"
-                                    :key="i"
-                                    name="ic:outline-star"
-                                    class="w-6 h-6 text-butterscotch"
-                                />
-                            </div>
-                        </div>
-                        <div class="">
-                            <card-order-details
-                                :details="item.snippet ?? null"
-                                :string="true"
-                            >
-                                <template #extraData>
-                                    <ul class="mb-6">
-                                        <li v-if="item?.details?.food">
-                                            Food: {{ item?.details?.food }}
-                                        </li>
-                                        <li v-if="item?.details?.service">
-                                            Service: {{ item?.details?.service }}
-                                        </li>
-                                        <li v-if="item?.details?.atmosphere">
-                                            Atmosphere: {{ item?.details?.atmosphere }}
-                                        </li>
-                                    </ul>
-                                </template>
-                                <template
-                                    v-if="item?.response?.snippet"
-                                    #response
-                                >
-                                    <div
-                                        class="mt-8 italic border-t pt-8 border-opacity-30 border-gray-500"
-                                    >
-                                        {{ item?.response?.snippet }}
-                                    </div>
-                                </template>
-                            </card-order-details>
-                        </div>
+                        <card-review
+                            :details="item.snippet ?? null"
+                            :string="true"
+                            :name="item.user.name"
+                            :date-string="item.date"
+                            :rating="item.rating"
+                            :review-text="item.snippet"
+                            :response="item.response.snippet"
+                        >
+                            <template #feedbackExtra>
+                                <ul class="mt-6 italic">
+                                    <li v-if="item?.details?.food">
+                                        Food: {{ item?.details?.food }}
+                                    </li>
+                                    <li v-if="item?.details?.service">
+                                        Service: {{ item?.details?.service }}
+                                    </li>
+                                    <li v-if="item?.details?.atmosphere">
+                                        Atmosphere: {{ item?.details?.atmosphere }}
+                                    </li>
+                                </ul>
+                            </template>
+                        </card-review>
                     </div>
                 </div>
             </div>
@@ -108,7 +70,6 @@
 import { useReviewsStore } from '@/stores/reviews'
 
 const reviewsStore = useReviewsStore()
-const { shortDateConverter } = useDateUtils()
 
 const googleReviewData = computed(() => {
     return reviewsStore.reviewsGoogle

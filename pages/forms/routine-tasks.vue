@@ -133,7 +133,7 @@
 <script setup>
 import ROUTINE_TASKS from '@/data/routine_tasks.json'
 
-const supabaseStore = useSupabaseStore()
+const routineTasksStore = useRoutineTasksStore()
 const teamStore = useTeamStore()
 
 const currentTeam = computed(() => {
@@ -157,7 +157,7 @@ const submitToGoogleSheets = () => {
     state.hasSent = false
     fetch(scriptURL, { method: 'POST', body: formData })
         .then(async () => {
-            await supabaseStore.setRoutineTask(field)
+            await routineTasksStore.setRoutineTask(field)
             state.isSending = false
             state.hasSent = true
         })
