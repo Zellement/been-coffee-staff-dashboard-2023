@@ -1,7 +1,7 @@
 <template>
     <div class="flex flex-col shift-leads">
         <h2 class="mb-4 h4">
-            Close lead
+            Lead
         </h2>
         <div
             v-if="hasTeam"

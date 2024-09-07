@@ -1,5 +1,6 @@
 .daily-cash-breakdown-form,
-.daily-temperature-logs-form {
+.daily-temperature-logs-form,
+.routine-tasks-form {
     input {
         @apply p-1 bg-seashell-400 dark:bg-navy-500;
     }
@@ -8,7 +9,7 @@
         @apply bg-transparent focus:outline-none cursor-default p-0;
     }
 
-    textarea {
+    textarea, select {
         @apply p-4 bg-seashell-400 dark:bg-navy-500;
     }
 

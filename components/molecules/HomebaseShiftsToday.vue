@@ -10,7 +10,7 @@
             <template v-if="showAll">
                 <div
                     v-if="shifts && shifts.length > 0"
-                    class="flex flex-col gap-1 md:gap-4"
+                    class="flex flex-col gap-1 md:gap-2"
                 >
                     <homebase-single-shift
                         v-for="shift in shifts"
