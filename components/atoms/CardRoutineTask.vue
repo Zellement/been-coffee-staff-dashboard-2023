@@ -5,13 +5,14 @@
     >
         <span class="text-xs absolute top-0 -translate-y-1/2 left-0 ml-2">
             <span
-                class="pill "
-                :class="pillColour(task.next_due_date)"
+                class="pill"
+                :class="pillClasses"
             >
                 {{ task.next_due_date !== null ? `Due:  ${shortDateConverter(task.next_due_date)}` : 'New' }}
             </span>
         </span>
         {{ task.name }}
+        <span class="text-2xs opacity-80">Estimated: {{ task.estimate }} mins</span>
         <button
             class="uppercase text-2xs flex items-center gap-1"
             @click="toggleMore"
@@ -77,9 +78,13 @@
 
 const { shortDateConverter } = useDateUtils()
 
-defineProps({
+const props = defineProps({
     task: {
         type: Object,
+        required: true
+    },
+    type: {
+        type: String,
         required: true
     }
 })
@@ -90,13 +95,24 @@ const toggleMore = () => {
     showMore.value = !showMore.value
 }
 
-const pillColour = (date) => {
-    const thisDate = new Date(date)
-    const nextSevenDays = new Date()
-    nextSevenDays.setDate(nextSevenDays.getDate() + 7)
+const pillClasses = computed(() => {
+    switch (props.type) {
+    case 'new':
+        return 'pill--complete'
+    case 'overdue':
+        return 'pill--urgent'
+    case 'upcoming':
+        return 'pill--upcoming'
+    }
+})
 
-    if (thisDate > nextSevenDays) return
+// const pillColour = (date) => {
+//     const thisDate = new Date(date)
+//     const nextSevenDays = new Date()
+//     nextSevenDays.setDate(nextSevenDays.getDate() - 7)
 
-    return 'pill--urgent'
-}
+//     if (thisDate > nextSevenDays) return
+
+//     return 'pill--urgent'
+// }
 </script>
