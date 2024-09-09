@@ -93,10 +93,6 @@
 // import { PortableText } from '@portabletext/vue'
 
 defineProps({
-    details: {
-        type: [Object, String, null],
-        required: true
-    },
     string: {
         type: Boolean,
         required: false,

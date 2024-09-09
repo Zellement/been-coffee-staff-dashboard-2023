@@ -27,7 +27,6 @@
                         :key="item.id"
                     >
                         <card-review
-                            :details="item.snippet ?? null"
                             :string="true"
                             :name="item.user.username"
                             :date-string="shortDateConverter(item.published_date)"

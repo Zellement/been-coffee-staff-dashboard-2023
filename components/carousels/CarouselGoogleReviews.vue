@@ -28,14 +28,12 @@
                         :key="item.id"
                     >
                         <card-review
-                            :details="item.snippet ?? null"
                             :string="true"
                             :name="item.user.name"
                             :date-string="item.date"
                             :rating="item.rating"
                             :review-text="item.snippet"
-                            :review-text-translated="item.extracted_snippet?.translated"
-                            :response="item.response.snippet"
+                            :response="item.response?.snippet"
                         >
                             <template #feedbackExtra>
                                 <ul class="mt-6 italic">
