@@ -9,6 +9,7 @@
                 <span class="text-[0.6em] block -mt-4">due in next two weeks</span>
             </h2>
             <nuxt-link
+                v-if="!basic"
                 class="button mt-auto"
                 to="/forms/routine-tasks"
             >
@@ -44,7 +45,10 @@
                 />
             </template>
         </carousel-wrapper>
-        <div class="flex">
+        <div
+            v-if="!basic"
+            class="flex"
+        >
             <nuxt-link
                 class="button ml-auto"
                 to="/all-routine-tasks"
@@ -57,6 +61,9 @@
 
 <script setup>
 
+defineProps({
+    basic: Boolean
+})
 const routineTasksStore = useRoutineTasksStore()
 
 const today = new Date()
@@ -64,21 +71,26 @@ const today = new Date()
 const futureDate = new Date(today)
 futureDate.setDate(futureDate.getDate() + 7)
 
-const newTasks = computed(() => {
-    return routineTasksStore.routineTasks.filter(task => {
-        return task.next_due_date === null
-    })
-})
+const routineTasks = computed(() => Array.isArray(routineTasksStore.routineTasks) ? routineTasksStore.routineTasks : [])
 
 const upcomingTasks = computed(() => {
-    return routineTasksStore.routineTasks.filter(task => {
+    if (!routineTasks.value) return []
+    return routineTasks.value?.filter(task => {
         const dueDate = task.next_due_date ? new Date(task.next_due_date) : null
         return dueDate !== null && dueDate > today && dueDate <= futureDate
     })
 })
 
+const newTasks = computed(() => {
+    if (!routineTasks.value) return []
+    return routineTasks.value?.filter(task => {
+        return task.next_due_date === null
+    })
+})
+
 const overdueTasks = computed(() => {
-    return routineTasksStore.routineTasks.filter(task => {
+    if (!routineTasks.value) return []
+    return routineTasks.value?.filter(task => {
         const dueDate = task.next_due_date ? new Date(task.next_due_date) : null
         return dueDate !== null && dueDate < today
     })
@@ -87,12 +99,5 @@ const overdueTasks = computed(() => {
 const hasTasks = computed(() => {
     return overdueTasks.value.length > 0 || newTasks.value.length > 0 || upcomingTasks.value.length > 0
 })
-
-// const routineTasks = computed(() => {
-//     return routineTasksStore.routineTasks.filter(task => {
-//         const dueDate = task.next_due_date ? new Date(task.next_due_date) : null
-//         return dueDate === null || (dueDate > today && dueDate < upcomingTasksDate)
-//     })
-// })
 
 </script>

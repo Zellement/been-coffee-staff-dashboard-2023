@@ -9,7 +9,7 @@
             </header>
             <div class="relative">
                 <button
-                    class="absolute top-0 right-4 uppercase text-[0.7em] tracking-wide px-1"
+                    class="absolute top-0 right-4 uppercase text-[0.7em] -translate-y-full tracking-wide px-1"
                     @click="reloadNuxtApp"
                 >
                     Data refreshing in {{ countdown }}
@@ -19,12 +19,20 @@
                     />
                 </button>
                 <div class="flex flex-col gap-4 w-full ">
-                    <homebase-shifts-today />
+                    <div class="grid grid-cols-3">
+                        <homebase-shifts-today class="col-span-2" />
+                        <homebase-shifts-tomorrow
+                            basic
+                            class="col-span-1"
+                        />
+                    </div>
                     <sanity-table-bookings />
-                    <carousel-checks basic />
+                    <div class="grid grid-cols-1">
+                        <carousel-checks basic />
+                        <carousel-routine-tasks basic />
+                    </div>
                     <div class="container grid grid-cols-12 w-full">
-                        <homebase-shifts-tomorrow class="col-span-5 flex w-full " />
-                        <div class="w-full grid grid-cols-4 gap-8 col-span-7 flex-wrap justify-center items-center">
+                        <div class="w-full grid grid-cols-4 gap-8 col-span-full flex-wrap justify-center items-center">
                             <sanity-notices />
                             <single-day-dot
                                 :date="plus3days"

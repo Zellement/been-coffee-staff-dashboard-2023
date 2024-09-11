@@ -3,7 +3,10 @@
         <div class="flex w-full  flex-col gap-4">
             <h2 class="h1">
                 Tomorrow
-                <span class="text-[0.7em] block text-tuscany">
+                <span
+                    v-if="!basic"
+                    class="text-[0.7em] block text-tuscany"
+                >
                     {{ fullDateConverter(tomorrow) }}
                 </span>
             </h2>
@@ -29,6 +32,10 @@
 </template>
 
 <script setup>
+
+defineProps({
+    basic: Boolean
+})
 const { getTodaysDateInUrlEncodedFormat, fullDateConverter } = useDateUtils()
 const tomorrow = new Date(+new Date() + 86400000)
 

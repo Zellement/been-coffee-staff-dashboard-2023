@@ -58,8 +58,6 @@
 
 <script setup>
 import { useSupabaseStore } from '@/stores/supabase'
-// import BooleanDailyCashBreakdown from '@/components/atoms/BooleanDailyCashBreakdown.vue'
-// import BooleanDailyTemperatures from '@/components/atoms/BooleanDailyTemperatures.vue'
 
 defineProps({
     basic: {
