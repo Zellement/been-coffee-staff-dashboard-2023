@@ -1,7 +1,7 @@
 <template>
     <li
         :key="task.value"
-        class="flex flex-col w-[180px] min-w-[180px] items-start gap-2 p-4 pt-6 scroll-pt-6 bg-white shadow-lg card mr-4 relative"
+        class="w-[180px] min-w-[180px] pt-6 card"
     >
         <span class="text-xs absolute top-0 -translate-y-1/2 left-0 ml-2">
             <span
@@ -70,7 +70,6 @@
                 <strong>Last completed</strong> {{ shortDateConverter(task.last_completed_date) }}
             </div>
         </div>
-        <!-- {{ task.next_due_date }} -->
     </li>
 </template>
 
@@ -106,13 +105,4 @@ const pillClasses = computed(() => {
     }
 })
 
-// const pillColour = (date) => {
-//     const thisDate = new Date(date)
-//     const nextSevenDays = new Date()
-//     nextSevenDays.setDate(nextSevenDays.getDate() - 7)
-
-//     if (thisDate > nextSevenDays) return
-
-//     return 'pill--urgent'
-// }
 </script>

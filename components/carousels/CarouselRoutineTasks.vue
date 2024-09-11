@@ -3,7 +3,7 @@
         v-if="hasTasks"
         class="relative"
     >
-        <div class="container flex flex-row justify-between">
+        <div class="container w-full flex flex-row justify-between">
             <h2 class="h1">
                 Routine Tasks
                 <span class="text-[0.6em] block -mt-4">due in next two weeks</span>
@@ -15,42 +15,42 @@
                 Complete a task
             </nuxt-link>
         </div>
-        <div class="container ">
-            <div
-                class="overflow-hidden md:px-4 pt-4 xl:px-6"
+        <carousel-wrapper>
+            <template
+                v-for="task in overdueTasks"
+                :key="task.value"
             >
-                <div class="w-full pt-4 overflow-x-scroll pb-8">
-                    <ul class="flex flex-row w-full">
-                        <template
-                            v-for="task in overdueTasks"
-                            :key="task.value"
-                        >
-                            <card-routine-task
-                                type="overdue"
-                                :task="task"
-                            />
-                        </template>
-                        <template
-                            v-for="task in newTasks"
-                            :key="task.value"
-                        >
-                            <card-routine-task
-                                type="new"
-                                :task="task"
-                            />
-                        </template>
-                        <template
-                            v-for="task in upcomingTasks"
-                            :key="task.value"
-                        >
-                            <card-routine-task
-                                type="upcoming"
-                                :task="task"
-                            />
-                        </template>
-                    </ul>
-                </div>
-            </div>
+                <card-routine-task
+                    type="overdue"
+                    :task="task"
+                />
+            </template>
+            <template
+                v-for="task in newTasks"
+                :key="task.value"
+            >
+                <card-routine-task
+                    type="new"
+                    :task="task"
+                />
+            </template>
+            <template
+                v-for="task in upcomingTasks"
+                :key="task.value"
+            >
+                <card-routine-task
+                    type="upcoming"
+                    :task="task"
+                />
+            </template>
+        </carousel-wrapper>
+        <div class="flex">
+            <nuxt-link
+                class="button ml-auto"
+                to="/all-routine-tasks"
+            >
+                View all routine tasks
+            </nuxt-link>
         </div>
     </div>
 </template>

@@ -18,26 +18,23 @@
         </div>
         <div
             v-if="tripadvisorData"
-            class="px-2 overflow-hidden md:px-4 xl:px-6"
         >
-            <div class="w-full py-8 overflow-x-scroll ">
-                <div class="flex flex-row w-full space-x-4">
-                    <template
-                        v-for="item in tripadvisorData"
-                        :key="item.id"
-                    >
-                        <card-review
-                            :string="true"
-                            :name="item.user.username"
-                            :date-string="shortDateConverter(item.published_date)"
-                            :rating="item.rating"
-                            :review-text="item.text"
-                            :title="item.title"
-                            :response="item?.owner_response?.text"
-                        />
-                    </template>
-                </div>
-            </div>
+            <carousel-wrapper>
+                <template
+                    v-for="item in tripadvisorData"
+                    :key="item.id"
+                >
+                    <card-review
+                        :string="true"
+                        :name="item.user.username"
+                        :date-string="shortDateConverter(item.published_date)"
+                        :rating="item.rating"
+                        :review-text="item.text"
+                        :title="item.title"
+                        :response="item?.owner_response?.text"
+                    />
+                </template>
+            </carousel-wrapper>
         </div>
     </div>
 </template>

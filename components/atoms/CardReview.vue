@@ -1,6 +1,6 @@
 <template>
-    <div
-        class="flex relative flex-col w-3/4 p-4 gap-2 shadow-lg min-w-[300px] card"
+    <li
+        class="w-3/4 min-w-[300px] card"
     >
         <div class="flex gap-2">
             <Icon
@@ -86,7 +86,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </li>
 </template>
 
 <script setup>

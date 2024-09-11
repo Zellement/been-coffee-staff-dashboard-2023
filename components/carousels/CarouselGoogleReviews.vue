@@ -16,42 +16,38 @@
                 See more
             </nuxt-link>
         </div>
-
         <div
             v-if="googleReviewData"
-            class="px-2 overflow-clip md:px-4 xl:px-6"
         >
-            <div class="w-full py-8 overflow-x-scroll ">
-                <div class="flex flex-row w-full space-x-4">
-                    <template
-                        v-for="item in googleReviewData"
-                        :key="item.id"
+            <carousel-wrapper>
+                <template
+                    v-for="item in googleReviewData"
+                    :key="item.id"
+                >
+                    <card-review
+                        :string="true"
+                        :name="item.user.name"
+                        :date-string="item.date"
+                        :rating="item.rating"
+                        :review-text="item.snippet"
+                        :response="item.response?.snippet"
                     >
-                        <card-review
-                            :string="true"
-                            :name="item.user.name"
-                            :date-string="item.date"
-                            :rating="item.rating"
-                            :review-text="item.snippet"
-                            :response="item.response?.snippet"
-                        >
-                            <template #feedbackExtra>
-                                <ul class="mt-6 italic">
-                                    <li v-if="item?.details?.food">
-                                        Food: {{ item?.details?.food }}
-                                    </li>
-                                    <li v-if="item?.details?.service">
-                                        Service: {{ item?.details?.service }}
-                                    </li>
-                                    <li v-if="item?.details?.atmosphere">
-                                        Atmosphere: {{ item?.details?.atmosphere }}
-                                    </li>
-                                </ul>
-                            </template>
-                        </card-review>
-                    </template>
-                </div>
-            </div>
+                        <template #feedbackExtra>
+                            <ul class="mt-6 italic">
+                                <li v-if="item?.details?.food">
+                                    Food: {{ item?.details?.food }}
+                                </li>
+                                <li v-if="item?.details?.service">
+                                    Service: {{ item?.details?.service }}
+                                </li>
+                                <li v-if="item?.details?.atmosphere">
+                                    Atmosphere: {{ item?.details?.atmosphere }}
+                                </li>
+                            </ul>
+                        </template>
+                    </card-review>
+                </template>
+            </carousel-wrapper>
         </div>
         <div
             v-else

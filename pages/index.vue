@@ -5,7 +5,7 @@
             <template v-if="!keyholder">
                 <dashboard-intro />
                 <homebase-shifts-today />
-                <recently-updated-articles />
+                <carousel-recently-updated-articles />
                 <carousel-google-reviews />
                 <carousel-trip-advisor-reviews />
                 <carousel-team-members />
@@ -21,7 +21,7 @@
                 <carousel-recent-orders />
                 <carousel-google-reviews />
                 <carousel-trip-advisor-reviews />
-                <recently-updated-articles />
+                <carousel-recently-updated-articles />
                 <carousel-standing-orders />
                 <carousel-been-awesome-winners />
                 <carousel-team-members />
