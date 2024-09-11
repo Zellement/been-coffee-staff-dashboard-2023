@@ -1,6 +1,6 @@
 <template>
     <li
-        class="w-3/4 min-w-[300px] card"
+        class="w-64 min-w-64 card"
     >
         <div class="flex gap-2">
             <Icon

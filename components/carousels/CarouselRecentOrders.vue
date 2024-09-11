@@ -12,7 +12,7 @@
                 <li
                     v-for="item in allOrders"
                     :key="item._id"
-                    class="relative card !rounded-tl-none !rounded-tr-none  w-3/4 min-w-[300px]"
+                    class="relative card !rounded-tl-none !rounded-tr-none w-64 min-w-64"
                 >
                     <div class="absolute -top-px border dark:border-navy-500 border-b-0 left-0 uppercase -translate-y-full bg-white text-3xs px-2 dark:text-navy-50 dark:bg-navy-700 text-gray-400 py-0.5 tracking-wider">
                         {{ item.supplier.title }}

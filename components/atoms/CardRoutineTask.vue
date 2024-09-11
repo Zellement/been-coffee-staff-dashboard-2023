@@ -1,7 +1,7 @@
 <template>
     <li
         :key="task.value"
-        class="w-[180px] min-w-[180px] pt-6 card"
+        class="w-64 min-w-64 card"
     >
         <span class="text-xs absolute top-0 -translate-y-1/2 left-0 ml-2">
             <span

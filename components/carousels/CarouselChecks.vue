@@ -9,7 +9,7 @@
             <li
                 v-for="link in nav"
                 :key="link.url"
-                class="w-1/2 min-w-[250px] card"
+                class="w-64 min-w-64 card"
                 :class="link.class"
             >
                 <div class="flex justify-between items-center w-full gap-4">
