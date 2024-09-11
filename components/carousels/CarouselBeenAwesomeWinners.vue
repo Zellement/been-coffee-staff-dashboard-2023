@@ -1,6 +1,6 @@
 <template>
     <section v-if="allWinners">
-        <div class="container relative flex flex-row items-center justify-between  md:justify-start md:gap-4">
+        <div class="container relative flex flex-row items-center justify-between md:gap-4">
             <h2 class="h1">
                 Been Awesome
             </h2>
@@ -10,7 +10,7 @@
                 target="_blank"
                 to="/article/been-awesome-award"
             >
-                Learn more
+                What's this?
             </nuxt-link>
         </div>
         <carousel-wrapper>

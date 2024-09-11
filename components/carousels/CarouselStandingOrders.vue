@@ -8,7 +8,10 @@
         <div
             v-if="standingOrders"
         >
-            <carousel-wrapper class="pt-2">
+            <carousel-wrapper
+                class="pt-2"
+                track-classes="pt-6"
+            >
                 <li
                     v-for="item in standingOrders"
                     :key="item._id"

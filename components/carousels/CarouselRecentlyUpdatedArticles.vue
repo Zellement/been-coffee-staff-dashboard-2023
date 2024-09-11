@@ -12,7 +12,7 @@
                 class="w-40 min-w-40 card"
             >
                 <nuxt-link
-                    class="flex flex-col flex-grow transition-colors duration-300  hover:bg-butterscotch-200 dark:hover:bg-navy-600 border-current/40"
+                    class="flex flex-col flex-grow transition-colors duration-300  hover:underline  border-current/40"
                     :to="`/article/${item.slug?.current}`"
                 >
                     <span class="krete-title !text-sm">{{ item.title }}</span>

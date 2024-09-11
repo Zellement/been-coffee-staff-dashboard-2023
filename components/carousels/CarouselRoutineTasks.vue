@@ -16,7 +16,7 @@
                 Complete a task
             </nuxt-link>
         </div>
-        <carousel-wrapper>
+        <carousel-wrapper class="pt-2">
             <template
                 v-for="task in overdueTasks"
                 :key="task.value"
