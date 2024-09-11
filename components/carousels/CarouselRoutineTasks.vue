@@ -45,9 +45,9 @@
                 />
             </template>
         </carousel-wrapper>
-        <!-- <div
+        <div
             v-if="!basic"
-            class="flex"
+            class="container w-full flex flex-row justify-between"
         >
             <nuxt-link
                 class="button ml-auto"
@@ -55,7 +55,7 @@
             >
                 View all routine tasks
             </nuxt-link>
-        </div> -->
+        </div>
     </div>
 </template>
 
