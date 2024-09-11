@@ -62,7 +62,6 @@ const routineTasks = computed(() => Array.isArray(routineTasksStore.routineTasks
 
 const routineTasksOrdered = computed(() => {
     return routineTasks.value.slice().sort((a, b) => {
-        console.log(a.name, b.name)
         return a.name.localeCompare(b.name)
     })
 })
