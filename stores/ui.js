@@ -12,7 +12,8 @@ export const useUiStore = defineStore('ui', {
             show: false,
             text: null,
             icon: null
-        }
+        },
+        showReviewDetails: false
     }),
     getters: {
         fixBody () {
@@ -40,6 +41,9 @@ export const useUiStore = defineStore('ui', {
         },
         toggleCheckModal () {
             this.showCheckModal = !this.showCheckModal
+        },
+        toggleShowReviewDetails () {
+            this.showReviewDetails = !this.showReviewDetails
         },
         setTheme (theme) {
             if (theme) {

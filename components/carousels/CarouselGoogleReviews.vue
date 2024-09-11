@@ -1,6 +1,5 @@
 <template>
     <div class="relative">
-        <div class="container " />
         <div class="container flex flex-row justify-between">
             <h2 class="h1 flex gap-2 items-center">
                 <Icon
@@ -17,82 +16,38 @@
                 See more
             </nuxt-link>
         </div>
-
         <div
             v-if="googleReviewData"
-            class="px-2 overflow-hidden md:px-4 xl:px-6"
         >
-            <div class="w-full py-8 overflow-x-scroll ">
-                <div class="flex flex-row w-full space-x-4">
-                    <div
-                        v-for="item in googleReviewData"
-                        :key="item.id"
-                        class="flex relative flex-col w-3/4 p-4 gap-2 shadow-lg  min-w-[300px] card"
+            <carousel-wrapper>
+                <template
+                    v-for="item in googleReviewData"
+                    :key="item.id"
+                >
+                    <card-review
+                        :string="true"
+                        :name="item.user.name"
+                        :date-string="item.date"
+                        :rating="item.rating"
+                        :review-text="item.snippet"
+                        :response="item.response?.snippet"
                     >
-                        <div class="flex gap-2">
-                            <Icon
-                                name="material-symbols:person"
-                                class="w-6 h-6 text-butterscotch"
-                            />
-                            {{ item.user.name }}
-                        </div>
-                        <div class="flex gap-2">
-                            <Icon
-                                name="material-symbols:calendar-month-outline-sharp"
-                                class="w-6 h-6 text-butterscotch"
-                            />
-                            {{ shortDateConverter(item.iso_date) }}
-                        </div>
-
-                        <div class="flex gap-1 relative">
-                            <Icon
-                                v-for="i in 5"
-                                :key="i"
-                                name="ic:outline-star-outline"
-                                class="w-6 h-6 text-butterscotch opacity-30"
-                            />
-                            <div class="absolute top-0 left-0 flex gap-1">
-                                <Icon
-                                    v-for="i in item.rating"
-                                    :key="i"
-                                    name="ic:outline-star"
-                                    class="w-6 h-6 text-butterscotch"
-                                />
-                            </div>
-                        </div>
-                        <div class="">
-                            <card-order-details
-                                :details="item.snippet ?? null"
-                                :string="true"
-                            >
-                                <template #extraData>
-                                    <ul class="mb-6">
-                                        <li v-if="item?.details?.food">
-                                            Food: {{ item?.details?.food }}
-                                        </li>
-                                        <li v-if="item?.details?.service">
-                                            Service: {{ item?.details?.service }}
-                                        </li>
-                                        <li v-if="item?.details?.atmosphere">
-                                            Atmosphere: {{ item?.details?.atmosphere }}
-                                        </li>
-                                    </ul>
-                                </template>
-                                <template
-                                    v-if="item?.response?.snippet"
-                                    #response
-                                >
-                                    <div
-                                        class="mt-8 italic border-t pt-8 border-opacity-30 border-gray-500"
-                                    >
-                                        {{ item?.response?.snippet }}
-                                    </div>
-                                </template>
-                            </card-order-details>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                        <template #feedbackExtra>
+                            <ul class="mt-6 italic">
+                                <li v-if="item?.details?.food">
+                                    Food: {{ item?.details?.food }}
+                                </li>
+                                <li v-if="item?.details?.service">
+                                    Service: {{ item?.details?.service }}
+                                </li>
+                                <li v-if="item?.details?.atmosphere">
+                                    Atmosphere: {{ item?.details?.atmosphere }}
+                                </li>
+                            </ul>
+                        </template>
+                    </card-review>
+                </template>
+            </carousel-wrapper>
         </div>
         <div
             v-else
@@ -108,7 +63,6 @@
 import { useReviewsStore } from '@/stores/reviews'
 
 const reviewsStore = useReviewsStore()
-const { shortDateConverter } = useDateUtils()
 
 const googleReviewData = computed(() => {
     return reviewsStore.reviewsGoogle

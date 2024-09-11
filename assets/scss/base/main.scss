@@ -6,11 +6,11 @@ body {
 }
 
 .card {
-    @apply bg-gradient-to-br shadow-lg rounded-lg;
+    @apply flex flex-col items-start gap-2 bg-gradient-to-br shadow-lg rounded-lg p-4 relative;
 }
 
 html {
-    @apply  text-gray-700 bg-gradient-to-r from-white to-seashell;
+    @apply text-gray-700 bg-gradient-to-r from-white to-seashell;
 
     .card {
         @apply from-white to-seashell-500 border border-stone-200;

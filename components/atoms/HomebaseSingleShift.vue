@@ -108,7 +108,7 @@
                     v-else
                     class="text-[0.9em] italic opacity-50"
                 >
-                    Shift starts at {{ extractHourAndMinute(shift.start_at) }}
+                    Starts: {{ extractHourAndMinute(shift.start_at) }}
                 </div>
             </div>
         </div>

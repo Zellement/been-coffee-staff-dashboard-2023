@@ -29,7 +29,7 @@
 const route = useRoute()
 
 const showHomeIcon = computed(() => {
-    return route.fullPath !== '/' || route.fullPath !== '/locations/willington'
+    return route.path !== '/' && route.path !== '/locations/willington'
 })
 
 </script>

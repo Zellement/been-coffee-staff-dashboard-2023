@@ -1,15 +1,16 @@
 .daily-cash-breakdown-form,
-.daily-temperature-logs-form {
+.daily-temperature-logs-form,
+.routine-tasks-form {
     input {
-        @apply p-1 bg-seashell-400 dark:bg-navy-500;
+        @apply p-1 bg-seashell-400 border border-gray-300 dark:border-navy-100 dark:bg-navy-500;
     }
 
     input:read-only {
-        @apply bg-transparent focus:outline-none cursor-default p-0;
+        @apply bg-transparent focus:outline-none cursor-default p-0 border-none;
     }
 
-    textarea {
-        @apply p-4 bg-seashell-400 dark:bg-navy-500;
+    textarea, select {
+        @apply p-4 bg-seashell-400 dark:bg-navy-500 border border-gray-300 dark:border-navy-100;
     }
 
     label {

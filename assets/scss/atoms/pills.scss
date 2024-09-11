@@ -7,6 +7,10 @@
     @apply border-green-700 bg-white dark:bg-green-900  text-green-700 dark:text-green-300;
   }
 
+  &--upcoming {
+    @apply dark:border-navy-50 dark:text-navy-50 dark:bg-navy-700 bg-white text-gray-400 border-gray-400;
+  }
+
   &--urgent {
     @apply border-red-800 bg-gradient-to-b from-red-700 to-red-800 text-red-300;
   }

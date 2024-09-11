@@ -1,0 +1,82 @@
+[
+      {
+            "name": "Fire alarm test",
+            "value": "fire_alarm_test",
+            "description": "Test the fire alarm system",
+            "estimate": 5,
+            "ref_link": "https://dashboard.been.coffee/article/testing-the-fire-alarm",
+            "frequency": 7
+      },
+      {
+            "name": "Clean fridge vents",
+            "value": "clean_fridge_vents",
+            "description": "Clean the vents on the front of both display fridges at the bottom",
+            "estimate": 15,
+            "ref_link": null,
+            "frequency": 28
+      },
+      {
+            "name": "Clean ice machine",
+            "value": "clean_ice_machine",
+            "description": "Clean inside, outside and behind the ice machine",
+            "estimate": 45,
+            "ref_link": null,
+            "frequency": 28
+      },
+      {
+            "name": "Emergency lighting check",
+            "value": "emergency_lighting_check",
+            "description": "Check the emergency lighting is working",
+            "estimate": 2,
+            "ref_link": null,
+            "frequency": 7
+      },
+      {
+            "name": "Disabled pull cord check",
+            "value": "disabled_pull_cord_check",
+            "description": "Check the disabled pull cord still sounds and works",
+            "estimate": 2,
+            "ref_link": null,
+            "frequency": 90
+      },
+      {
+            "name": "Temperature probe calibration",
+            "value": "temperature_probe_calibration",
+            "description": "Calibrate the temperature probes",
+            "estimate": 10,
+            "ref_link": null,
+            "frequency": 14
+      },
+      {
+            "name": "Clean air con unit",
+            "value": "clean_air_con_unit",
+            "description": "Clean the air con unit - please be careful working at height",
+            "estimate": 30,
+            "ref_link": null,
+            "frequency": 90
+      },
+      {
+            "name": "Deep clean cake display",
+            "value": "deep_clean_cake_display",
+            "description": "Empty the cake display and deep clean",
+            "estimate": 20,
+            "ref_link": null,
+            "frequency": 14
+      },
+      {
+            "name": "Deep clean savoury display",
+            "value": "deep_clean_savoury_display",
+            "description": "Empty the savoury display and deep clean",
+            "estimate": 20,
+            "ref_link": null,
+            "frequency": 14
+      },
+      {
+            "name": "Sweep under sofas",
+            "value": "sweep_under_sofas",
+            "description": "Move all the sofas and larger seats and sweep underneath, removing any rubbish / debris",
+            "estimate": 10,
+            "ref_link": null,
+            "frequency": 21
+      }
+]
