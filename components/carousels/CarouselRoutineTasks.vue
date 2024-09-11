@@ -45,7 +45,7 @@
                 />
             </template>
         </carousel-wrapper>
-        <div
+        <!-- <div
             v-if="!basic"
             class="flex"
         >
@@ -55,7 +55,7 @@
             >
                 View all routine tasks
             </nuxt-link>
-        </div>
+        </div> -->
     </div>
 </template>
 

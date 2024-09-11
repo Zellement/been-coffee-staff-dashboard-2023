@@ -6,6 +6,7 @@
                 <dashboard-intro />
                 <homebase-shifts-today />
                 <carousel-recently-updated-articles />
+                <carousel-routine-tasks />
                 <carousel-google-reviews />
                 <carousel-trip-advisor-reviews />
                 <carousel-team-members />
