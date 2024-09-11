@@ -32,7 +32,7 @@
 
 <script setup>
 
-const query = groq`*[_type == "article"]|order(_updatedAt desc)[0..3]{  
+const query = groq`*[_type == "article"]|order(_updatedAt desc)[0..5]{  
   title,
   subtitle,
   publishedAt,
