@@ -8,12 +8,20 @@
             "frequency": 7
       },
       {
-            "name": "Clean fridge vents",
-            "value": "clean_fridge_vents",
-            "description": "Clean the vents on the front of both display fridges at the bottom",
+            "name": "Clean vents of both display fridges (bar)",
+            "value": "clean_vents_display",
+            "description": "Clean the fluff from the vents on the front of both bar display fridges at the bottom",
             "estimate": 15,
             "ref_link": null,
-            "frequency": 28
+            "frequency": 60
+      },
+      {
+            "name": "Clean vents of storage fridge & freezers",
+            "value": "clean_vents_storage",
+            "description": "Clean the fluff and build-up from storage fridge and freezers from both back room and behind bar",
+            "estimate": 20,
+            "ref_link": null,
+            "frequency": 60
       },
       {
             "name": "Clean ice machine",
@@ -27,7 +35,7 @@
             "name": "Emergency lighting check",
             "value": "emergency_lighting_check",
             "description": "Check the emergency lighting is working",
-            "estimate": 2,
+            "estimate": 1,
             "ref_link": null,
             "frequency": 7
       },
@@ -35,9 +43,9 @@
             "name": "Disabled pull cord check",
             "value": "disabled_pull_cord_check",
             "description": "Check the disabled pull cord still sounds and works",
-            "estimate": 2,
+            "estimate": 1,
             "ref_link": null,
-            "frequency": 14
+            "frequency": 7
       },
       {
             "name": "Temperature probe calibration",
@@ -53,7 +61,7 @@
             "description": "Clean the air con unit - please be careful working at height",
             "estimate": 30,
             "ref_link": null,
-            "frequency": 90
+            "frequency": 180
       },
       {
             "name": "Deep clean cake display",
@@ -61,7 +69,7 @@
             "description": "Empty the cake display and deep clean",
             "estimate": 20,
             "ref_link": null,
-            "frequency": 14
+            "frequency": 30
       },
       {
             "name": "Deep clean savoury display",
@@ -69,7 +77,7 @@
             "description": "Empty the savoury display and deep clean",
             "estimate": 20,
             "ref_link": null,
-            "frequency": 14
+            "frequency": 30
       },
       {
             "name": "Sweep under sofas",
@@ -78,5 +86,13 @@
             "estimate": 10,
             "ref_link": null,
             "frequency": 21
+      },
+      {
+            "name": "Clean table organisers",
+            "value": "clean_table_organisrs",
+            "description": "Get the jars through the dishwasher or hand-wash them, and wipe out the cork holders",
+            "estimate": 45,
+            "ref_link": null,
+            "frequency": 90
       }
 ]
