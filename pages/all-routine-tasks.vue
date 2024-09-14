@@ -58,6 +58,8 @@
 <script setup>
 const routineTasksStore = useRoutineTasksStore()
 
+const { shortDateConverter } = useDateUtils()
+
 const routineTasks = computed(() => Array.isArray(routineTasksStore.routineTasks) ? routineTasksStore.routineTasks : [])
 
 const routineTasksOrdered = computed(() => {

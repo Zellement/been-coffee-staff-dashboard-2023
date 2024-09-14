@@ -37,7 +37,7 @@
             "description": "Check the disabled pull cord still sounds and works",
             "estimate": 2,
             "ref_link": null,
-            "frequency": 90
+            "frequency": 14
       },
       {
             "name": "Temperature probe calibration",
