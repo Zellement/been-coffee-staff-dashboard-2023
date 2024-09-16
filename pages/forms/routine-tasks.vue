@@ -54,7 +54,7 @@
                 required
             >
                 <option value="">
-                    Please choose...
+                    Which task has been completed?
                 </option>
                 <option
                     v-for="task in tasks"
@@ -66,37 +66,45 @@
                 </option>
             </select>
             <div class="flex flex-col gap-1">
-                <label class="flex gap-2">
+                <label class="flex gap-2 items-start">
                     <input
+                        v-model="whoCompleted"
                         required
                         type="radio"
                         name="Who"
                         value="I completed this task"
+                        class="mt-1.5"
                     >
-                    I completed this task personally
+                    <span>I completed this task personally</span>
                 </label>
 
-                <label class="flex gap-2 items-center">
+                <label class="flex gap-2 items-start">
                     <input
+                        v-model="whoCompleted"
                         required
                         type="radio"
                         name="Who"
                         value="I oversaw"
+                        class="mt-1.5"
                     >
-                    <span>I oversaw this employee completing this task:</span>
-                    <select name="I oversaw">
-                        <option value="">
-                            Please choose...
-                        </option>
-                        <option
-                            v-for="member in currentTeam"
-                            :key="member.id"
-                            :value="member.name"
-                        >
-                            {{ member.name }}
-                        </option>
-                    </select>
+                    <span>I oversaw an employee completing this task:</span>
                 </label>
+                <select
+                    v-if="whoCompleted === 'I oversaw'"
+                    class="mt-4"
+                    name="I oversaw"
+                >
+                    <option value="">
+                        Who did you oversee?
+                    </option>
+                    <option
+                        v-for="member in currentTeam"
+                        :key="member.id"
+                        :value="member.name"
+                    >
+                        {{ member.name }}
+                    </option>
+                </select>
             </div>
 
             <textarea
@@ -139,6 +147,7 @@ const teamStore = useTeamStore()
 const currentTeam = computed(() => {
     return teamStore.currentTeam.sort((a, b) => a.name.localeCompare(b.name))
 })
+const whoCompleted = ref()
 
 const routineTasksForm = ref()
 
