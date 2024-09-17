@@ -26,7 +26,7 @@
       {
             "name": "Clean ice machine",
             "value": "clean_ice_machine",
-            "description": "Clean inside, outside and behind the ice machine",
+            "description": "Clean inside and flush through water, remove any debris/build up. Clean outside and behind. Change water filter every 6 months.",
             "estimate": 45,
             "ref_link": null,
             "frequency": 28
