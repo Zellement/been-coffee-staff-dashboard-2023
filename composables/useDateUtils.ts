@@ -24,7 +24,9 @@ export const useDateUtils = () => {
      * @param {Date} date - The date.
      * @returns {string} - Thursday, 04 January 2024
      */
-    const fullDateConverter = (date: Date): string => {
+    const fullDateConverter = (passedDate: Date): string => {
+
+        const date = new Date(passedDate)
         const monthArray: string[] = [
             'January',
             'February',

@@ -36,7 +36,7 @@
                     v-if="task.last_completed_date"
                     class=" flex flex-col"
                 >
-                    <strong>Last completed</strong> {{ shortDateConverter(task.last_completed_date) }}
+                    <strong>Last completed</strong> {{ fullDateConverter(task.last_completed_date) }}
                 </div>
                 <div
                     v-else
@@ -48,7 +48,7 @@
                     v-if="task.next_due_date"
                     class=" flex flex-col"
                 >
-                    <strong>Next due</strong> {{ shortDateConverter(task.next_due_date) }}
+                    <strong>Next due</strong> {{ fullDateConverter(task.next_due_date) }}
                 </div>
             </li>
         </ul>
@@ -58,7 +58,7 @@
 <script setup>
 const routineTasksStore = useRoutineTasksStore()
 
-const { shortDateConverter } = useDateUtils()
+const { fullDateConverter } = useDateUtils()
 
 const routineTasks = computed(() => Array.isArray(routineTasksStore.routineTasks) ? routineTasksStore.routineTasks : [])
 

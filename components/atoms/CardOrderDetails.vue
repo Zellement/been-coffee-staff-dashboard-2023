@@ -1,7 +1,7 @@
 <template>
     <div class="flex flex-col h-full">
         <button
-            class="mx-auto uppercase text-2xs hover:underline mt-auto flex items-center gap-1"
+            class=" uppercase text-2xs hover:underline mt-auto flex items-center gap-1"
             @click="toggleDetails"
         >
             Toggle details
