@@ -12,18 +12,22 @@ export default defineNuxtConfig({
             HOMEBASE_LOCATION_WILLINGTON_ID: process.env.HOMEBASE_LOCATION_WILLINGTON_ID
         }
     },
+
     ssr: false,
     devServerHandlers: [],
+
     devServer: {
         port: 3000, // default: 3000
         host: '0.0.0.0' // default: localhost
     },
+
     components: [
         {
             path: '~/components',
             pathPrefix: false
         }
     ],
+
     supabase: {
         redirectOptions: {
             login: '/login',
@@ -31,6 +35,7 @@ export default defineNuxtConfig({
             exclude: ['/login', '/register', '/forgot-password', '/update-password', '/locations/**']
         }
     },
+
     image: {
         sanity: {
             projectId: 'mxklvbih'
@@ -38,14 +43,18 @@ export default defineNuxtConfig({
             // dataset: 'development'
         }
     },
+
     modules: ['@nuxtjs/color-mode', 'nuxt-icon', '@nuxtjs/tailwindcss', '@pinia/nuxt', '@nuxt/image', '@nuxtjs/supabase', '@vite-pwa/nuxt', '@nuxtjs/sanity'],
+
     sanity: {
         projectId: 'mxklvbih'
     },
+
     colorMode: {
         classSuffix: '',
         preference: 'dark'
     },
+
     pwa: {
         registerType: 'autoUpdate',
         manifest: {
@@ -85,12 +94,15 @@ export default defineNuxtConfig({
             navigateFallbackAllowlist: [/^\/$/]
         }
     },
+
     tailwindcss: {
         cssPath: '~/assets/scss/app.scss'
     },
+
     css: [
         '@/assets/scss/app.scss'
     ],
+
     app: {
         head: {
             htmlAttrs: {
@@ -112,11 +124,14 @@ export default defineNuxtConfig({
         layoutTransition: { name: 'layout', mode: 'out-in' }
 
     },
+
     vite: {
         plugins: [
             eslintVitePlugin({
                 include: ['./**/*.vue']
             })
         ]
-    }
+    },
+
+    compatibilityDate: '2024-10-02'
 })
