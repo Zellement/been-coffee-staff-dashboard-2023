@@ -4,7 +4,7 @@
         class="col-span-full p-4 relative"
         :class="background"
     >
-        <span class="absolute z-10 flex gap-1 top-0 right-0  -translate-y-1/2 text-2xs font-krete  ">
+        <span class="absolute z-10 flex gap-1 top-0 right-0 -translate-y-1/2 text-2xs font-sans">
             <span class="px-1 bg-navy-300 text-butterscotch-500">{{ shortDateConverter(allNotices[currentNotice].publishedAt) }}</span>
             <span class="px-1 bg-navy-300 text-butterscotch-500">{{ currentNotice + 1 }} / {{ totalNotices }}</span>
         </span>
@@ -27,7 +27,7 @@ import { PortableText } from '@portabletext/vue'
 const { shortDateConverter } = useDateUtils()
 
 const queryNotices = groq`
-*[_type == "notice"]
+*[_type == "notice"]|order(publishedAt desc)
 `
 const sanity = useSanity()
 
