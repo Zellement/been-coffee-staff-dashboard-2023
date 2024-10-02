@@ -50,6 +50,10 @@ export default defineNuxtConfig({
         projectId: 'mxklvbih'
     },
 
+    tailwindcss: {
+        cssPath: '~/assets/scss/app.scss'
+    },
+
     colorMode: {
         classSuffix: '',
         preference: 'dark'

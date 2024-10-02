@@ -19,7 +19,7 @@
                 >
                     <div
                         v-if="shortDateConverter(today) === shortDateConverter(booking.datetime)"
-                        class="bg-tuscany-500 flex-1 gap-2 py-2 px-4 flex flex-col  text-white"
+                        class="bg-tuscany-500 flex-1 gap-2 py-2 px-4 flex flex-col text-white"
                     >
                         <span class="text-3xl font-riverside flex items-center gap-4">
 
