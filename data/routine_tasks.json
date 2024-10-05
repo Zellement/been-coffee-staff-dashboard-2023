@@ -118,5 +118,13 @@
         "estimate": 10,
         "ref_link": null,
         "frequency": 180
+    },
+    {
+        "name": "Fire extinguisher serviving",
+        "value": "fire_extinguisher_servicing",
+        "description": "A contractor will come around and service the fire extinguishers - please check this when this is done. If they do not visit, please speak to Martin.",
+        "estimate": 0,
+        "ref_link": null,
+        "frequency": 365
     }
 ]
