@@ -115,8 +115,8 @@
         "name": "Check loft ladder",
         "value": "check_loft_ladder",
         "description": "Check all screws, bolts, hinges and general wear & tear of loft ladder. Ensure card is signed on side when done.",
-        "estimate": 5,
+        "estimate": 10,
         "ref_link": null,
-        "frequency": 90
+        "frequency": 180
     }
 ]
