@@ -13,7 +13,7 @@
             :style="bgTimerClasses"
         />
         <div class="relative">
-            <h2 class="h5">
+            <h2 class="font-riverside text-lg">
                 {{ allNotices[currentNotice].title }}
             </h2>
 
