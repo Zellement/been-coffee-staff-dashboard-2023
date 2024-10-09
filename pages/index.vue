@@ -6,8 +6,8 @@
                 <dashboard-intro />
                 <homebase-shifts-today />
                 <carousel-recently-updated-articles />
-                <sanity-notices class="mx-2" />
                 <carousel-routine-tasks />
+                <sanity-notices class="mx-2" />
                 <carousel-google-reviews />
                 <carousel-trip-advisor-reviews />
                 <carousel-team-members />
@@ -19,9 +19,9 @@
             <template v-else>
                 <carousel-checks />
                 <carousel-routine-tasks />
-                <sanity-notices class="mx-2" />
                 <homebase-shifts-today />
                 <carousel-recent-orders />
+                <sanity-notices class="mx-2" />
                 <carousel-google-reviews />
                 <carousel-trip-advisor-reviews />
                 <carousel-recently-updated-articles />

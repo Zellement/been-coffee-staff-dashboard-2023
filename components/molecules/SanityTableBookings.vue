@@ -84,23 +84,4 @@ const totalTableBookings = computed(() => {
     return allTableBookings.value.length
 })
 
-// watch(timer, (value) => {
-//     if (value === 0) {
-//         timer.value = COUNTDOWN
-//         if (currentNotice.value === totalTableBookings.value - 1) {
-//             currentNotice.value = 0
-//         } else {
-//             currentNotice.value++
-//         }
-//     }
-// })
-
-// onMounted(() => {
-//     if (totalTableBookings.value > 1) {
-//         setInterval(() => {
-//             timer.value--
-//         }, 1000)
-//     }
-// })
-
 </script>

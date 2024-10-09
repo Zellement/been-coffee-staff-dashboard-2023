@@ -16,13 +16,21 @@
             <h2 class="h5">
                 {{ allNotices[currentNotice].title }}
             </h2>
-            <PortableText :value="allNotices[currentNotice].content" />
+
+            <div class="content">
+                <PortableText
+                    :value="allNotices[currentNotice].content"
+                    :components="myPortableTextComponents"
+                />
+            </div>
         </div>
     </div>
 </template>
 
 <script setup>
 import { PortableText } from '@portabletext/vue'
+import { getFileAsset, getImageAsset } from '@sanity/asset-utils'
+import { NuxtPicture } from '#components'
 
 const { shortDateConverter } = useDateUtils()
 
@@ -54,6 +62,34 @@ const background = computed(() => {
 const bgTimerClasses = computed(() => {
     return `width: ${(timer.value / COUNTDOWN) * 100}%;`
 })
+
+const myPortableTextComponents = {
+    types: {
+        fileVideo: ({ value }) => {
+            // console.log('value', value)
+
+            const fullAsset = getFileAsset(value, { projectId: 'mxklvbih', dataset: 'production' })
+            // console.log(fullAsset)
+
+            if (!fullAsset.url) {
+                console.error('No URL returned for video')
+                return null
+            }
+
+            return h('video', { class: 'w-auto h-full max-h-[80dvh] mx-auto', controls: true }, [
+                h('source', { src: fullAsset.url, type: `video/${fullAsset.extension}` }),
+                'Your browser does not support the video tag.'
+            ])
+        },
+        image: ({ value }) => {
+            const fullAsset = getImageAsset(value, { projectId: 'mxklvbih', dataset: 'production' })
+            const image = fullAsset.url
+
+            return h(NuxtPicture, { src: image, sizes: '336px md:400px lg:500px', class: 'w-full' })
+        }
+    }
+
+}
 
 watch(timer, (value) => {
     if (value === 0) {
