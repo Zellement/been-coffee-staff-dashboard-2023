@@ -7,7 +7,7 @@
                 <homebase-shifts-today />
                 <carousel-recently-updated-articles />
                 <carousel-routine-tasks />
-                <sanity-notices class="mx-2 h-[50vh] pt-4 overflow-y-scroll -mt-4" />
+                <sanity-notices class="mx-2 h-[50vh] pt-12 overflow-y-scroll -mt-4" />
                 <carousel-google-reviews />
                 <carousel-trip-advisor-reviews />
                 <carousel-team-members />
@@ -21,7 +21,7 @@
                 <carousel-routine-tasks />
                 <homebase-shifts-today />
                 <carousel-recent-orders />
-                <sanity-notices class="mx-2 h-[50vh] pt-4 overflow-y-scroll -mt-4" />
+                <sanity-notices class="mx-2 h-[50vh] pt-12 overflow-y-scroll -mt-4" />
                 <carousel-google-reviews />
                 <carousel-trip-advisor-reviews />
                 <carousel-recently-updated-articles />
