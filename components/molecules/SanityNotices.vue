@@ -12,7 +12,10 @@
             class="absolute top-0 bottom-0 transition-all right-0 h-full bg-white/10"
             :style="bgTimerClasses"
         />
-        <div class="relative">
+        <div
+            class="relative"
+            :class="fixedHeight ? 'h-[50vh] overflow-y-scroll' : null"
+        >
             <h2 class="font-riverside text-lg">
                 {{ allNotices[currentNotice].title }}
             </h2>
@@ -33,6 +36,13 @@ import { getFileAsset, getImageAsset } from '@sanity/asset-utils'
 import { NuxtPicture } from '#components'
 
 const { shortDateConverter } = useDateUtils()
+
+defineProps({
+    fixedHeight: {
+        type: Boolean,
+        default: false
+    }
+})
 
 const queryNotices = groq`
 *[_type == "notice"]|order(publishedAt desc)
