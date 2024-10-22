@@ -142,7 +142,7 @@
 const routineTasksStore = useRoutineTasksStore()
 const teamStore = useTeamStore()
 
-const allRoutineTasks = computed(() => routineTasksStore.routineTasksSanity)
+const allRoutineTasks = computed(() => routineTasksStore.routineTasks.sort((a, b) => a.title.localeCompare(b.title)))
 
 const currentTeam = computed(() => {
     return teamStore.currentTeam.sort((a, b) => a.name.localeCompare(b.name))

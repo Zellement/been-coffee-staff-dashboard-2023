@@ -2,7 +2,6 @@ import { defineStore } from 'pinia'
 
 export const useRoutineTasksStore = defineStore('routineTasks', {
     state: () => ({
-        routineTasksSanity: [],
         routineTasks: {},
         loading: false
     }),
@@ -24,9 +23,11 @@ export const useRoutineTasksStore = defineStore('routineTasks', {
 
             const query = '*[_type == "routineTasks"]|order(title)'
 
+            let routineTasksSanity
+
             try {
                 const data = await sanity.fetch(query)
-                this.routineTasksSanity = data
+                routineTasksSanity = data
             } catch (error) {
                 console.error('Failed to fetch data:', error)
                 throw error
@@ -48,7 +49,7 @@ export const useRoutineTasksStore = defineStore('routineTasks', {
 
             const finalData = []
 
-            this.routineTasksSanity.forEach((task) => {
+            routineTasksSanity.forEach((task) => {
                 let lastCompletedDate = null
                 if (supabaseData[task.value.current]) {
                     lastCompletedDate = new Date(supabaseData[task.value.current])

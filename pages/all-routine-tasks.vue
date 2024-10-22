@@ -9,7 +9,7 @@
                 :key="task.id"
                 class="card"
             >
-                <span class="dark:text-butterscotch-500 text-lg font-krete">{{ task.name }}</span>
+                <span class="dark:text-butterscotch-500 text-lg font-krete">{{ task.title }}</span>
                 <span class="text-2xs opacity-70">Estimated: {{ task.estimate }} mins</span>
                 <div class="">
                     <Icon
@@ -36,7 +36,7 @@
                     v-if="task.last_completed_date"
                     class=" flex flex-col"
                 >
-                    <strong>Last completed</strong> {{ fullDateConverter(task.last_completed_date) }}
+                    <strong class="text-tuscany-500">Last completed</strong> {{ fullDateConverter(task.last_completed_date) }}
                 </div>
                 <div
                     v-else
@@ -48,7 +48,7 @@
                     v-if="task.next_due_date"
                     class=" flex flex-col"
                 >
-                    <strong>Next due</strong> {{ fullDateConverter(task.next_due_date) }}
+                    <strong class="text-tuscany-500">Next due</strong> {{ fullDateConverter(task.next_due_date) }}
                 </div>
             </li>
         </ul>
@@ -64,7 +64,7 @@ const routineTasks = computed(() => Array.isArray(routineTasksStore.routineTasks
 
 const routineTasksOrdered = computed(() => {
     return routineTasks.value.slice().sort((a, b) => {
-        return a.name.localeCompare(b.name)
+        return a.title.localeCompare(b.title)
     })
 })
 
