@@ -1,6 +1,5 @@
 <template>
     <li
-        :key="task.value"
         class="w-64 min-w-64 card"
     >
         <span class="text-xs absolute top-0 -translate-y-1/2 left-0 ml-2">
@@ -11,7 +10,7 @@
                 {{ task.next_due_date !== null ? `Due:  ${shortDateConverter(task.next_due_date)}` : 'New' }}
             </span>
         </span>
-        {{ task.name }}
+        {{ task.title }}
         <span class="text-2xs opacity-80">Estimated: {{ task.estimate }} mins</span>
         <button
             class="uppercase text-2xs flex items-center gap-1"

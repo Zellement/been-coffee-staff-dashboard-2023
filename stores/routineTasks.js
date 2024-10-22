@@ -1,5 +1,4 @@
 import { defineStore } from 'pinia'
-import routineTasksFixedData from '@/data/routine_tasks.json'
 
 export const useRoutineTasksStore = defineStore('routineTasks', {
     state: () => ({
