@@ -16,6 +16,14 @@
         "frequency": 60
     },
     {
+        "name": "Grease trap weekly maintenance",
+        "value": "grease_trap_weekly_maintenance",
+        "description": "Do the general weekly maintenance of the grease trap",
+        "estimate": 10,
+        "ref_link": "https://dashboard.been.coffee/article/grease-trap-maintenance",
+        "frequency": 7
+    },
+    {
         "name": "Clean vents of storage fridge & freezers",
         "value": "clean_vents_storage",
         "description": "Clean the fluff and build-up from storage fridge and freezers from both back room and behind bar",
