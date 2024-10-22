@@ -3,6 +3,7 @@ import routineTasksFixedData from '@/data/routine_tasks.json'
 
 export const useRoutineTasksStore = defineStore('routineTasks', {
     state: () => ({
+        routineTasksSanity: [],
         routineTasks: {},
         loading: false
     }),
@@ -20,6 +21,18 @@ export const useRoutineTasksStore = defineStore('routineTasks', {
             this.loading = false
         },
         async fetchAllRoutineTasks () {
+            const sanity = useSanity()
+
+            const query = '*[_type == "routineTasks"]|order(title)'
+
+            try {
+                const data = await sanity.fetch(query)
+                this.routineTasksSanity = data
+            } catch (error) {
+                console.error('Failed to fetch data:', error)
+                throw error
+            }
+
             this.loading = true
             const client = useSupabaseClient()
             const { data, error } = await client
@@ -36,10 +49,10 @@ export const useRoutineTasksStore = defineStore('routineTasks', {
 
             const finalData = []
 
-            routineTasksFixedData.forEach((task) => {
+            this.routineTasksSanity.forEach((task) => {
                 let lastCompletedDate = null
-                if (supabaseData[task.value]) {
-                    lastCompletedDate = new Date(supabaseData[task.value])
+                if (supabaseData[task.value.current]) {
+                    lastCompletedDate = new Date(supabaseData[task.value.current])
                 }
                 let nextDueDate = null
                 if (lastCompletedDate !== null) {
@@ -50,7 +63,7 @@ export const useRoutineTasksStore = defineStore('routineTasks', {
                 const data = {
                     ...task,
                     next_due_date: nextDueDate,
-                    last_completed_date: supabaseData[task.value] ?? null
+                    last_completed_date: supabaseData[task.value.current] ?? null
                 }
 
                 finalData.push(data)

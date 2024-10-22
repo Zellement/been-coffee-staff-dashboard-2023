@@ -57,12 +57,12 @@
                     Which task has been completed?
                 </option>
                 <option
-                    v-for="task in tasks"
-                    :key="task.value"
-                    :value="task.value"
+                    v-for="task in allRoutineTasks"
+                    :key="task.id"
+                    :value="task.value.current"
                     name="Task"
                 >
-                    {{ task.name }}
+                    {{ task.title }}
                 </option>
             </select>
             <div class="flex flex-col gap-1">
@@ -139,10 +139,10 @@
     </div>
 </template>
 <script setup>
-import ROUTINE_TASKS from '@/data/routine_tasks.json'
-
 const routineTasksStore = useRoutineTasksStore()
 const teamStore = useTeamStore()
+
+const allRoutineTasks = computed(() => routineTasksStore.routineTasksSanity)
 
 const currentTeam = computed(() => {
     return teamStore.currentTeam.sort((a, b) => a.name.localeCompare(b.name))
@@ -152,10 +152,6 @@ const whoCompleted = ref()
 const routineTasksForm = ref()
 
 const runtimeConfig = useRuntimeConfig()
-
-const tasks = computed(() => {
-    return ROUTINE_TASKS.sort((a, b) => a.name.localeCompare(b.name))
-})
 
 const scriptURL = runtimeConfig.public.GOOGLE_SHEETS_SCRIPT_ROUTINE_TASKS
 
