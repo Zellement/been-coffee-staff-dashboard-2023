@@ -94,9 +94,9 @@ const myPortableTextComponents = {
         },
         image: ({ value }) => {
             const fullAsset = getImageAsset(value, { projectId: 'mxklvbih', dataset: 'production' })
-            const image = fullAsset.url
+            const image = `${fullAsset.url}?h=1000&w=1000&fit=max&fm=webp`
 
-            return h(NuxtPicture, { src: image, sizes: '336px md:400px lg:500px', class: 'w-full' })
+            return h(NuxtPicture, { src: image, sizes: '336px', class: 'block w-full' })
         }
     }
 
