@@ -50,7 +50,7 @@ defineProps({
 })
 
 const queryNotices = groq`
-*[_type == "notice" && dateTime(_updatedAt) > dateTime(now()) - 60*60*24*10]|order(publishedAt desc)`
+*[_type == "notice" && (dateTime(_updatedAt) > dateTime(now()) - 60*60*24*10) || alwaysShow]|order(publishedAt desc)`
 
 const sanity = useSanity()
 
