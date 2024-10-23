@@ -32,24 +32,29 @@
                         <carousel-routine-tasks basic />
                     </div>
                     <div class="container grid grid-cols-12 w-full">
-                        <div class="w-full grid grid-cols-4 gap-8 col-span-full flex-wrap justify-center items-center">
-                            <sanity-notices />
-                            <single-day-dot
-                                :date="plus3days"
-                                title="+ 3 Days"
+                        <div class="w-full grid grid-cols-2 gap-8 col-span-full flex-wrap justify-center ">
+                            <sanity-notices
+                                fixed-height
+                                fixed-height-classes="h-[350px]"
                             />
-                            <single-day-dot
-                                :date="plus5days"
-                                title="+ 5 Days"
-                            />
-                            <single-day-dot
-                                :date="plus7days"
-                                title="+ 7 Days"
-                            />
-                            <single-day-dot
-                                :date="plus14days"
-                                title="+ 14 Days"
-                            />
+                            <div class="grid grid-cols-2">
+                                <single-day-dot
+                                    :date="plus3days"
+                                    title="+ 3 Days"
+                                />
+                                <single-day-dot
+                                    :date="plus5days"
+                                    title="+ 5 Days"
+                                />
+                                <single-day-dot
+                                    :date="plus7days"
+                                    title="+ 7 Days"
+                                />
+                                <single-day-dot
+                                    :date="plus14days"
+                                    title="+ 14 Days"
+                                />
+                            </div>
                         </div>
                     </div>
                 </div>

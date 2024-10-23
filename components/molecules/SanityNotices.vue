@@ -2,7 +2,7 @@
     <!-- <pre class="col-span-full">{{ allNotices }}</pre> -->
     <div
         v-if="totalNotices > 0"
-        class="col-span-full p-4 relative"
+        class="p-4 relative"
         :class="background"
     >
         <span class="absolute z-10 flex gap-1 top-0 right-0 -translate-y-1/2 text-2xs font-sans">
@@ -15,9 +15,9 @@
         />
         <div
             class="relative"
-            :class="fixedHeight ? 'h-[50vh] overflow-y-scroll' : null"
+            :class="fixedHeight ? `${fixedHeightClasses} overflow-y-scroll` : null"
         >
-            <h2 class="font-riverside text-lg">
+            <h2 class="font-riverside text-xl mb-2">
                 {{ allNotices[currentNotice].title }}
             </h2>
 
@@ -42,6 +42,10 @@ defineProps({
     fixedHeight: {
         type: Boolean,
         default: false
+    },
+    fixedHeightClasses: {
+        type: String,
+        default: 'h-[50vh]'
     }
 })
 
