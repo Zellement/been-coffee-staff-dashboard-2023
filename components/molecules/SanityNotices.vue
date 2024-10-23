@@ -1,4 +1,5 @@
 <template>
+    <!-- <pre class="col-span-full">{{ allNotices }}</pre> -->
     <div
         v-if="totalNotices > 0"
         class="col-span-full p-4 relative"
@@ -45,8 +46,8 @@ defineProps({
 })
 
 const queryNotices = groq`
-*[_type == "notice"]|order(publishedAt desc)
-`
+*[_type == "notice" && dateTime(_updatedAt) > dateTime(now()) - 60*60*24*10]|order(publishedAt desc)`
+
 const sanity = useSanity()
 
 const { data } = await useAsyncData('queryAllNotices', () => sanity.fetch(queryNotices))
