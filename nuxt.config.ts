@@ -99,10 +99,6 @@ export default defineNuxtConfig({
         }
     },
 
-    tailwindcss: {
-        cssPath: '~/assets/scss/app.scss'
-    },
-
     css: [
         '@/assets/scss/app.scss'
     ],
@@ -134,7 +130,14 @@ export default defineNuxtConfig({
             eslintVitePlugin({
                 include: ['./**/*.vue']
             })
-        ]
+        ],
+        css: {
+            preprocessorOptions: {
+                scss: {
+                    api: 'modern'
+                }
+            }
+        }
     },
 
     compatibilityDate: '2024-10-02'
