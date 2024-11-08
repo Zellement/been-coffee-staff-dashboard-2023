@@ -2,10 +2,6 @@
     <div class="relative">
         <div class="container flex flex-row justify-between">
             <h2 class="h1 flex gap-2 items-center">
-                <Icon
-                    name="mingcute:google-fill"
-                    class="w-6 h-6 translate-y-px"
-                />
                 Reviews
             </h2>
             <nuxt-link
@@ -21,16 +17,18 @@
         >
             <carousel-wrapper>
                 <template
-                    v-for="item in googleReviewData"
+                    v-for="item in allReviews"
                     :key="item.id"
                 >
                     <card-review
                         :string="true"
-                        :name="item.user.name"
-                        :date-string="item.date"
+                        :name="item.user"
+                        :date-string="item.dateString"
                         :rating="item.rating"
                         :review-text="item.snippet"
                         :response="item.response?.snippet"
+                        :icon="item.icon"
+                        :title="item.title ?? null"
                     >
                         <template #feedbackExtra>
                             <ul class="mt-6 italic">
@@ -61,11 +59,58 @@
 
 <script setup>
 import { useReviewsStore } from '@/stores/reviews'
-
+const { shortDateConverter } = useDateUtils()
 const reviewsStore = useReviewsStore()
 
 const googleReviewData = computed(() => {
     return reviewsStore.reviewsGoogle
+})
+
+const tripadvisorData = computed(() => {
+    return reviewsStore.reviewsTripadvisor
+})
+
+function normalizeGoogleReview (review) {
+    return {
+        id: review.review_id,
+        date: new Date(review.iso_date),
+        dateString: shortDateConverter(new Date(review.iso_date)),
+        rating: review.rating,
+        text: review.snippet,
+        user: review.user.name,
+        source: 'Google',
+        icon: 'mingcute:google-fill'
+    }
+}
+
+function normalizeTripadvisorReview (review) {
+    console.log(review.user.username)
+    return {
+        id: review.id,
+        date: new Date(review.published_date),
+        dateString: shortDateConverter(new Date(review.published_date)),
+        rating: review.rating,
+        text: review.text,
+        user: review.user.username,
+        title: review.title,
+        source: 'Tripadvisor',
+        icon: 'simple-icons:tripadvisor'
+    }
+}
+
+const allReviews = computed(() => {
+    // Normalize the data
+    const normalizedGoogleReviews = googleReviewData.value.map(normalizeGoogleReview)
+    const normalizedTripadvisorReviews = tripadvisorData.value.map(normalizeTripadvisorReview)
+
+    // Merge the arrays
+    const mergedReviews = normalizedGoogleReviews.concat(normalizedTripadvisorReviews)
+
+    // Sort the merged array by date in descending order
+    mergedReviews.sort((a, b) => b.date - a.date)
+
+    // Return the sorted array
+    return mergedReviews
 })
 
 </script>

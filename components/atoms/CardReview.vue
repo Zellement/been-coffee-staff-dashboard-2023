@@ -1,7 +1,11 @@
 <template>
     <li
-        class="w-64 min-w-64 card"
+        class="w-64 min-w-64 card relative"
     >
+        <Icon
+            :name="icon"
+            class="size-8 text-butterscotch absolute top-0 right-0 -translate-y-2 -translate-x-2 bg-white dark:bg-navy p-1 rounded-full border border- dark:border-navy-400"
+        />
         <div class="flex gap-2">
             <Icon
                 name="material-symbols:person"
@@ -35,13 +39,13 @@
         </div>
         <h3
             v-if="title"
-            class="font-krete font-bold text-lg"
+            class="font-krete font-bold text-md"
         >
             {{ title }}
         </h3>
         <div class="flex flex-col h-full">
             <button
-                class="uppercase text-2xs mt-4 flex items-center hover:underline gap-1 "
+                class="uppercase text-2xs mt-auto flex items-center hover:underline gap-1 "
                 @click="toggleDetails"
             >
                 Toggle all review feedback
@@ -124,6 +128,11 @@ defineProps({
         type: String,
         required: false,
         default: null
+    },
+    icon: {
+        type: String,
+        required: false,
+        default: null
     }
 })
 
@@ -134,7 +143,5 @@ const showDetails = computed(() => uiStore.showReviewDetails)
 const toggleDetails = () => {
     uiStore.toggleShowReviewDetails()
 }
-
-// const { shortDateConverter } = useDateUtils()
 
 </script>

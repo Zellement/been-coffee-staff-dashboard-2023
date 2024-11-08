@@ -8,8 +8,7 @@
                 <carousel-recently-updated-articles />
                 <carousel-routine-tasks />
                 <sanity-notices fixed-height />
-                <carousel-google-reviews />
-                <carousel-trip-advisor-reviews />
+                <carousel-social-reviews />
                 <carousel-team-members />
                 <carousel-been-awesome-winners />
                 <carousel-recent-orders />
@@ -22,8 +21,7 @@
                 <homebase-shifts-today />
                 <carousel-recent-orders />
                 <sanity-notices fixed-height />
-                <carousel-google-reviews />
-                <carousel-trip-advisor-reviews />
+                <carousel-social-reviews />
                 <carousel-recently-updated-articles />
                 <carousel-standing-orders />
                 <carousel-been-awesome-winners />
