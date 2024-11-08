@@ -45,7 +45,7 @@
         </h3>
         <div class="flex flex-col h-full">
             <button
-                class="uppercase text-2xs mt-auto flex items-center hover:underline gap-1 "
+                class="uppercase text-2xs mt-10 flex items-center hover:underline gap-1 "
                 @click="toggleDetails"
             >
                 Toggle all review feedback

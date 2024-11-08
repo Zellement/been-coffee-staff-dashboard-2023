@@ -25,8 +25,7 @@
                         :name="item.user"
                         :date-string="item.dateString"
                         :rating="item.rating"
-                        :review-text="item.snippet"
-                        :response="item.response?.snippet"
+                        :review-text="item.response"
                         :icon="item.icon"
                         :title="item.title ?? null"
                     >
@@ -71,6 +70,7 @@ const tripadvisorData = computed(() => {
 })
 
 function normalizeGoogleReview (review) {
+    console.log(review.response?.snippet)
     return {
         id: review.review_id,
         date: new Date(review.iso_date),
@@ -79,12 +79,18 @@ function normalizeGoogleReview (review) {
         text: review.snippet,
         user: review.user.name,
         source: 'Google',
-        icon: 'mingcute:google-fill'
+        icon: 'mingcute:google-fill',
+        details: {
+            food: review.details.food,
+            service: review.details.service,
+            atmosphere: review.details.atmosphere
+        },
+        response: review.response?.snippet ?? null
     }
 }
 
 function normalizeTripadvisorReview (review) {
-    console.log(review.user.username)
+    // console.log(review)
     return {
         id: review.id,
         date: new Date(review.published_date),
@@ -94,7 +100,9 @@ function normalizeTripadvisorReview (review) {
         user: review.user.username,
         title: review.title,
         source: 'Tripadvisor',
-        icon: 'simple-icons:tripadvisor'
+        icon: 'simple-icons:tripadvisor',
+        details: null,
+        response: review.response
     }
 }
 
