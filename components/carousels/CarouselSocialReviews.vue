@@ -4,13 +4,26 @@
             <h2 class="h1 flex gap-2 items-center">
                 Reviews
             </h2>
-            <nuxt-link
-                class="button flex-shrink-0 self-end"
-                target="_blank"
-                to="https://www.google.com/search?q=been+coffee&rlz=1C5CHFA_enGB999GB999&oq=been+coffe&gs_lcrp=EgZjaHJvbWUqDAgAECMYJxiABBiKBTIMCAAQIxgnGIAEGIoFMhAIARAuGK8BGMcBGIAEGI4FMgYIAhBFGDkyBwgDEAAYgAQyBggEEEUYQTIGCAUQRRhBMgYIBhBFGEEyBggHEEUYPagCALACAA&sourceid=chrome&ie=UTF-8&zx=1721406730390&no_sw_cr=1#lrd=0x4879f76a544386ad:0xdd73c388e6606809,1,,,,"
+            <button
+                class="uppercase text-2xs button flex items-center hover:underline gap-1 "
+                @click="toggleDetails"
             >
-                See more
-            </nuxt-link>
+                Toggle feedback
+                <div
+                    class="relative flex w-3 h-3"
+                >
+                    <Icon
+                        v-if="showDetails"
+                        name="mdi:minus"
+                        class="absolute top-0flex w-3 h-3 transition-all"
+                    />
+                    <Icon
+                        v-else
+                        name="mdi:plus"
+                        class="absolute top-0flex w-3 h-3 transition-all"
+                    />
+                </div>
+            </button>
         </div>
         <div
             v-if="googleReviewData"
@@ -25,7 +38,8 @@
                         :name="item.user"
                         :date-string="item.dateString"
                         :rating="item.rating"
-                        :review-text="item.response"
+                        :review-text="item.reviewText"
+                        :response="item.response"
                         :icon="item.icon"
                         :title="item.title ?? null"
                     >
@@ -60,6 +74,7 @@
 import { useReviewsStore } from '@/stores/reviews'
 const { shortDateConverter } = useDateUtils()
 const reviewsStore = useReviewsStore()
+const uiStore = useUiStore()
 
 const googleReviewData = computed(() => {
     return reviewsStore.reviewsGoogle
@@ -69,14 +84,19 @@ const tripadvisorData = computed(() => {
     return reviewsStore.reviewsTripadvisor
 })
 
+const toggleDetails = () => {
+    uiStore.toggleShowReviewDetails()
+}
+const showDetails = computed(() => uiStore.showReviewDetails)
+
 function normalizeGoogleReview (review) {
-    console.log(review.response?.snippet)
+    console.log(review)
     return {
         id: review.review_id,
         date: new Date(review.iso_date),
         dateString: shortDateConverter(new Date(review.iso_date)),
         rating: review.rating,
-        text: review.snippet,
+        reviewText: review.snippet,
         user: review.user.name,
         source: 'Google',
         icon: 'mingcute:google-fill',
@@ -90,19 +110,19 @@ function normalizeGoogleReview (review) {
 }
 
 function normalizeTripadvisorReview (review) {
-    // console.log(review)
+    console.log(review)
     return {
         id: review.id,
         date: new Date(review.published_date),
         dateString: shortDateConverter(new Date(review.published_date)),
         rating: review.rating,
-        text: review.text,
+        reviewText: review.text,
         user: review.user.username,
         title: review.title,
         source: 'Tripadvisor',
         icon: 'simple-icons:tripadvisor',
         details: null,
-        response: review.response
+        response: review.owner_response.text
     }
 }
 

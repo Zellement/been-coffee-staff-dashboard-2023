@@ -37,40 +37,20 @@
                 />
             </div>
         </div>
-        <h3
-            v-if="title"
-            class="font-krete font-bold text-md"
-        >
-            {{ title }}
-        </h3>
         <div class="flex flex-col h-full">
-            <button
-                class="uppercase text-2xs mt-10 flex items-center hover:underline gap-1 "
-                @click="toggleDetails"
-            >
-                Toggle all review feedback
-                <div
-                    class="relative flex w-3 h-3"
-                >
-                    <Icon
-                        v-if="showDetails"
-                        name="mdi:minus"
-                        class="absolute top-0flex w-3 h-3 transition-all"
-                    />
-                    <Icon
-                        v-else
-                        name="mdi:plus"
-                        class="absolute top-0flex w-3 h-3 transition-all"
-                    />
-                </div>
-            </button>
             <div v-if="showDetails">
-                <div>
-                    <h3 class="mb-2 krete-title !text-base mt-8 ">
-                        Feedback
+                <div class="flex flex-col gap-4">
+                    <h3
+                        v-if="title"
+                        class="font-krete font-bold text-md"
+                    >
+                        &quot;{{ title }}&quot;
                     </h3>
-                    <p v-if="reviewText">
-                        ‟{{ reviewText }}＂
+                    <p
+                        v-if="reviewText"
+                        class="italic"
+                    >
+                        {{ reviewText }}
                     </p>
                     <p v-else>
                         No feedback left.
@@ -79,11 +59,8 @@
                 </div>
                 <div
                     v-if="response"
-                    class="text-tuscany-500 dark:text-tuscany-100 italic"
+                    class="text-tuscany-500 mt-10 dark:text-tuscany-100 italic"
                 >
-                    <h3 class="!text-sm krete-title mt-8 ">
-                        Response
-                    </h3>
                     <p class="!text-xs">
                         {{ response }}
                     </p>
@@ -139,9 +116,5 @@ defineProps({
 const uiStore = useUiStore()
 
 const showDetails = computed(() => uiStore.showReviewDetails)
-
-const toggleDetails = () => {
-    uiStore.toggleShowReviewDetails()
-}
 
 </script>
