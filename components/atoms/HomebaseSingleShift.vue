@@ -8,13 +8,18 @@
             :class="userClasses"
         >
             <img
-                v-if="user.image && user.image?.asset?._ref"
+                v-if="user && user.image"
                 :src="$urlFor(user.image?.asset).width(120).height(120).url()"
                 height="32"
                 width="32"
                 loading="lazy"
                 class="rounded-full self-center flex-grow-0 flex-shrink-0"
             >
+            <div
+                v-else
+                loading="lazy"
+                class="rounded-full self-center size-8 flex-grow-0 flex-shrink-0 bg-navy-900"
+            />
             <div class="flex flex-col md:flex-row w-full">
                 <span class="flex whitespace-nowrap md:basis-1/2 text-sm md:text-base">
                     {{ shift.first_name }}

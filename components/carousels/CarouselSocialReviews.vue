@@ -92,7 +92,7 @@ const showDetails = computed(() => uiStore.showReviewDetails)
 function normalizeGoogleReview (review) {
     console.log(review)
     return {
-        id: review.review_id,
+        id: review.review_id ?? '',
         date: new Date(review.iso_date),
         dateString: shortDateConverter(new Date(review.iso_date)),
         rating: review.rating,
@@ -112,17 +112,17 @@ function normalizeGoogleReview (review) {
 function normalizeTripadvisorReview (review) {
     console.log(review)
     return {
-        id: review.id,
+        id: review.id ?? '',
         date: new Date(review.published_date),
         dateString: shortDateConverter(new Date(review.published_date)),
         rating: review.rating,
-        reviewText: review.text,
+        reviewText: review.text ?? '',
         user: review.user.username,
         title: review.title,
         source: 'Tripadvisor',
         icon: 'simple-icons:tripadvisor',
         details: null,
-        response: review.owner_response?.text ?? null
+        response: review.owner_response?.text ?? ''
     }
 }
 
