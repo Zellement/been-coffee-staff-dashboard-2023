@@ -8,7 +8,7 @@
             :class="userClasses"
         >
             <img
-                v-if="user.image?.asset?._ref"
+                v-if="user.image && user.image?.asset?._ref"
                 :src="$urlFor(user.image?.asset).width(120).height(120).url()"
                 height="32"
                 width="32"

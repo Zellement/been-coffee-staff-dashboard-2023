@@ -122,14 +122,14 @@ function normalizeTripadvisorReview (review) {
         source: 'Tripadvisor',
         icon: 'simple-icons:tripadvisor',
         details: null,
-        response: review.owner_response.text
+        response: review.owner_response?.text ?? null
     }
 }
 
 const allReviews = computed(() => {
     // Normalize the data
-    const normalizedGoogleReviews = googleReviewData.value.map(normalizeGoogleReview)
-    const normalizedTripadvisorReviews = tripadvisorData.value.map(normalizeTripadvisorReview)
+    const normalizedGoogleReviews = googleReviewData.value?.map(normalizeGoogleReview)
+    const normalizedTripadvisorReviews = tripadvisorData.value?.map(normalizeTripadvisorReview)
 
     // Merge the arrays
     const mergedReviews = normalizedGoogleReviews.concat(normalizedTripadvisorReviews)
