@@ -90,7 +90,6 @@ const toggleDetails = () => {
 const showDetails = computed(() => uiStore.showReviewDetails)
 
 function normalizeGoogleReview (review) {
-    console.log(review)
     return {
         id: review.review_id ?? '',
         date: new Date(review.iso_date),
@@ -110,7 +109,6 @@ function normalizeGoogleReview (review) {
 }
 
 function normalizeTripadvisorReview (review) {
-    console.log(review)
     return {
         id: review.id ?? '',
         date: new Date(review.published_date),
