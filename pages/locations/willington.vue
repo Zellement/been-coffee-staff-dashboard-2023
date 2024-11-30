@@ -31,6 +31,7 @@
                         <carousel-checks basic />
                         <carousel-routine-tasks basic />
                     </div>
+                    <advent-calendar class="my-8" />
                     <div class="container grid grid-cols-12 w-full">
                         <div class="w-full grid grid-cols-2 gap-8 col-span-full flex-wrap justify-center ">
                             <sanity-notices

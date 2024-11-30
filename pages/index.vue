@@ -3,6 +3,7 @@
         <div class="flex flex-col gap-16 pt-8 pb-32">
             <birthdays-anniversaries />
             <template v-if="!keyholder">
+                <advent-calendar />
                 <dashboard-intro />
                 <homebase-shifts-today />
                 <carousel-recently-updated-articles />
@@ -18,6 +19,7 @@
             <template v-else>
                 <carousel-checks />
                 <carousel-routine-tasks />
+                <advent-calendar />
                 <homebase-shifts-today />
                 <carousel-recent-orders />
                 <sanity-notices fixed-height />
