@@ -33,8 +33,6 @@
 
 <script setup>
 
-import { useUiStore } from '@/stores/ui'
-
 const fixPage = computed(() => {
     return uiStore.fixBody
 })

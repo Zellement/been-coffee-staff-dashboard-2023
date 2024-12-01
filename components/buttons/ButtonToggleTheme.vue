@@ -1,6 +1,6 @@
 <template>
     <button
-        class="fixed z-10 flex flex-row items-center gap-1 px-1 py-px text-xs border border-gray-300 dark:border-navy-100 rounded-xl top-12 right-3"
+        class="fixed z-10 flex flex-row items-center gap-1 px-1 py-px text-xs border border-gray-300 dark:border-navy-100 rounded-xl top-12 right-2"
         @click="uiStore.setTheme(uiStore.theme === 'standard' ? null : 'standard')"
     >
         <span
