@@ -100,9 +100,9 @@ function normalizeGoogleReview (review) {
         source: 'Google',
         icon: 'mingcute:google-fill',
         details: {
-            food: review.details.food,
-            service: review.details.service,
-            atmosphere: review.details.atmosphere
+            food: review.details?.food,
+            service: review.details?.service,
+            atmosphere: review.details?.atmosphere
         },
         response: review.response?.snippet ?? null
     }

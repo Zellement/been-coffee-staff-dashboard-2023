@@ -81,6 +81,9 @@
                 item="Milk Fridge"
             />
             <temperature-log-input
+                item="Blender Fridge"
+            />
+            <temperature-log-input
                 item="Savoury Fridge"
             />
             <temperature-log-input
