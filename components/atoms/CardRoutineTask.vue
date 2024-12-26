@@ -70,7 +70,7 @@
             </div>
         </div>
         <div
-            v-if="userStore?.userData?.keyholder"
+            v-if="userStore?.userData?.keyholder && userStore?.userData?.display_name !== 'Willington Shop'"
             class="ml-auto mt-auto"
         >
             <form
