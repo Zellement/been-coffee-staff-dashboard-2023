@@ -96,7 +96,7 @@ function normalizeGoogleReview (review) {
         dateString: shortDateConverter(new Date(review.iso_date)),
         rating: review.rating,
         reviewText: review.snippet,
-        user: review.user.name,
+        user: review.user?.name,
         source: 'Google',
         icon: 'mingcute:google-fill',
         details: {

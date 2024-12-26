@@ -79,7 +79,12 @@
             >
                 <input
                     type="hidden"
-                    :value="userStore?.userData?.name"
+                    :value="userStore?.userData?.display_name"
+                    name="Team member"
+                >
+                <input
+                    type="hidden"
+                    value="I completed this task"
                     name="Who"
                 >
                 <input
