@@ -142,7 +142,10 @@
 const routineTasksStore = useRoutineTasksStore()
 const teamStore = useTeamStore()
 
-const allRoutineTasks = computed(() => routineTasksStore.routineTasks.sort((a, b) => a.title.localeCompare(b.title)))
+const allRoutineTasks = computed(() => {
+    if (!routineTasksStore?.routineTasks) return
+    return routineTasksStore?.routineTasks?.sort((a, b) => a.title.localeCompare(b.title))
+})
 
 const currentTeam = computed(() => {
     return teamStore.currentTeam.sort((a, b) => a.name.localeCompare(b.name))
@@ -157,6 +160,7 @@ const scriptURL = runtimeConfig.public.GOOGLE_SHEETS_SCRIPT_ROUTINE_TASKS
 
 const submitToGoogleSheets = () => {
     const formData = new FormData(routineTasksForm.value)
+    console.log(formData)
     const field = formData.get('Task')
     state.isSending = true
     state.hasSent = false

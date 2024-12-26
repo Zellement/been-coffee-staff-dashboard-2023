@@ -31,7 +31,7 @@
             <carousel-wrapper>
                 <template
                     v-for="item in allReviews"
-                    :key="item.id"
+                    :key="item?.id"
                 >
                     <card-review
                         :string="true"

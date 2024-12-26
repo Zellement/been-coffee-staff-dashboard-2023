@@ -4,6 +4,9 @@
     &--sm {
         @apply px-2 py-0.5;
     }
+    &--xs {
+        @apply px-2 py-0.5 text-xs;
+    }
 }
 
 html.dark .button {

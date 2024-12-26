@@ -63,7 +63,7 @@ const { fullDateConverter } = useDateUtils()
 const routineTasks = computed(() => Array.isArray(routineTasksStore.routineTasks) ? routineTasksStore.routineTasks : [])
 
 const routineTasksOrdered = computed(() => {
-    return routineTasks.value.slice().sort((a, b) => {
+    return routineTasks.value?.slice().sort((a, b) => {
         return a.title.localeCompare(b.title)
     })
 })

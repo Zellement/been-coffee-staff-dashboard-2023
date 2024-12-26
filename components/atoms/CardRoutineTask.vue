@@ -69,13 +69,91 @@
                 <strong>Last completed</strong> {{ shortDateConverter(task.last_completed_date) }}
             </div>
         </div>
+        <div
+            v-if="userStore?.userData?.keyholder"
+            class="ml-auto mt-auto"
+        >
+            <form
+                ref="routineTasksForm"
+                @submit.prevent="submitToGoogleSheets"
+            >
+                <input
+                    type="hidden"
+                    :value="userStore?.userData?.name"
+                    name="Who"
+                >
+                <input
+                    type="hidden"
+                    :value="task.value.current"
+                    name="Task"
+                >
+                <input
+                    type="hidden"
+                    name="Completed satisfactorily"
+                    value="Yes, this was satisfactory"
+                >
+                <input
+                    type="hidden"
+                    name="Comments"
+                    value="This was a quick completion"
+                >
+                <div class="grid grid-cols-1 overflow-hidden">
+                    <button
+                        :class="quickCompleteBtn"
+                        class="row-start-1 button button--xs col-span-1 col-start-1"
+                        @click.prevent="taskQuickStatus = 'set'"
+                    >
+                        Quick Complete
+                    </button>
+                    <button
+                        :class="completeBtn"
+                        class="row-start-1 button button--xs col-span-1 col-start-1 text-center"
+                    >
+                        <span class="mx-auto"> Complete?</span>
+                    </button>
+                    <span
+                        v-if="state.isSending"
+                        class="
+                        row-start-1 pill flex col-span-1 col-start-1"
+                    >
+                        Please wait...
+                        <Icon
+                            name="mdi:loading"
+                            class="w-4 h-4 animate-spin ml-auto"
+                        />
+                    </span>
+                    <span
+                        v-if="state.hasSent"
+                        class="
+                        row-start-1 pill pill--complete flex col-span-1 col-start-1"
+                    >
+                        Complete
+                        <Icon
+                            name="ic:twotone-check"
+                            class="w-4 h-4 ml-auto"
+                        />
+                    </span>
+                </div>
+            </form>
+        </div>
     </li>
 </template>
 
 <script setup>
 
+const routineTasksStore = useRoutineTasksStore()
 const { shortDateConverter } = useDateUtils()
 
+const state = reactive({
+    isSending: false,
+    hasSent: false,
+    hasErrored: false
+})
+const runtimeConfig = useRuntimeConfig()
+
+const scriptURL = runtimeConfig.public.GOOGLE_SHEETS_SCRIPT_ROUTINE_TASKS
+
+const userStore = useUserStore()
 const props = defineProps({
     task: {
         type: Object,
@@ -87,7 +165,19 @@ const props = defineProps({
     }
 })
 
+const taskQuickStatus = ref('ready')
+
+const quickCompleteBtn = computed(() => {
+    return taskQuickStatus.value === 'ready' && !state.isSending && !state.hasSent ? '' : '-translate-y-full'
+})
+
+const completeBtn = computed(() => {
+    return taskQuickStatus.value === 'set' && !state.isSending && !state.hasSent ? '' : 'translate-y-full'
+})
+
 const showMore = ref(false)
+
+const routineTasksForm = ref()
 
 const toggleMore = () => {
     showMore.value = !showMore.value
@@ -103,5 +193,20 @@ const pillClasses = computed(() => {
         return 'pill--upcoming'
     }
 })
+
+const submitToGoogleSheets = () => {
+    const formData = new FormData(routineTasksForm.value)
+    console.log(formData)
+    const field = formData.get('Task')
+    state.isSending = true
+    state.hasSent = false
+    fetch(scriptURL, { method: 'POST', body: formData })
+        .then(async () => {
+            await routineTasksStore.setRoutineTask(field)
+            state.isSending = false
+            state.hasSent = true
+        })
+        .catch(error => console.error('Error!', error.message))
+}
 
 </script>
