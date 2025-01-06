@@ -19,7 +19,7 @@
                     <Icon
                         v-else
                         name="ri:user-line"
-                        class="size-6"
+                        class="size-8"
                     />
                     <span>
                         <template v-if="uiStore.isXmasTheme">Merry Xmas,</template>
