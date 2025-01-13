@@ -18,6 +18,7 @@
                     v-for="shift in shifts"
                     :key="shift.id"
                     :shift="shift"
+                    :is-tomorrow="true"
                     basic
                 />
             </div>

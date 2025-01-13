@@ -1,6 +1,6 @@
 <template>
     <div
-        class="flex gap-2 md:gap-8 w-full justify-between items-center text-lg "
+        class="flex gap-2 md:gap-8 w-full justify-between items-center text-lg relative"
         :class="[wrapperClasses, wrapperClockedOutClasses]"
     >
         <span
@@ -134,6 +134,11 @@ const props = defineProps({
     basic: {
         type: Boolean,
         default: false
+    },
+    isTomorrow: {
+        type: Boolean,
+        default: false,
+        required: false
     }
 })
 
@@ -159,11 +164,15 @@ const wrapperClasses = computed(() => {
 })
 
 const wrapperClockedOutClasses = computed(() => {
-    return data?.value?.clock_out ? ' opacity-30' : null
+    return data?.value?.clock_out ? ' opacity-30' : (noShow.value && !props.isTomorrow) ? 'opacity-30' : null
 })
 
 const userClasses = computed(() => {
     return props.basic ? 'basis-full' : 'basis-5/12 md:basis-7/12 '
+})
+
+const noShow = computed(() => {
+    return timeNow > extractHourAndMinute(props.shift.end_at)
 })
 
 </script>
