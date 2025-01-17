@@ -2,7 +2,7 @@
     <div class="relative">
         <div class="container">
             <h2 class="h1">
-                Daily Checks &amp; Forms
+                Checks &amp; Forms
             </h2>
         </div>
         <carousel-wrapper>
@@ -19,7 +19,10 @@
                             <h3 class="font-krete">{{ link.title }}</h3>
                         </div>
                     </span>
-                    <div class=" absolute top-0 right-0 -mt-2 mr-1">
+                    <div
+                        v-if="link.status"
+                        class="absolute top-0 right-0 -mt-2 mr-1"
+                    >
                         <checks-status
                             :is-complete="link.status.isComplete"
                             :due-time="link.status.dueTime"
@@ -86,7 +89,6 @@ const nav = computed(() => {
         {
             brow: 'Daily',
             title: 'Temperature Logs',
-            // icon: 'mingcute:low-temperature-line',
             status: {
                 isComplete: temperaturesHaveData.value,
                 dueTime: 8,
@@ -107,6 +109,18 @@ const nav = computed(() => {
             ]
         },
         {
+            brow: 'On Demand',
+            title: 'Maintenance Request',
+            class: 'order-last',
+            subnav: [
+                {
+                    title: 'Form',
+                    url: 'https://forms.gle/j1Qb8LNRyhZVuNBw9',
+                    blank: true
+                }
+            ]
+        },
+        {
             brow: 'Daily',
             title: 'Cash Breakdown',
             status: {
@@ -114,7 +128,6 @@ const nav = computed(() => {
                 dueTime: 18,
                 displayText: 'Due at 6pm'
             },
-            // icon: 'streamline:money-cash-coins-stack-accounting-billing-payment-stack-cash-coins-currency-money-finance',
             subnav: [
                 {
                     title: 'Form',
