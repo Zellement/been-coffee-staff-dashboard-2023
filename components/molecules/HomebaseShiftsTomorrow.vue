@@ -1,5 +1,5 @@
 <template>
-    <div class="w-full">
+    <div class="w-full container">
         <div class="flex w-full  flex-col gap-4">
             <h2 class="h1">
                 Tomorrow

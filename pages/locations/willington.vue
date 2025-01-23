@@ -18,12 +18,12 @@
                         :style="timerLineClass"
                     />
                 </button>
-                <div class="flex flex-col gap-4 w-full ">
-                    <div class="grid grid-cols-3">
-                        <homebase-shifts-today class="col-span-2" />
+                <div class="flex flex-col gap-4 w-full">
+                    <div class="grid lg:grid-cols-3">
+                        <homebase-shifts-today class="lg:col-span-2" />
                         <homebase-shifts-tomorrow
                             basic
-                            class="col-span-1"
+                            class="lg:col-span-1"
                         />
                     </div>
                     <sanity-table-bookings />
@@ -33,7 +33,7 @@
                     </div>
                     <advent-calendar class="my-8" />
                     <div class="container grid grid-cols-12 w-full">
-                        <div class="w-full grid grid-cols-2 gap-8 col-span-full flex-wrap justify-center ">
+                        <div class="w-full grid lg:grid-cols-2 gap-8 col-span-full flex-wrap justify-center ">
                             <sanity-notices
                                 fixed-height
                                 fixed-height-classes="h-[350px]"
