@@ -46,9 +46,29 @@
             />
         </span>
         <div v-if="!basic" class="flex-1 basis-4/12 text-xs md:text-base">
-            <div v-if="hasClockedInOrOut" class="flex gap-2 md:gap-8">
-                <!-- Normal shift, in & out -->
-                <template v-if="data?.clock_in && data?.clock_out">
+            <div class="flex gap-2 md:gap-8">
+                <!-- Is active/current shift -->
+                <div
+                    v-if="shiftCurrent"
+                    class="pill pill--clockin pill-xs md:pill--base relative inline-flex items-center gap-1"
+                >
+                    <Icon
+                        v-if="
+                            extractHourAndMinute(data?.clock_in) >
+                            extractHourAndMinute(shift.start_at)
+                        "
+                        name="material-symbols:assignment-late"
+                        class="absolute left-0 top-0 h-4 w-4 -translate-x-2/3 -translate-y-2/3 text-orange-400"
+                    />
+                    <Icon
+                        name="ph:arrow-square-in-bold"
+                        class="h-4 w-4 rotate-90"
+                    />
+                    <span>{{ extractHourAndMinute(data?.clock_in) }}</span>
+                </div>
+
+                <!-- Is normal ended shift, has clocked in and clocked out -->
+                <template v-else-if="shiftNormal">
                     <div
                         class="pill pill--clockin pill-xs md:pill--base relative inline-flex items-center gap-1"
                     >
@@ -73,18 +93,42 @@
                         <span>{{ extractHourAndMinute(data?.clock_out) }}</span>
                     </div>
                 </template>
+
+                <!-- Is late to clock in, current time is after their shift start -->
+
                 <div
-                    v-if="
-                        data?.clock_in &&
-                        !data?.clock_out &&
-                        timeNow > extractHourAndMinute(shift.end_at)
-                    "
-                    class="pill pill-xs md:pill--base pill--urgent inline-flex animate-bounce items-center gap-1"
+                    v-else-if="shiftLateClockIn"
+                    class="pill pill-xs md:pill--base pill--urgent !inline-flex !w-auto animate-bounce gap-1 self-start"
+                >
+                    <span class="text-xs tracking-tighter"
+                        >Please Clock In</span
+                    >
+                </div>
+
+                <!-- Has not clocked out, current time is after their shift end -->
+
+                <div
+                    v-else-if="shiftNotClockedOut"
+                    class="pill pill-xs md:pill--base pill--urgent !inline-flex !w-auto animate-bounce gap-1 self-start"
                 >
                     <span class="text-xs tracking-tighter"
                         >Please Clock Out</span
                     >
                 </div>
+            </div>
+
+            <!-- Has not clocked in, nor clocked out, and the current time is after their shift end -->
+
+            <!-- <div v-if="hasClockedInOrOut" class="flex gap-2 md:gap-8">
+                <template v-if="data?.clock_in && data?.clock_out">
+                    <div
+                        class="pill pill--orange pill-xs md:pill--base inline-flex items-center gap-1"
+                    >
+                        <Icon name="ph:arrow-square-out-bold" class="h-4 w-4" />
+                        <span>{{ extractHourAndMinute(data?.clock_out) }}</span>
+                    </div>
+                </template>
+
                 <div
                     v-else-if="
                         data?.clock_in &&
@@ -125,7 +169,7 @@
                 <div v-else class="text-[0.9em] italic opacity-50">
                     Starts: {{ extractHourAndMinute(shift.start_at) }}
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </template>
@@ -155,10 +199,6 @@ const { data } = await useFetch('/api/homebase-timecard', {
     query: { timecardId: props.shift.timecard_id }
 })
 
-const hasClockedInOrOut = computed(() => {
-    return data.value?.clock_in || data.value?.clock_out
-})
-
 const { extractHourAndMinute } = useDateUtils()
 
 const user = computed(() => {
@@ -177,7 +217,7 @@ const wrapperClasses = computed(() => {
 const wrapperClockedOutClasses = computed(() => {
     return data?.value?.clock_out
         ? ' opacity-30'
-        : noShow.value && !props.isTomorrow
+        : shiftNoShow.value && !props.isTomorrow
           ? 'opacity-30'
           : null
 })
@@ -186,7 +226,37 @@ const userClasses = computed(() => {
     return props.basic ? 'basis-full' : 'basis-5/12 md:basis-7/12 '
 })
 
-const noShow = computed(() => {
-    return timeNow > extractHourAndMinute(props.shift.end_at)
+// Shift types
+
+const shiftNormal: ComputedRef<boolean> = computed(() => {
+    return data.value?.clock_in && data.value?.clock_out
+})
+
+const shiftNotClockedOut: ComputedRef<boolean> = computed(() => {
+    return (
+        data?.value?.clock_in &&
+        !data?.value?.clock_out &&
+        timeNow > extractHourAndMinute(props.shift?.end_at)
+    )
+})
+
+const shiftLateClockIn: ComputedRef<boolean> = computed(() => {
+    return !data?.value?.clock_in
+})
+
+const shiftCurrent: ComputedRef<boolean> = computed(() => {
+    return (
+        data?.value?.clock_in &&
+        !data?.value?.clock_out &&
+        timeNow < extractHourAndMinute(props.shift?.end_at)
+    )
+})
+
+const shiftNoShow: ComputedRef<boolean> = computed(() => {
+    return (
+        !data?.value?.clock_in &&
+        !data?.value?.clock_out &&
+        timeNow > extractHourAndMinute(props.shift?.end_at)
+    )
 })
 </script>
