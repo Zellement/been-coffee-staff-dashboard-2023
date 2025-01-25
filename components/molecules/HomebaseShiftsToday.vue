@@ -12,11 +12,9 @@
                     v-if="shifts && shifts.length > 0"
                     class="flex flex-col gap-1 md:gap-2"
                 >
-                    <homebase-single-shift
-                        v-for="shift in shifts"
-                        :key="shift.id"
-                        :shift="shift"
-                    />
+                    <template v-for="shift in shifts" :key="shift.id">
+                        <homebase-single-shift :shift="shift" />
+                    </template>
                 </div>
                 <div v-else>
                     <Icon

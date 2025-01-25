@@ -21,7 +21,7 @@
                         height="32"
                         width="32"
                         loading="lazy"
-                        class="mr-2 flex-shrink-0 flex-grow rounded-full object-cover shadow-lg"
+                        class="hexagon-clip mr-2 flex-shrink-0 flex-grow rounded-full object-cover shadow-lg"
                     />
                     <Icon v-else name="ri:user-line" class="size-4" />
                     <span>

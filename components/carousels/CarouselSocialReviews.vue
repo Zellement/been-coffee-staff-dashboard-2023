@@ -30,9 +30,9 @@
                         :date-string="item.dateString"
                         :rating="item.rating"
                         :review-text="item.reviewText"
-                        :response="item.response"
+                        :response="item.response ?? ''"
                         :icon="item.icon"
-                        :title="item.title ?? null"
+                        :title="item.title ?? undefined"
                     >
                         <template #feedbackExtra>
                             <ul class="mt-6 italic">
@@ -62,17 +62,17 @@
     </div>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import { useReviewsStore } from '@/stores/reviews'
 const { shortDateConverter } = useDateUtils()
 const reviewsStore = useReviewsStore()
 const uiStore = useUiStore()
 
-const googleReviewData = computed(() => {
+const googleReviewData: ComputedRef<any> = computed(() => {
     return reviewsStore.reviewsGoogle
 })
 
-const tripadvisorData = computed(() => {
+const tripadvisorData: ComputedRef<any> = computed(() => {
     return reviewsStore.reviewsTripadvisor
 })
 
@@ -81,14 +81,32 @@ const toggleDetails = () => {
 }
 const showDetails = computed(() => uiStore.showReviewDetails)
 
-function normalizeGoogleReview(review) {
+interface NormalisedReview {
+    id: string
+    date: Date
+    dateString: string
+    rating: number
+    reviewText: string
+    user: string
+    source: string
+    icon: string
+    title?: string | undefined
+    details: {
+        food: string
+        service: string
+        atmosphere: string
+    } | null
+    response: string | null
+}
+
+const normalizeGoogleReview = (review: any): NormalisedReview => {
     return {
         id: review.review_id ?? '',
         date: new Date(review.iso_date),
         dateString: shortDateConverter(new Date(review.iso_date)),
         rating: review.rating,
         reviewText: review.snippet,
-        user: review.user?.name,
+        user: review.user?.name ?? '',
         source: 'Google',
         icon: 'mingcute:google-fill',
         details: {
@@ -100,14 +118,14 @@ function normalizeGoogleReview(review) {
     }
 }
 
-function normalizeTripadvisorReview(review) {
+const normalizeTripadvisorReview = (review: any): NormalisedReview => {
     return {
         id: review.id ?? '',
         date: new Date(review.published_date),
         dateString: shortDateConverter(new Date(review.published_date)),
         rating: review.rating,
         reviewText: review.text ?? '',
-        user: review.user.username,
+        user: review.user?.username ?? '',
         title: review.title,
         source: 'Tripadvisor',
         icon: 'simple-icons:tripadvisor',
@@ -116,11 +134,14 @@ function normalizeTripadvisorReview(review) {
     }
 }
 
-const allReviews = computed(() => {
+const allReviews: ComputedRef<NormalisedReview[] | []> = computed(() => {
     // Normalize the data
+    if (!googleReviewData.value) return []
     const normalizedGoogleReviews = googleReviewData.value?.map(
         normalizeGoogleReview
     )
+    if (!tripadvisorData.value) return []
+
     const normalizedTripadvisorReviews = tripadvisorData.value?.map(
         normalizeTripadvisorReview
     )
@@ -131,9 +152,9 @@ const allReviews = computed(() => {
     )
 
     // Sort the merged array by date in descending order
-    mergedReviews.sort((a, b) => b.date - a.date)
+    mergedReviews.sort((a: any, b: any) => b.date - a.date)
 
     // Return the sorted array
-    return mergedReviews
+    return mergedReviews ?? []
 })
 </script>

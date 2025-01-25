@@ -46,7 +46,7 @@
                                         .height(54)
                                         .url()
                                 "
-                                class="aspect-square rounded-full"
+                                class="hexagon-clip aspect-square rounded-full"
                                 width="54"
                                 height="54"
                                 loading="lazy"

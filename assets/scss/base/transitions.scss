@@ -1,13 +1,118 @@
+// .page-enter-active,
+// .page-leave-active {
+//     backface-visibility: hidden;
+//     @apply transition-all duration-700 ease-in-out;
+// }
 
+// .page-enter-from,
+// .page-leave-to {
+//     backface-visibility: hidden;
+//     @apply opacity-0 translate-x-full;
+// }
 
-.page-enter-active,
-.page-leave-active {
-    backface-visibility: hidden;
-    @apply transition-all duration-700 ease-in-out;
+/* --------------------------------------------
+VARS AND RE-USABLE CLASSES
+-------------------------------------------- */
+
+$easing: cubic-bezier(0.4, 0, 0.16, 1);
+
+@mixin animate-movement {
+    transition:
+        scale 700ms $easing,
+        opacity 700ms $easing,
+        transform 700ms $easing;
 }
 
-.page-enter-from,
-.page-leave-to {
-    backface-visibility: hidden;
-    @apply opacity-0 translate-x-full;
+/* --------------------------------------------
+PAGE
+-------------------------------------------- */
+
+.page-leave-active,
+.page-enter-active {
+    @apply opacity-0;
+    @include animate-movement;
+}
+
+.page-enter-to {
+    @apply opacity-100;
+    @include animate-movement;
+}
+
+/* --------------------------------------------
+NAME TRANSITIONS FOR TRANSITION COMPONENTS
+-------------------------------------------- */
+
+.form-message-enter-active,
+.form-message-leave-active {
+    @apply max-h-[500px] transition-all duration-300 ease-in-out;
+}
+
+.form-dropdown-enter-active,
+.form-dropdown-leave-active {
+    @apply max-h-80 transition-all duration-300 ease-in-out;
+}
+
+.form-message-enter-from,
+.form-message-leave-to,
+.form-dropdown-enter-from,
+.form-dropdown-leave-to {
+    @apply max-h-0 opacity-0;
+}
+
+/**
+ * Slide animation
+ */
+.slide-enter-active,
+.slide-leave-active {
+    @apply transition-transform duration-300 ease-in-out;
+}
+
+.slide-enter-from,
+.slide-leave-to {
+    @apply translate-x-full;
+}
+
+.slide-enter-to,
+.slide-leave-from {
+    @apply translate-x-0;
+}
+
+/**
+ * Fade animation
+ */
+.fade-enter-active,
+.fade-leave-active {
+    @apply transition-opacity duration-300 ease-in-out;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+    @apply opacity-0;
+}
+
+/** Slide down animation */
+.slide-down-enter-active,
+.slide-down-leave-active {
+    @apply grid overflow-hidden transition-all duration-500 ease-in-out;
+}
+
+.slide-down-enter-from,
+.slide-down-leave-to {
+    @apply grid-rows-0;
+}
+
+.slide-down-enter-to,
+.slide-down-leave-from {
+    @apply grid-rows-1;
+}
+
+/** placeholder image */
+.placeholder-image-enter-active,
+.placeholder-image-leave-active {
+    @apply transition-opacity duration-300 ease-in-out;
+}
+
+.placeholder-image-enter-from,
+.placeholder-image-leave-to {
+    @apply opacity-0 delay-100;
 }
