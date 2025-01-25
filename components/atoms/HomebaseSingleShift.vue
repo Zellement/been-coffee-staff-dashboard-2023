@@ -3,13 +3,19 @@
         <Transition name="fade">
             <div
                 v-if="!timecardData"
-                class="col-span-full col-start-1 row-start-1 bg-gradient-to-b p-0.5 dark:to-black"
+                class="col-span-full col-start-1 row-start-1"
             >
-                <Icon
-                    name="ph:spinner-gap-light"
-                    class="animate-spin text-lg"
-                />
-                <span class="ml-2 text-xs italic opacity-50">Loading ...</span>
+                <div class="flex animate-pulse items-center gap-2">
+                    <span
+                        class="hexagon-clip hexagon-clip flex size-8 flex-shrink-0 flex-grow-0 self-center rounded-full bg-white/10"
+                    >
+                        <Icon
+                            name="ph:spinner-gap-light"
+                            class="m-auto animate-spin text-lg"
+                        />
+                    </span>
+                    <span class="text-xs italic opacity-50"> Loading ... </span>
+                </div>
             </div>
         </Transition>
         <Transition name="fade">
