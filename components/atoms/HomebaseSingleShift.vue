@@ -53,16 +53,13 @@
                     class="pill pill--clockin pill-xs md:pill--base relative inline-flex items-center gap-1"
                 >
                     <Icon
-                        v-if="
-                            extractHourAndMinute(data?.clock_in) >
-                            extractHourAndMinute(shift.start_at)
-                        "
+                        v-if="shiftStartedLate"
                         name="material-symbols:assignment-late"
-                        class="absolute left-0 top-0 h-4 w-4 -translate-x-2/3 -translate-y-2/3 text-orange-400"
+                        class="absolute left-0 top-0 size-4 -translate-x-2/3 -translate-y-2/3 text-orange-400"
                     />
                     <Icon
                         name="ph:arrow-square-in-bold"
-                        class="h-4 w-4 rotate-90"
+                        class="size-4 rotate-90"
                     />
                     <span>{{ extractHourAndMinute(data?.clock_in) }}</span>
                 </div>
@@ -73,23 +70,20 @@
                         class="pill pill--clockin pill-xs md:pill--base relative inline-flex items-center gap-1"
                     >
                         <Icon
-                            v-if="
-                                extractHourAndMinute(data?.clock_in) >
-                                extractHourAndMinute(shift.start_at)
-                            "
+                            v-if="shiftStartedLate"
                             name="material-symbols:assignment-late"
-                            class="absolute left-0 top-0 h-4 w-4 -translate-x-2/3 -translate-y-2/3 text-orange-400"
+                            class="absolute left-0 top-0 size-4 -translate-x-2/3 -translate-y-2/3 text-orange-400"
                         />
                         <Icon
                             name="ph:arrow-square-in-bold"
-                            class="h-4 w-4 rotate-90"
+                            class="size-4 rotate-90"
                         />
                         <span>{{ extractHourAndMinute(data?.clock_in) }}</span>
                     </div>
                     <div
                         class="pill pill--orange pill-xs md:pill--base inline-flex items-center gap-1"
                     >
-                        <Icon name="ph:arrow-square-out-bold" class="h-4 w-4" />
+                        <Icon name="ph:arrow-square-out-bold" class="size-4" />
                         <span>{{ extractHourAndMinute(data?.clock_out) }}</span>
                     </div>
                 </template>
@@ -100,9 +94,20 @@
                     v-else-if="shiftLateClockIn"
                     class="pill pill-xs md:pill--base pill--urgent !inline-flex !w-auto animate-bounce gap-1 self-start"
                 >
-                    <span class="text-xs tracking-tighter"
-                        >Please Clock In</span
-                    >
+                    <span class="text-xs tracking-tighter">
+                        Please Clock In
+                    </span>
+                </div>
+
+                <!-- Upcoming shift -->
+
+                <div
+                    v-else-if="shiftUpcoming"
+                    class="!inline-flex !w-auto gap-1 self-start italic opacity-50"
+                >
+                    <span class="text-xs tracking-tighter">
+                        Starts: {{ extractHourAndMinute(shift.start_at) }}
+                    </span>
                 </div>
 
                 <!-- Has not clocked out, current time is after their shift end -->
@@ -124,7 +129,7 @@
                     <div
                         class="pill pill--orange pill-xs md:pill--base inline-flex items-center gap-1"
                     >
-                        <Icon name="ph:arrow-square-out-bold" class="h-4 w-4" />
+                        <Icon name="ph:arrow-square-out-bold" class="size-4" />
                         <span>{{ extractHourAndMinute(data?.clock_out) }}</span>
                     </div>
                 </template>
@@ -143,11 +148,11 @@
                             extractHourAndMinute(shift.start_at)
                         "
                         name="material-symbols:assignment-late"
-                        class="absolute left-0 top-0 h-4 w-4 -translate-x-2/3 -translate-y-2/3 text-orange-400"
+                        class="absolute left-0 top-0 size-4 -translate-x-2/3 -translate-y-2/3 text-orange-400"
                     />
                     <Icon
                         name="ph:arrow-square-in-bold"
-                        class="h-4 w-4 rotate-90"
+                        class="size-4 rotate-90"
                     />
                     <span>{{ extractHourAndMinute(data?.clock_in) }}</span>
                 </div>
@@ -163,7 +168,7 @@
                     v-else-if="timeNow > extractHourAndMinute(shift.start_at)"
                     class="inline-flex animate-bounce items-center gap-1 rounded bg-gradient-to-b from-red-700 to-red-800 px-2 py-1 text-xs text-red-300 md:text-base"
                 >
-                    <Icon name="material-symbols:warning" class="h-4 w-4" />
+                    <Icon name="material-symbols:warning" class="size-4" />
                     Please clock in
                 </div>
                 <div v-else class="text-[0.9em] italic opacity-50">
@@ -226,10 +231,24 @@ const userClasses = computed(() => {
     return props.basic ? 'basis-full' : 'basis-5/12 md:basis-7/12 '
 })
 
+const shiftStartedLate: ComputedRef<boolean> = computed(() => {
+    return (
+        extractHourAndMinute(data?.value?.clock_in) >
+        extractHourAndMinute(props.shift.start_at)
+    )
+})
+
 // Shift types
 
 const shiftNormal: ComputedRef<boolean> = computed(() => {
     return data.value?.clock_in && data.value?.clock_out
+})
+
+const shiftUpcoming: ComputedRef<boolean> = computed(() => {
+    return (
+        !data?.value?.clock_in &&
+        timeNow < extractHourAndMinute(props.shift?.start_at)
+    )
 })
 
 const shiftNotClockedOut: ComputedRef<boolean> = computed(() => {
@@ -241,7 +260,10 @@ const shiftNotClockedOut: ComputedRef<boolean> = computed(() => {
 })
 
 const shiftLateClockIn: ComputedRef<boolean> = computed(() => {
-    return !data?.value?.clock_in
+    return (
+        !data?.value?.clock_in &&
+        timeNow > extractHourAndMinute(props.shift?.start_at)
+    )
 })
 
 const shiftCurrent: ComputedRef<boolean> = computed(() => {
