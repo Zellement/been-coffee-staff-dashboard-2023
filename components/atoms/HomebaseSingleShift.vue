@@ -7,11 +7,11 @@
             >
                 <div class="flex animate-pulse items-center gap-2">
                     <span
-                        class="hexagon-clip hexagon-clip flex size-8 flex-shrink-0 flex-grow-0 self-center rounded-full bg-white/10"
+                        class="hexagon-clip hexagon-clip flex size-8 flex-shrink-0 flex-grow-0 self-center rounded-full bg-navy/30 dark:bg-white/10"
                     >
                         <Icon
                             name="ph:spinner-gap-light"
-                            class="m-auto animate-spin text-lg"
+                            class="m-auto animate-spin text-lg text-navy-500 dark:text-white"
                         />
                     </span>
                     <span class="text-xs italic opacity-50"> Loading ... </span>
@@ -166,60 +166,6 @@
                             >
                         </div>
                     </div>
-
-                    <!-- Has not clocked in, nor clocked out, and the current time is after their shift end -->
-
-                    <!-- <div v-if="hasClockedInOrOut" class="flex gap-2 md:gap-8">
-                <template v-if="timecardData?.clock_in && timecardData?.clock_out">
-                    <div
-                        class="pill pill--orange pill-xs md:pill--base inline-flex items-center gap-1"
-                    >
-                        <Icon name="ph:arrow-square-out-bold" class="size-4" />
-                        <span>{{ extractHourAndMinute(timecardData?.clock_out) }}</span>
-                    </div>
-                </template>
-
-                <div
-                    v-else-if="
-                        timecardData?.clock_in &&
-                        !timecardData?.clock_out &&
-                        timeNow < extractHourAndMinute(shift.end_at)
-                    "
-                    class="pill pill--clockin pill-xs md:pill--base relative inline-flex items-center gap-1"
-                >
-                    <Icon
-                        v-if="
-                            extractHourAndMinute(timecardData?.clock_in) >
-                            extractHourAndMinute(shift.start_at)
-                        "
-                        name="material-symbols:assignment-late"
-                        class="absolute left-0 top-0 size-4 -translate-x-2/3 -translate-y-2/3 text-orange-400"
-                    />
-                    <Icon
-                        name="ph:arrow-square-in-bold"
-                        class="size-4 rotate-90"
-                    />
-                    <span>{{ extractHourAndMinute(timecardData?.clock_in) }}</span>
-                </div>
-            </div>
-            <div v-else>
-                <div
-                    v-if="timeNow > extractHourAndMinute(shift.end_at)"
-                    class="text-[0.9em] italic opacity-50"
-                >
-                    No show
-                </div>
-                <div
-                    v-else-if="timeNow > extractHourAndMinute(shift.start_at)"
-                    class="inline-flex animate-bounce items-center gap-1 rounded bg-gradient-to-b from-red-700 to-red-800 px-2 py-1 text-xs text-red-300 md:text-base"
-                >
-                    <Icon name="material-symbols:warning" class="size-4" />
-                    Please clock in
-                </div>
-                <div v-else class="text-[0.9em] italic opacity-50">
-                    Starts: {{ extractHourAndMinute(shift.start_at) }}
-                </div>
-            </div> -->
                 </div>
             </div>
         </Transition>
