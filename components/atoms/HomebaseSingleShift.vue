@@ -274,7 +274,5 @@ const shiftNoShow: ComputedRef<boolean> = computed(() => {
     )
 })
 
-onMounted(async () => {
-    fetchData()
-})
+fetchData()
 </script>
