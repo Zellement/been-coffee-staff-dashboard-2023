@@ -177,20 +177,14 @@ import { useTeamStore } from '@/stores/team'
 
 const teamStore = useTeamStore()
 
-const props = defineProps({
-    shift: {
-        type: Object,
-        default: null
-    },
-    basic: {
-        type: Boolean,
-        default: false
-    },
-    isTomorrow: {
-        type: Boolean,
-        default: false,
-        required: false
-    }
+interface Props {
+    shift: any
+    basic: boolean
+    isTomorrow?: boolean
+}
+
+const props = withDefaults(defineProps<Props>(), {
+    isTomorrow: false
 })
 
 const timecardData = ref()
@@ -225,7 +219,7 @@ const wrapperClockedOutClasses = computed(() => {
           : null
 })
 
-const userClasses = computed(() => {
+const userClasses: ComputedRef<string> = computed(() => {
     return props.basic ? 'basis-full' : 'basis-5/12 md:basis-7/12 '
 })
 
@@ -280,7 +274,7 @@ const shiftNoShow: ComputedRef<boolean> = computed(() => {
     )
 })
 
-fetchData()
-// onMounted(async () => {
-// })
+onMounted(async () => {
+    fetchData()
+})
 </script>
