@@ -1,5 +1,5 @@
 <template>
-    <pre class="col-span-full">{{ allNotices }}</pre>
+    <!-- <pre class="col-span-full">{{ allNotices }}</pre> -->
     <div v-if="totalNotices > 0" class="relative p-4" :class="background">
         <span
             class="absolute right-0 top-0 z-10 flex -translate-y-1/2 gap-1 font-sans text-2xs"

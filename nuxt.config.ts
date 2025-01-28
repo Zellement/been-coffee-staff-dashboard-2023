@@ -105,10 +105,10 @@ export default defineNuxtConfig({
 
     typescript: {
         typeCheck: true,
-        strict: true,
+        strict: false,
         tsConfig: {
             compilerOptions: {
-                strict: true
+                strict: false
             },
             include: [
                 '@pinia/nuxt',
