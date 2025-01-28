@@ -190,6 +190,7 @@ const props = withDefaults(defineProps<Props>(), {
 const timecardData = ref()
 
 const fetchData = async () => {
+    if (!props.shift.timecard_id) return
     const { data } = await useFetch('/api/homebase-timecard', {
         query: { timecardId: props.shift.timecard_id }
     })
