@@ -1,18 +1,19 @@
 <template>
-    <header class="container fixed top-0 left-0 z-50 flex flex-row items-center justify-between w-full gap-2 pt-2">
+    <header
+        class="container fixed left-0 top-0 z-50 flex w-full flex-row items-center justify-between gap-2 pt-2"
+    >
         <site-logo />
         <button
-            class="relative overflow-hidden button button--sm"
+            class="button button--sm relative overflow-hidden"
             @click.prevent="shareBtn()"
         >
             <span
                 v-if="copied"
-                class="absolute inset-0 flex text-green-900 bg-green-500 pointer-events-none"
+                class="pointer-events-none absolute inset-0 flex bg-green-500 text-green-900"
             >
-                <span class="flex items-center justify-center w-full h-full">
-                    <Icon
-                        name="material-symbols-light:check-small-rounded"
-                    /> <span class="text-2xs">Copied</span>
+                <span class="flex h-full w-full items-center justify-center">
+                    <Icon name="material-symbols-light:check-small-rounded" />
+                    <span class="text-2xs">Copied</span>
                 </span>
             </span>
 
@@ -22,7 +23,6 @@
 </template>
 
 <script setup>
-
 import { useUiStore } from '@/stores/ui'
 
 const uiStore = useUiStore()
@@ -52,5 +52,4 @@ const changeBack = () => {
         copied.value = false
     }, 3000)
 }
-
 </script>

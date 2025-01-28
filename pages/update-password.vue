@@ -1,56 +1,43 @@
 <template>
     <div>
         <nuxt-layout name="login">
-            <div class="flex flex-col gap-4 mb-8">
-                <h1 class="h1">
-                    Been Coffee Dashboard
-                </h1>
-                <h2 class="h2">
-                    Update your password
-                </h2>
+            <div class="mb-8 flex flex-col gap-4">
+                <h1 class="h1">Been Coffee Dashboard</h1>
+                <h2 class="h2">Update your password</h2>
             </div>
-            <span
-                v-if="success"
-                class="flex flex-col gap-4 text-sm"
-            >
+            <span v-if="success" class="flex flex-col gap-4 text-sm">
                 <span class="mb-4 text-green-500">Password updated.</span>
-                <a
-                    class="button"
-                    href="/login"
-                >
-                    Login
-                </a>
+                <a class="button" href="/login"> Login </a>
             </span>
             <form
                 v-else
-                class="flex justify-center w-full"
+                class="flex w-full justify-center"
                 @submit.prevent="submitForm"
             >
-                <div class="flex flex-col w-full gap-4 ">
+                <div class="flex w-full flex-col gap-4">
                     <input
                         v-model="password"
                         type="password"
                         placeholder="Enter your new password"
                         required
                         class="p-2 dark:bg-navy-700"
-                    >
+                    />
                     <input
                         v-model="passwordagain"
                         type="password"
                         placeholder="Enter your new password again"
                         required
                         class="p-2 dark:bg-navy-700"
-                    >
-                    <span
-                        v-if="error"
-                        class="text-sm text-red-500"
-                    >{{ error }}</span>
+                    />
+                    <span v-if="error" class="text-sm text-red-500">{{
+                        error
+                    }}</span>
                     <input
                         type="submit"
-                        class="self-end cursor-pointer button"
+                        class="button cursor-pointer self-end"
                         :value="loading ? 'Bear with...' : 'Reset my password'"
                         :disabled="loading"
-                    >
+                    />
                 </div>
             </form>
         </nuxt-layout>
@@ -83,10 +70,9 @@ const submitForm = async () => {
     }
     error.value = ''
     try {
-        const { data, error } = await supabase.auth.updateUser(
-            {
-                password: password.value
-            })
+        const { data, error } = await supabase.auth.updateUser({
+            password: password.value
+        })
         console.log(data)
         if (error) throw error
         success.value = 'Sorted!'
@@ -94,5 +80,4 @@ const submitForm = async () => {
         alert(error.message)
     }
 }
-
 </script>

@@ -1,43 +1,35 @@
 <template>
     <div>
         <nuxt-layout name="login">
-            <div class="flex flex-col gap-4 mb-8">
-                <h1 class="h1">
-                    Been Coffee Dashboard
-                </h1>
-                <h2 class="h2">
-                    Reset your password
-                </h2>
+            <div class="mb-8 flex flex-col gap-4">
+                <h1 class="h1">Been Coffee Dashboard</h1>
+                <h2 class="h2">Reset your password</h2>
             </div>
-            <span
-                v-if="success"
-                class="text-sm text-green-500"
-            >{{ success }}</span>
+            <span v-if="success" class="text-sm text-green-500">{{
+                success
+            }}</span>
             <form
                 v-else
-                class="flex justify-center w-full "
+                class="flex w-full justify-center"
                 @submit.prevent="submitForm"
             >
-                <div class="flex flex-col w-full gap-4 ">
+                <div class="flex w-full flex-col gap-4">
                     <input
                         v-model="email"
                         type="email"
                         placeholder="Enter your email address"
                         required
                         class="p-2 dark:bg-navy-700"
-                    >
+                    />
                     <input
                         type="submit"
-                        class="self-end cursor-pointer button"
+                        class="button cursor-pointer self-end"
                         :value="loading ? 'Bear with...' : 'Send reset link'"
                         :disabled="loading"
-                    >
+                    />
                 </div>
             </form>
-            <div
-                v-if="state.error"
-                class="text-sm text-red-500"
-            >
+            <div v-if="state.error" class="text-sm text-red-500">
                 {{ state.error }}
             </div>
         </nuxt-layout>
@@ -67,15 +59,18 @@ definePageMeta({
 
 const submitForm = async () => {
     try {
-        const { error } = await supabase.auth.resetPasswordForEmail(email.value, {
-            redirectTo: `${config.public.SITE_URL}/update-password`
-        })
+        const { error } = await supabase.auth.resetPasswordForEmail(
+            email.value,
+            {
+                redirectTo: `${config.public.SITE_URL}/update-password`
+            }
+        )
         if (error) throw error
-        success.value = 'If this email exists, we will send you a password reset link. Check your inbox AND your junk/spam folders.'
+        success.value =
+            'If this email exists, we will send you a password reset link. Check your inbox AND your junk/spam folders.'
     } catch (error) {
         console.log(error)
         state.error = error.message
     }
 }
-
 </script>

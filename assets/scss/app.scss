@@ -1,15 +1,16 @@
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+@use 'tailwindcss/base';
+@use 'tailwindcss/components';
+@use 'tailwindcss/utilities';
 
-@import "base/main";
-@import "base/typography";
-@import "base/work-stack";
+@use 'base/main';
+@use 'base/typography';
+@use 'base/work-stack';
+@use 'base/transitions';
 
-@import "atoms/buttons";
-@import "atoms/pills";
+@use 'atoms/buttons';
+@use 'atoms/pills';
 
-@import "molecules/site-nav";
-@import "molecules/snowfall";
-@import "molecules/forms";
-@import "molecules/shift-leads";
+@use 'molecules/site-nav';
+@use 'molecules/snowfall';
+@use 'molecules/forms';
+@use 'molecules/shift-leads';

@@ -1,32 +1,36 @@
 body {
-    @apply   min-h-screen text-sm font-sans ;
+    @apply min-h-screen font-sans text-sm;
     &:before {
-        @apply h-12 content-[''] w-full block;
+        @apply block h-12 w-full content-[''];
     }
 }
 
 .card {
-    @apply flex flex-col items-start gap-2 bg-gradient-to-br shadow-lg rounded-lg p-4 relative;
+    @apply relative flex flex-col items-start gap-2 rounded-lg bg-gradient-to-br p-4 shadow-lg;
+}
+
+.hexagon-clip {
+    clip-path: polygon(15% 11%, 69% 0, 100% 38%, 89% 85%, 36% 98%, 0 57%);
 }
 
 html {
-    @apply text-gray-700 bg-gradient-to-r from-white to-seashell;
+    @apply bg-gradient-to-r from-white to-seashell text-gray-700;
 
     .card {
-        @apply from-white to-seashell-500 border border-stone-200;
+        @apply border border-stone-200 from-white to-seashell-500;
     }
 }
 
 html.dark {
-    @apply  text-gray-300 bg-gradient-to-l from-navy-700 to-navy-600;
+    @apply bg-gradient-to-l from-navy-700 to-navy-600 text-gray-300;
 
     .card {
-        @apply from-navy-700 to-navy-500 border border-navy-500;
+        @apply border border-navy-500 from-navy-700 to-navy-500;
     }
 }
 
 .container {
-    @apply px-2 mx-auto md:px-4 xl:px-6;
+    @apply mx-auto px-2 md:px-4 xl:px-6;
 }
 
 .generic-link {
@@ -35,21 +39,10 @@ html.dark {
 
 @layer utilities {
     .breakout {
-        @apply
-            relative
-            w-screen
-            left-1/2
-            right-1/2
-            ml-[-50vw]
-            mr-[-50vw]
-    ;
+        @apply relative left-1/2 right-1/2 ml-[-50vw] mr-[-50vw] w-screen;
 
         &--reset {
-            @apply
-                w-auto
-                left-auto
-                right-auto
-                mx-0;
+            @apply left-auto right-auto mx-0 w-auto;
         }
     }
 }

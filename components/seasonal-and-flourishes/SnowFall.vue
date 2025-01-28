@@ -1,5 +1,5 @@
 <template>
-    <div class="fixed inset-0 z-10 pointer-events-none">
+    <div class="pointer-events-none fixed inset-0 z-10">
         <div class="snow" />
         <div class="snow" />
         <div class="snow" />

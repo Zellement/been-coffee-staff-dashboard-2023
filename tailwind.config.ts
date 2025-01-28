@@ -1,5 +1,4 @@
 /** @type {import('tailwindcss').Config} */
-const defaultTheme = require('tailwindcss/defaultTheme')
 
 /**
  * Font 'Scale'
@@ -17,9 +16,7 @@ module.exports = {
         './components/**/*.{js,vue}',
         './layouts/**/*.{js,vue}'
     ],
-    safelist: [
-        'fill-current'
-    ],
+    safelist: ['fill-current'],
     theme: {
         fontSize: {
             '3xs': [
@@ -117,7 +114,11 @@ module.exports = {
         extend: {
             fontFamily: {
                 riverside: ['Riverside', 'Impact', 'sans-serif'],
-                'riverside-outline': ['Riverside Outline', 'Impact', 'sans-serif'],
+                'riverside-outline': [
+                    'Riverside Outline',
+                    'Impact',
+                    'sans-serif'
+                ],
                 krete: ['Krete', 'Georgia', 'serif'],
                 mono: ['Courier', 'monospace'],
                 sans: ['Roboto', 'sans-serif']
@@ -177,6 +178,27 @@ module.exports = {
                     950: '#EB7A00'
                 }
             },
+            gridTemplateColumns: {
+                '13': 'repeat(13, minmax(0, 1fr))',
+                '14': 'repeat(14, minmax(0, 1fr))',
+                '15': 'repeat(15, minmax(0, 1fr))'
+            },
+            gridTemplateRows: {
+                0: 'repeat(1, minmax(0, 0fr));',
+                '13': 'repeat(13, minmax(0, 1fr))',
+                '14': 'repeat(14, minmax(0, 1fr))',
+                '15': 'repeat(15, minmax(0, 1fr))'
+            },
+            gridColumn: {
+                'span-13': 'span 13 / span 13',
+                'span-14': 'span 14 / span 14',
+                'span-15': 'span 15 / span 15'
+            },
+            gridRow: {
+                'span-13': 'span 13 / span 13',
+                'span-14': 'span 14 / span 14',
+                'span-15': 'span 15 / span 15'
+            },
             zIndex: {
                 '-10': '-10',
                 '-20': '-20',
@@ -185,7 +207,6 @@ module.exports = {
                 50: '50',
                 60: '60'
             }
-
         }
     },
     plugins: [],

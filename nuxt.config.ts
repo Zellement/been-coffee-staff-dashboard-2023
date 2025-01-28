@@ -103,6 +103,23 @@ export default defineNuxtConfig({
         '@/assets/scss/app.scss'
     ],
 
+    typescript: {
+        typeCheck: true,
+        strict: true,
+        tsConfig: {
+            compilerOptions: {
+                strict: true
+            },
+            include: [
+                '@pinia/nuxt',
+                '@types/node',
+                '@nuxt/image',
+                '@nuxt/types',
+                '**/*.d.ts'
+            ]
+        }
+    },
+
     app: {
         head: {
             htmlAttrs: {
@@ -128,6 +145,7 @@ export default defineNuxtConfig({
     vite: {
         plugins: [
             eslintVitePlugin({
+                fix: true,
                 include: ['./**/*.vue']
             })
         ],
