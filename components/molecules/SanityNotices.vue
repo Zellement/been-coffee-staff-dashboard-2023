@@ -1,5 +1,5 @@
 <template>
-    <!-- <pre class="col-span-full">{{ allNotices }}</pre> -->
+    <pre class="col-span-full">{{ allNotices }}</pre>
     <div v-if="totalNotices > 0" class="relative p-4" :class="background">
         <span
             class="absolute right-0 top-0 z-10 flex -translate-y-1/2 gap-1 font-sans text-2xs"
@@ -10,6 +10,12 @@
             <span class="bg-navy-300 px-1 text-butterscotch-500"
                 >{{ currentNotice + 1 }} / {{ totalNotices }}</span
             >
+            <button
+                class="bg-navy-500 px-1 text-white"
+                @click.prevent="changeCurrentNotice"
+            >
+                Next
+            </button>
         </span>
         <div
             class="absolute bottom-0 right-0 top-0 h-full bg-white/10 transition-all"
@@ -26,6 +32,7 @@
             </h2>
 
             <div class="content">
+                {{ allNotices[currentNotice].alwaysShow }}
                 <PortableText
                     :value="allNotices[currentNotice].content"
                     :components="myPortableTextComponents"
@@ -54,7 +61,7 @@ defineProps({
 })
 
 const queryNotices = groq`
-*[_type == "notice" && (dateTime(_updatedAt) > dateTime(now()) - 60*60*24*10) || alwaysShow]|order(publishedAt desc)`
+*[_type == "notice" && (dateTime(_createdAt) > dateTime(now()) - 60*60*24*10) || alwaysShow]|order(publishedAt desc)`
 
 const sanity = useSanity()
 
@@ -133,14 +140,18 @@ const myPortableTextComponents = {
     }
 }
 
+const changeCurrentNotice = () => {
+    if (currentNotice.value === totalNotices.value - 1) {
+        currentNotice.value = 0
+    } else {
+        currentNotice.value++
+    }
+    timer.value = COUNTDOWN
+}
+
 watch(timer, (value) => {
     if (value === 0) {
-        timer.value = COUNTDOWN
-        if (currentNotice.value === totalNotices.value - 1) {
-            currentNotice.value = 0
-        } else {
-            currentNotice.value++
-        }
+        changeCurrentNotice()
     }
 })
 
