@@ -27,12 +27,12 @@ export default defineNuxtRouteMiddleware((to, from) => {
         })
     }
 
-    if (!from?.path) return
-    // Add QS from originating URL to forward on to
-    return navigateTo({
-        path: '/login',
-        query: {
-            url: from?.path
-        }
-    })
+    // if (!from && !from?.path) return
+    // // Add QS from originating URL to forward on to
+    // return navigateTo({
+    //     path: '/login',
+    //     query: {
+    //         url: from?.path
+    //     }
+    // })
 })
