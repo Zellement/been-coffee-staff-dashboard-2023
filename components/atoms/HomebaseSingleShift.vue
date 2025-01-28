@@ -13,7 +13,7 @@
                 height="32"
                 width="32"
                 loading="lazy"
-                class="rounded-full self-center flex-grow-0 flex-shrink-0"
+                class="hexagon-clip rounded-full self-center flex-grow-0 flex-shrink-0"
             >
             <div
                 v-else

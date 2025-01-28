@@ -14,7 +14,7 @@
                         height="32"
                         width="32"
                         loading="lazy"
-                        class="flex-grow flex-shrink-0 object-cover mr-2 rounded-full shadow-lg"
+                        class="flex-grow hexagon-clip flex-shrink-0 object-cover mr-2 rounded-full shadow-lg"
                     >
                     <Icon
                         v-else

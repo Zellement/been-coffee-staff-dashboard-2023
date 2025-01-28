@@ -9,6 +9,10 @@ body {
     @apply flex flex-col items-start gap-2 bg-gradient-to-br shadow-lg rounded-lg p-4 relative;
 }
 
+.hexagon-clip {
+    clip-path: polygon(15% 11%, 69% 0, 100% 38%, 89% 85%, 36% 98%, 0 57%);
+}
+
 html {
     @apply text-gray-700 bg-gradient-to-r from-white to-seashell;
 
