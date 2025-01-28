@@ -12,7 +12,13 @@ export default defineNuxtRouteMiddleware((to, from) => {
         return
     }
 
-    if (to.path === '/login' || to.path === '/forgot-password' || to.path === '/update-password' || to.fullPath === '/locations/willington') return
+    if (
+        to.path === '/login' ||
+        to.path === '/forgot-password' ||
+        to.path === '/update-password' ||
+        to.fullPath === '/locations/willington'
+    )
+        return
 
     // Prevent adding QS to index
     if (to.path === '/') {
@@ -21,11 +27,12 @@ export default defineNuxtRouteMiddleware((to, from) => {
         })
     }
 
+    if (!from?.path) return
     // Add QS from originating URL to forward on to
     return navigateTo({
         path: '/login',
         query: {
-            url: from.path
+            url: from?.path
         }
     })
 })
