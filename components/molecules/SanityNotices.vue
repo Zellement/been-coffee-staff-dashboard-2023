@@ -32,7 +32,6 @@
             </h2>
 
             <div class="content">
-                {{ allNotices[currentNotice].alwaysShow }}
                 <PortableText
                     :value="allNotices[currentNotice].content"
                     :components="myPortableTextComponents"
