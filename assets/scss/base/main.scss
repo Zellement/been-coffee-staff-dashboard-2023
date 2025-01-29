@@ -1,5 +1,5 @@
 body {
-    @apply   min-h-screen text-sm font-sans ;
+    @apply min-h-screen text-sm font-sans ;
     &:before {
         @apply h-12 content-[''] w-full block;
     }
