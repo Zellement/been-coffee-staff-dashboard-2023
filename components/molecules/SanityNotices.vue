@@ -5,28 +5,60 @@
         class="p-4 relative"
         :class="background"
     >
-        <span class="absolute z-10 flex gap-1 top-0 right-0 -translate-y-1/2 text-2xs font-sans">
-            <span class="px-1 bg-navy-300 text-butterscotch-500">{{ shortDateConverter(allNotices[currentNotice].publishedAt) }}</span>
-            <span class="px-1 bg-navy-300 text-butterscotch-500">{{ currentNotice + 1 }} / {{ totalNotices }}</span>
+        <span class="absolute z-10 flex gap-1 top-0 right-2 -translate-y-1/2 text-2xs font-sans">
+            <span class="bg-navy-300 flex rounded-full px-2 text-butterscotch-500">
+                <span class="my-auto">{{ shortDateConverter(allNotices[currentNotice].publishedAt) }}</span>
+            </span>
+            <span class="bg-navy-300 flex rounded-full px-2 text-butterscotch-500">
+                <span class="my-auto">{{ currentNotice + 1 }} / {{ totalNotices }}</span>
+            </span>
+            <button
+                class="button button--sm !gap-0 bg-navy !text-white"
+                @click.prevent="goPrev"
+            >
+
+                <Icon
+                    name="ic:twotone-chevron-left"
+                    class="size-4"
+                />
+                Prev
+            </button>
+            <button
+                class="button button--sm !gap-0 bg-navy !text-white"
+                @click.prevent="goNext"
+            >
+                Next
+
+                <Icon
+                    name="ic:twotone-chevron-right"
+                    class="size-4"
+                />
+            </button>
         </span>
         <div
             class="absolute top-0 bottom-0 transition-all right-0 h-full bg-white/10"
             :style="bgTimerClasses"
         />
         <div
-            class="relative"
+            class="relative flex flex-col"
             :class="fixedHeight ? `${fixedHeightClasses} overflow-y-scroll` : null"
         >
             <h2 class="font-riverside text-xl mb-2">
                 {{ allNotices[currentNotice].title }}
             </h2>
 
-            <div class="content">
+            <div class="content mb-4">
                 <PortableText
                     :value="allNotices[currentNotice].content"
                     :components="myPortableTextComponents"
                 />
             </div>
+            <span
+                v-if="allNotices[currentNotice].alwaysShow"
+                class="text-2xs mt-auto opacity-50  inline-block border-current border px-1.5 py-0.5 self-start w-auto"
+            >
+                This notice is pinned
+            </span>
         </div>
     </div>
 </template>
@@ -106,14 +138,26 @@ const myPortableTextComponents = {
 
 }
 
+const goNext = () => {
+    if (currentNotice.value === totalNotices.value - 1) {
+        currentNotice.value = 0
+    } else {
+        currentNotice.value++
+    }
+}
+
+const goPrev = () => {
+    if (currentNotice.value === 0) {
+        currentNotice.value = totalNotices.value - 1
+    } else {
+        currentNotice.value--
+    }
+}
+
 watch(timer, (value) => {
     if (value === 0) {
         timer.value = COUNTDOWN
-        if (currentNotice.value === totalNotices.value - 1) {
-            currentNotice.value = 0
-        } else {
-            currentNotice.value++
-        }
+        goNext()
     }
 })
 
