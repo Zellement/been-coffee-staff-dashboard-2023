@@ -168,6 +168,7 @@ const goNext = () => {
     } else {
         currentNotice.value++
     }
+    timer.value = COUNTDOWN
 }
 
 const goPrev = () => {
@@ -176,6 +177,7 @@ const goPrev = () => {
     } else {
         currentNotice.value--
     }
+    timer.value = COUNTDOWN
 }
 
 watch(timer, (value) => {

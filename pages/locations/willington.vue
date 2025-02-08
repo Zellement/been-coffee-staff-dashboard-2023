@@ -21,19 +21,19 @@
                     />
                 </button>
                 <div class="flex w-full flex-col gap-4">
-                    <div class="grid lg:grid-cols-3">
-                        <homebase-shifts-today class="lg:col-span-2" />
-                        <homebase-shifts-tomorrow basic class="lg:col-span-1" />
+                    <div class="grid gap-4 md:grid-cols-3">
+                        <homebase-shifts-today class="md:col-span-2" />
+                        <homebase-shifts-tomorrow basic class="md:col-span-1" />
                     </div>
                     <sanity-table-bookings />
-                    <div class="grid grid-cols-1">
+                    <div class="grid grid-cols-1 gap-4">
                         <carousel-checks basic />
                         <carousel-routine-tasks basic />
                     </div>
                     <advent-calendar class="my-8" />
                     <div class="container grid w-full grid-cols-12">
                         <div
-                            class="col-span-full grid w-full grid-cols-2 flex-wrap justify-center gap-8"
+                            class="col-span-full grid w-full gap-8 md:grid-cols-2"
                         >
                             <sanity-notices
                                 fixed-height
