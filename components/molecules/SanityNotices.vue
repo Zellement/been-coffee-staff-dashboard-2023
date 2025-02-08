@@ -1,26 +1,28 @@
 <template>
     <!-- <pre class="col-span-full">{{ allNotices }}</pre> -->
-    <div
-        v-if="totalNotices > 0"
-        class="p-4 relative"
-        :class="background"
-    >
-        <span class="absolute z-10 flex gap-1 top-0 right-2 -translate-y-1/2 text-2xs font-sans">
-            <span class="bg-navy-300 flex rounded-full px-2 text-butterscotch-500">
-                <span class="my-auto">{{ shortDateConverter(allNotices[currentNotice].publishedAt) }}</span>
+    <div v-if="totalNotices > 0" class="relative p-4" :class="background">
+        <span
+            class="absolute right-2 top-0 z-10 flex -translate-y-1/2 gap-1 font-sans text-2xs"
+        >
+            <span
+                class="flex rounded-full bg-navy-300 px-2 text-butterscotch-500"
+            >
+                <span class="my-auto">{{
+                    shortDateConverter(allNotices[currentNotice].publishedAt)
+                }}</span>
             </span>
-            <span class="bg-navy-300 flex rounded-full px-2 text-butterscotch-500">
-                <span class="my-auto">{{ currentNotice + 1 }} / {{ totalNotices }}</span>
+            <span
+                class="flex rounded-full bg-navy-300 px-2 text-butterscotch-500"
+            >
+                <span class="my-auto"
+                    >{{ currentNotice + 1 }} / {{ totalNotices }}</span
+                >
             </span>
             <button
                 class="button button--sm !gap-0 bg-navy !text-white"
                 @click.prevent="goPrev"
             >
-
-                <Icon
-                    name="ic:twotone-chevron-left"
-                    class="size-4"
-                />
+                <Icon name="ic:twotone-chevron-left" class="size-4" />
                 Prev
             </button>
             <button
@@ -29,21 +31,20 @@
             >
                 Next
 
-                <Icon
-                    name="ic:twotone-chevron-right"
-                    class="size-4"
-                />
+                <Icon name="ic:twotone-chevron-right" class="size-4" />
             </button>
         </span>
         <div
-            class="absolute top-0 bottom-0 transition-all right-0 h-full bg-white/10"
+            class="absolute bottom-0 right-0 top-0 h-full bg-white/10 transition-all"
             :style="bgTimerClasses"
         />
         <div
             class="relative flex flex-col"
-            :class="fixedHeight ? `${fixedHeightClasses} overflow-y-scroll` : null"
+            :class="
+                fixedHeight ? `${fixedHeightClasses} overflow-y-scroll` : null
+            "
         >
-            <h2 class="font-riverside text-xl mb-2">
+            <h2 class="mb-2 font-riverside text-xl">
                 {{ allNotices[currentNotice].title }}
             </h2>
 
@@ -55,7 +56,7 @@
             </div>
             <span
                 v-if="allNotices[currentNotice].alwaysShow"
-                class="text-2xs mt-auto opacity-50  inline-block border-current border px-1.5 py-0.5 self-start w-auto"
+                class="mt-auto inline-block w-auto self-start border border-current px-1.5 py-0.5 text-2xs opacity-50"
             >
                 This notice is pinned
             </span>
@@ -86,7 +87,9 @@ const queryNotices = groq`
 
 const sanity = useSanity()
 
-const { data } = await useAsyncData('queryAllNotices', () => sanity.fetch(queryNotices))
+const { data } = await useAsyncData('queryAllNotices', () =>
+    sanity.fetch(queryNotices)
+)
 
 const allNotices = computed(() => {
     return data.value
@@ -103,7 +106,9 @@ const timer = ref(COUNTDOWN)
 const currentNotice = ref(0)
 
 const background = computed(() => {
-    return currentNotice.value % 2 === 0 ? 'bg-tuscany-500 text-white' : 'bg-butterscotch-500 text-navy-500'
+    return currentNotice.value % 2 === 0
+        ? 'bg-tuscany-500 text-white'
+        : 'bg-butterscotch-500 text-navy-500'
 })
 
 const bgTimerClasses = computed(() => {
@@ -115,7 +120,10 @@ const myPortableTextComponents = {
         fileVideo: ({ value }) => {
             // console.log('value', value)
 
-            const fullAsset = getFileAsset(value, { projectId: 'mxklvbih', dataset: 'production' })
+            const fullAsset = getFileAsset(value, {
+                projectId: 'mxklvbih',
+                dataset: 'production'
+            })
             // console.log(fullAsset)
 
             if (!fullAsset.url) {
@@ -123,19 +131,35 @@ const myPortableTextComponents = {
                 return null
             }
 
-            return h('video', { class: 'w-auto h-full max-h-[80dvh] mx-auto', controls: true }, [
-                h('source', { src: fullAsset.url, type: `video/${fullAsset.extension}` }),
-                'Your browser does not support the video tag.'
-            ])
+            return h(
+                'video',
+                {
+                    class: 'w-auto h-full max-h-[80dvh] mx-auto',
+                    controls: true
+                },
+                [
+                    h('source', {
+                        src: fullAsset.url,
+                        type: `video/${fullAsset.extension}`
+                    }),
+                    'Your browser does not support the video tag.'
+                ]
+            )
         },
         image: ({ value }) => {
-            const fullAsset = getImageAsset(value, { projectId: 'mxklvbih', dataset: 'production' })
+            const fullAsset = getImageAsset(value, {
+                projectId: 'mxklvbih',
+                dataset: 'production'
+            })
             const image = `${fullAsset.url}?h=1000&w=1000&fit=max&fm=webp`
 
-            return h(NuxtPicture, { src: image, sizes: '336px', class: 'block w-full' })
+            return h(NuxtPicture, {
+                src: image,
+                sizes: '336px',
+                class: 'block w-full'
+            })
         }
     }
-
 }
 
 const goNext = () => {
@@ -168,5 +192,4 @@ onMounted(() => {
         }, 1000)
     }
 })
-
 </script>

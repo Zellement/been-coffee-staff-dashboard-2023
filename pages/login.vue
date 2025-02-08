@@ -1,18 +1,14 @@
 <template>
     <div>
         <nuxt-layout name="login">
-            <div class="flex flex-col gap-4 mb-8">
-                <h1 class="h1">
-                    Been Coffee Dashboard
-                </h1>
-                <h2 class="h2">
-                    Login
-                </h2>
+            <div class="mb-8 flex flex-col gap-4">
+                <h1 class="h1">Been Coffee Dashboard</h1>
+                <h2 class="h2">Login</h2>
             </div>
             <auth-login />
             <nuxt-link
                 to="/forgot-password"
-                class="block mt-4 text-xs text-right"
+                class="mt-4 block text-right text-xs"
             >
                 Forgot your password?
             </nuxt-link>
@@ -21,7 +17,6 @@
 </template>
 
 <script setup>
-
 useHead({
     title: 'Login to the Been Staff Dashboard'
 })
@@ -29,5 +24,4 @@ useHead({
 definePageMeta({
     layout: false
 })
-
 </script>

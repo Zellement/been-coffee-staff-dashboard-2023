@@ -1,5 +1,4 @@
 /** @type {import('tailwindcss').Config} */
-const defaultTheme = require('tailwindcss/defaultTheme')
 
 /**
  * Font 'Scale'
@@ -17,9 +16,7 @@ module.exports = {
         './components/**/*.{js,vue}',
         './layouts/**/*.{js,vue}'
     ],
-    safelist: [
-        'fill-current'
-    ],
+    safelist: ['fill-current'],
     theme: {
         fontSize: {
             '3xs': [
@@ -117,7 +114,11 @@ module.exports = {
         extend: {
             fontFamily: {
                 riverside: ['Riverside', 'Impact', 'sans-serif'],
-                'riverside-outline': ['Riverside Outline', 'Impact', 'sans-serif'],
+                'riverside-outline': [
+                    'Riverside Outline',
+                    'Impact',
+                    'sans-serif'
+                ],
                 krete: ['Krete', 'Georgia', 'serif'],
                 mono: ['Courier', 'monospace'],
                 sans: ['Roboto', 'sans-serif']
@@ -185,7 +186,6 @@ module.exports = {
                 50: '50',
                 60: '60'
             }
-
         }
     },
     plugins: [],

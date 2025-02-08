@@ -8,7 +8,7 @@ export const useUserStore = defineStore('user', {
         keyholderLayout: null
     }),
     actions: {
-        async setUserData () {
+        async setUserData() {
             const client = useSupabaseClient()
             const { data } = await client
                 .from('profiles')
@@ -38,7 +38,7 @@ export const useUserStore = defineStore('user', {
                 this.userSanityData = data
             }
         },
-        toggleKeyholderLayout (value) {
+        toggleKeyholderLayout(value) {
             this.keyholderLayout = value ?? !this.keyholderLayout
         }
     }

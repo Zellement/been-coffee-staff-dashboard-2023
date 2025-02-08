@@ -1,19 +1,17 @@
 <template>
     <div class="relative">
         <div class="container">
-            <h2 class="h1">
-                Checks &amp; Forms
-            </h2>
+            <h2 class="h1">Checks &amp; Forms</h2>
         </div>
         <carousel-wrapper>
             <li
                 v-for="link in nav"
                 :key="link.url"
-                class="w-64 min-w-64 card"
+                class="card w-64 min-w-64"
                 :class="link.class"
             >
-                <div class="flex justify-between items-center w-full gap-4">
-                    <span class="flex items-center gap-2 relative">
+                <div class="flex w-full items-center justify-between gap-4">
+                    <span class="relative flex items-center gap-2">
                         <div class="flex flex-col">
                             <span class="text-2xs">{{ link.brow }}</span>
                             <h3 class="font-krete">{{ link.title }}</h3>
@@ -21,7 +19,7 @@
                     </span>
                     <div
                         v-if="link.status"
-                        class="absolute top-0 right-0 -mt-2 mr-1"
+                        class="absolute right-0 top-0 -mt-2 mr-1"
                     >
                         <checks-status
                             :is-complete="link.status.isComplete"
@@ -32,24 +30,21 @@
                 </div>
                 <ul
                     v-if="!basic"
-                    class="flex flex-row items-center gap-2 text-2xs mt-auto"
+                    class="mt-auto flex flex-row items-center gap-2 text-2xs"
                 >
-                    <li
-                        v-for="subnav in link.subnav"
-                        :key="subnav.url"
-                    >
+                    <li v-for="subnav in link.subnav" :key="subnav.url">
                         <nuxt-link
                             v-if="subnav.url"
                             :to="subnav.url"
                             :target="subnav.blank ? '_blank' : null"
-                            class="flex flex-row button items-center gap-1 p-0.5 px-1"
+                            class="button flex flex-row items-center gap-1 p-0.5 px-1"
                         >
                             {{ subnav.title }}
 
                             <Icon
                                 v-if="subnav.blank"
                                 name="iconamoon:link-external-fill"
-                                class="w-3 h-3 transition-all duration-300 hover:rotate-90"
+                                class="h-3 w-3 transition-all duration-300 hover:rotate-90"
                             />
                         </nuxt-link>
                     </li>
@@ -85,7 +80,6 @@ const temperaturesOrder = computed(() => {
 
 const nav = computed(() => {
     return [
-
         {
             brow: 'Daily',
             title: 'Temperature Logs',
@@ -99,7 +93,6 @@ const nav = computed(() => {
                 {
                     title: 'Form',
                     url: '/forms/daily-temperature-logs'
-
                 },
                 {
                     title: 'Responses',
@@ -132,11 +125,9 @@ const nav = computed(() => {
                 {
                     title: 'Form',
                     url: '/forms/daily-cash-breakdown'
-
                 }
             ]
         }
     ]
 })
-
 </script>

@@ -25,7 +25,6 @@ export const useDateUtils = () => {
      * @returns {string} - Thursday, 04 January 2024
      */
     const fullDateConverter = (passedDate: Date): string => {
-
         const date = new Date(passedDate)
         const monthArray: string[] = [
             'January',
@@ -59,15 +58,15 @@ export const useDateUtils = () => {
     }
 
     const extractHourAndMinute = (dateString: Date): string => {
-        const date = new Date(dateString);
-        const hours = date.getHours();
-        const minutes = date.getMinutes();
-    
+        const date = new Date(dateString)
+        const hours = date.getHours()
+        const minutes = date.getMinutes()
+
         // Format hours and minutes to ensure they are always two digits
-        const formattedHours = hours.toString().padStart(2, '0');
-        const formattedMinutes = minutes.toString().padStart(2, '0');
-    
-        return `${formattedHours}:${formattedMinutes}`;
+        const formattedHours = hours.toString().padStart(2, '0')
+        const formattedMinutes = minutes.toString().padStart(2, '0')
+
+        return `${formattedHours}:${formattedMinutes}`
     }
 
     const getTodaysDateInUrlEncodedFormat = (date: Date) => {

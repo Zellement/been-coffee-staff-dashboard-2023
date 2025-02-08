@@ -12,7 +12,13 @@ export default defineNuxtRouteMiddleware((to, from) => {
         return
     }
 
-    if (to.path === '/login' || to.path === '/forgot-password' || to.path === '/update-password' || to.fullPath === '/locations/willington') return
+    if (
+        to.path === '/login' ||
+        to.path === '/forgot-password' ||
+        to.path === '/update-password' ||
+        to.fullPath === '/locations/willington'
+    )
+        return
 
     // Prevent adding QS to index
     if (to.path === '/') {

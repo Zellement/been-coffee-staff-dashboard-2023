@@ -16,36 +16,36 @@ export const useUiStore = defineStore('ui', {
         showReviewDetails: false
     }),
     getters: {
-        fixBody () {
+        fixBody() {
             return this.showSearchResults || this.showProfileData
         },
-        isXmasTheme () {
+        isXmasTheme() {
             return this.theme === 'xmas'
         },
-        isNewYearTheme () {
+        isNewYearTheme() {
             return this.theme === 'newyear'
         },
-        isEasterTheme () {
+        isEasterTheme() {
             return this.theme === 'easter'
         }
     },
     actions: {
-        setOriginalUrl (url) {
+        setOriginalUrl(url) {
             this.originalUrl = url
         },
-        toggleSearchResults (value) {
+        toggleSearchResults(value) {
             this.showSearchResults = value ?? !this.showSearchResults
         },
-        toggleProfileData () {
+        toggleProfileData() {
             this.showProfileData = !this.showProfileData
         },
-        toggleCheckModal () {
+        toggleCheckModal() {
             this.showCheckModal = !this.showCheckModal
         },
-        toggleShowReviewDetails () {
+        toggleShowReviewDetails() {
             this.showReviewDetails = !this.showReviewDetails
         },
-        setTheme (theme) {
+        setTheme(theme) {
             if (theme) {
                 this.theme = theme
                 return
@@ -58,52 +58,51 @@ export const useUiStore = defineStore('ui', {
             })
 
             switch (thisMonth) {
-            case 'Dec':
-                this.theme = 'xmas'
-                this.themeToggleBtn = {
-                    show: true,
-                    text: 'Bah Humbug',
-                    icon: 'tabler:christmas-tree'
-                }
-                break
-            case 'Jan':
-                if (thisDay < 8) {
-                    this.theme = 'newyear'
+                case 'Dec':
+                    this.theme = 'xmas'
                     this.themeToggleBtn = {
                         show: true,
-                        text: 'Hide the fireworks!',
-                        icon: 'mingcute:firework-fill'
+                        text: 'Bah Humbug',
+                        icon: 'tabler:christmas-tree'
                     }
-                }
-                break
-            case 'Mar':
-                if (thisDay > 20) {
-                    this.theme = 'easter'
+                    break
+                case 'Jan':
+                    if (thisDay < 8) {
+                        this.theme = 'newyear'
+                        this.themeToggleBtn = {
+                            show: true,
+                            text: 'Hide the fireworks!',
+                            icon: 'mingcute:firework-fill'
+                        }
+                    }
+                    break
+                case 'Mar':
+                    if (thisDay > 20) {
+                        this.theme = 'easter'
+                        this.themeToggleBtn = {
+                            show: true,
+                            text: 'Bunnies give me nightmares',
+                            icon: 'mdi:rabbit'
+                        }
+                    }
+                    break
+                case 'Apr':
+                    if (thisDay < 22) {
+                        this.theme = 'easter'
+                        this.themeToggleBtn = {
+                            show: true,
+                            text: 'Bunnies give me nightmares',
+                            icon: 'mdi:rabbit'
+                        }
+                    }
+                    break
+                default:
+                    this.theme = 'standard'
                     this.themeToggleBtn = {
-                        show: true,
-                        text: 'Bunnies give me nightmares',
-                        icon: 'mdi:rabbit'
+                        show: false,
+                        text: null
                     }
-                }
-                break
-            case 'Apr':
-                if (thisDay < 22) {
-                    this.theme = 'easter'
-                    this.themeToggleBtn = {
-                        show: true,
-                        text: 'Bunnies give me nightmares',
-                        icon: 'mdi:rabbit'
-                    }
-                }
-                break
-            default:
-                this.theme = 'standard'
-                this.themeToggleBtn = {
-                    show: false,
-                    text: null
-                }
             }
         }
-
     }
 })
