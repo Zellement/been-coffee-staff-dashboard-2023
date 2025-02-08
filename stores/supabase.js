@@ -9,21 +9,29 @@ export const useSupabaseStore = defineStore('supabase', {
         daily_cash_breakdown_time: null
     }),
     getters: {
-        getDailyTemperaturesTime () {
-            return new Date(this.daily_temperatures_time).toTimeString().slice(0, 5)
+        getDailyTemperaturesTime() {
+            return new Date(this.daily_temperatures_time)
+                .toTimeString()
+                .slice(0, 5)
         },
-        getDailyCashBreakdownTime () {
-            return new Date(this.daily_cash_breakdown_time).toTimeString().slice(0, 5)
+        getDailyCashBreakdownTime() {
+            return new Date(this.daily_cash_breakdown_time)
+                .toTimeString()
+                .slice(0, 5)
         },
-        getTotalIncompleteChecks () {
+        getTotalIncompleteChecks() {
             let total = 0
-            if (!this.daily_temperatures) { total++ }
-            if (!this.daily_cash_breakdown) { total++ }
+            if (!this.daily_temperatures) {
+                total++
+            }
+            if (!this.daily_cash_breakdown) {
+                total++
+            }
             return total
         }
     },
     actions: {
-        async fetchAllChecks () {
+        async fetchAllChecks() {
             this.loading = true
             const client = useSupabaseClient()
             const { data } = await client.from('checks').select('*')
@@ -34,7 +42,7 @@ export const useSupabaseStore = defineStore('supabase', {
             this.loading = false
             return data
         },
-        async setCheck (check, value) {
+        async setCheck(check, value) {
             this.loading = true
             this[check] = value
             const client = useSupabaseClient()

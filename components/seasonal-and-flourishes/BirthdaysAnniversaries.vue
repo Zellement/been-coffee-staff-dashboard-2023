@@ -1,32 +1,41 @@
 <template>
-    <div
-        v-if="hasTeamMembersToShow"
-        class="relative"
-    >
-        <div class="px-2 overflow-hidden md:px-4">
-            <h2 class="mb-8 h1">
-                Celebrations today!
-            </h2>
-            <div class="grid grid-cols-2 gap-4 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6">
+    <div v-if="hasTeamMembersToShow" class="relative">
+        <div class="overflow-hidden px-2 md:px-4">
+            <h2 class="h1 mb-8">Celebrations today!</h2>
+            <div
+                class="grid grid-cols-2 gap-4 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6"
+            >
                 <div
                     v-for="member in teamWithBirthdays"
                     :key="member.id"
                     class="relative flex w-full overflow-hidden"
                 >
-                    <div class="flex w-full overflow-hidden relative aspect-[4/5]">
-                        <div class="absolute bottom-0 left-0 right-0 w-full h-1/2 bg-navy-500/50">
+                    <div
+                        class="relative flex aspect-[4/5] w-full overflow-hidden"
+                    >
+                        <div
+                            class="absolute bottom-0 left-0 right-0 h-1/2 w-full bg-navy-500/50"
+                        >
                             <lottie-happy-birthday
                                 :key="`lottie___birthday__${member.id}`"
                             />
                         </div>
-                        <span class="absolute bottom-0 p-4 text-3xl text-white -translate-x-1/2 left-1/2 left font-riverside">{{ member.name }}</span>
+                        <span
+                            class="left absolute bottom-0 left-1/2 -translate-x-1/2 p-4 font-riverside text-3xl text-white"
+                            >{{ member.name }}</span
+                        >
                         <img
-                            :src="$urlFor(member.image).width(600).height(1000).url()"
+                            :src="
+                                $urlFor(member.image)
+                                    .width(600)
+                                    .height(1000)
+                                    .url()
+                            "
                             height="400"
                             width="700"
                             loading="lazy"
-                            class="object-cover w-full h-full"
-                        >
+                            class="h-full w-full object-cover"
+                        />
                     </div>
                 </div>
                 <div
@@ -34,26 +43,42 @@
                     :key="member.id"
                     class="relative flex w-full overflow-hidden"
                 >
-                    <div class="flex w-full overflow-hidden relative aspect-[4/5]">
-                        <div class="absolute bottom-0 left-0 right-0 w-full h-2/3 bg-gradient-to-t from-seashell-600">
+                    <div
+                        class="relative flex aspect-[4/5] w-full overflow-hidden"
+                    >
+                        <div
+                            class="absolute bottom-0 left-0 right-0 h-2/3 w-full bg-gradient-to-t from-seashell-600"
+                        >
                             <lottie-celebration
                                 :key="`lottie__celeb__${member.id}`"
                                 class=""
                             />
                         </div>
                         <img
-                            :src="$urlFor(member.image).width(600).height(1000).url()"
+                            :src="
+                                $urlFor(member.image)
+                                    .width(600)
+                                    .height(1000)
+                                    .url()
+                            "
                             height="400"
                             width="700"
                             loading="lazy"
-                            class="object-cover w-full h-full"
+                            class="h-full w-full object-cover"
+                        />
+                        <span
+                            class="absolute bottom-0 right-0 flex aspect-square w-12 flex-col rounded-tl-full bg-navy p-px pr-2 text-right font-riverside text-2xs leading-none text-butterscotch"
                         >
-                        <span class="absolute bottom-0 right-0 flex flex-col w-12 p-px pr-2 leading-none text-right rounded-tl-full text-2xs font-riverside bg-navy text-butterscotch aspect-square">
-                            <span class="flex flex-col my-auto ml-auto">
+                            <span class="my-auto ml-auto flex flex-col">
+                                <span class="text-xl leading-none">{{
+                                    yearFinder(member.startDate)
+                                }}</span>
 
-                                <span class="text-xl leading-none ">{{ yearFinder(member.startDate) }}</span>
-
-                                <span class="leading-none">{{ yearFinder(member.startDate) === 1 ? 'Year' : 'Years' }}</span>
+                                <span class="leading-none">{{
+                                    yearFinder(member.startDate) === 1
+                                        ? 'Year'
+                                        : 'Years'
+                                }}</span>
                             </span>
                         </span>
                     </div>
@@ -81,7 +106,9 @@ const team = computed(() => {
 })
 
 const yearFinder = (startYear) => {
-    return dateConverterYearOnly(thisYear.value) - dateConverterYearOnly(startYear)
+    return (
+        dateConverterYearOnly(thisYear.value) - dateConverterYearOnly(startYear)
+    )
 }
 
 const teamWithBirthdays = computed(() => {
@@ -97,7 +124,11 @@ const teamWithBirthdays = computed(() => {
 const teamWithAnniversaries = computed(() => {
     const teamMembers = []
     team.value?.forEach((member) => {
-        if ((dateConverterNoYear(member.startDate) === todaysDateWithoutYear) && dateConverterYearOnly(member.startDate) !== dateConverterYearOnly(todaysDate)) {
+        if (
+            dateConverterNoYear(member.startDate) === todaysDateWithoutYear &&
+            dateConverterYearOnly(member.startDate) !==
+                dateConverterYearOnly(todaysDate)
+        ) {
             return teamMembers.push(member)
         }
     })
@@ -105,7 +136,9 @@ const teamWithAnniversaries = computed(() => {
 })
 
 const hasTeamMembersToShow = computed(() => {
-    return (teamWithBirthdays.value && teamWithBirthdays.value.length > 0) || (teamWithAnniversaries.value && teamWithAnniversaries.value.length > 0)
+    return (
+        (teamWithBirthdays.value && teamWithBirthdays.value.length > 0) ||
+        (teamWithAnniversaries.value && teamWithAnniversaries.value.length > 0)
+    )
 })
-
 </script>

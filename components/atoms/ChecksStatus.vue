@@ -1,27 +1,17 @@
 <template>
-    <span
-        :disabled="isComplete"
-        class="pill"
-        :class="classes"
-    >
+    <span :disabled="isComplete" class="pill" :class="classes">
         <div
             v-if="supabaseStore.loading"
             class="absolute inset-0 bg-navy text-white"
         >
-            <Icon
-                name="ph:spinner-gap-light"
-                class="text-lg"
-            />
+            <Icon name="ph:spinner-gap-light" class="text-lg" />
         </div>
-        <Icon
-            :name="icon"
-            class="w-4 h-4"
-        />
+        <Icon :name="icon" class="h-4 w-4" />
         {{ showDisplayText }}
     </span>
 </template>
 
-<script  setup>
+<script setup>
 import { useSupabaseStore } from '@/stores/supabase'
 const supabaseStore = useSupabaseStore()
 
@@ -46,11 +36,16 @@ const date = new Date()
 const hours = date.getHours()
 
 const classes = computed(() => {
-    return props.isComplete ? 'pill--complete' : hours < props.dueTime ? '' : 'pill--urgent animate-bounce'
+    return props.isComplete
+        ? 'pill--complete'
+        : hours < props.dueTime
+          ? ''
+          : 'pill--urgent animate-bounce'
 })
 
 const icon = computed(() => {
-    return props.isComplete ? 'material-symbols:check-rounded' : 'material-symbols:warning'
+    return props.isComplete
+        ? 'material-symbols:check-rounded'
+        : 'material-symbols:warning'
 })
-
 </script>

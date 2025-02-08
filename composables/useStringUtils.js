@@ -1,25 +1,28 @@
 export const useStringUtils = () => {
     /**
-   * Converts a string to title case.
-   * @param str - The input string.
-   * @returns - The string converted to title case.
-   */
+     * Converts a string to title case.
+     * @param str - The input string.
+     * @returns - The string converted to title case.
+     */
     const toTitleCase = (str) => {
         return str.replace(/\w\S*/g, function (txt) {
             return txt.charAt(0).toUpperCase() + txt.substring(1).toLowerCase()
         })
     }
 
-    function toPascalCase (str) {
-        return str.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')
+    function toPascalCase(str) {
+        return str
+            .split('-')
+            .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+            .join(' ')
     }
 
     /**
-   * Truncate a string to a specified length without cutting words.
-   * @param str - The string to be truncated.
-   * @param cutOff - The maximum length of the truncated string.
-   * @returns - The truncated string, appended with "..." if truncated.
-   */
+     * Truncate a string to a specified length without cutting words.
+     * @param str - The string to be truncated.
+     * @param cutOff - The maximum length of the truncated string.
+     * @returns - The truncated string, appended with "..." if truncated.
+     */
     const truncateString = (str, cutOff = 70) => {
         if (str.length <= cutOff) return str
         const cutStr = str.substring(0, cutOff)

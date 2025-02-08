@@ -1,36 +1,36 @@
 <template>
-    <div class="container flex flex-col w-full px-10 pt-0 pb-32 mx-auto">
-        <h1 class="mb-8 h1">
-            The Team
-        </h1>
+    <div class="container mx-auto flex w-full flex-col px-10 pb-32 pt-0">
+        <h1 class="h1 mb-8">The Team</h1>
 
         <ul
             v-if="team"
-            class="grid grid-cols-1 gap-6 mx-auto max-w-screen-3xl sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 md:gap-8"
+            class="mx-auto grid max-w-screen-3xl grid-cols-1 gap-6 sm:grid-cols-2 md:gap-8 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5"
         >
             <li
                 v-for="member in team"
                 :key="member.id"
-                class="max-w-[280px] mx-auto"
+                class="mx-auto max-w-[280px]"
             >
                 <div class="flex w-full overflow-hidden">
                     <SanityImage
                         :asset-id="`${member.image.asset._ref}`"
                         auto="format"
                         fit="crop"
-                        class="object-cover w-full h-full"
+                        class="h-full w-full object-cover"
                         :fp-x="member.image.hotspot?.x"
                         :fp-y="member.image.hotspot?.y"
                         w="500"
                         h="700"
                     />
                 </div>
-                <ul class="relative flex flex-col p-4 mx-2 -mt-16 text-xs  shadow-lg card  md:mx-4 md:-mt-6">
-                    <li class="text-lg font-krete">
+                <ul
+                    class="card relative mx-2 -mt-16 flex flex-col p-4 text-xs shadow-lg md:mx-4 md:-mt-6"
+                >
+                    <li class="font-krete text-lg">
                         {{ member.name }}
                     </li>
                     <li
-                        class="flex flex-row items-center justify-between gap-2 text-sm font-krete "
+                        class="flex flex-row items-center justify-between gap-2 font-krete text-sm"
                     >
                         {{ member.role }}
                     </li>
@@ -39,8 +39,16 @@
                         class="flex flex-row items-center justify-between gap-2"
                     >
                         <Icon
-                            :name="member.managerKeyHolder ? `material-symbols:check` : 'iconamoon:sign-times-fill'"
-                            :class="member.managerKeyHolder ? `text-green-500` : `text-red-500`"
+                            :name="
+                                member.managerKeyHolder
+                                    ? `material-symbols:check`
+                                    : 'iconamoon:sign-times-fill'
+                            "
+                            :class="
+                                member.managerKeyHolder
+                                    ? `text-green-500`
+                                    : `text-red-500`
+                            "
                         />
                         Key Holder
                     </li>
@@ -48,7 +56,11 @@
                         class="flex flex-row items-center justify-between gap-2"
                     >
                         <Icon name="heroicons:cake-16-solid" />
-                        <span>{{ member.birthday ? dateConverterNoYear(member.birthday) : '--' }}</span>
+                        <span>{{
+                            member.birthday
+                                ? dateConverterNoYear(member.birthday)
+                                : '--'
+                        }}</span>
                     </li>
                     <li
                         class="flex flex-row items-center justify-between gap-2"
@@ -75,5 +87,4 @@ const team = computed(() => {
 useHead({
     title: 'The Team'
 })
-
 </script>

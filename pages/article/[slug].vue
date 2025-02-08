@@ -1,33 +1,36 @@
 <template>
     <div
-        class="container flex flex-col items-center w-full pb-20 mb-16 lg:gap-16"
+        class="container mb-16 flex w-full flex-col items-center pb-20 lg:gap-16"
     >
-        <template
-            v-if="articleData"
-        >
+        <template v-if="articleData">
             <page-hero
                 :title="articleData.title"
                 :subtitle="articleData.subtitle"
                 :date="articleData.publishedAt"
                 :categories="articleData.categories"
             />
-            <div class="flex flex-col w-full max-w-screen-xl lg:flex-row lg:gap-8 xl:gap-20">
-                <div class="grid w-full grid-cols-2 py-4 lg:flex lg:flex-col lg:gap-8 lg:basis-1/4">
+            <div
+                class="flex w-full max-w-screen-xl flex-col lg:flex-row lg:gap-8 xl:gap-20"
+            >
+                <div
+                    class="grid w-full grid-cols-2 py-4 lg:flex lg:basis-1/4 lg:flex-col lg:gap-8"
+                >
                     <p
                         v-if="articleData._updatedAt"
-                        class="text-xs opacity-50 font-krete"
+                        class="font-krete text-xs opacity-50"
                     >
-                        Created: {{ dateConverter(articleData.publishedAt) }}<br>
+                        Created: {{ dateConverter(articleData.publishedAt)
+                        }}<br />
                         Updated: {{ dateConverter(articleData._updatedAt) }}
                     </p>
                     <ul
                         v-if="articleData.categories"
-                        class="flex flex-row flex-wrap gap-2 ml-auto lg:m-0"
+                        class="ml-auto flex flex-row flex-wrap gap-2 lg:m-0"
                     >
                         <li
                             v-for="category in articleData.categories"
                             :key="category._id"
-                            class="text-xs font-krete text-tuscany"
+                            class="font-krete text-xs text-tuscany"
                         >
                             <nuxt-link
                                 class="underline underline-offset-2"
@@ -39,32 +42,30 @@
                     </ul>
                     <div
                         v-if="articleData.files"
-                        class="py-8 col-span-full lg:p-0"
+                        class="col-span-full py-8 lg:p-0"
                     >
                         <h2 class="mb-2 font-krete">
                             <Icon
                                 name="material-symbols-light:file-copy-rounded"
-                                class="w-4 h-4 "
+                                class="h-4 w-4"
                             />
                             Related files &amp; downloads
                         </h2>
-                        <div class="w-full pb-4 overflow-x-scroll ">
-                            <ul
-                                class="flex w-full gap-4 lg:flex-col lg:gap-2"
-                            >
+                        <div class="w-full overflow-x-scroll pb-4">
+                            <ul class="flex w-full gap-4 lg:flex-col lg:gap-2">
                                 <li
                                     v-for="file in articleData.files"
                                     :key="file._key"
-                                    class="flex "
+                                    class="flex"
                                 >
                                     <a
                                         :href="file.file.asset.url"
                                         target="_blank"
-                                        class="w-full relative h-full min-w-[270px] pl-6 py-1 pr-2 text-xs font-krete border dark:border-navy-300 border-seashell-600 lg:py-2 text-tuscany "
+                                        class="relative h-full w-full min-w-[270px] border border-seashell-600 py-1 pl-6 pr-2 font-krete text-xs text-tuscany dark:border-navy-300 lg:py-2"
                                     >
                                         <Icon
                                             name="material-symbols-light:file-copy-rounded"
-                                            class="absolute w-3 h-3 opacity-50 left-2 top-3 lg:opacity-0"
+                                            class="absolute left-2 top-3 h-3 w-3 opacity-50 lg:opacity-0"
                                         />
                                         {{ file.value }}
                                     </a>
@@ -73,8 +74,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="w-full lg:basis-2/3 ">
-                    <div class="content lg:max-w-screen-sm ">
+                <div class="w-full lg:basis-2/3">
+                    <div class="content lg:max-w-screen-sm">
                         <PortableText
                             :value="articleData.content"
                             :components="myPortableTextComponents"
@@ -83,10 +84,12 @@
                     <nuxt-link
                         v-if="nextArticle"
                         :to="nextArticle.slug.current"
-                        class="inline-flex flex-col p-4 mt-8 transition-colors duration-300 bg-butterscotch-500 dark:bg-navy-400 dark:hover:bg-navy-600 hover:bg-butterscotch-600"
+                        class="mt-8 inline-flex flex-col bg-butterscotch-500 p-4 transition-colors duration-300 hover:bg-butterscotch-600 dark:bg-navy-400 dark:hover:bg-navy-600"
                     >
                         <span class="opacity-70">Next Article</span>
-                        <span class="font-serif text-xl">{{ nextArticle.title }} &raquo;</span>
+                        <span class="font-serif text-xl"
+                            >{{ nextArticle.title }} &raquo;</span
+                        >
                     </nuxt-link>
                 </div>
             </div>
@@ -132,7 +135,9 @@ const query = groq`*[_type == "article" && slug.current == '${route.params.slug}
 
 const sanity = useSanity()
 
-const { data } = await useLazyAsyncData('singleArticle', () => sanity.fetch(query))
+const { data } = await useLazyAsyncData('singleArticle', () =>
+    sanity.fetch(query)
+)
 
 const articleData = computed(() => {
     return data.value
@@ -147,7 +152,10 @@ const myPortableTextComponents = {
         fileVideo: ({ value }) => {
             // console.log('value', value)
 
-            const fullAsset = getFileAsset(value, { projectId: 'mxklvbih', dataset: 'production' })
+            const fullAsset = getFileAsset(value, {
+                projectId: 'mxklvbih',
+                dataset: 'production'
+            })
             // console.log(fullAsset)
 
             if (!fullAsset.url) {
@@ -155,13 +163,26 @@ const myPortableTextComponents = {
                 return null
             }
 
-            return h('video', { class: 'w-auto h-full max-h-[80dvh] mx-auto', controls: true }, [
-                h('source', { src: fullAsset.url, type: `video/${fullAsset.extension}` }),
-                'Your browser does not support the video tag.'
-            ])
+            return h(
+                'video',
+                {
+                    class: 'w-auto h-full max-h-[80dvh] mx-auto',
+                    controls: true
+                },
+                [
+                    h('source', {
+                        src: fullAsset.url,
+                        type: `video/${fullAsset.extension}`
+                    }),
+                    'Your browser does not support the video tag.'
+                ]
+            )
         },
         image: ({ value }) => {
-            const fullAsset = getImageAsset(value, { projectId: 'mxklvbih', dataset: 'production' })
+            const fullAsset = getImageAsset(value, {
+                projectId: 'mxklvbih',
+                dataset: 'production'
+            })
             // :src="$urlFor(currentWinner.winner.image).width(300).height(400).url()"
             // const image = $urlFor(fullAsset.assetId).width(800).url()
             // console.log('value', value)
@@ -191,5 +212,4 @@ watch(articleData, (newVal) => {
         title: newVal?.title
     })
 })
-
 </script>

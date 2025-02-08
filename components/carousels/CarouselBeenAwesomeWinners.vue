@@ -1,9 +1,9 @@
 <template>
     <section v-if="allWinners">
-        <div class="container relative flex flex-row items-center justify-between md:gap-4">
-            <h2 class="h1">
-                Been Awesome
-            </h2>
+        <div
+            class="container relative flex flex-row items-center justify-between md:gap-4"
+        >
+            <h2 class="h1">Been Awesome</h2>
 
             <nuxt-link
                 class="button flex-shrink-0 self-end"
@@ -14,59 +14,87 @@
             </nuxt-link>
         </div>
         <carousel-wrapper>
-            <li class="relative flex flex-col items-center p-8 rounded-lg shadow-lg min-w-[20rem] w-[20rem] bg-gradient-to-br from-neutral-800 to-black text-white dark:bg-gradient-to-b dark:from-white dark:to-gray-100 dark:text-gray-800">
+            <li
+                class="relative flex w-[20rem] min-w-[20rem] flex-col items-center rounded-lg bg-gradient-to-br from-neutral-800 to-black p-8 text-white shadow-lg dark:bg-gradient-to-b dark:from-white dark:to-gray-100 dark:text-gray-800"
+            >
                 <img
                     src="@/assets/images/beenawesome.png"
                     alt="You've Been Awesome logo"
-                    class="max-w-[10rem] w-full mb-4 contrast-200 invert brightness-75 dark:invert-0"
-                >
-                <h3 class="text-2xl font-krete">
+                    class="mb-4 w-full max-w-[10rem] brightness-75 contrast-200 invert dark:invert-0"
+                />
+                <h3 class="font-krete text-2xl">
                     {{ currentWinner.winner?.name }}
                 </h3>
 
-                <div class="flex flex-col items-center mb-4 opacity-80">
+                <div class="mb-4 flex flex-col items-center opacity-80">
                     <span class="flex flex-row items-center gap-1">
                         <Icon
                             name="pepicons-pop:calendar-circle"
-                            class="w-4 h-4 "
+                            class="h-4 w-4"
                         />
-                        <span><em>Since</em> {{ dateConverter(currentWinner?.from) }}</span>
+                        <span
+                            ><em>Since</em>
+                            {{ dateConverter(currentWinner?.from) }}</span
+                        >
                     </span>
-                    <span class="text-xs italic">{{ Math.round(duration(new Date(), currentWinner.from)) }} days</span>
+                    <span class="text-xs italic"
+                        >{{
+                            Math.round(duration(new Date(), currentWinner.from))
+                        }}
+                        days</span
+                    >
                 </div>
 
-                <div class="flex w-auto overflow-hidden ">
+                <div class="flex w-auto overflow-hidden">
                     <img
-                        :src="$urlFor(currentWinner.winner.image).width(300).height(400).url()"
+                        :src="
+                            $urlFor(currentWinner.winner.image)
+                                .width(300)
+                                .height(400)
+                                .url()
+                        "
                         height="500"
                         width="300"
                         loading="lazy"
-                    >
+                    />
                 </div>
             </li>
 
             <li
                 v-for="winner in previousWinners"
                 :key="winner.id"
-                class="relative justify-center items-center my-16 p-8 text-center shadow-lg rounded-lg  bg-white dark:bg-navy-500 w-[16rem] min-w-[16rem]"
+                class="relative my-16 w-[16rem] min-w-[16rem] items-center justify-center rounded-lg bg-white p-8 text-center shadow-lg dark:bg-navy-500"
             >
-                <h3 class="text-xl font-krete">
+                <h3 class="font-krete text-xl">
                     {{ winner.winner?.name }}
                 </h3>
 
-                <div class="flex flex-col items-center mb-4 opacity-60">
-                    <span><strong>From</strong> {{ dateConverter(winner?.from) }}</span>
-                    <span><strong>To</strong> {{ dateConverter(winner?.to) }}</span>
-                    <span class="text-xs italic">{{ duration(winner.to, winner.from) }} days</span>
+                <div class="mb-4 flex flex-col items-center opacity-60">
+                    <span
+                        ><strong>From</strong>
+                        {{ dateConverter(winner?.from) }}</span
+                    >
+                    <span
+                        ><strong>To</strong>
+                        {{ dateConverter(winner?.to) }}</span
+                    >
+                    <span class="text-xs italic"
+                        >{{ duration(winner.to, winner.from) }} days</span
+                    >
                 </div>
 
-                <div class="flex w-auto overflow-hidden ">
+                <div class="flex w-auto overflow-hidden">
                     <img
-                        :src="$urlFor(winner.winner.image).width(300).height(450).url()"
+                        :src="
+                            $urlFor(winner.winner.image)
+                                .width(300)
+                                .height(450)
+                                .url()
+                        "
                         width="300"
                         height="450"
                         loading="lazy"
-                    >
+                    />
                 </div>
             </li>
         </carousel-wrapper>
@@ -87,7 +115,9 @@ const query = groq`*[_type == "beenAwesomeWinner"] | order(from desc) {
 `
 const sanity = useSanity()
 
-const { data } = await useAsyncData('beenAwesomeWinners', () => sanity.fetch(query))
+const { data } = await useAsyncData('beenAwesomeWinners', () =>
+    sanity.fetch(query)
+)
 
 const allWinners = computed(() => {
     return data.value
@@ -96,7 +126,7 @@ const allWinners = computed(() => {
 const duration = (to, from) => {
     const startDate = new Date(from)
     const endDate = new Date(to)
-    const months = ((endDate.getTime() - startDate.getTime()) / 1000) / 86400
+    const months = (endDate.getTime() - startDate.getTime()) / 1000 / 86400
     return months
 }
 
@@ -106,5 +136,4 @@ const currentWinner = computed(() => {
 const previousWinners = computed(() => {
     return allWinners?.value.slice(1)
 })
-
 </script>

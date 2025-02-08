@@ -1,38 +1,29 @@
 <template>
     <div class="relative">
         <div class="container flex flex-row justify-between">
-            <h2 class="h1 flex gap-2 items-center">
-                Reviews
-            </h2>
+            <h2 class="h1 flex items-center gap-2">Reviews</h2>
             <button
-                class="uppercase text-2xs button flex items-center hover:underline gap-1 "
+                class="button flex items-center gap-1 text-2xs uppercase hover:underline"
                 @click="toggleDetails"
             >
                 Toggle feedback
-                <div
-                    class="relative flex w-3 h-3"
-                >
+                <div class="relative flex h-3 w-3">
                     <Icon
                         v-if="showDetails"
                         name="mdi:minus"
-                        class="absolute top-0flex w-3 h-3 transition-all"
+                        class="top-0flex absolute h-3 w-3 transition-all"
                     />
                     <Icon
                         v-else
                         name="mdi:plus"
-                        class="absolute top-0flex w-3 h-3 transition-all"
+                        class="top-0flex absolute h-3 w-3 transition-all"
                     />
                 </div>
             </button>
         </div>
-        <div
-            v-if="googleReviewData"
-        >
+        <div v-if="googleReviewData">
             <carousel-wrapper>
-                <template
-                    v-for="item in allReviews"
-                    :key="item?.id"
-                >
+                <template v-for="item in allReviews" :key="item?.id">
                     <card-review
                         :string="true"
                         :name="item.user"
@@ -60,12 +51,13 @@
                 </template>
             </carousel-wrapper>
         </div>
-        <div
-            v-else
-            class="container py-4"
-        >
+        <div v-else class="container py-4">
             <h2>Why no Google reviews?</h2>
-            <p>We are running a free tier to retrieve Google reviews. So on occasion, the API may not return any data. Please try again another day.</p>
+            <p>
+                We are running a free tier to retrieve Google reviews. So on
+                occasion, the API may not return any data. Please try again
+                another day.
+            </p>
         </div>
     </div>
 </template>
@@ -89,7 +81,7 @@ const toggleDetails = () => {
 }
 const showDetails = computed(() => uiStore.showReviewDetails)
 
-function normalizeGoogleReview (review) {
+function normalizeGoogleReview(review) {
     return {
         id: review.review_id ?? '',
         date: new Date(review.iso_date),
@@ -108,7 +100,7 @@ function normalizeGoogleReview (review) {
     }
 }
 
-function normalizeTripadvisorReview (review) {
+function normalizeTripadvisorReview(review) {
     return {
         id: review.id ?? '',
         date: new Date(review.published_date),
@@ -126,11 +118,17 @@ function normalizeTripadvisorReview (review) {
 
 const allReviews = computed(() => {
     // Normalize the data
-    const normalizedGoogleReviews = googleReviewData.value?.map(normalizeGoogleReview)
-    const normalizedTripadvisorReviews = tripadvisorData.value?.map(normalizeTripadvisorReview)
+    const normalizedGoogleReviews = googleReviewData.value?.map(
+        normalizeGoogleReview
+    )
+    const normalizedTripadvisorReviews = tripadvisorData.value?.map(
+        normalizeTripadvisorReview
+    )
 
     // Merge the arrays
-    const mergedReviews = normalizedGoogleReviews.concat(normalizedTripadvisorReviews)
+    const mergedReviews = normalizedGoogleReviews.concat(
+        normalizedTripadvisorReviews
+    )
 
     // Sort the merged array by date in descending order
     mergedReviews.sort((a, b) => b.date - a.date)
@@ -138,5 +136,4 @@ const allReviews = computed(() => {
     // Return the sorted array
     return mergedReviews
 })
-
 </script>

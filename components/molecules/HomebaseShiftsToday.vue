@@ -3,7 +3,7 @@
         <div class="flex flex-col gap-4">
             <h2 class="h1">
                 The Been team for today
-                <span class="text-[0.7em] block text-tuscany">
+                <span class="block text-[0.7em] text-tuscany">
                     {{ fullDateConverter(today) }}
                 </span>
             </h2>
@@ -21,15 +21,12 @@
                 <div v-else>
                     <Icon
                         name="ph:spinner-gap-light"
-                        class="text-lg animate-spin"
+                        class="animate-spin text-lg"
                     />
                 </div>
             </template>
             <template v-else>
-                <button
-                    class="button"
-                    @click="showAll = true"
-                >
+                <button class="button" @click="showAll = true">
                     Show shifts
                 </button>
             </template>
@@ -38,7 +35,6 @@
 </template>
 
 <script setup>
-
 const props = defineProps({
     show: {
         type: Boolean,
@@ -55,7 +51,8 @@ const encodedDate = getTodaysDateInUrlEncodedFormat(today)
 
 const shifts = ref()
 
-const { data } = await useFetch('/api/homebase-shifts', { query: { date: encodedDate } })
+const { data } = await useFetch('/api/homebase-shifts', {
+    query: { date: encodedDate }
+})
 shifts.value = data.value
-
 </script>

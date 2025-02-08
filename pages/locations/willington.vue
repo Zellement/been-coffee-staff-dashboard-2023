@@ -1,39 +1,40 @@
 <template>
     <div class="w-full pb-12">
         <nuxt-layout name="locations">
-            <header class="container fixed top-0 left-0 z-50 flex flex-row items-center justify-between w-full gap-2 pt-2">
+            <header
+                class="container fixed left-0 top-0 z-50 flex w-full flex-row items-center justify-between gap-2 pt-2"
+            >
                 <img
-                    class="w-8 h-8"
+                    class="h-8 w-8"
                     src="@/assets/images/been-staff-dashboard.png"
-                >
+                />
             </header>
             <div class="relative">
                 <button
-                    class="absolute top-0 right-4 uppercase text-[0.7em] -translate-y-full tracking-wide px-1"
+                    class="absolute right-4 top-0 -translate-y-full px-1 text-[0.7em] uppercase tracking-wide"
                     @click="reloadNuxtApp"
                 >
                     Data refreshing in {{ countdown }}
                     <div
-                        class="h-full absolute top-0 right-0 bg-navy dark:bg-tuscany  bg-opacity-20 dark:bg-opacity-20 ml-auto"
+                        class="absolute right-0 top-0 ml-auto h-full bg-navy bg-opacity-20 dark:bg-tuscany dark:bg-opacity-20"
                         :style="timerLineClass"
                     />
                 </button>
-                <div class="flex flex-col gap-4 w-full ">
-                    <div class="grid grid-cols-3">
-                        <homebase-shifts-today class="col-span-2" />
-                        <homebase-shifts-tomorrow
-                            basic
-                            class="col-span-1"
-                        />
+                <div class="flex w-full flex-col gap-4">
+                    <div class="grid gap-4 md:grid-cols-3">
+                        <homebase-shifts-today class="md:col-span-2" />
+                        <homebase-shifts-tomorrow basic class="md:col-span-1" />
                     </div>
                     <sanity-table-bookings />
-                    <div class="grid grid-cols-1">
+                    <div class="grid grid-cols-1 gap-4">
                         <carousel-checks basic />
                         <carousel-routine-tasks basic />
                     </div>
                     <advent-calendar class="my-8" />
-                    <div class="container grid grid-cols-12 w-full">
-                        <div class="w-full grid grid-cols-2 gap-8 col-span-full flex-wrap justify-center ">
+                    <div class="container grid w-full grid-cols-12">
+                        <div
+                            class="col-span-full grid w-full gap-8 md:grid-cols-2"
+                        >
                             <sanity-notices
                                 fixed-height
                                 fixed-height-classes="h-[350px]"
@@ -65,7 +66,6 @@
 </template>
 
 <script setup>
-
 definePageMeta({
     layout: false
 })
@@ -81,7 +81,7 @@ const timerLineClass = computed(() => {
 })
 
 // Function to refresh page data
-async function refreshPageData () {
+async function refreshPageData() {
     countingDown.value = false
     try {
         reloadNuxtApp()
@@ -105,10 +105,10 @@ onMounted(() => {
     }, 1000)
 })
 
-const plus3days = new Date(new Date().getTime() + (2 * 24 * 60 * 60 * 1000))
-const plus5days = new Date(new Date().getTime() + (4 * 24 * 60 * 60 * 1000))
-const plus7days = new Date(new Date().getTime() + (6 * 24 * 60 * 60 * 1000))
-const plus14days = new Date(new Date().getTime() + (13 * 24 * 60 * 60 * 1000))
+const plus3days = new Date(new Date().getTime() + 2 * 24 * 60 * 60 * 1000)
+const plus5days = new Date(new Date().getTime() + 4 * 24 * 60 * 60 * 1000)
+const plus7days = new Date(new Date().getTime() + 6 * 24 * 60 * 60 * 1000)
+const plus14days = new Date(new Date().getTime() + 13 * 24 * 60 * 60 * 1000)
 
 // Cleanup on unmount to prevent memory leaks
 onUnmounted(() => {

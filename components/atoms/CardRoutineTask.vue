@@ -1,46 +1,40 @@
 <template>
-    <li
-        class="w-64 min-w-64 card"
-    >
-        <span class="text-xs absolute top-0 -translate-y-1/2 left-0 ml-2">
-            <span
-                class="pill"
-                :class="pillClasses"
-            >
-                {{ task.next_due_date !== null ? `Due:  ${shortDateConverter(task.next_due_date)}` : 'New' }}
+    <li class="card w-64 min-w-64">
+        <span class="absolute left-0 top-0 ml-2 -translate-y-1/2 text-xs">
+            <span class="pill" :class="pillClasses">
+                {{
+                    task.next_due_date !== null
+                        ? `Due:  ${shortDateConverter(task.next_due_date)}`
+                        : 'New'
+                }}
             </span>
         </span>
         {{ task.title }}
-        <span class="text-2xs opacity-80">Estimated: {{ task.estimate }} mins</span>
+        <span class="text-2xs opacity-80"
+            >Estimated: {{ task.estimate }} mins</span
+        >
         <button
-            class="uppercase text-2xs flex items-center gap-1"
+            class="flex items-center gap-1 text-2xs uppercase"
             @click="toggleMore"
         >
             Toggle more info
-            <div
-                class="relative flex w-3 h-3"
-            >
+            <div class="relative flex h-3 w-3">
                 <Icon
                     v-if="showMore"
                     name="mdi:minus"
-                    class="absolute top-0flex w-3 h-3 transition-all"
+                    class="top-0flex absolute h-3 w-3 transition-all"
                 />
                 <Icon
                     v-else
                     name="mdi:plus"
-                    class="absolute top-0flex w-3 h-3 transition-all"
+                    class="top-0flex absolute h-3 w-3 transition-all"
                 />
             </div>
         </button>
-        <div
-            v-if="showMore"
-            class="flex flex-col gap-4"
-        >
+        <div v-if="showMore" class="flex flex-col gap-4">
             <div class="text-xs">
-                <Icon
-                    name="material-symbols:info"
-                    class="w-4 h-4"
-                /> {{ task.description }}
+                <Icon name="material-symbols:info" class="h-4 w-4" />
+                {{ task.description }}
             </div>
             <nuxt-link
                 v-if="task.ref_link"
@@ -50,93 +44,73 @@
                 Read more &raquo;
             </nuxt-link>
 
-            <div
-                class="text-xs flex flex-col"
-            >
+            <div class="flex flex-col text-xs">
                 <strong>Frequency</strong>
-                <span class="flex gap-1 items-center">
-                    <Icon
-                        name="mdi:repeat"
-                        class="w-3 h-3  "
-                    />
+                <span class="flex items-center gap-1">
+                    <Icon name="mdi:repeat" class="h-3 w-3" />
                     <span>{{ task.frequency }} days</span>
                 </span>
             </div>
-            <div
-                v-if="task.last_completed_date"
-                class="text-xs flex flex-col"
-            >
-                <strong>Last completed</strong> {{ shortDateConverter(task.last_completed_date) }}
+            <div v-if="task.last_completed_date" class="flex flex-col text-xs">
+                <strong>Last completed</strong>
+                {{ shortDateConverter(task.last_completed_date) }}
             </div>
         </div>
         <div
-            v-if="userStore?.userData?.keyholder && userStore?.userData?.display_name !== 'Willington Shop'"
+            v-if="
+                userStore?.userData?.keyholder &&
+                userStore?.userData?.display_name !== 'Willington Shop'
+            "
             class="ml-auto mt-auto"
         >
-            <form
-                ref="routineTasksForm"
-                @submit.prevent="submitToGoogleSheets"
-            >
+            <form ref="routineTasksForm" @submit.prevent="submitToGoogleSheets">
                 <input
                     type="hidden"
                     :value="userStore?.userData?.display_name"
                     name="Team member"
-                >
-                <input
-                    type="hidden"
-                    value="I completed this task"
-                    name="Who"
-                >
-                <input
-                    type="hidden"
-                    :value="task.value.current"
-                    name="Task"
-                >
+                />
+                <input type="hidden" value="I completed this task" name="Who" />
+                <input type="hidden" :value="task.value.current" name="Task" />
                 <input
                     type="hidden"
                     name="Completed satisfactorily"
                     value="Yes, this was satisfactory"
-                >
+                />
                 <input
                     type="hidden"
                     name="Comments"
                     value="This was a quick completion"
-                >
+                />
                 <div class="grid grid-cols-1 overflow-hidden">
                     <button
                         :class="quickCompleteBtn"
-                        class="row-start-1 button button--xs col-span-1 col-start-1"
+                        class="button button--xs col-span-1 col-start-1 row-start-1"
                         @click.prevent="taskQuickStatus = 'set'"
                     >
                         Quick Complete
                     </button>
                     <button
                         :class="completeBtn"
-                        class="row-start-1 button button--xs col-span-1 col-start-1 text-center"
+                        class="button button--xs col-span-1 col-start-1 row-start-1 text-center"
                     >
                         <span class="mx-auto"> Complete?</span>
                     </button>
                     <span
                         v-if="state.isSending"
-                        class="
-                        row-start-1 pill flex col-span-1 col-start-1"
+                        class="pill col-span-1 col-start-1 row-start-1 flex"
                     >
                         Please wait...
                         <Icon
                             name="mdi:loading"
-                            class="w-4 h-4 animate-spin ml-auto"
+                            class="ml-auto h-4 w-4 animate-spin"
                         />
                     </span>
                     <span
                         v-if="state.hasSent"
-                        class="
-                        row-start-1 pill pill--complete flex col-span-1 col-start-1"
+                        class="pill pill--complete col-span-1 col-start-1 row-start-1 flex"
                     >
                         Complete
-                        <Icon
-                            name="ic:twotone-check"
-                            class="w-4 h-4 ml-auto"
-                        />
+                        <Icon name="ic:twotone-check" class="ml-auto h-4 w-4" />
                     </span>
                 </div>
             </form>
@@ -145,7 +119,6 @@
 </template>
 
 <script setup>
-
 const routineTasksStore = useRoutineTasksStore()
 const { shortDateConverter } = useDateUtils()
 
@@ -173,11 +146,17 @@ const props = defineProps({
 const taskQuickStatus = ref('ready')
 
 const quickCompleteBtn = computed(() => {
-    return taskQuickStatus.value === 'ready' && !state.isSending && !state.hasSent ? '' : '-translate-y-full'
+    return taskQuickStatus.value === 'ready' &&
+        !state.isSending &&
+        !state.hasSent
+        ? ''
+        : '-translate-y-full'
 })
 
 const completeBtn = computed(() => {
-    return taskQuickStatus.value === 'set' && !state.isSending && !state.hasSent ? '' : 'translate-y-full'
+    return taskQuickStatus.value === 'set' && !state.isSending && !state.hasSent
+        ? ''
+        : 'translate-y-full'
 })
 
 const showMore = ref(false)
@@ -190,12 +169,12 @@ const toggleMore = () => {
 
 const pillClasses = computed(() => {
     switch (props.type) {
-    case 'new':
-        return 'pill--complete'
-    case 'overdue':
-        return 'pill--urgent'
-    case 'upcoming':
-        return 'pill--upcoming'
+        case 'new':
+            return 'pill--complete'
+        case 'overdue':
+            return 'pill--urgent'
+        case 'upcoming':
+            return 'pill--upcoming'
     }
 })
 
@@ -211,7 +190,6 @@ const submitToGoogleSheets = () => {
             state.isSending = false
             state.hasSent = true
         })
-        .catch(error => console.error('Error!', error.message))
+        .catch((error) => console.error('Error!', error.message))
 }
-
 </script>

@@ -1,10 +1,7 @@
 <template>
     <div>
         <NuxtPwaManifest />
-        <NuxtLoadingIndicator
-            color="#D05C32"
-            :height="3"
-        />
+        <NuxtLoadingIndicator color="#D05C32" :height="3" />
         <NuxtLayout>
             <NuxtPage
                 :transition="{
@@ -17,7 +14,6 @@
 </template>
 
 <script setup>
-
 const teamStore = useTeamStore()
 const supabaseStore = useSupabaseStore()
 const reviewsStore = useReviewsStore()
@@ -36,18 +32,16 @@ useHead({
         }
     ]
 })
-
 </script>
 
 <style>
 .page-enter-active,
 .page-leave-active {
-  transition: all 0.3s;
+    transition: all 0.3s;
 }
 
 .page-enter-from,
 .page-leave-to {
-    @apply opacity-0 translate-y-4;
+    @apply translate-y-4 opacity-0;
 }
-
 </style>

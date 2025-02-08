@@ -1,22 +1,18 @@
 <template>
     <div class="relative">
         <div class="container">
-            <h2 class="h1">
-                Recently Updated Articles
-            </h2>
+            <h2 class="h1">Recently Updated Articles</h2>
         </div>
         <carousel-wrapper>
-            <li
-                v-for="item in data"
-                :key="item._id"
-                class="w-40 min-w-40 card"
-            >
+            <li v-for="item in data" :key="item._id" class="card w-40 min-w-40">
                 <nuxt-link
-                    class="flex flex-col flex-grow transition-colors duration-300  hover:underline  border-current/40"
+                    class="border-current/40 flex flex-grow flex-col transition-colors duration-300 hover:underline"
                     :to="`/article/${item.slug?.current}`"
                 >
                     <span class="krete-title !text-sm">{{ item.title }}</span>
-                    <span class="mt-auto text-2xs opacity-50">Updated: {{ inputDate(item._updatedAt) }}</span>
+                    <span class="mt-auto text-2xs opacity-50"
+                        >Updated: {{ inputDate(item._updatedAt) }}</span
+                    >
                 </nuxt-link>
             </li>
         </carousel-wrapper>
@@ -24,14 +20,13 @@
         <div class="container flex w-full">
             <button-site-search
                 display-text="See all articles"
-                class=" ml-auto button"
+                class="button ml-auto"
             />
         </div>
     </div>
 </template>
 
 <script setup>
-
 const query = groq`*[_type == "article"]|order(_updatedAt desc)[0..5]{  
   title,
   subtitle,
@@ -44,7 +39,9 @@ const query = groq`*[_type == "article"]|order(_updatedAt desc)[0..5]{
 
 const sanity = useSanity()
 
-const { data } = await useAsyncData('latestUpdatedArticles', () => sanity.fetch(query))
+const { data } = await useAsyncData('latestUpdatedArticles', () =>
+    sanity.fetch(query)
+)
 
 const inputDate = (date) => {
     const theDate = new Date(date)
@@ -53,8 +50,6 @@ const inputDate = (date) => {
         year: 'numeric',
         month: 'short',
         day: 'numeric'
-
     })
 }
-
 </script>

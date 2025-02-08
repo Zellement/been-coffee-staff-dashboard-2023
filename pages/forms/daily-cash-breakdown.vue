@@ -1,22 +1,15 @@
 <template>
-    <div class="flex flex-col w-full max-w-screen-md px-10 pt-0 pb-32 mx-auto">
-        <h1 class="mb-8 h1">
-            Daily Cash Breakdown
-        </h1>
+    <div class="mx-auto flex w-full max-w-screen-md flex-col px-10 pb-32 pt-0">
+        <h1 class="h1 mb-8">Daily Cash Breakdown</h1>
 
         <div
             v-if="state.hasSent"
-            class="flex flex-row items-center gap-6 p-4 mb-8 border border-green-500"
+            class="mb-8 flex flex-row items-center gap-6 border border-green-500 p-4"
         >
-            <Icon
-                name="noto-v1:party-popper"
-                class="w-12 h-12 animate-pulse"
-            />
+            <Icon name="noto-v1:party-popper" class="h-12 w-12 animate-pulse" />
             <div>
-                <h2 class="h2">
-                    Yeah, we all good!
-                </h2>
-                <p> All sent, thanks.</p>
+                <h2 class="h2">Yeah, we all good!</h2>
+                <p>All sent, thanks.</p>
                 <p class="text-xs">
                     To see the form again, please refresh this page.
                 </p>
@@ -25,23 +18,26 @@
 
         <div
             v-if="state.hasErrored"
-            class="flex flex-row items-center gap-6 p-4 mb-8 border border-red-500"
+            class="mb-8 flex flex-row items-center gap-6 border border-red-500 p-4"
         >
             <Icon
                 name="noto:skull-and-crossbones"
-                class="w-12 h-12 animate-ping"
+                class="h-12 w-12 animate-ping"
             />
             <div>
-                <h2 class="h2">
-                    Hmmm...
-                </h2>
-                <p> Looks like something isn't behaving. Please let Dan know pronto.</p>
+                <h2 class="h2">Hmmm...</h2>
                 <p>
-                    In the meantime, let's go old school and <a
+                    Looks like something isn't behaving. Please let Dan know
+                    pronto.
+                </p>
+                <p>
+                    In the meantime, let's go old school and
+                    <a
                         class="underline"
                         href="https://forms.gle/ain6gfLguMcnRQsa7"
                         target="_blank"
-                    >use this form</a>.
+                        >use this form</a
+                    >.
                 </p>
                 <p class="text-xs">
                     To see the form again, please refresh this page.
@@ -53,50 +49,40 @@
             v-if="!state.isSending && !state.hasSent && !state.hasErrored"
             id="daily-cash-breakdown"
             ref="dailyCashBreakdown"
-            class="flex flex-col gap-8 daily-cash-breakdown-form"
+            class="daily-cash-breakdown-form flex flex-col gap-8"
             name="daily-cash-breakdown"
             @submit.prevent="submitToGoogleSheets"
         >
             <shift-leads />
 
             <div>
-                <h2 class=" h4">
-                    Waste
-                </h2>
-                <p class="mb-4">
-                    Have you put waste through the till?
-                </p>
-                <label
-                    class="flex flex-row items-center gap-2"
-                >
+                <h2 class="h4">Waste</h2>
+                <p class="mb-4">Have you put waste through the till?</p>
+                <label class="flex flex-row items-center gap-2">
                     <input
                         type="radio"
                         required
                         value="yes"
                         name="Waste thru till"
-                    >
+                    />
                     <span>Yes</span>
                 </label>
-                <label
-                    class="flex flex-row items-center gap-2"
-                >
+                <label class="flex flex-row items-center gap-2">
                     <input
                         type="radio"
                         required
                         value="No, zero waste to declare"
                         name="Waste thru till"
-                    >
+                    />
                     <span>No, zero waste to declare</span>
                 </label>
-                <label
-                    class="flex flex-row items-center gap-2"
-                >
+                <label class="flex flex-row items-center gap-2">
                     <input
                         type="radio"
                         required
                         value="No, see notes"
                         name="Waste thru till"
-                    >
+                    />
                     <span>No, see notes</span>
                 </label>
             </div>
@@ -119,19 +105,9 @@
                 class="h-40"
                 name="Comments"
             />
-            <button
-                type="submit"
-                class="button"
-            >
-                I'm done, submit!
-            </button>
+            <button type="submit" class="button">I'm done, submit!</button>
         </form>
-        <div
-            v-else-if="state.isSending"
-            class=""
-        >
-            Sending, please wait...
-        </div>
+        <div v-else-if="state.isSending" class="">Sending, please wait...</div>
     </div>
 </template>
 <script setup>
@@ -159,7 +135,7 @@ const submitToGoogleSheets = () => {
             state.isSending = false
             state.hasSent = true
         })
-        .catch(error => console.error('Error!', error.message))
+        .catch((error) => console.error('Error!', error.message))
 }
 
 useHead({
@@ -171,5 +147,4 @@ const state = reactive({
     hasSent: false,
     hasErrored: false
 })
-
 </script>

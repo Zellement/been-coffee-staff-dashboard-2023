@@ -1,22 +1,15 @@
 <template>
-    <div class="flex flex-col w-full max-w-screen-md px-10 pt-0 pb-32 mx-auto">
-        <h1 class="mb-8 h1">
-            Routine Tasks
-        </h1>
+    <div class="mx-auto flex w-full max-w-screen-md flex-col px-10 pb-32 pt-0">
+        <h1 class="h1 mb-8">Routine Tasks</h1>
 
         <div
             v-if="state.hasSent"
-            class="flex flex-row items-center gap-6 p-4 mb-8 border border-green-500"
+            class="mb-8 flex flex-row items-center gap-6 border border-green-500 p-4"
         >
-            <Icon
-                name="noto-v1:party-popper"
-                class="w-12 h-12 animate-pulse"
-            />
+            <Icon name="noto-v1:party-popper" class="h-12 w-12 animate-pulse" />
             <div>
-                <h2 class="h2">
-                    Yeah, we all good!
-                </h2>
-                <p> All sent, thanks.</p>
+                <h2 class="h2">Yeah, we all good!</h2>
+                <p>All sent, thanks.</p>
                 <p class="text-xs">
                     To see the form again, please refresh this page.
                 </p>
@@ -25,17 +18,18 @@
 
         <div
             v-if="state.hasErrored"
-            class="flex flex-row items-center gap-6 p-4 mb-8 border border-red-500"
+            class="mb-8 flex flex-row items-center gap-6 border border-red-500 p-4"
         >
             <Icon
                 name="noto:skull-and-crossbones"
-                class="w-12 h-12 animate-ping"
+                class="h-12 w-12 animate-ping"
             />
             <div>
-                <h2 class="h2">
-                    Hmmm...
-                </h2>
-                <p> Looks like something isn't behaving. Please let Dan know pronto.</p>
+                <h2 class="h2">Hmmm...</h2>
+                <p>
+                    Looks like something isn't behaving. Please let Dan know
+                    pronto.
+                </p>
             </div>
         </div>
 
@@ -43,19 +37,14 @@
             v-if="!state.isSending && !state.hasSent && !state.hasErrored"
             id="routine-tasks"
             ref="routineTasksForm"
-            class="flex flex-col gap-8 routine-tasks-form"
+            class="routine-tasks-form flex flex-col gap-8"
             name="routine-tasks"
             @submit.prevent="submitToGoogleSheets"
         >
             <shift-leads />
 
-            <select
-                name="Task"
-                required
-            >
-                <option value="">
-                    Which task has been completed?
-                </option>
+            <select name="Task" required>
+                <option value="">Which task has been completed?</option>
                 <option
                     v-for="task in allRoutineTasks"
                     :key="task.id"
@@ -66,7 +55,7 @@
                 </option>
             </select>
             <div class="flex flex-col gap-1">
-                <label class="flex gap-2 items-start">
+                <label class="flex items-start gap-2">
                     <input
                         v-model="whoCompleted"
                         required
@@ -74,11 +63,11 @@
                         name="Who"
                         value="I completed this task"
                         class="mt-1.5"
-                    >
+                    />
                     <span>I completed this task personally</span>
                 </label>
 
-                <label class="flex gap-2 items-start">
+                <label class="flex items-start gap-2">
                     <input
                         v-model="whoCompleted"
                         required
@@ -86,7 +75,7 @@
                         name="Who"
                         value="I oversaw"
                         class="mt-1.5"
-                    >
+                    />
                     <span>I oversaw an employee completing this task:</span>
                 </label>
                 <select
@@ -94,9 +83,7 @@
                     class="mt-4"
                     name="I oversaw"
                 >
-                    <option value="">
-                        Who did you oversee?
-                    </option>
+                    <option value="">Who did you oversee?</option>
                     <option
                         v-for="member in currentTeam"
                         :key="member.id"
@@ -113,29 +100,18 @@
                 name="Comments"
             />
 
-            <label class="flex gap-2 items-center">
+            <label class="flex items-center gap-2">
                 <input
                     required
                     type="checkbox"
                     name="Completed satisfactorily"
                     value="Yes, this was satisfactory"
-                >
-                <span>
-                    This task was completed to my satisfaction</span>
+                />
+                <span> This task was completed to my satisfaction</span>
             </label>
-            <button
-                type="submit"
-                class="button"
-            >
-                Submit this form
-            </button>
+            <button type="submit" class="button">Submit this form</button>
         </form>
-        <div
-            v-else-if="state.isSending"
-            class=""
-        >
-            Sending, please wait...
-        </div>
+        <div v-else-if="state.isSending" class="">Sending, please wait...</div>
     </div>
 </template>
 <script setup>
@@ -144,7 +120,9 @@ const teamStore = useTeamStore()
 
 const allRoutineTasks = computed(() => {
     if (!routineTasksStore?.routineTasks) return
-    return routineTasksStore?.routineTasks?.sort((a, b) => a.title.localeCompare(b.title))
+    return routineTasksStore?.routineTasks?.sort((a, b) =>
+        a.title.localeCompare(b.title)
+    )
 })
 
 const currentTeam = computed(() => {
@@ -170,7 +148,7 @@ const submitToGoogleSheets = () => {
             state.isSending = false
             state.hasSent = true
         })
-        .catch(error => console.error('Error!', error.message))
+        .catch((error) => console.error('Error!', error.message))
 }
 
 useHead({
@@ -182,5 +160,4 @@ const state = reactive({
     hasSent: false,
     hasErrored: false
 })
-
 </script>

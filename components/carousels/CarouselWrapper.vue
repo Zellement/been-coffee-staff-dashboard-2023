@@ -1,13 +1,11 @@
 <template>
     <div class="relative">
-        <div
-            class="overflow-clip"
-        >
+        <div class="overflow-clip">
             <div
-                class="w-full py-4 flex overflow-x-scroll"
+                class="flex w-full overflow-x-scroll py-4"
                 :class="trackClasses"
             >
-                <ul class="flex flex-row w-full mx-2 lg:mx-4 gap-2">
+                <ul class="mx-2 flex w-full flex-row gap-2 lg:mx-4">
                     <slot />
                 </ul>
             </div>
@@ -16,7 +14,6 @@
 </template>
 
 <script setup>
-
 defineProps({
     trackClasses: {
         type: String,

@@ -1,18 +1,14 @@
 <template>
-    <button
-        class="flex flex-row items-center gap-1 p-2"
-        @click="handleSignOut"
-    >
+    <button class="flex flex-row items-center gap-1 p-2" @click="handleSignOut">
         <Icon
             name="clarity:sign-out-line"
-            class="flex w-6 h-6 transition-all duration-300 cursor-pointer dark:hover:text-butterscotch-500 hover:text-white"
+            class="flex h-6 w-6 cursor-pointer transition-all duration-300 hover:text-white dark:hover:text-butterscotch-500"
         />
         <span>Sign out</span>
     </button>
 </template>
 
 <script setup>
-
 import { useUiStore } from '@/stores/ui'
 
 const uiStore = useUiStore()
@@ -31,5 +27,4 @@ const handleSignOut = async () => {
         console.log(error.message)
     }
 }
-
 </script>

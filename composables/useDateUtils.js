@@ -4,7 +4,7 @@ export const useDateUtils = () => {
      * @param {number} d - The date as a number.
      * @returns {string} - The ordinal suffix (e.g., 'st', 'nd', 'rd', or 'th').
      */
-    const nth = (d: number): string => {
+    const nth = (d) => {
         if (d > 3 && d < 21) return 'th'
         switch (d % 10) {
             case 1:
@@ -24,10 +24,9 @@ export const useDateUtils = () => {
      * @param {Date} date - The date.
      * @returns {string} - Thursday, 04 January 2024
      */
-    const fullDateConverter = (passedDate: Date): string => {
-
+    const fullDateConverter = (passedDate) => {
         const date = new Date(passedDate)
-        const monthArray: string[] = [
+        const monthArray = [
             'January',
             'February',
             'March',
@@ -41,7 +40,7 @@ export const useDateUtils = () => {
             'November',
             'December'
         ]
-        const dayArray: string[] = [
+        const dayArray = [
             'Sunday',
             'Monday',
             'Tuesday',
@@ -50,27 +49,27 @@ export const useDateUtils = () => {
             'Friday',
             'Saturday'
         ]
-        const day: string = dayArray[date.getDay()]
-        const d: number = date.getDate()
-        const dSuffix: string = nth(date.getDate())
-        const m: string = monthArray[date.getMonth()]
-        const y: number = date.getFullYear()
+        const day = dayArray[date.getDay()]
+        const d = date.getDate()
+        const dSuffix = nth(date.getDate())
+        const m = monthArray[date.getMonth()]
+        const y = date.getFullYear()
         return `${day}, ${d}${dSuffix} ${m} ${y}`
     }
 
-    const extractHourAndMinute = (dateString: Date): string => {
-        const date = new Date(dateString);
-        const hours = date.getHours();
-        const minutes = date.getMinutes();
-    
+    const extractHourAndMinute = (dateString) => {
+        const date = new Date(dateString)
+        const hours = date.getHours()
+        const minutes = date.getMinutes()
+
         // Format hours and minutes to ensure they are always two digits
-        const formattedHours = hours.toString().padStart(2, '0');
-        const formattedMinutes = minutes.toString().padStart(2, '0');
-    
-        return `${formattedHours}:${formattedMinutes}`;
+        const formattedHours = hours.toString().padStart(2, '0')
+        const formattedMinutes = minutes.toString().padStart(2, '0')
+
+        return `${formattedHours}:${formattedMinutes}`
     }
 
-    const getTodaysDateInUrlEncodedFormat = (date: Date) => {
+    const getTodaysDateInUrlEncodedFormat = (date) => {
         // const today = new Date()
         const dd = String(date.getDate()).padStart(2, '0')
         const mm = String(date.getMonth() + 1).padStart(2, '0') // January is 0!
@@ -85,12 +84,12 @@ export const useDateUtils = () => {
      * @param {Date} date - The date.
      * @returns {string} - 04/01/2024
      */
-    const shortDateConverter = (date: Date | string): string => {
-        const parsedDate: Date = date instanceof Date ? date : new Date(date)
+    const shortDateConverter = (date) => {
+        const parsedDate = date instanceof Date ? date : new Date(date)
 
-        const d: number = parsedDate.getDate()
-        const m: number = parsedDate.getMonth()
-        const y: number = parsedDate.getFullYear()
+        const d = parsedDate.getDate()
+        const m = parsedDate.getMonth()
+        const y = parsedDate.getFullYear()
 
         return `${d <= 9 ? '0' + d : d}/${m <= 8 ? '0' + (m + 1) : m + 1}/${y}`
     }

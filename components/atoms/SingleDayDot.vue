@@ -9,17 +9,17 @@
             </template>
         </h2>
         <div class="flex flex-col">
-            <div class="flex flex-col items-center w-24 h-24 overflow-hidden bg-white border-2 border-white rounded-full shadow-lg">
+            <div
+                class="flex h-24 w-24 flex-col items-center overflow-hidden rounded-full border-2 border-white bg-white shadow-lg"
+            >
                 <span
-                    class="flex w-full text-xl basis-1/2 font-riverside"
+                    class="flex w-full basis-1/2 font-riverside text-xl"
                     :class="dayDotConverter[getDayNumeric(props.date)].classes"
                 >
                     <span class="m-auto">{{ getDayAlpha(props.date) }}</span>
                 </span>
-                <span
-                    class="flex w-full text-xl basis-1/2 font-riverside"
-                >
-                    <span class="m-auto text-black -translate-y-0.5">
+                <span class="flex w-full basis-1/2 font-riverside text-xl">
+                    <span class="m-auto -translate-y-0.5 text-black">
                         {{ getDate(props.date) }} / {{ getMonth(props.date) }}
                     </span>
                 </span>
@@ -29,7 +29,6 @@
 </template>
 
 <script setup>
-
 import { dateConverterWithDayNoYear } from '@/scripts/helpers'
 
 const props = defineProps({
@@ -84,5 +83,4 @@ const dayDotConverter = [
         classes: 'bg-orange-500 text-white'
     }
 ]
-
 </script>
