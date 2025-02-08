@@ -1,23 +1,24 @@
 <template>
-    <div class="pb-8 border-b border-seashell-600 dark:border-navy-300">
-        <div class="sticky top-0 grid grid-cols-6 justify-between gap-2 py-1.5  mb-6 ">
-            <div class="flex flex-row self-end col-span-3 gap-3 md:col-span-4">
-                <div
-                    class="flex self-stretch w-4"
-                    :class="style"
-                />
-                <div class="flex flex-col ">
-                    <h3 class="leading-none font-riverside">
+    <div class="border-b border-seashell-600 pb-8 dark:border-navy-300">
+        <div
+            class="sticky top-0 mb-6 grid grid-cols-6 justify-between gap-2 py-1.5"
+        >
+            <div class="col-span-3 flex flex-row gap-3 self-end md:col-span-4">
+                <div class="flex w-4 self-stretch" :class="style" />
+                <div class="flex flex-col">
+                    <h3 class="font-riverside leading-none">
                         {{ titleBrow }}
                     </h3>
-                    <h3 class="text-xl leading-none font-riverside">
+                    <h3 class="font-riverside text-xl leading-none">
                         {{ title }}
                     </h3>
                 </div>
             </div>
-            <div class="flex flex-row justify-between w-full col-span-3 md:col-span-2">
+            <div
+                class="col-span-3 flex w-full flex-row justify-between md:col-span-2"
+            >
                 <p
-                    class="flex flex-col self-end justify-between leading-none duration-300 transform-all"
+                    class="transform-all flex flex-col justify-between self-end leading-none duration-300"
                 >
                     <span class="text-right text-2xs">Total</span>
 
@@ -28,16 +29,16 @@
                         :value="totalValueFormatted"
                         :name="`${collection} total`"
                         class="w-full text-right"
-                    >
+                    />
                 </p>
                 <p
                     v-if="props.collection !== 'Banking'"
-                    class="flex flex-col self-end justify-between mt-auto leading-none duration-300 denominations-end transform-all"
+                    class="denominations-end transform-all mt-auto flex flex-col justify-between self-end leading-none duration-300"
                 >
                     <span class="text-right text-2xs">
                         <Icon
                             name="mdi:plus-minus-variant"
-                            class="flex w-3 h-3 "
+                            class="flex h-3 w-3"
                         />
                     </span>
                     <input
@@ -47,12 +48,12 @@
                         :value="differenceFormatted"
                         :name="`${collection} difference`"
                         class="w-full text-right"
-                    >
+                    />
                 </p>
             </div>
         </div>
         <div class="flex flex-col gap-2">
-            <div class="grid items-center grid-cols-12">
+            <div class="grid grid-cols-12 items-center">
                 <span class="col-span-2 font-bold">Cash</span>
                 <span class="col-span-5 font-bold">Value</span>
                 <span class="col-span-5 font-bold">Count</span>
@@ -60,29 +61,28 @@
             <div
                 v-for="denomination in state.denominations"
                 :key="`black-tin__${denomination}`"
-                class="grid items-center grid-cols-12"
+                class="grid grid-cols-12 items-center"
             >
                 <span class="col-span-2">{{ denomination.denomination }}</span>
                 <input
-                    class="col-span-5 pointer-events-none"
+                    class="pointer-events-none col-span-5"
                     readonly
                     tabindex="-1"
                     :value="getValue(denomination)"
                     :name="`${collection} ${denomination.denomination} value`"
-                >
+                />
                 <input
                     v-model="denomination.value"
                     class="col-span-5"
                     :name="`${collection} ${denomination.denomination} count`"
                     type="number"
-                >
+                />
             </div>
         </div>
     </div>
 </template>
 
 <script setup>
-
 const props = defineProps({
     collection: {
         type: String,
@@ -137,15 +137,16 @@ const getValue = (denomination) => {
 
 const totalValue = computed(() => {
     let value = 0
-    state.denominations.forEach(element => {
-        value = value + (element.value * element.multiple)
-    }
-    )
+    state.denominations.forEach((element) => {
+        value = value + element.value * element.multiple
+    })
     return value
 })
 
 const totalValueFormatted = computed(() => {
-    return totalValue.value === 0 ? '£--.--' : formatter.format(totalValue.value)
+    return totalValue.value === 0
+        ? '£--.--'
+        : formatter.format(totalValue.value)
 })
 
 const totalColor = computed(() => {
@@ -157,11 +158,17 @@ const difference = computed(() => {
 })
 
 const differenceFormatted = computed(() => {
-    return totalValue.value === 0 ? '£--.--' : formatter.format(difference.value)
+    return totalValue.value === 0
+        ? '£--.--'
+        : formatter.format(difference.value)
 })
 
 const differenceColor = computed(() => {
-    return totalValue.value === 0 ? 'opacity-20' : difference.value === 0 ? 'text-green-500' : 'text-red-500'
+    return totalValue.value === 0
+        ? 'opacity-20'
+        : difference.value === 0
+          ? 'text-green-500'
+          : 'text-red-500'
 })
 
 watch(difference, (newVal, oldVal) => {
@@ -171,5 +178,4 @@ watch(difference, (newVal, oldVal) => {
         state.totalsAnimating = false
     }, 500)
 })
-
 </script>

@@ -1,16 +1,24 @@
 <template>
-    <label class="grid justify-between w-full grid-cols-12 gap-2 lg:items-center">
-        <span class="mb-2 font-bold col-span-full md:col-span-4">{{ item }}</span>
-        <span class="relative grid items-center justify-center grid-cols-2 col-span-5 gap-1 md:col-span-3 md:col-start-5">
+    <label
+        class="grid w-full grid-cols-12 justify-between gap-2 lg:items-center"
+    >
+        <span class="col-span-full mb-2 font-bold md:col-span-4">{{
+            item
+        }}</span>
+        <span
+            class="relative col-span-5 grid grid-cols-2 items-center justify-center gap-1 md:col-span-3 md:col-start-5"
+        >
             <span
                 :class="[plusMinusClasses, dynamicMinusClasses]"
                 @click="togglePlusMinus('minus')"
-            >Below 0&deg;</span>
+                >Below 0&deg;</span
+            >
             <span
                 :class="[plusMinusClasses, dynamicPlusClasses]"
                 @click="togglePlusMinus('plus')"
             >
-                Above 0&deg;</span>
+                Above 0&deg;</span
+            >
         </span>
         <input
             v-model="input"
@@ -21,18 +29,17 @@
             type="number"
             placeholder="Temp"
             required
-        >
+        />
         <input
             :name="item"
             readonly
-            class="col-span-2 col-start-11 text-center bg-transparent pointer-events-none"
+            class="pointer-events-none col-span-2 col-start-11 bg-transparent text-center"
             :value="valueString"
-        >
+        />
     </label>
 </template>
 
 <script setup>
-
 const props = defineProps({
     item: {
         type: String,
@@ -50,11 +57,15 @@ const plusMinusClasses = computed(() => {
 })
 
 const dynamicPlusClasses = computed(() => {
-    return state.plusOrMinus === 'plus' ? 'from-orange-500 to-orange-800 text-white' : 'bg-none'
+    return state.plusOrMinus === 'plus'
+        ? 'from-orange-500 to-orange-800 text-white'
+        : 'bg-none'
 })
 
 const dynamicMinusClasses = computed(() => {
-    return state.plusOrMinus === 'minus' ? 'from-blue-500 to-blue-400 text-white' : 'bg-none'
+    return state.plusOrMinus === 'minus'
+        ? 'from-blue-500 to-blue-400 text-white'
+        : 'bg-none'
 })
 
 const input = ref()
@@ -67,10 +78,11 @@ const togglePlusMinus = (value) => {
     state.plusOrMinus = value
 }
 
-const isAboveZero = computed(() => { return state.plusOrMinus === 'plus' ? '+' : '-' })
+const isAboveZero = computed(() => {
+    return state.plusOrMinus === 'plus' ? '+' : '-'
+})
 
 const valueString = computed(() => {
     return input.value ? `${isAboveZero.value}${input.value}°C` : '- -'
 })
-
 </script>
