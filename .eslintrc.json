@@ -3,19 +3,12 @@
         "browser": true,
         "es2021": true
     },
-    "extends": [
-        "plugin:@typescript-eslint/recommended",
-        "plugin:vue/vue3-recommended",
-        "prettier"
-    ],
+    "extends": ["plugin:vue/vue3-recommended", "prettier"],
     "parser": "vue-eslint-parser",
     "parserOptions": {
         "parser": {
             // Script parser for `<script>`
             "js": "espree",
-
-            // Script parser for `<script lang="ts">`
-            "ts": "@typescript-eslint/parser",
 
             // Script parser for vue directives (e.g. `v-if=` or `:attribute=`)
             // and vue interpolations (e.g. `{{variable}}`).
@@ -25,7 +18,7 @@
         "ecmaVersion": "latest",
         "sourceType": "module"
     },
-    "plugins": ["prettier", "vue", "@typescript-eslint"],
+    "plugins": ["prettier", "vue"],
     "overrides": [
         {
             "files": ["pages/**/*.vue", "layouts/**/*.vue"],
