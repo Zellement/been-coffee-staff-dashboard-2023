@@ -1,9 +1,10 @@
 import { defineNuxtConfig } from 'nuxt/config'
+// @ts-expect-error See https://github.com/gxmari007/vite-plugin-eslint/issues/79
 import eslintVitePlugin from 'vite-plugin-eslint'
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
-    runtimeConfig: {
+    runtimeConfig: {§
         public: {
             SITE_URL: process.env.SITE_URL,
             GOOGLE_SHEETS_SCRIPT_DAILY_CASH_BREAKDOWN:
