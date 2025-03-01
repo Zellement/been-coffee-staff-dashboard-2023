@@ -33,6 +33,10 @@ export default defineNuxtConfig({
         }
     ],
 
+    typescript: {
+        strict: false
+    },
+
     supabase: {
         redirectOptions: {
             login: '/login',
