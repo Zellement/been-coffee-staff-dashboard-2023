@@ -4,7 +4,7 @@ import eslintVitePlugin from 'vite-plugin-eslint'
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
-    runtimeConfig: {§
+    runtimeConfig: {
         public: {
             SITE_URL: process.env.SITE_URL,
             GOOGLE_SHEETS_SCRIPT_DAILY_CASH_BREAKDOWN:
