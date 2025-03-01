@@ -1,5 +1,4 @@
 import { defineNuxtConfig } from 'nuxt/config'
-// @ts-expect-error See https://github.com/gxmari007/vite-plugin-eslint/issues/79
 import eslintVitePlugin from 'vite-plugin-eslint'
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
