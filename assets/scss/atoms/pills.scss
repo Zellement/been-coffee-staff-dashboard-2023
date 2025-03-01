@@ -1,38 +1,38 @@
-
 @layer utilities {
-.pill {
-  @apply px-1 bg-white dark:bg-navy-700 flex items-center gap-1 rounded border border-current text-current relative  whitespace-nowrap text-2xs;
+    .pill {
+        @apply relative flex items-center gap-1 whitespace-nowrap rounded border border-current bg-white px-1 text-2xs text-current dark:bg-navy-700;
 
-  &--complete {
-    @apply border-green-700 bg-white dark:bg-green-900  text-green-700 dark:text-green-300;
-  }
+        &--complete {
+            @apply border-green-700 bg-white text-green-700 dark:bg-green-900 dark:text-green-300;
+        }
 
-  &--upcoming {
-    @apply dark:border-navy-50 dark:text-navy-50 dark:bg-navy-700 bg-white text-gray-400 border-gray-400;
-  }
+        &--upcoming {
+            @apply border-gray-400 bg-white text-gray-400 dark:border-navy-50 dark:bg-navy-700 dark:text-navy-50;
+        }
 
-  &--urgent {
-    @apply border-red-800 bg-gradient-to-b from-red-700 to-red-800 text-red-300;
-  }
+        &--urgent {
+            @apply border-red-800 bg-gradient-to-b from-red-700 to-red-800 text-red-300;
+        }
 
-  &--clockin {
-    @apply border-green-500 bg-white text-green-500;
-  }
+        &--clockin {
+            @apply border-green-500 bg-white text-green-500;
+        }
 
-  &--orange, &--clockout {
-    @apply border-orange-800 bg-white text-orange-800;
-  }
+        &--orange,
+        &--clockout {
+            @apply border-orange-800 bg-white text-orange-800;
+        }
 
-  &--xs {
-    @apply text-xs;
-  }
+        &--xs {
+            @apply text-xs;
+        }
 
-  &--base {
-    @apply text-base;
-  }
+        &--base {
+            @apply text-base;
+        }
 
-  &--lg {
-    @apply text-lg;
-  }
-}
+        &--lg {
+            @apply text-lg;
+        }
+    }
 }

@@ -5,7 +5,7 @@ export const useSiteSearchStore = defineStore('siteSearch', {
         allArticles: null
     }),
     actions: {
-        toggleSearchResults () {
+        toggleSearchResults() {
             this.showSearchResults = !this.showSearchResults
         }
     }
