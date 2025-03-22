@@ -2,7 +2,7 @@
     <div v-if="totalTableBookings > 0" class="relative">
         <div class="container">
             <h2 class="h1 mb-4">Table Bookings</h2>
-            <div class="grid grid-cols-2 gap-8">
+            <div class="grid gap-8 lg:grid-cols-2">
                 <template
                     v-for="booking in allTableBookings"
                     :key="booking._id"
@@ -66,7 +66,7 @@
                     <span
                         v-for="booking in allTableBookings"
                         :key="booking._id"
-                        class="flex items-center gap-1 border px-2 py-1"
+                        class="flex items-center gap-1 border border-tuscany-50 px-2 py-1 dark:border-navy-50"
                     >
                         {{ shortDateConverter(booking.datetime) }} @
                         {{ extractHourAndMinute(booking.datetime) }} -

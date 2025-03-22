@@ -1,5 +1,5 @@
 <template>
-    <button :aria-label="colorModeLabel" class=" " @click="toggleColorMode">
+    <button :aria-label="colorModeLabel" class="" @click="toggleColorMode">
         <Icon :name="colorModeIcon" class="h-6 w-6" />
     </button>
 </template>
