@@ -5,10 +5,11 @@ export const useTeamStore = defineStore('team', {
         currentTeam: null
     }),
     actions: {
-        async fetchCurrentTeam () {
+        async fetchCurrentTeam() {
             const sanity = useSanity()
 
-            const query = '*[_type == "teamMember" && formerEmployee != true]|order(orderRank)'
+            const query =
+                '*[_type == "teamMember" && formerEmployee != true]|order(orderRank)'
 
             try {
                 const data = await sanity.fetch(query)
@@ -18,8 +19,10 @@ export const useTeamStore = defineStore('team', {
                 throw error
             }
         },
-        getUserByHomebaseId (userId) {
-            return this.currentTeam.find(user => user.homebaseUserId === userId)
+        getUserByHomebaseId(userId) {
+            return this.currentTeam.find(
+                (user) => user.homebaseUserId === userId
+            )
         }
     }
 })

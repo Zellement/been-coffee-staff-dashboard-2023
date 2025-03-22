@@ -5,54 +5,52 @@
  */
 
 // Web fonts
-$font-dir: "../fonts";
-
+$font-dir: '../fonts';
 
 @font-face {
-    font-family: "Riverside";
-    src: url("#{$font-dir}/Riverside.ttf") format("truetype");
+    font-family: 'Riverside';
+    src: url('#{$font-dir}/Riverside.ttf') format('truetype');
     font-display: swap;
     font-weight: 400;
     font-style: normal;
 }
 
-  @font-face {
-    font-family: "Riverside Outline";
-    src: url("#{$font-dir}/RiversideOutline.ttf") format("truetype");
+@font-face {
+    font-family: 'Riverside Outline';
+    src: url('#{$font-dir}/RiversideOutline.ttf') format('truetype');
     font-display: swap;
     font-weight: 400;
     font-style: normal;
-  }
+}
 
-  @font-face {
-    font-family: "Krete Book";
-    src: url("#{$font-dir}/KreteBook.otf") format("opentype");
+@font-face {
+    font-family: 'Krete Book';
+    src: url('#{$font-dir}/KreteBook.otf') format('opentype');
     font-display: swap;
     font-weight: 400;
     font-style: normal;
-  }
-  @font-face {
-    font-family: "Roboto";
-    src: url("#{$font-dir}/Roboto-Regular.ttf") format("truetype");
+}
+@font-face {
+    font-family: 'Roboto';
+    src: url('#{$font-dir}/Roboto-Regular.ttf') format('truetype');
     font-display: swap;
     font-weight: 400;
     font-style: normal;
-  }
-  @font-face {
-    font-family: "Roboto";
-    src: url("#{$font-dir}/Roboto-Italic.ttf") format("truetype");
+}
+@font-face {
+    font-family: 'Roboto';
+    src: url('#{$font-dir}/Roboto-Italic.ttf') format('truetype');
     font-display: swap;
     font-weight: 400;
     font-style: italic;
-  }
-  @font-face {
-    font-family: "Roboto";
-    src: url("#{$font-dir}/Roboto-Bold.ttf") format("truetype");
+}
+@font-face {
+    font-family: 'Roboto';
+    src: url('#{$font-dir}/Roboto-Bold.ttf') format('truetype');
     font-display: swap;
     font-weight: 700;
     font-style: normal;
-  }
-
+}
 
 /**
  * ----------------------
@@ -68,32 +66,32 @@ $font-dir: "../fonts";
  * Headings
  */
 
- .krete-title {
-  @apply text-lg font-krete;
- }
+.krete-title {
+    @apply font-krete text-lg;
+}
 
 .h1 {
-  @apply text-3xl font-riverside text-navy-500 dark:text-butterscotch-500;
+    @apply font-riverside text-3xl text-navy-500 dark:text-butterscotch-500;
 }
 
 .h2 {
-  @apply text-2xl font-riverside ;
+    @apply font-riverside text-2xl;
 }
 
 .h3 {
-  @apply text-xl font-riverside ;
+    @apply font-riverside text-xl;
 }
 
 .h4 {
-  @apply text-lg font-riverside ;
+    @apply font-riverside text-lg;
 }
 
 .h5 {
-  @apply text-base font-riverside ;
+    @apply font-riverside text-base;
 }
 
 .h6 {
-  @apply text-sm font-riverside ;
+    @apply font-riverside text-sm;
 }
 
 /**
@@ -106,71 +104,71 @@ $font-dir: "../fonts";
 // }
 
 em {
-  @apply font-light italic;
+    @apply font-light italic;
 }
 
 strong {
-  @apply font-bold;
+    @apply font-bold;
 }
 
 hr {
-  @apply border-t-4;
+    @apply border-t-4;
 }
 
 .content {
-  @for $i from 2 through 6 {
-    h#{$i} {
-      @apply font-bold ;
+    @for $i from 2 through 6 {
+        h#{$i} {
+            @apply font-bold;
+        }
     }
-  }
 
-  h2 {
-    @apply text-xl dark:text-butterscotch-500 text-tuscany-500;
-  }
-  h3 {
-    @apply text-lg dark:text-butterscotch-300 text-tuscany-600;
-  }
-
-  p strong {
-    @apply font-bold text-sm;
-  }
-
-  > * + * {
-    @apply mt-6;
-  }
-
-  ol {
-    @apply list-decimal ml-8;
-  }
-
-  img {
-    @apply my-8;
-  }
-
-  blockquote {
-    @apply border-l-4 border-navy dark:border-butterscotch-500 border-opacity-20 pl-4 italic;
-  }
-
-  ul {
-    @apply mb-4 text-sm flex flex-col space-y-2;
-
-    li {
-      @apply  pl-3 list-none leading-snug relative;
-
-      &:before {
-        @apply w-0 h-0 border-t-4 border-t-transparent border-b-4 border-b-transparent  absolute top-1.5 left-0 content-[''] border-l-4 border-l-tuscany-500;
-      }
+    h2 {
+        @apply text-xl text-tuscany-500 dark:text-butterscotch-500;
     }
+    h3 {
+        @apply text-lg text-tuscany-600 dark:text-butterscotch-300;
+    }
+
+    p strong {
+        @apply text-sm font-bold;
+    }
+
+    > * + * {
+        @apply mt-6;
+    }
+
+    ol {
+        @apply ml-8 list-decimal;
+    }
+
+    img {
+        @apply my-8;
+    }
+
+    blockquote {
+        @apply border-l-4 border-navy border-opacity-20 pl-4 italic dark:border-butterscotch-500;
+    }
+
     ul {
-        @apply mt-4 ml-4;
-    }
-  }
+        @apply mb-4 flex flex-col space-y-2 text-sm;
 
-  a {
-    @apply  border-b border-current dark:text-tuscany-300 text-tuscany-500 hover:text-tuscany-600 transition-all duration-300;
-  }
+        li {
+            @apply relative list-none pl-3 leading-snug;
+
+            &:before {
+                @apply absolute left-0 top-1.5 h-0 w-0 border-b-4 border-l-4 border-t-4 border-b-transparent border-l-tuscany-500 border-t-transparent content-[''];
+            }
+        }
+        ul {
+            @apply ml-4 mt-4;
+        }
+    }
+
+    a {
+        @apply border-b border-current text-tuscany-500 transition-all duration-300 hover:text-tuscany-600 dark:text-tuscany-300;
+    }
 
     table td {
-    @apply  px-2 py-2 border-b border-gray-500 border-opacity-20;
-  }
+        @apply border-b border-gray-500 border-opacity-20 px-2 py-2;
+    }
 }

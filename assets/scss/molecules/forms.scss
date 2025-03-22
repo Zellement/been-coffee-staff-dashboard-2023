@@ -2,15 +2,16 @@
 .daily-temperature-logs-form,
 .routine-tasks-form {
     input {
-        @apply p-1 bg-seashell-400 border border-gray-300 dark:border-navy-100 dark:bg-navy-500;
+        @apply border border-gray-300 bg-seashell-400 p-1 dark:border-navy-100 dark:bg-navy-500;
     }
 
     input:read-only {
-        @apply bg-transparent focus:outline-none cursor-default p-0 border-none;
+        @apply cursor-default border-none bg-transparent p-0 focus:outline-none;
     }
 
-    textarea, select {
-        @apply p-4 bg-seashell-400 dark:bg-navy-500 border border-gray-300 dark:border-navy-100;
+    textarea,
+    select {
+        @apply border border-gray-300 bg-seashell-400 p-4 dark:border-navy-100 dark:bg-navy-500;
     }
 
     label {
@@ -18,13 +19,13 @@
     }
 
     &__img-wrapper {
-        @apply border-2 border-transparent pointer-events-none transition-colors duration-300 grayscale;
+        @apply pointer-events-none border-2 border-transparent grayscale transition-colors duration-300;
     }
 
-    input[type="radio"] {
+    input[type='radio'] {
         &:checked {
             & + .daily-cash-breakdown-form__img-wrapper {
-                @apply border-navy-500 dark:border-tuscany-500 filter-none;
+                @apply border-navy-500 filter-none dark:border-tuscany-500;
             }
 
             & ~ .daily-cash-breakdown-form__member-name {

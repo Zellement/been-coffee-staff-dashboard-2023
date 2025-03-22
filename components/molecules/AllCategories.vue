@@ -1,21 +1,14 @@
 <template>
     <div
         v-if="allArticleCats"
-        class="flex flex-col w-full p-4 xl:max-w-[20rem] xl:p-16 xl:pt-0"
+        class="flex w-full flex-col p-4 xl:max-w-[20rem] xl:p-16 xl:pt-0"
     >
-        <h2 class="mb-2 h4">
-            Categories
-        </h2>
-        <ul
-            class="flex flex-col overflow-y-auto md:justify-center "
-        >
-            <li
-                v-for="item in allArticleCats"
-                :key="item.id"
-            >
+        <h2 class="h4 mb-2">Categories</h2>
+        <ul class="flex flex-col overflow-y-auto md:justify-center">
+            <li v-for="item in allArticleCats" :key="item.id">
                 <nuxt-link
                     :to="`/category/${item.slug.current}`"
-                    class="inline-flex flex-row items-end self-start transition-all duration-300 border-b border-transparent hover:border-current"
+                    class="inline-flex flex-row items-end self-start border-b border-transparent transition-all duration-300 hover:border-current"
                     @click="uiStore.toggleSearchResults()"
                 >
                     <span>{{ item.title }}</span>
@@ -36,10 +29,11 @@ const queryArticleCats = groq`
 
 const sanity = useSanity()
 
-const { data } = await useAsyncData('allArticleCats', () => sanity.fetch(queryArticleCats))
+const { data } = await useAsyncData('allArticleCats', () =>
+    sanity.fetch(queryArticleCats)
+)
 
 const allArticleCats = computed(() => {
     return data.value
 })
-
 </script>

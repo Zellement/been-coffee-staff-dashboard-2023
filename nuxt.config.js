@@ -6,10 +6,14 @@ export default defineNuxtConfig({
     runtimeConfig: {
         public: {
             SITE_URL: process.env.SITE_URL,
-            GOOGLE_SHEETS_SCRIPT_DAILY_CASH_BREAKDOWN: process.env.GOOGLE_SHEETS_SCRIPT_DAILY_CASH_BREAKDOWN,
-            GOOGLE_SHEETS_SCRIPT_ROUTINE_TASKS: process.env.GOOGLE_SHEETS_SCRIPT_ROUTINE_TASKS,
-            GOOGLE_SHEETS_SCRIPT_DAILY_TEMPERATURE_LOGS: process.env.GOOGLE_SHEETS_SCRIPT_DAILY_TEMPERATURE_LOGS,
-            HOMEBASE_LOCATION_WILLINGTON_ID: process.env.HOMEBASE_LOCATION_WILLINGTON_ID
+            GOOGLE_SHEETS_SCRIPT_DAILY_CASH_BREAKDOWN:
+                process.env.GOOGLE_SHEETS_SCRIPT_DAILY_CASH_BREAKDOWN,
+            GOOGLE_SHEETS_SCRIPT_ROUTINE_TASKS:
+                process.env.GOOGLE_SHEETS_SCRIPT_ROUTINE_TASKS,
+            GOOGLE_SHEETS_SCRIPT_DAILY_TEMPERATURE_LOGS:
+                process.env.GOOGLE_SHEETS_SCRIPT_DAILY_TEMPERATURE_LOGS,
+            HOMEBASE_LOCATION_WILLINGTON_ID:
+                process.env.HOMEBASE_LOCATION_WILLINGTON_ID
         }
     },
 
@@ -28,11 +32,21 @@ export default defineNuxtConfig({
         }
     ],
 
+    typescript: {
+        strict: false
+    },
+
     supabase: {
         redirectOptions: {
             login: '/login',
             callback: '/confirm',
-            exclude: ['/login', '/register', '/forgot-password', '/update-password', '/locations/**']
+            exclude: [
+                '/login',
+                '/register',
+                '/forgot-password',
+                '/update-password',
+                '/locations/**'
+            ]
         }
     },
 
@@ -44,7 +58,16 @@ export default defineNuxtConfig({
         }
     },
 
-    modules: ['@nuxtjs/color-mode', 'nuxt-icon', '@nuxtjs/tailwindcss', '@pinia/nuxt', '@nuxt/image', '@nuxtjs/supabase', '@vite-pwa/nuxt', '@nuxtjs/sanity'],
+    modules: [
+        '@nuxtjs/color-mode',
+        'nuxt-icon',
+        '@nuxtjs/tailwindcss',
+        '@pinia/nuxt',
+        '@nuxt/image',
+        '@nuxtjs/supabase',
+        '@vite-pwa/nuxt',
+        '@nuxtjs/sanity'
+    ],
 
     sanity: {
         projectId: 'mxklvbih'
@@ -99,9 +122,7 @@ export default defineNuxtConfig({
         }
     },
 
-    css: [
-        '@/assets/scss/app.scss'
-    ],
+    css: ['@/assets/scss/app.scss'],
 
     app: {
         head: {
@@ -112,23 +133,30 @@ export default defineNuxtConfig({
                 {
                     name: 'viewport',
                     content: 'width=device-width, initial-scale=1'
-                }, {
+                },
+                {
                     name: 'description',
                     content: 'Been Coffee Staff Dashboard'
                 },
                 { hid: 'og-type', property: 'og:type', content: 'website' }
             ],
-            link: [{ rel: 'icon', type: 'image/x-icon', href: '/been-staff-dashboard.png' }]
+            link: [
+                {
+                    rel: 'icon',
+                    type: 'image/x-icon',
+                    href: '/been-staff-dashboard.png'
+                }
+            ]
         },
         pageTransition: { name: 'page', mode: 'out-in' },
         layoutTransition: { name: 'layout', mode: 'out-in' }
-
     },
 
     vite: {
         plugins: [
             eslintVitePlugin({
-                include: ['./**/*.vue']
+                fix: true,
+                include: ['./**/*.vue', './**/*.ts', './**/*.js']
             })
         ],
         css: {

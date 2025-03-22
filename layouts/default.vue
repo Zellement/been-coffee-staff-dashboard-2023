@@ -1,11 +1,7 @@
 <template>
-    <div
-        class="overflow-hidden"
-    >
+    <div class="overflow-hidden">
         <site-header />
-        <button-toggle-theme
-            v-if="uiStore.themeToggleBtn.show"
-        />
+        <button-toggle-theme v-if="uiStore.themeToggleBtn.show" />
         <nuxt-page />
         <modal-instant-search />
         <modal-profile-data />
@@ -14,25 +10,15 @@
         <modal-checks />
 
         <!-- Themed stuff -->
-        <snow-fall
-            v-if="uiStore.isXmasTheme"
-            class="dark:opacity-40"
-        />
+        <snow-fall v-if="uiStore.isXmasTheme" class="dark:opacity-40" />
 
-        <lottie-swinging-santa
-            v-if="uiStore.isXmasTheme"
-        />
-        <lottie-new-year
-            v-if="uiStore.isNewYearTheme"
-        />
-        <lottie-easter-bunny
-            v-if="uiStore.isEasterTheme"
-        />
+        <lottie-swinging-santa v-if="uiStore.isXmasTheme" />
+        <lottie-new-year v-if="uiStore.isNewYearTheme" />
+        <lottie-easter-bunny v-if="uiStore.isEasterTheme" />
     </div>
 </template>
 
 <script setup>
-
 const fixPage = computed(() => {
     return uiStore.fixBody
 })
@@ -51,16 +37,15 @@ useHead({
         })
     }
 })
-
 </script>
 
 <style>
 .layout-enter-active,
 .layout-leave-active {
-  transition: all 0.4s;
+    transition: all 0.4s;
 }
 .layout-enter-from,
 .layout-leave-to {
-  filter: grayscale(1);
+    filter: grayscale(1);
 }
 </style>

@@ -1,9 +1,6 @@
 <template>
     <div class="">
-        <div
-            v-for="shift in shifts"
-            :key="shift.id"
-        >
+        <div v-for="shift in shifts" :key="shift.id">
             {{ shift.first_name }}
             {{ shift.last_name }}
 
@@ -17,7 +14,7 @@ const { data } = await useFetch('/api/homebase-timecards')
 
 const shifts = data.value
 
-function formatIsoDateString (isoDateString) {
+function formatIsoDateString(isoDateString) {
     const date = new Date(isoDateString)
     const options = {
         hour: 'numeric',

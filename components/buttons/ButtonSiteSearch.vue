@@ -3,16 +3,12 @@
         class="flex items-center gap-2"
         @click="uiStore.toggleSearchResults()"
     >
-        <Icon
-            name="ri:menu-search-line"
-            class="w-6 h-6"
-        />
+        <Icon name="ri:menu-search-line" class="h-6 w-6" />
         {{ displayText }}
     </button>
 </template>
 
 <script setup>
-
 import { useUiStore } from '@/stores/ui'
 
 const uiStore = useUiStore()
@@ -24,5 +20,4 @@ defineProps({
         default: null
     }
 })
-
 </script>

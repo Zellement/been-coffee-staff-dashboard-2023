@@ -5,10 +5,9 @@ export const useRoutineTasksStore = defineStore('routineTasks', {
         routineTasks: [],
         loading: false
     }),
-    getters: {
-    },
+    getters: {},
     actions: {
-        async setRoutineTask (check) {
+        async setRoutineTask(check) {
             this.loading = true
             const dateTime = new Date()
             const client = useSupabaseClient()
@@ -18,7 +17,7 @@ export const useRoutineTasksStore = defineStore('routineTasks', {
                 .eq('id', 1)
             this.loading = false
         },
-        async fetchAllRoutineTasks () {
+        async fetchAllRoutineTasks() {
             const sanity = useSanity()
 
             const query = '*[_type == "routineTasks"]|order(title)'
@@ -52,7 +51,9 @@ export const useRoutineTasksStore = defineStore('routineTasks', {
             routineTasksSanity.forEach((task) => {
                 let lastCompletedDate = null
                 if (supabaseData[task.value.current]) {
-                    lastCompletedDate = new Date(supabaseData[task.value.current])
+                    lastCompletedDate = new Date(
+                        supabaseData[task.value.current]
+                    )
                 }
                 let nextDueDate = null
                 if (lastCompletedDate !== null) {
@@ -63,13 +64,16 @@ export const useRoutineTasksStore = defineStore('routineTasks', {
                 const data = {
                     ...task,
                     next_due_date: nextDueDate,
-                    last_completed_date: supabaseData[task.value.current] ?? null
+                    last_completed_date:
+                        supabaseData[task.value.current] ?? null
                 }
 
                 finalData.push(data)
             })
 
-            finalData.sort((a, b) => { return a.next_due_date - b.next_due_date })
+            finalData.sort((a, b) => {
+                return a.next_due_date - b.next_due_date
+            })
 
             this.routineTasks = finalData
             this.loading = false

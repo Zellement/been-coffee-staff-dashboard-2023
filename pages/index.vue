@@ -1,6 +1,6 @@
 <template>
     <div class="relative">
-        <div class="flex flex-col gap-16 pt-8 pb-32">
+        <div class="flex flex-col gap-16 pb-32 pt-8">
             <birthdays-anniversaries />
             <template v-if="!keyholder">
                 <advent-calendar />
@@ -44,5 +44,4 @@ const keyholder = computed(() => {
 useHead({
     title: 'Been Staff Dashboard'
 })
-
 </script>
