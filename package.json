@@ -45,6 +45,7 @@
         "@sanity/image-url": "^1.1.0",
         "@vueuse/components": "^11.3.0",
         "@vueuse/core": "^11.3.0",
+        "defu": "^6.1.4",
         "esbuild": "^0.25.1",
         "ipx": "^3.0.3",
         "pinia": "^3.0.1",
