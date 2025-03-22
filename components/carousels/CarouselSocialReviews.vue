@@ -26,7 +26,7 @@
                 <template v-for="item in allReviews" :key="item?.id">
                     <card-review
                         :string="true"
-                        :name="item.user"
+                        :name="item.user ?? 'Anonymous'"
                         :date-string="item.dateString"
                         :rating="item.rating"
                         :review-text="item.reviewText"
@@ -69,11 +69,11 @@ const reviewsStore = useReviewsStore()
 const uiStore = useUiStore()
 
 const googleReviewData = computed(() => {
-    return reviewsStore.reviewsGoogle
+    return reviewsStore.reviewsGoogle ?? []
 })
 
 const tripadvisorData = computed(() => {
-    return reviewsStore.reviewsTripadvisor
+    return reviewsStore.reviewsTripadvisor ?? []
 })
 
 const toggleDetails = () => {
@@ -88,7 +88,7 @@ function normalizeGoogleReview(review) {
         dateString: shortDateConverter(new Date(review.iso_date)),
         rating: review.rating,
         reviewText: review.snippet,
-        user: review.user?.name,
+        user: review?.user?.name,
         source: 'Google',
         icon: 'mingcute:google-fill',
         details: {
@@ -107,7 +107,7 @@ function normalizeTripadvisorReview(review) {
         dateString: shortDateConverter(new Date(review.published_date)),
         rating: review.rating,
         reviewText: review.text ?? '',
-        user: review.user.username,
+        user: review?.user?.username,
         title: review.title,
         source: 'Tripadvisor',
         icon: 'simple-icons:tripadvisor',
