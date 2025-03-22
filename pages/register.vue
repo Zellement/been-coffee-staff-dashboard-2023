@@ -1,48 +1,19 @@
 <template>
     <div class="container mx-auto w-full max-w-[600px] p-4">
         <h1 class="mb-4 text-2xl font-bold">Register New User</h1>
-        <form class="flexflex-col mx-auto" @submit.prevent="handleRegister">
-            <div class="mb-4 grid grid-cols-2">
-                <label for="name" class="">Name</label>
+        <form class="mx-auto flex flex-col" @submit.prevent="handleRegister">
+            <div
+                v-for="field in fields"
+                :key="field.id"
+                class="mb-4 grid grid-cols-2"
+            >
+                <label :for="field.id">{{ field.label }}</label>
                 <input
-                    id="name"
-                    v-model="name"
-                    type="text"
+                    :id="field.id"
+                    v-model="field.model.value"
+                    :type="field.type"
                     class="p-2 dark:bg-navy-200 dark:text-white"
-                    required
-                />
-            </div>
-
-            <div class="mb-4 grid grid-cols-2">
-                <label for="email" class="">Email</label>
-                <input
-                    id="email"
-                    v-model="email"
-                    type="email"
-                    class="p-2 dark:bg-navy-200 dark:text-white"
-                    required
-                />
-            </div>
-
-            <div class="mb-4 grid grid-cols-2">
-                <label for="sanity_slug" class="">Sanity Slug</label>
-                <input
-                    id="sanity_slug"
-                    v-model="sanity_slug"
-                    type="text"
-                    class="p-2 dark:bg-navy-200 dark:text-white"
-                    required
-                />
-            </div>
-
-            <div class="mb-4 grid grid-cols-2">
-                <label for="password" class="">Password</label>
-                <input
-                    id="password"
-                    v-model="password"
-                    type="password"
-                    class="p-2 dark:bg-navy-200 dark:text-white"
-                    required
+                    :required="field.required"
                 />
             </div>
 
@@ -57,11 +28,61 @@
 </template>
 
 <script setup>
-// Form fields
+import { ref } from 'vue'
+
+// Form fields as refs
 const name = ref('')
 const email = ref('')
 const password = ref('')
-const sanity_slug = ref('')
+const slug = ref('')
+const role = ref('')
+const start_date = ref('')
+
+// Fields configuration for the form
+const fields = [
+    {
+        id: 'name',
+        label: 'Name',
+        type: 'text',
+        model: name, // Use ref here directly
+        required: true
+    },
+    {
+        id: 'email',
+        label: 'Email',
+        type: 'email',
+        model: email, // Use ref here directly
+        required: true
+    },
+    {
+        id: 'role',
+        label: 'Role',
+        type: 'text',
+        model: role, // Use ref here directly
+        required: true
+    },
+    {
+        id: 'slug',
+        label: 'Slug',
+        type: 'text',
+        model: slug, // Use ref here directly
+        required: true
+    },
+    {
+        id: 'start_date',
+        label: 'Start Date',
+        type: 'date',
+        model: start_date, // Use ref here directly
+        required: true
+    },
+    {
+        id: 'password',
+        label: 'Password',
+        type: 'password',
+        model: password, // Use ref here directly
+        required: true
+    }
+]
 
 // Handle the form submission
 const handleRegister = async () => {
@@ -72,7 +93,9 @@ const handleRegister = async () => {
                 name: name.value,
                 email: email.value,
                 password: password.value,
-                sanity_slug: sanity_slug.value
+                slug: slug.value,
+                role: role.value, // Include role and start_date in the payload
+                start_date: start_date.value
             }
         })
 
@@ -85,6 +108,7 @@ const handleRegister = async () => {
         alert(err.message)
     }
 }
+
 useHead({
     title: 'Register User'
 })
