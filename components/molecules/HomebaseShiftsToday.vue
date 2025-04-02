@@ -1,8 +1,11 @@
 <template>
     <div class="container w-full">
-        <div class="flex flex-col gap-4">
+        <div class="relative flex flex-col gap-4">
             <h2 class="h1">
-                The Been team for today
+                <div class="flex items-end gap-8">
+                    The Been team for today
+                    <weather-data class="" />
+                </div>
                 <span class="block text-[0.7em] text-tuscany">
                     {{ fullDateConverter(today) }}
                 </span>

@@ -94,10 +94,27 @@ export const useDateUtils = () => {
         return `${d <= 9 ? '0' + d : d}/${m <= 8 ? '0' + (m + 1) : m + 1}/${y}`
     }
 
+    /**
+     * Return a short user-friendly date.
+     * @function
+     * @param {Date} date - The date.
+     * @returns {string} - 04/01/2024
+     */
+    const backwardsDate = (date) => {
+        const parsedDate = date instanceof Date ? date : new Date(date)
+
+        const d = parsedDate.getDate()
+        const m = parsedDate.getMonth()
+        const y = parsedDate.getFullYear()
+
+        return `${y}-${m <= 8 ? '0' + (m + 1) : m + 1}-${d <= 9 ? '0' + d : d}`
+    }
+
     return {
         extractHourAndMinute,
         getTodaysDateInUrlEncodedFormat,
         fullDateConverter,
-        shortDateConverter
+        shortDateConverter,
+        backwardsDate
     }
 }
