@@ -2,10 +2,10 @@
     <div class="container w-full">
         <div class="relative flex flex-col gap-4">
             <h2 class="h1">
-                <div class="flex items-end gap-8">
+                <span class="flex items-end gap-8">
                     The Been team for today
-                    <weather-data class="" />
-                </div>
+                    <weather-data :today="true" />
+                </span>
                 <span class="block text-[0.7em] text-tuscany">
                     {{ fullDateConverter(today) }}
                 </span>

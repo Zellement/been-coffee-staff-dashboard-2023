@@ -2,7 +2,10 @@
     <div class="container w-full">
         <div class="flex w-full flex-col gap-4">
             <h2 class="h1">
-                Tomorrow
+                <span class="flex items-end gap-8">
+                    Tomorrow
+                    <weather-data :today="false" />
+                </span>
                 <span v-if="!basic" class="block text-[0.7em] text-tuscany">
                     {{ fullDateConverter(tomorrow) }}
                 </span>
