@@ -1,6 +1,7 @@
 <template>
     <div class="w-full pb-12">
         <nuxt-layout name="locations">
+            <weather-data />
             <header
                 class="container fixed left-0 top-0 z-50 flex w-full flex-row items-center gap-16 pt-2"
             >
