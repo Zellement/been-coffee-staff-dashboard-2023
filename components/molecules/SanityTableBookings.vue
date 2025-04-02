@@ -66,7 +66,7 @@
                     <span
                         v-for="booking in allTableBookings"
                         :key="booking._id"
-                        class="flex items-center gap-1 border border-tuscany-50 px-2 py-1 dark:border-navy-50"
+                        class="card flex !flex-row items-center gap-1"
                     >
                         {{ shortDateConverter(booking.datetime) }} @
                         {{ extractHourAndMinute(booking.datetime) }} -
