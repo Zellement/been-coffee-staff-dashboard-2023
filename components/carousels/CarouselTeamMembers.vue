@@ -26,11 +26,20 @@
                 </span>
                 <div class="flex w-full overflow-hidden">
                     <img
+                        v-if="item.image"
                         :src="$urlFor(item.image).width(450).height(700).url()"
                         height="450"
                         width="700"
                         loading="lazy"
                     />
+                    <div
+                        v-else
+                        class="flex h-full w-full items-center justify-center bg-gray-200 dark:bg-gray-800"
+                    >
+                        <span class="text-2xl text-gray-400 dark:text-gray-600"
+                            >Image coming soon...</span
+                        >
+                    </div>
                 </div>
             </li>
         </carousel-wrapper>
