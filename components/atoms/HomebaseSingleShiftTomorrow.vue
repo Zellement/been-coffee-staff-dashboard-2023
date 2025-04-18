@@ -50,15 +50,6 @@ const props = defineProps({
     shift: {
         type: Object,
         default: null
-    },
-    basic: {
-        type: Boolean,
-        default: false
-    },
-    isTomorrow: {
-        type: Boolean,
-        default: false,
-        required: false
     }
 })
 

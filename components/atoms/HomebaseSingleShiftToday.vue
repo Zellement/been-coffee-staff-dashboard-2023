@@ -7,8 +7,7 @@
         >
             <div class="flex w-full grow items-center justify-between gap-4">
                 <span
-                    class="flex w-full grow items-center justify-between gap-2"
-                    :class="userClasses"
+                    class="flex w-full grow basis-5/12 items-center justify-between gap-2 md:basis-7/12"
                 >
                     <img
                         v-if="user && user.image"
@@ -43,7 +42,7 @@
                         </div>
                     </div>
                 </span>
-                <span v-if="!basic" class="relative flex w-6 items-center">
+                <span class="relative flex w-6 items-center">
                     <Icon
                         v-if="data?.labor?.unpaid_break_hours > 0"
                         name="ph:armchair-fill"
@@ -56,7 +55,7 @@
                     />
                 </span>
             </div>
-            <div v-if="!basic" class="shrink-0 basis-2/5">
+            <div class="shrink-0 basis-2/5">
                 <div class="flex-1 basis-4/12">
                     <div v-if="hasClockedInOrOut" class="flex gap-2 md:gap-8">
                         <div
@@ -143,15 +142,6 @@ const props = defineProps({
     shift: {
         type: Object,
         default: null
-    },
-    basic: {
-        type: Boolean,
-        default: false
-    },
-    isTomorrow: {
-        type: Boolean,
-        default: false,
-        required: false
     }
 })
 
@@ -177,13 +167,9 @@ const timeNow = extractHourAndMinute(today)
 const wrapperClockedOutClasses = computed(() => {
     return data?.value?.clock_out
         ? ' opacity-30'
-        : noShow.value && !props.isTomorrow
+        : noShow.value
           ? 'opacity-30'
           : null
-})
-
-const userClasses = computed(() => {
-    return props.basic ? 'basis-full' : 'basis-5/12 md:basis-7/12 '
 })
 
 const noShow = computed(() => {
