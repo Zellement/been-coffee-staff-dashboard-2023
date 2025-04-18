@@ -11,54 +11,42 @@
                     <bank-holidays :date="backwardsDate(today)" />
                 </span>
             </h2>
-            <template v-if="showAll">
-                <div
-                    v-if="shifts && shifts.length > 0"
-                    class="flex flex-col gap-1 md:gap-2"
-                >
+            <div
+                v-if="shifts && shifts.length > 0"
+                class="flex flex-col gap-1 md:gap-2"
+            >
+                <template v-for="shift in shifts" :key="shift.id">
                     <homebase-single-shift-today
-                        v-for="shift in shifts"
-                        :key="shift.id"
-                        class="subgrid"
+                        v-if="shift.id"
                         :shift="shift"
                     />
-                </div>
-                <div v-else>
-                    <Icon
-                        name="ph:spinner-gap-light"
-                        class="animate-spin text-lg"
-                    />
-                </div>
-            </template>
-            <template v-else>
-                <button class="button" @click="showAll = true">
-                    Show shifts
-                </button>
-            </template>
+                </template>
+            </div>
+            <div v-else>
+                <Icon
+                    name="ph:spinner-gap-light"
+                    class="animate-spin text-lg"
+                />
+            </div>
         </div>
     </div>
 </template>
 
 <script setup>
-const props = defineProps({
-    show: {
-        type: Boolean,
-        default: true
-    }
-})
-
-const showAll = ref(props.show)
-
 const today = new Date()
 const { getTodaysDateInUrlEncodedFormat, backwardsDate, fullDateConverter } =
     useDateUtils()
 
 const encodedDate = getTodaysDateInUrlEncodedFormat(today)
 
-const shifts = ref()
+const shifts = ref([])
 
-const { data } = await useFetch('/api/homebase-shifts', {
-    query: { date: encodedDate }
-})
-shifts.value = data.value
+try {
+    const { data } = await useFetch('/api/homebase-shifts', {
+        query: { date: encodedDate }
+    })
+    shifts.value = data.value
+} catch (error) {
+    console.error('Error fetching shifts:', error)
+}
 </script>

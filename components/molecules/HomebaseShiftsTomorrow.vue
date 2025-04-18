@@ -32,10 +32,6 @@
 </template>
 
 <script setup>
-defineProps({
-    basic: Boolean
-})
-
 const { getTodaysDateInUrlEncodedFormat, backwardsDate, shortDateConverter } =
     useDateUtils()
 
@@ -45,8 +41,12 @@ const encodedDate = getTodaysDateInUrlEncodedFormat(tomorrow)
 
 const shifts = ref()
 
-const { data } = await useFetch('/api/homebase-shifts', {
-    query: { date: encodedDate }
-})
-shifts.value = data.value
+try {
+    const { data } = await useFetch('/api/homebase-shifts', {
+        query: { date: encodedDate }
+    })
+    shifts.value = data.value
+} catch (error) {
+    console.error('Error fetching shifts:', error)
+}
 </script>

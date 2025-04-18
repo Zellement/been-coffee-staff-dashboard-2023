@@ -9,18 +9,22 @@
                     src="@/assets/images/been-staff-dashboard.png"
                 />
                 <button-colour-mode />
-            </header>
-            <div class="relative">
                 <button
-                    class="absolute right-4 top-0 -translate-y-full px-1 text-[0.7em] uppercase tracking-wide"
+                    class="fixed right-4 top-2 flex items-center gap-2 px-1 text-[0.7em] uppercase tracking-wide"
                     @click="reloadNuxtApp"
                 >
+                    <Icon name="clarity:refresh-line" />
                     Data refreshing in {{ countdown }}
                     <div
-                        class="absolute right-0 top-0 ml-auto h-full bg-navy bg-opacity-20 dark:bg-tuscany dark:bg-opacity-20"
+                        class="absolute right-0 top-full z-10 h-px w-full bg-navy-50 opacity-30 dark:bg-tuscany-50"
+                    />
+                    <div
+                        class="absolute right-0 top-full z-20 ml-auto h-px bg-navy dark:bg-tuscany"
                         :style="timerLineClass"
                     />
                 </button>
+            </header>
+            <div class="relative">
                 <div class="flex w-full flex-col gap-4">
                     <div class="grid gap-4 md:grid-cols-3">
                         <homebase-shifts-today class="md:col-span-2" />

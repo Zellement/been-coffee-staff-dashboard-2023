@@ -2,10 +2,10 @@
     <Transition name="fade">
         <div
             v-if="shift"
-            class="@container relative flex w-full items-center justify-between"
+            class="relative flex w-full items-center justify-between @container"
         >
             <div class="flex basis-1/4 flex-row items-center gap-2">
-                <div class="@xs:flex hidden">
+                <div class="hidden @xs:flex">
                     <img
                         v-if="user && user.image"
                         :src="

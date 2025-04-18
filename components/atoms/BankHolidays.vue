@@ -29,7 +29,6 @@ try {
         'https://www.gov.uk/bank-holidays.json'
     )
     data.value = fetchedData.value // Assign the resolved data to `data.value`
-    console.log('Fetched Data:', data.value) // Log the fetched data
 } catch (error) {
     console.error('Error fetching data:', error)
 }
