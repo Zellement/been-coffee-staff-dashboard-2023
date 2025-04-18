@@ -118,13 +118,10 @@ const bgTimerClasses = computed(() => {
 const myPortableTextComponents = {
     types: {
         fileVideo: ({ value }) => {
-            // console.log('value', value)
-
             const fullAsset = getFileAsset(value, {
                 projectId: 'mxklvbih',
                 dataset: 'production'
             })
-            // console.log(fullAsset)
 
             if (!fullAsset.url) {
                 console.error('No URL returned for video')

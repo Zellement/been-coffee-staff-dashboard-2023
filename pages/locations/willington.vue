@@ -90,7 +90,6 @@ async function refreshPageData() {
     countingDown.value = false
     try {
         reloadNuxtApp()
-        // console.log('Data refreshed')
     } catch (e) {
         console.error(e)
     } finally {

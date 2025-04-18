@@ -90,8 +90,4 @@ const catTitle = computed(() => toPascalCase(route.params.slug))
 useHead({
     title: catTitle.value
 })
-
-// onMounted(() => {
-//     console.log(data)
-// })
 </script>

@@ -180,7 +180,6 @@ const pillClasses = computed(() => {
 
 const submitToGoogleSheets = () => {
     const formData = new FormData(routineTasksForm.value)
-    console.log(formData)
     const field = formData.get('Task')
     state.isSending = true
     state.hasSent = false

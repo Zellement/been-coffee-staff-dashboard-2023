@@ -150,13 +150,10 @@ const nextArticle = computed(() => {
 const myPortableTextComponents = {
     types: {
         fileVideo: ({ value }) => {
-            // console.log('value', value)
-
             const fullAsset = getFileAsset(value, {
                 projectId: 'mxklvbih',
                 dataset: 'production'
             })
-            // console.log(fullAsset)
 
             if (!fullAsset.url) {
                 console.error('No URL returned for video')
@@ -183,28 +180,11 @@ const myPortableTextComponents = {
                 projectId: 'mxklvbih',
                 dataset: 'production'
             })
-            // :src="$urlFor(currentWinner.winner.image).width(300).height(400).url()"
-            // const image = $urlFor(fullAsset.assetId).width(800).url()
-            // console.log('value', value)
-            // console.log('full asset', fullAsset)
             const image = fullAsset.url
-
-            // return h(resolveComponent('NuxtLink'), { key, href, target }, linkContent)
 
             return h(NuxtPicture, { src: image, class: 'w-full' })
         }
-        // callToAction: ({ value, isInline }, { slots }) =>
-        //     isInline
-        //         ? h('a', { href: value.url }, value.text)
-        //         : h('div', { class: 'callToAction' }, value.text)
     }
-
-    // marks: {
-    //     link: ({ value }, { slots }) => {
-    //         const rel = !value.href.startsWith('/') ? 'noreferrer noopener' : undefined
-    //         return h('a', { href: value.href, rel }, slots.default?.())
-    //     }
-    // }
 }
 
 watch(articleData, (newVal) => {

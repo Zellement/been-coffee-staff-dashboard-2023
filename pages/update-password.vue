@@ -73,7 +73,6 @@ const submitForm = async () => {
         const { data, error } = await supabase.auth.updateUser({
             password: password.value
         })
-        console.log(data)
         if (error) throw error
         success.value = 'Sorted!'
     } catch (error) {
