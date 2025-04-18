@@ -8,6 +8,7 @@
                 </span>
                 <span class="block text-[0.7em] text-tuscany">
                     {{ fullDateConverter(today) }}
+                    <bank-holidays :date="backwardsDate(today)" />
                 </span>
             </h2>
             <template v-if="showAll">
@@ -18,6 +19,7 @@
                     <homebase-single-shift
                         v-for="shift in shifts"
                         :key="shift.id"
+                        class="subgrid"
                         :shift="shift"
                     />
                 </div>
@@ -48,7 +50,8 @@ const props = defineProps({
 const showAll = ref(props.show)
 
 const today = new Date()
-const { getTodaysDateInUrlEncodedFormat, fullDateConverter } = useDateUtils()
+const { getTodaysDateInUrlEncodedFormat, backwardsDate, fullDateConverter } =
+    useDateUtils()
 
 const encodedDate = getTodaysDateInUrlEncodedFormat(today)
 

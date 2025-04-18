@@ -17,6 +17,7 @@
                 <carousel-checks />
             </template>
             <template v-else>
+                <bank-holidays />
                 <carousel-checks />
                 <carousel-routine-tasks />
                 <advent-calendar />

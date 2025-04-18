@@ -8,7 +8,7 @@
     </div>
     <div
         v-if="data && !today"
-        class="inline-flex w-auto -translate-y-1.5 items-center gap-1 rounded bg-butterscotch-200 px-1 py-1 text-2xs leading-none dark:bg-navy-700"
+        class="inline-flex w-auto shrink-0 -translate-y-1.5 items-center gap-1 rounded bg-butterscotch-200 px-1 py-1 text-2xs leading-none dark:bg-navy-700"
     >
         <Icon class="mr-2" :name="getWeatherIcon(data.daily.weather_code[0])" />
         {{ data.daily.temperature_2m_min[0]

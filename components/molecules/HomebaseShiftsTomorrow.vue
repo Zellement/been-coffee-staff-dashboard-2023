@@ -1,13 +1,14 @@
 <template>
     <div class="container w-full">
         <div class="flex w-full flex-col gap-4">
-            <h2 class="h1">
+            <h2 class="h3 dark:text-butterscotch-500">
                 <span class="flex items-end gap-8">
                     Tomorrow
                     <weather-data :today="false" />
                 </span>
-                <span v-if="!basic" class="block text-[0.7em] text-tuscany">
-                    {{ fullDateConverter(tomorrow) }}
+                <span class="block text-[0.5em]/[0.8em] text-tuscany">
+                    {{ shortDateConverter(tomorrow) }}
+                    <bank-holidays :date="backwardsDate(tomorrow)" />
                 </span>
             </h2>
             <div
@@ -36,7 +37,10 @@
 defineProps({
     basic: Boolean
 })
-const { getTodaysDateInUrlEncodedFormat, fullDateConverter } = useDateUtils()
+
+const { getTodaysDateInUrlEncodedFormat, backwardsDate, shortDateConverter } =
+    useDateUtils()
+
 const tomorrow = new Date(+new Date() + 86400000)
 
 const encodedDate = getTodaysDateInUrlEncodedFormat(tomorrow)
