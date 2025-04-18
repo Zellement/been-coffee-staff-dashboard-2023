@@ -16,7 +16,7 @@
                     v-if="shifts && shifts.length > 0"
                     class="flex flex-col gap-1 md:gap-2"
                 >
-                    <homebase-single-shift
+                    <homebase-single-shift-today
                         v-for="shift in shifts"
                         :key="shift.id"
                         class="subgrid"

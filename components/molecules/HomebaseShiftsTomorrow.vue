@@ -15,7 +15,7 @@
                 v-if="shifts && shifts.length > 0"
                 class="grid w-full grid-cols-1 gap-2"
             >
-                <homebase-single-shift
+                <homebase-single-shift-tomorrow
                     v-for="shift in shifts"
                     :key="shift.id"
                     :shift="shift"

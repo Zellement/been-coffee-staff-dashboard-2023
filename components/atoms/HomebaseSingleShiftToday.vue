@@ -3,7 +3,7 @@
         <div
             v-if="shift"
             class="relative flex w-full items-center justify-between gap-2 md:gap-8"
-            :class="[wrapperClasses, wrapperClockedOutClasses]"
+            :class="[wrapperClockedOutClasses]"
         >
             <div class="flex w-full grow items-center justify-between gap-4">
                 <span
@@ -29,9 +29,7 @@
                         class="size-8 flex-shrink-0 flex-grow-0 self-center rounded-full bg-navy-900"
                     />
                     <div class="flex w-full flex-col md:flex-row">
-                        <span
-                            class="flex whitespace-nowrap text-sm md:basis-1/2"
-                        >
+                        <span class="flex whitespace-nowrap md:basis-1/2">
                             {{ shift.first_name }}
                         </span>
                         <div class="flex md:basis-1/2">

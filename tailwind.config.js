@@ -188,7 +188,7 @@ module.exports = {
             }
         }
     },
-    plugins: [],
+    plugins: [require('@tailwindcss/container-queries')],
     corePlugins: {
         container: false
     }

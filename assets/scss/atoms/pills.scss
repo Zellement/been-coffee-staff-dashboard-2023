@@ -14,13 +14,24 @@
             @apply border-red-800 bg-gradient-to-b from-red-700 to-red-800 text-red-300;
         }
 
-        &--clockin {
+        &--clockin,
+        &--open {
             @apply border-green-500 bg-white text-green-500;
         }
 
         &--orange,
-        &--clockout {
+        &--clockout,
+        &--close {
             @apply border-orange-800 bg-white text-orange-800;
+        }
+
+        &--barista {
+            @apply border-yellow-500 text-yellow-500;
+        }
+
+        &--support,
+        &--admin {
+            @apply border-blue-500 text-blue-500;
         }
 
         &--xs {
