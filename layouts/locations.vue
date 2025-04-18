@@ -2,10 +2,7 @@
     <div class="">
         <slot />
 
-        <button-toggle-theme
-            v-if="uiStore.themeToggleBtn.show"
-            class="mr-2 mt-4"
-        />
+        <button-toggle-theme v-if="uiStore.themeToggleBtn.show" class="-mt-2" />
         <!-- Themed stuff -->
         <snow-fall v-if="uiStore.isXmasTheme" class="dark:opacity-40" />
 
