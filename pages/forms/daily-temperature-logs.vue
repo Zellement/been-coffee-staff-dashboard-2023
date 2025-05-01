@@ -82,6 +82,10 @@
             <temperature-log-input item="Savoury Fridge" />
             <temperature-log-input item="Savoury Display" />
             <temperature-log-input item="Bar Freezer" plus-or-minus="minus" />
+            <temperature-log-input
+                item="Daltons Freezer"
+                plus-or-minus="minus"
+            />
             <h2 class="h4">Back of House</h2>
             <temperature-log-input
                 item="Double Freezer"
