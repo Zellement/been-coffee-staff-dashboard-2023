@@ -40,12 +40,14 @@
                                 />
                             </div>
                             <img
+                                v-if="item.orderedBy?.image"
                                 :src="
                                     $urlFor(item.orderedBy.image)
                                         .width(54)
                                         .height(54)
                                         .url()
                                 "
+                                :alt="item.orderedBy?.name"
                                 class="aspect-square rounded-full"
                                 width="54"
                                 height="54"
