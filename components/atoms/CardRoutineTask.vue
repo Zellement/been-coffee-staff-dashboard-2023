@@ -10,52 +10,45 @@
             </span>
         </span>
         {{ task.title }}
-        <span class="text-2xs opacity-80"
-            >Estimated: {{ task.estimate }} mins</span
-        >
-        <button
-            class="flex items-center gap-1 text-2xs uppercase"
-            @click="toggleMore"
-        >
-            Toggle more info
-            <div class="relative flex h-3 w-3">
-                <Icon
-                    v-if="showMore"
-                    name="mdi:minus"
-                    class="top-0flex absolute h-3 w-3 transition-all"
-                />
-                <Icon
-                    v-else
-                    name="mdi:plus"
-                    class="top-0flex absolute h-3 w-3 transition-all"
-                />
-            </div>
-        </button>
-        <div v-if="showMore" class="flex flex-col gap-4">
-            <div class="text-xs">
-                <Icon name="material-symbols:info" class="h-4 w-4" />
-                {{ task.description }}
-            </div>
-            <nuxt-link
-                v-if="task.ref_link"
-                :to="task.ref_link"
-                class="text-xs underline"
-            >
-                Read more &raquo;
-            </nuxt-link>
+        <span v-if="task.staff" class="pill">
+            <Icon name="material-symbols:person-shield" class="" />
+            {{ task.staff }} only
+        </span>
+        <span class="text-2xs opacity-80">
+            Estimated: {{ task.estimate }} mins
+        </span>
 
-            <div class="flex flex-col text-xs">
-                <strong>Frequency</strong>
-                <span class="flex items-center gap-1">
-                    <Icon name="mdi:repeat" class="h-3 w-3" />
-                    <span>{{ task.frequency }} days</span>
-                </span>
+        <single-accordion title="Toggle more info">
+            <div class="flex flex-col gap-4">
+                <div class="text-xs">
+                    <Icon name="material-symbols:info" class="h-4 w-4" />
+                    {{ task.description }}
+                </div>
+                <nuxt-link
+                    v-if="task.ref_link"
+                    :to="task.ref_link"
+                    class="text-xs underline"
+                >
+                    Read more &raquo;
+                </nuxt-link>
+
+                <div class="flex flex-col text-xs">
+                    <strong>Frequency</strong>
+                    <span class="flex items-center gap-1">
+                        <Icon name="mdi:repeat" class="h-3 w-3" />
+                        <span>{{ task.frequency }} days</span>
+                    </span>
+                </div>
+                <div
+                    v-if="task.last_completed_date"
+                    class="flex flex-col text-xs"
+                >
+                    <strong>Last completed</strong>
+                    {{ shortDateConverter(task.last_completed_date) }}
+                </div>
             </div>
-            <div v-if="task.last_completed_date" class="flex flex-col text-xs">
-                <strong>Last completed</strong>
-                {{ shortDateConverter(task.last_completed_date) }}
-            </div>
-        </div>
+        </single-accordion>
+
         <div
             v-if="
                 userStore?.userData?.keyholder &&
