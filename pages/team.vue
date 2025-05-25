@@ -12,15 +12,14 @@
                 class="mx-auto max-w-[280px]"
             >
                 <div class="flex w-full overflow-hidden">
-                    <SanityImage
-                        :asset-id="`${member.image.asset._ref}`"
-                        auto="format"
-                        fit="crop"
+                    <img
+                        :src="
+                            $urlFor(member.image).width(500).height(700).url()
+                        "
+                        height="500"
+                        width="70"
+                        loading="lazy"
                         class="h-full w-full object-cover"
-                        :fp-x="member.image.hotspot?.x"
-                        :fp-y="member.image.hotspot?.y"
-                        w="500"
-                        h="700"
                     />
                 </div>
                 <ul

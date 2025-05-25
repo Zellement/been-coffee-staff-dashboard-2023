@@ -6,19 +6,31 @@
         >
             <div class="flex basis-1/4 flex-row items-center gap-2">
                 <div class="hidden @xs:flex">
-                    <img
-                        v-if="user && user.image"
-                        :src="
-                            $urlFor(user.image?.asset)
-                                .width(120)
-                                .height(120)
-                                .url()
-                        "
-                        height="32"
-                        width="32"
-                        loading="lazy"
-                        class="hexagon-clip shrink-0 flex-grow-0 self-start rounded-full"
-                    />
+                    <div v-if="user && user.image" class="relative">
+                        <img
+                            :src="
+                                $urlFor(user.image).width(32).height(32).url()
+                            "
+                            height="32"
+                            width="32"
+                            loading="lazy"
+                            class="hexagon-clip flex-shrink-0 flex-grow-0 self-center rounded-full"
+                        />
+
+                        <Icon
+                            v-if="user.role === 'Manager'"
+                            name="gravity-ui:chevrons-up"
+                            class="absolute right-0 top-0 z-10 translate-x-1 rounded bg-gradient-to-br from-tuscany-500 to-tuscany-600 p-px text-white"
+                            size="12"
+                        />
+
+                        <Icon
+                            v-else-if="user.managerKeyHolder"
+                            name="gravity-ui:chevrons-up"
+                            class="absolute right-0 top-0 z-10 translate-x-1 rounded bg-gradient-to-br from-butterscotch-500 to-butterscotch-600 p-px text-navy"
+                            size="12"
+                        />
+                    </div>
                     <div
                         v-else
                         loading="lazy"

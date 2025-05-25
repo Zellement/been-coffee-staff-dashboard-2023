@@ -34,7 +34,7 @@
                     height="40"
                     width="40"
                     loading="lazy"
-                    class="flex-shrink-0 flex-grow rounded-full object-cover shadow-lg"
+                    class="hexagon-clip flex-shrink-0 flex-grow rounded-full object-cover shadow-lg"
                 />
                 <Icon v-else name="ri:user-line" class="h-12 w-12" />
                 <span class="-mt-1 w-full leading-none"
