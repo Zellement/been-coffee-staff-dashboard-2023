@@ -4,7 +4,7 @@
             v-if="shift"
             class="relative flex w-full items-center justify-between @container"
         >
-            <div class="flex basis-1/4 flex-row items-center gap-2">
+            <div class="flex basis-1/3 flex-row items-center gap-2">
                 <div class="hidden @xs:flex">
                     <div v-if="user && user.image" class="relative">
                         <img
@@ -41,7 +41,7 @@
                     {{ shift.first_name }}
                 </span>
             </div>
-            <div class="flex grow basis-1/2 text-left">
+            <div class="flex grow basis-1/3 text-left">
                 <span>{{ extractHourAndMinute(shift.start_at) }}</span>
                 <span>-</span>
                 <span>{{ extractHourAndMinute(shift.end_at) }}</span>
