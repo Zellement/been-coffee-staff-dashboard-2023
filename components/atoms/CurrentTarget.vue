@@ -5,7 +5,7 @@
         @click="uiStore.toggleSearchResults(false)"
     >
         <p class="leading-none">Next Target</p>
-        <p class="mb-1 font-riverside text-2xl leading-none">£2,700</p>
+        <p class="mb-1 font-riverside text-2xl leading-none">£3,000</p>
         <span class="leading-none underline">What is this?</span>
     </nuxt-link>
 </template>
