@@ -8,11 +8,16 @@
                 >
             </h2>
             <nuxt-link
-                v-if="!basic"
-                class="button mt-auto"
-                to="/forms/routine-tasks"
+                class="button mt-auto flex flex-row items-center gap-1 p-0.5 px-1"
+                to="https://docs.google.com/spreadsheets/d/18Tu9U7rRqUqaleWY1tVYO9N1ObqAwvEKmWIv_tB7yjk/edit?usp=sharing"
+                external
+                target="_blank"
             >
-                Complete a task
+                View history
+                <Icon
+                    name="iconamoon:link-external-fill"
+                    class="h-3 w-3 transition-all duration-300 hover:rotate-90"
+                />
             </nuxt-link>
         </div>
         <carousel-wrapper class="pt-2">
@@ -28,10 +33,17 @@
         </carousel-wrapper>
         <div
             v-if="!basic"
-            class="container flex w-full flex-row justify-between"
+            class="container flex w-full flex-row items-center justify-end gap-2"
         >
-            <nuxt-link class="button ml-auto" to="/all-routine-tasks">
-                View all routine tasks
+            <nuxt-link
+                v-if="!basic"
+                class="button mt-auto"
+                to="/forms/routine-tasks"
+            >
+                Complete a task
+            </nuxt-link>
+            <nuxt-link class="button" to="/all-routine-tasks">
+                View all
             </nuxt-link>
         </div>
     </div>

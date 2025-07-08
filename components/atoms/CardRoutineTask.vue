@@ -77,14 +77,14 @@
                 <div class="grid grid-cols-1 overflow-hidden">
                     <button
                         :class="quickCompleteBtn"
-                        class="button button--xs col-span-1 col-start-1 row-start-1"
+                        class="button button--xs button--no-shadow col-span-1 col-start-1 row-start-1"
                         @click.prevent="taskQuickStatus = 'set'"
                     >
                         Quick Complete
                     </button>
                     <button
                         :class="completeBtn"
-                        class="button button--xs col-span-1 col-start-1 row-start-1 text-center"
+                        class="button button--xs button--no-shadow col-span-1 col-start-1 row-start-1 text-center"
                     >
                         <span class="mx-auto"> Complete?</span>
                     </button>
@@ -102,8 +102,12 @@
                         v-if="state.hasSent"
                         class="pill pill--complete col-span-1 col-start-1 row-start-1 flex"
                     >
-                        Complete
                         <Icon name="ic:twotone-check" class="ml-auto h-4 w-4" />
+                        Complete, reloading...
+                        <Icon
+                            name="mdi:loading"
+                            class="ml-auto h-4 w-4 animate-spin"
+                        />
                     </span>
                 </div>
             </form>
@@ -143,7 +147,7 @@ const quickCompleteBtn = computed(() => {
         !state.isSending &&
         !state.hasSent
         ? ''
-        : '-translate-y-full'
+        : '-translate-y-full '
 })
 
 const completeBtn = computed(() => {
@@ -152,13 +156,7 @@ const completeBtn = computed(() => {
         : 'translate-y-full'
 })
 
-const showMore = ref(false)
-
 const routineTasksForm = ref()
-
-const toggleMore = () => {
-    showMore.value = !showMore.value
-}
 
 const pillClasses = computed(() => {
     switch (props.type) {
@@ -183,5 +181,10 @@ const submitToGoogleSheets = () => {
             state.hasSent = true
         })
         .catch((error) => console.error('Error!', error.message))
+        .finally(() => {
+            setTimeout(() => {
+                reloadNuxtApp()
+            }, 100)
+        })
 }
 </script>

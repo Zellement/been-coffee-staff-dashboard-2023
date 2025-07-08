@@ -7,6 +7,10 @@
     &--xs {
         @apply px-2 py-0.5 text-xs;
     }
+
+    &--no-shadow {
+        @apply shadow-none;
+    }
 }
 
 html.dark .button {
