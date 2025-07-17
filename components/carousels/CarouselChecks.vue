@@ -30,14 +30,21 @@
                 </div>
                 <ul
                     v-if="!basic"
-                    class="mt-auto flex flex-row items-center gap-2 text-2xs"
+                    class="mt-auto flex flex-row items-center gap-2"
                 >
                     <li v-for="subnav in link.subnav" :key="subnav.url">
+                        <button
+                            v-if="subnav.action"
+                            class="button button--xs flex flex-row items-center gap-1 p-0.5 px-1"
+                            @click="subnav.action"
+                        >
+                            {{ subnav.title }}
+                        </button>
                         <nuxt-link
-                            v-if="subnav.url"
+                            v-else-if="subnav.url"
                             :to="subnav.url"
                             :target="subnav.blank ? '_blank' : null"
-                            class="button flex flex-row items-center gap-1 p-0.5 px-1"
+                            class="button button--xs flex flex-row items-center gap-1 p-0.5 px-1"
                         >
                             {{ subnav.title }}
 
@@ -74,12 +81,58 @@ const cashbreakdownHasData = computed(() => {
     return supabaseStore.daily_cash_breakdown !== null
 })
 
+const screenCleanAmHasData = computed(() => {
+    return supabaseStore.daily_screen_clean_am !== null
+})
+
+const screenCleanPmHasData = computed(() => {
+    return supabaseStore.daily_screen_clean_pm !== null
+})
+
 const temperaturesOrder = computed(() => {
     return temperaturesHaveData.value ? 'order-last ' : 'order-first'
 })
 
+const completeCheck = async (name, data) => {
+    await supabaseStore.setCheck(name, data)
+}
+
 const nav = computed(() => {
     return [
+        {
+            brow: 'Daily (AM)',
+            title: 'Screen Cleaning',
+            status: {
+                isComplete: screenCleanAmHasData.value,
+                dueTime: 9,
+                displayText: 'Due at 10am'
+            },
+            class: screenCleanAmHasData.value ? 'order-last' : '',
+            subnav: [
+                {
+                    title: 'Mark as Complete',
+                    action: () =>
+                        completeCheck('daily_screen_clean_am', new Date())
+                }
+            ]
+        },
+        {
+            brow: 'Daily (PM)',
+            title: 'Screen Cleaning',
+            status: {
+                isComplete: screenCleanPmHasData.value,
+                dueTime: 15,
+                displayText: 'Due at 3pm'
+            },
+            class: screenCleanPmHasData.value ? 'order-last' : '',
+            subnav: [
+                {
+                    title: 'Mark as Complete',
+                    action: () =>
+                        completeCheck('daily_screen_clean_pm', new Date())
+                }
+            ]
+        },
         {
             brow: 'Daily',
             title: 'Temperature Logs',

@@ -6,7 +6,11 @@ export const useSupabaseStore = defineStore('supabase', {
         daily_temperatures: null,
         daily_temperatures_time: null,
         daily_cash_breakdown: null,
-        daily_cash_breakdown_time: null
+        daily_cash_breakdown_time: null,
+        daily_screen_clean_am: null,
+        daily_screen_clean_am_time: null,
+        daily_screen_clean_pm: null,
+        daily_screen_clean_pm_time: null
     }),
     getters: {
         getDailyTemperaturesTime() {
@@ -19,12 +23,28 @@ export const useSupabaseStore = defineStore('supabase', {
                 .toTimeString()
                 .slice(0, 5)
         },
+        getDailyScreenCleanAmTime() {
+            return new Date(this.daily_screen_clean_am_time)
+                .toTimeString()
+                .slice(0, 5)
+        },
+        getDailyScreenCleanPmTime() {
+            return new Date(this.daily_screen_clean_pm_time)
+                .toTimeString()
+                .slice(0, 5)
+        },
         getTotalIncompleteChecks() {
             let total = 0
             if (!this.daily_temperatures) {
                 total++
             }
             if (!this.daily_cash_breakdown) {
+                total++
+            }
+            if (!this.daily_screen_clean_am) {
+                total++
+            }
+            if (!this.daily_screen_clean_pm) {
                 total++
             }
             return total
@@ -39,6 +59,10 @@ export const useSupabaseStore = defineStore('supabase', {
             this.daily_temperatures_time = data[0].daily_temperatures_time
             this.daily_cash_breakdown = data[0].daily_cash_breakdown
             this.daily_cash_breakdown_time = data[0].daily_cash_breakdown_time
+            this.daily_screen_clean_am = data[0].daily_screen_clean_am
+            this.daily_screen_clean_am_time = data[0].daily_screen_clean_am_time
+            this.daily_screen_clean_pm = data[0].daily_screen_clean_pm
+            this.daily_screen_clean_pm_time = data[0].daily_screen_clean_pm_time
             this.loading = false
             return data
         },
