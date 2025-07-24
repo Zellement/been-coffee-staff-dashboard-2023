@@ -104,7 +104,7 @@ const nav = computed(() => {
             title: 'Screen Cleaning',
             status: {
                 isComplete: screenCleanAmHasData.value,
-                dueTime: 9,
+                dueTime: 10,
                 displayText: 'Due at 10am'
             },
             class: screenCleanAmHasData.value ? 'order-last' : '',
