@@ -60,43 +60,42 @@
             </div>
             <div
                 v-for="denomination in state.denominations"
-                :key="`black-tin__${denomination}`"
-                class="grid grid-cols-12 items-center"
+                :key="`black-tin__${denomination.denomination}`"
+                class="grid grid-cols-12 items-center gap-2"
             >
                 <span class="col-span-2">{{ denomination.denomination }}</span>
+
+                <!-- Editable VALUE input -->
+                <div class="relative col-span-5 flex items-center gap-1">
+                    <div>£</div>
+                    <input
+                        v-model.number="denomination.value"
+                        type="number"
+                        class="grow"
+                        step="0.01"
+                        :name="`${collection} ${denomination.denomination} value`"
+                        @input="syncFromValue(denomination)"
+                    />
+                </div>
+
+                <!-- Editable COUNT input -->
                 <input
-                    class="pointer-events-none col-span-5"
-                    readonly
-                    tabindex="-1"
-                    :value="getValue(denomination)"
-                    :name="`${collection} ${denomination.denomination} value`"
-                />
-                <input
-                    v-model="denomination.value"
+                    v-model.number="denomination.count"
                     class="col-span-5"
-                    :name="`${collection} ${denomination.denomination} count`"
                     type="number"
+                    step="1"
+                    :name="`${collection} ${denomination.denomination} count`"
+                    @input="syncFromCount(denomination)"
                 />
             </div>
         </div>
     </div>
 </template>
-
 <script setup>
 const props = defineProps({
-    collection: {
-        type: String,
-        required: true
-    },
-    collectionBrow: {
-        type: String,
-        required: false,
-        default: null
-    },
-    collectionStyle: {
-        type: String,
-        required: true
-    }
+    collection: { type: String, required: true },
+    collectionBrow: { type: String, required: false, default: null },
+    collectionStyle: { type: String, required: true }
 })
 
 const title = computed(() => {
@@ -110,72 +109,59 @@ const titleBrow = computed(() => {
 const style = computed(() => {
     return props.collectionStyle
 })
-const state = reactive({
-    denominations: [
-        { denomination: '£20', value: 0, multiple: 20 },
-        { denomination: '£10', value: 0, multiple: 10 },
-        { denomination: '£5', value: 0, multiple: 5 },
-        { denomination: '£2', value: 0, multiple: 2 },
-        { denomination: '£1', value: 0, multiple: 1 },
-        { denomination: '50p', value: 0, multiple: 0.5 },
-        { denomination: '20p', value: 0, multiple: 0.2 },
-        { denomination: '10p', value: 0, multiple: 0.1 },
-        { denomination: '5p', value: 0, multiple: 0.05 },
-        { denomination: '2p', value: 0, multiple: 0.02 },
-        { denomination: '1p', value: 0, multiple: 0.01 }
-    ]
-})
 
 const formatter = new Intl.NumberFormat('en-UK', {
     style: 'currency',
     currency: 'GBP'
 })
 
-const getValue = (denomination) => {
-    return formatter.format(denomination.value * denomination.multiple)
+const state = reactive({
+    denominations: [
+        { denomination: '£20', multiple: 20, count: 0, value: 0 },
+        { denomination: '£10', multiple: 10, count: 0, value: 0 },
+        { denomination: '£5', multiple: 5, count: 0, value: 0 },
+        { denomination: '£2', multiple: 2, count: 0, value: 0 },
+        { denomination: '£1', multiple: 1, count: 0, value: 0 },
+        { denomination: '50p', multiple: 0.5, count: 0, value: 0 },
+        { denomination: '20p', multiple: 0.2, count: 0, value: 0 },
+        { denomination: '10p', multiple: 0.1, count: 0, value: 0 },
+        { denomination: '5p', multiple: 0.05, count: 0, value: 0 },
+        { denomination: '2p', multiple: 0.02, count: 0, value: 0 },
+        { denomination: '1p', multiple: 0.01, count: 0, value: 0 }
+    ]
+})
+
+const syncFromCount = (denom) => {
+    denom.value = denom.count * denom.multiple
 }
 
-const totalValue = computed(() => {
-    let value = 0
-    state.denominations.forEach((element) => {
-        value = value + element.value * element.multiple
-    })
-    return value
-})
+const syncFromValue = (denom) => {
+    denom.count = denom.multiple > 0 ? denom.value / denom.multiple : 0
+}
 
-const totalValueFormatted = computed(() => {
-    return totalValue.value === 0
-        ? '£--.--'
-        : formatter.format(totalValue.value)
-})
+const formatCurrency = (val) => {
+    return val === 0 ? '£--.--' : formatter.format(val)
+}
 
-const totalColor = computed(() => {
-    return totalValue.value === 0 ? 'opacity-20' : null
-})
+const totalValue = computed(() =>
+    state.denominations.reduce((acc, d) => acc + d.value, 0)
+)
 
-const difference = computed(() => {
-    return totalValue.value - 100
-})
+const totalValueFormatted = computed(() => formatCurrency(totalValue.value))
 
-const differenceFormatted = computed(() => {
-    return totalValue.value === 0
-        ? '£--.--'
-        : formatter.format(difference.value)
-})
+const difference = computed(() => totalValue.value - 100)
+
+const differenceFormatted = computed(() =>
+    formatCurrency(totalValue.value === 0 ? 0 : difference.value)
+)
+
+const totalColor = computed(() =>
+    totalValue.value === 0 ? 'opacity-20' : null
+)
 
 const differenceColor = computed(() => {
-    return totalValue.value === 0
-        ? 'opacity-20'
-        : difference.value === 0
-          ? 'text-green-500'
-          : 'text-red-500'
-})
-
-watch(difference, (newVal, oldVal) => {
-    if (newVal === oldVal) return false
-    state.totalsAnimating = true
-    setTimeout(() => {
-        state.totalsAnimating = false
-    }, 500)
+    if (totalValue.value === 0) return 'opacity-20'
+    if (difference.value === 0) return 'text-green-500'
+    return 'text-red-500'
 })
 </script>
