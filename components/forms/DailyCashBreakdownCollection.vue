@@ -71,8 +71,8 @@
                     <input
                         v-model.number="denomination.value"
                         type="number"
-                        class="grow"
                         step="0.01"
+                        class="w-full pr-4"
                         :name="`${collection} ${denomination.denomination} value`"
                         @input="syncFromValue(denomination)"
                     />
